@@ -4,7 +4,7 @@
 ==========
 */
 /*
-
+ 井字棋模型
  */
 class Tictactoe{
     /**
@@ -18,7 +18,7 @@ class Tictactoe{
         this.player2 = initVar.player2;
     }
     /**
-     * 获取玩家棋子
+   4  * 获取玩家棋子
      * @returns [string,string] player1和player2的棋子
      */
     getPlayer (){
@@ -92,23 +92,34 @@ class Board extends React.Component {
     renderSquare(i) {
         return (
             <Square
+                key={i}
                 value={this.props.squares[i]}
                 onClick={() => this.props.onClick(i)}
             />
         );
     }
     render() {
+        var rowNumber = 3;
+        var colNumber = 3;
+        var rowEls = [];
+
+        for(let row=0; row<rowNumber; row++){
+            let colEls = [];
+
+            for(let col=0; col<colNumber; col++){
+                console.log((row+1)*(col+1))
+                colEls.push(this.renderSquare((row+1)*col));
+            }
+            rowEls.push((
+                <div key={row} className="board-row">
+                    {colEls}
+                </div>
+            ));
+        }
+
         return (
             <div>
-                <div className="board-row">
-                    {this.renderSquare(0)}{this.renderSquare(1)}{this.renderSquare(2)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(3)}{this.renderSquare(4)}{this.renderSquare(5)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(6)}{this.renderSquare(7)}{this.renderSquare(8)}
-                </div>
+                {rowEls}
             </div>
         );
     }
@@ -184,18 +195,6 @@ class Game extends React.Component {
         const current = history[this.state.stepNumber];
         const tict = this.tictactoe;
         const nextPlay = this.state.xIsNext;
-
-        // 显示历史步数
-        const moves = history.map((step, move) => {
-            const desc = move ?
-                'Move #' + move :
-                'Game start';
-            return (
-                <li key={move}>
-                    <a href="#" onClick={() => this.onClick(move)}>{desc}</a>
-                </li>
-            );
-        });
 
         // 状态信息
         let statusText = tict.getStatusText(current.squares, nextPlay);
