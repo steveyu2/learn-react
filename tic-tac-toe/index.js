@@ -251,10 +251,10 @@ class Game extends React.Component {
                 '2':
                 '1';
         const col = (i=>{
-            var  = i/3;
-            col = parseInt((col-parseInt(col))*100)/100
-            return col === 0.66? '3':
-                col === 0.33?
+            var ratio = i/3;
+            ratio = parseInt((ratio-parseInt(col))*100)/100;
+            return ratio === 0.66? '3':
+                ratio === 0.33?
                     '2':
                     '1';
         })(i);
