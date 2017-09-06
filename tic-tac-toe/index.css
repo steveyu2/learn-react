@@ -48,3 +48,11 @@ ol, ul {
 .game-info {
     margin-left: 20px;
 }
+
+.historyStepSort{
+    font-size: 14px;
+}
+
+.textRed{
+    color: red;
+}
