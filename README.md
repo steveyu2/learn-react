@@ -2,6 +2,7 @@
 
 #### project
 * tic-tac-toe
+
     跟着[官网教程](https://doc.react-china.org/react/tutorial/tutorial.html)做了练习
     * 以 "(1, 3)" 坐标的方式记录每一步，而不是格子序号 "6"。
     * 在棋步记录列表里加粗显示当前选中的项目。
