@@ -1,5 +1,14 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
 }
+
+ol, ul {
+  padding-left: 30px;
+}
+a:link,a:visited {color: #1467d2}
+
+
+
+
+
