@@ -1,0 +1,22 @@
+module.exports = {
+  entry: './main.js', // 入口文件路径
+  output: {
+    path: __dirname,
+    filename: 'index.js'
+  },
+  devServer: {
+    port: 3333
+      },
+      module: {
+        loaders: [
+          {
+              test: /\.js$/, // babel 转换为兼容性的 js
+              exclude: /node_modules/,
+              loader: 'babel-loader',
+              query: {
+                presets: ['react', 'latest']
+              }
+            }
+          ]
+      }
+}
