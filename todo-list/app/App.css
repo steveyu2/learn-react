@@ -1,7 +1,10 @@
-@size-we: 100%;
-@size-we2: 200%;
+@import "./lesstools/tools.less";
 
-.warp{
-  height: @size-we;
-  width: @size-we2;
+.wrap{
+  width: 1170px;
+  margin: 0 auto;
+}
+.wrap header,
+.wrap footer{
+  width: 100%;
 }
