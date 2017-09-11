@@ -1,0 +1,7 @@
+@size-we: 100%;
+@size-we2: 200%;
+
+.warp{
+  height: @size-we;
+  width: @size-we2;
+}
