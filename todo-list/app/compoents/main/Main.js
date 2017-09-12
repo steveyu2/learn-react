@@ -1,10 +1,13 @@
 import React from 'react';
+import css from './Main.css';
 
 class Main extends React.Component {
 
   render() {
     return (
-      <div>hello Main</div>
+      <div className={css.main}>
+        {this.props.children}
+      </div>
     )
   }
 

@@ -1,10 +1,14 @@
-@import "./lesstools/tools.less";
+@import "./less/tools.less";
 
 .wrap{
-  width: 1170px;
+  width: 1000px;
   margin: 0 auto;
 }
 .wrap header,
 .wrap footer{
   width: 100%;
+}
+
+.wrap footer{
+  clear: both;
 }

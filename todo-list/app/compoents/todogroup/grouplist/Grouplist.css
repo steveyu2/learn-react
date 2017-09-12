@@ -1,0 +1,11 @@
+@import "../../../less/tools.less";
+
+.grouplist{
+  &>li{
+    cursor: pointer;
+
+    &:hover{
+      color: @MainColor;
+    }
+  }
+}
