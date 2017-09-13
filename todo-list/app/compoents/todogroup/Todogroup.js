@@ -7,11 +7,7 @@ import Grouplist from './grouplist/Grouplist';
 
 /**
  * @props
- *  groupList {obj}
- *    keys
- *     todoList {array}
- *     groupName {string}
- *     createTime {string}
+ *  groupList {array}
  *  commitGroupName {function}
  *    @params
  *      groupName {string}

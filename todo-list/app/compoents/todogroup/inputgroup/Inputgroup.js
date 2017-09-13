@@ -29,11 +29,6 @@ class Inputgroup extends React.Component {
 
     const name = this.state.groupName;
 
-    if(name.length){
-      alert("组名称不可为空");
-      return;
-    }
-
     this.props.commitGroupname(name);
   }
 
