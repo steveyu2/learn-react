@@ -1,0 +1,13 @@
+@import "../../../less/tools.less";
+
+.listBody{
+  margin-top: 20px;
+}
+.btnGroup{
+  width: 11%;
+  margin-left: 40px;
+}
+.listText{
+  margin: 0;
+  .nowrap;
+}

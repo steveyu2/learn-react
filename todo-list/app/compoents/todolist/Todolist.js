@@ -1,5 +1,7 @@
 import React from 'react';
 import css from './Todolist.css';
+import Listheader from './listheader/Listheader';
+import Listbody from './listbody/Listbody';
 
 class Todolist extends React.Component {
 
@@ -11,26 +13,11 @@ class Todolist extends React.Component {
             <h3 className="panel-title">
               Panel title
             </h3>
+            <small>创建于123123</small>
           </div>
           <div className="panel-body">
-            <div className="row">
-              <div className="col-md-4">
-                <div className="input-group">
-                  <input type="text" className="form-control" placeholder="待办事项名称"/>
-                  <span className="input-group-btn">
-                    <button className="btn btn-primary btn-md">
-                      <i className="glyphicon glyphicon-hand-down"/>
-                    </button>
-                  </span>
-                </div>
-              </div>
-              <div className="col-md-6"></div>
-              <div className="col-md-2">
-                <button className="btn btn-danger btn-md">
-                  删除
-                </button>
-              </div>
-            </div>
+            <Listheader />
+            <Listbody />
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 @import "../../../less/tools.less";
 
-.grouplist{
+.groupList{
   &>li{
     cursor: pointer;
 
@@ -8,4 +8,9 @@
       color: @MainColor;
     }
   }
+}
+
+.listText{
+  margin: 0;
+  .nowrap;
 }

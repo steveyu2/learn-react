@@ -16,8 +16,8 @@ class App extends React.Component {
               <Navbar />
             </header>
             <Main>
-              <Todogroup/>
-              <Todolist/>
+              <Todogroup />
+              <Todolist />
             </Main>
             <footer>
               @2017

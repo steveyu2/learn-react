@@ -1,8 +1,8 @@
 @import "../../less/tools";
 
-.todogroup{
+.todoGroup{
   float: left;
-  width: 25%;
+  width: 30%;
   padding: 10px;
 
   .header{
