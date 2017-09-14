@@ -60,23 +60,25 @@ var TODOLIST = {
      * @param id 组id
      */
     delete(id) {
+
       if(TodoListData.removeTodo(id)){
         this.setState({
           groupList: this.method('group', 'getList')()
         });
       }
     },
-    finishTodo(id) {
+    finish(id) {
 
+      const list = this.method('group', 'getList')();
       const index = TodoListData.getGroup(groupId);
 
       if(index){
-        this.method('group', 'getList')()[index];
+
       }else{
         swal('失败','待办事项不存在','dangger');
       }
     },
-    cancelFinishTodo(id) {
+    cancelFinish(id) {
 
       const index = TodoListData.getGroup(groupId);
 
@@ -90,8 +92,8 @@ var TODOLIST = {
   group: {
     getList() {
       return TodoListData.getGroupList();
-    },
-    /**
+     },
+     /**
      * 增加一个待办事项组
      * @param name 组名
      */

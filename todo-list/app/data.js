@@ -147,7 +147,7 @@ const methods = {
 
     data.setTodoList(list);
   },
-  removeTodo (id) {
+  removeTodo(id) {
 
     var list = data.getTodoList();
 
@@ -162,6 +162,12 @@ const methods = {
     }
 
     data.setTodoList(list);
+  },
+  finishTodo(id) {
+
+  },
+  cancelFinishTodo(id) {
+
   }
 };
 
