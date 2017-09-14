@@ -20,6 +20,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "style-loader": "^0.18.2",
+    "sweetalert": "^2.0.3",
     "webpack": "^3.5.6",
     "webpack-dev-server": "^2.7.1"
   },

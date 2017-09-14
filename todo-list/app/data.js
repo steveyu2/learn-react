@@ -159,15 +159,47 @@ const methods = {
 
     if(index !== false){
       list.splice(index, 1);
+    }else{
+      return false
     }
 
     data.setTodoList(list);
   },
   finishTodo(id) {
 
+    var list = data.getTodoList();
+
+    var index = filterOne(list, (v)=>{
+      if(v.id === id){
+        return true;
+      }
+    });
+
+    if(index !== false){
+      list[index].state = true;
+    }else{
+      return false
+    }
+
+    data.setTodoList(list);
   },
   cancelFinishTodo(id) {
 
+    var list = data.getTodoList();
+
+    var index = filterOne(list, (v)=>{
+      if(v.id === id){
+        return true;
+      }
+    });
+
+    if(index !== false){
+      list[index].state = false
+    }else{
+      return false
+    }
+
+    data.setTodoList(list);
   }
 };
 

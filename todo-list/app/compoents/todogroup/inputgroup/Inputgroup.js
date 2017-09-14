@@ -29,7 +29,7 @@ class Inputgroup extends React.Component {
 
     const name = this.state.groupName;
 
-    this.props.commitGroupname(name);
+    this.props.commitGroupName(name);
   }
 
   render() {

@@ -1,4 +1,5 @@
 import React from 'react';
+import swal from 'sweetalert';
 import css from './App.css';
 import {
   Navbar,
@@ -26,12 +27,12 @@ var TODOLIST = {
 
     keys.forEach((key)=>{
       for(let o in obj[key]){
-        obj[key][o].bind(that);
+        obj[key][o] = obj[key][o].bind(that);
       }
     });
   },
   method(key, methodName) {
-    var obj = this;
+    var obj = TODOLIST;
     return obj[key][methodName];
   },
   todo: {
@@ -51,7 +52,7 @@ var TODOLIST = {
         TodoListData.addTodo(name);
 
         this.setState({
-          groupList: this.method('todo', 'getList')()
+          todoList: this.method('todo', 'getList')()
         });
       }
     },
@@ -63,30 +64,30 @@ var TODOLIST = {
 
       if(TodoListData.removeTodo(id)){
         this.setState({
-          groupList: this.method('group', 'getList')()
+          todoList: this.method('todo', 'getList')()
         });
-      }
-    },
-    finish(id) {
-
-      const list = this.method('group', 'getList')();
-      const index = TodoListData.getGroup(groupId);
-
-      if(index){
-
       }else{
-        swal('失败','待办事项不存在','dangger');
+
+      }
+    }
+    ,
+    finish(id) {
+      if(TodoListData.finishTodo(id)){
+        this.setState({
+          todoList: this.method('todo', 'getList')()
+        });
+      }else{
+        swal("错误", "完成失败", "dangger");
       }
     },
     cancelFinish(id) {
-
-      const index = TodoListData.getGroup(groupId);
-
-      if(index){
-        return this.method('group', 'getList')()[index];
+      if(TodoListData.cancelFinishTodo(id)){
+        this.setState({
+          todoList: this.method('todo', 'getList')()
+        });
+      }else{
+        swal("错误", "完成失败", "dangger");
       }
-
-      return false;
     }
   },
   group: {
@@ -98,7 +99,6 @@ var TODOLIST = {
      * @param name 组名
      */
     add(name) {
-
       if (!name || name.length == 0) {
         swal("错误", "组名称不能为空", "dangger");
       } else {
@@ -150,10 +150,10 @@ class App extends React.Component {
     this.data = TodoListData;
 
     this.state = {
-      todoGroups: [
+      groupList: [
 
       ],
-      todos: [
+      todoList: [
 
       ],
       currentGroupId: '' // 当前选中的组id
@@ -167,23 +167,24 @@ class App extends React.Component {
 
     const currentGroup = this.method('group', 'current')();
 
+console.log(this.state.groupList)
     return (
       <div className={`${css.wrap}`}>
         <header>
           <Navbar />
         </header>
         <Main>
-          <Todogroup groupList={ this.state.todoGroups }
+          <Todogroup groupList={ this.state.groupList }
                      commitGroupName={ this.method('group', 'add') }/>
           {
             currentGroup
             &&
             (<Todolist group={ currentGroup }
-                       commitTodoName={ this.addTodo }
+                       commitTodoName={ this.method('todo', 'add') }
                        deleteGroup={ this.method('group', 'delete') }
-                       finishTodo={ this.finishTodo }
-                       cancelFinishTodo={ this.cancelFinishTodo }
-                       removeTodo={ this.removeTodo }/>)
+                       finishTodo={ this.method('todo', 'finish') }
+                       cancelFinishTodo={ this.method('todo', 'cancelFinish') }
+                       removeTodo={ this.method('todo', 'delete') }/>)
           }
 
         </Main>
@@ -196,3 +197,14 @@ class App extends React.Component {
 }
 
 export default App
+
+
+/*
+grouplist 需要一个 完成总数 和 选中的组id
+ *    finishSum {int}
+ *  activeGroupId {string}、
+ *
+ *  完成总数在app.js弄for 赋值上去，
+ *
+ *
+ */

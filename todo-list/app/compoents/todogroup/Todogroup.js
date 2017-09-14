@@ -34,7 +34,7 @@ class Todogroup extends React.Component {
           <label htmlFor="groupName">创建待办事项组</label>
           <Inputgroup commitGroupName={this.commitGroupName}/>
         </div>
-        <Grouplist grouplist={this.props.groupList}/>
+        <Grouplist groupList={this.props.groupList}/>
       </div>
     )
   }
