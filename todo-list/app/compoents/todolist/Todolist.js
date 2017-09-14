@@ -13,7 +13,7 @@ import Listbody from './listbody/Listbody';
  *   commitTodoName (function)
  *   deleteGroup (function)
  *   finishTodo (function)
- *   unfinishTodo (function)
+ *   cancelFinishTodo (function)
  *   removeTodo (function)
  */
 
@@ -37,7 +37,7 @@ class Todolist extends React.Component {
                         deleteGroup={ this.props.deleteGroup }/>
             <Listbody todoList={ group.todoList }
                       finishTodo={ this.props.finishTodo }
-                      unfinishTodo={ this.props.unfinishTodo }
+                      cancelFinishTodo={ this.props.cancelFinishTodo }
                       removeTodo={ this.props.removeTodo }/>
           </div>
         </div>

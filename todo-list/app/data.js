@@ -70,6 +70,18 @@ const methods = {
   /**
    * TodoGroup
    */
+  getGroup(id) {
+
+    var list = data.getGroupList();
+
+    var index = filterOne(list, (v)=>{
+      if(v.id === id){
+        return true;
+      }
+    });
+
+    return index;
+  },
   getGroupList() {
     return data.getGroupList();
   },
@@ -77,11 +89,13 @@ const methods = {
 
     var list = data.getGroupList();
 
-    data.todoGroupList.push({
+    list.push({
       id: UUID(),
       groupName,
       createTime: getDate(),
     });
+
+    data.setGroupList(list);
   },
   removeTodoGroup(id) {
 
@@ -95,11 +109,27 @@ const methods = {
 
     if(index !== false){
       list.splice(index, 1);
+      data.setGroupList(list);
+      return true;
+    }else{
+      return false;
     }
   },
   /**
    * Todo
    */
+  getTodo(id) {
+
+    var list = data.getTodoList();
+
+    var index = filterOne(list, (v)=>{
+      if(v.id === id){
+        return true;
+      }
+    });
+
+    return index;
+  },
   getTodoList() {
     return data.getTodoList();
   },
@@ -114,8 +144,10 @@ const methods = {
       createTime: getDate(),
       pid,
     });
+
+    data.setTodoList(list);
   },
-  removeTodo () {
+  removeTodo (id) {
 
     var list = data.getTodoList();
 
@@ -128,6 +160,8 @@ const methods = {
     if(index !== false){
       list.splice(index, 1);
     }
+
+    data.setTodoList(list);
   }
 };
 
