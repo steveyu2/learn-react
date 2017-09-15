@@ -52,6 +52,7 @@ var TODOLIST = {
     /**
      * 增加一个待办事项
      * @param name 组名
+     * @param pid 所属组id
      */
     add(name, pid) {
 
@@ -68,7 +69,7 @@ var TODOLIST = {
     },
     /**
      * 删除一个待办事项
-     * @param id 组id
+     * @param id 事项id
      */
     delete(id) {
 
@@ -100,6 +101,10 @@ var TODOLIST = {
         }
       });
     },
+    /**
+     * 删除一个待办事项
+     * @param id 组id
+     */
     finish(id) {
       if(this.data.finishTodo(id)){
         this.setState({
@@ -204,8 +209,8 @@ class App extends React.Component {
     this.method = TODOLIST.method;
 
     this.state = {
-      groupList: [],
-      todoList: [],
+      groupList: this.method('group', 'getList')(),
+      todoList: this.method('todo', 'getAllList')(),
       currentGroupId: '' // 当前选中的组id
     };
 
@@ -281,3 +286,8 @@ class App extends React.Component {
 }
 
 export default App
+
+/*
+* 当前选中组的id也存到本地去
+*
+* */
