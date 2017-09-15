@@ -174,6 +174,7 @@ const methods = {
     }
 
     data.setTodoList(list);
+    return true;
   },
   finishTodo(id) {
 
@@ -186,12 +187,13 @@ const methods = {
     });
 
     if(index !== false){
-      list[index].state = true;
+      list[index].finish = true;
     }else{
       return false;
     }
 
     data.setTodoList(list);
+    return true;
   },
   cancelFinishTodo(id) {
 
@@ -204,12 +206,13 @@ const methods = {
     });
 
     if(index !== false){
-      list[index].state = false
+      list[index].finish = false
     }else{
       return false;
     }
 
     data.setTodoList(list);
+    return true;
   }
 };
 

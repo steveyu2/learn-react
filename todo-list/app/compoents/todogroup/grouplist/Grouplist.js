@@ -30,8 +30,8 @@ class Grouplist extends React.Component {
               data-placement="top"
               title="Tooltip on left"
               key={group.id}>
-            <span className="badge">{ group.finishSum } <i className="glyphicon glyphicon-remove" /></span>
-            <span className="badge">{ group.unFinishSum } <i className="glyphicon glyphicon-ok" /></span>
+            <span className="badge">{ group.unFinishSum } <i className="glyphicon glyphicon-remove" /></span>
+            <span className="badge">{ group.finishSum } <i className="glyphicon glyphicon-ok" /></span>
             <p className={ css.listText }>
               { group.groupName }
             </p>

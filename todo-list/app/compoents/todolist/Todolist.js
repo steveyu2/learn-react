@@ -22,8 +22,6 @@ class Todolist extends React.Component {
   render() {
     const group = this.props.group;
 
-    console.log(this.props.todoList)
-
     return (
       <div className={css.todolist}>
         <div className="panel panel-primary">
@@ -37,8 +35,14 @@ class Todolist extends React.Component {
             <Listheader groupId={ group.id }
                         commitTodoName={ this.props.commitTodoName }
                         deleteGroup={ this.props.deleteGroup }/>
-            <Listbody todoList={ this.props.todoList }
+            <h3>未完成</h3>
+            <Listbody finish={ false }
+                      todoList={ this.props.todoList }
                       finishTodo={ this.props.finishTodo }
+                      removeTodo={ this.props.removeTodo }/>
+            <h3>完成</h3>
+            <Listbody finish={ true }
+                      todoList={ this.props.todoList }
                       cancelFinishTodo={ this.props.cancelFinishTodo }
                       removeTodo={ this.props.removeTodo }/>
           </div>

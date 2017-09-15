@@ -37,7 +37,7 @@ class Listbody extends React.Component {
 
   cancelFinishTodo(todoId) {
 
-    this.props.unfinishTodo(todoId);
+    this.props.cancelFinishTodo(todoId);
   }
 
   removeTodo(todoId) {
@@ -48,23 +48,22 @@ class Listbody extends React.Component {
   render() {
 
     const todoList = this.props.todoList;
-    const todoListEls = todoList.map(todo=>{
+    const todoListEls = todoList.filter(todo=>todo.finish === this.props.finish).map(todo=>{
 
       return (
         <li className="list-group-item"  data-toggle="tooltip" data-placement="top" title={ todo.todoName } key={ todo.id }>
+          <p className={css.listText}>
+            { todo.todoName }
+          </p>
           <div className="row">
-            <div className="col-md-10">
-              <p className={css.listText}>
-                { todo.todoName }
-              </p>
-              <small>{ todo.createTime.string }</small>
-            </div>
-            <div className={`col-md-1 ${css.btnGroup}`}>
-              <div className="btn-group btn-group-xs" role="group">
+            <span className={"col-md-6 " + css.createTime}>{ todo.createTime.string }</span>
+            <div className="col-md-3"></div>
+            <div className={`col-md-2 ${css.btnGroup}`}>
+              <div className={"btn-group btn-group-xs"} role="group">
                 {
                   this.props.finish === true
-                    ?(<button type="" className="btn btn-success" onClick={ ()=>{ this.finishTodo(todo.id) } }><i className="glyphicon glyphicon-ok" /></button>)
-                    :(<button type="" className="btn btn-info" onClick={ ()=>{ this.cancelFinishTodo(todo.id) } }><i className="glyphicon glyphicon-mius" /></button>)
+                    ?(<button type="" className="btn btn-info" onClick={ ()=>{ this.cancelFinishTodo(todo.id) } }><i className="glyphicon glyphicon-share-alt" /></button>)
+                    :(<button type="" className="btn btn-success" onClick={ ()=>{ this.finishTodo(todo.id) } }><i className="glyphicon glyphicon-ok" /></button>)
                 }
                 <button type="" className="btn btn-danger"  onClick={ ()=>{ this.removeTodo(todo.id) } }><i className="glyphicon glyphicon-trash" /></button>
               </div>

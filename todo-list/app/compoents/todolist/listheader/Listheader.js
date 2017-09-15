@@ -35,6 +35,9 @@ class Listheader extends React.Component {
 
   commitTodoName() {
     this.props.commitTodoName(this.state.todoName, this.props.groupId);
+    this.setState({
+      todoName: ''
+    });
   }
 
   deleteGroup() {
