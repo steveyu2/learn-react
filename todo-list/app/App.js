@@ -36,23 +36,33 @@ var TODOLIST = {
     return obj[key][methodName];
   },
   todo: {
-    getList() {
-      return TodoListData.getTodoList();
+    getAllList(){
+      return TodoListData.getAllTodoList();
+    },
+    getList(pid) {
+
+      var result = TodoListData.getTodoList(pid);
+
+      if(result !== false){
+        return result;
+      }else{
+        swal("错误", "该待办事项不存在", "dangger");
+      }
     },
     /**
      * 增加一个待办事项
      * @param name 组名
      */
-    add(name) {
+    add(name, pid) {
 
       if (!name || name.length == 0) {
         swal("错误", "待办事项名称不能为空", "dangger");
       } else {
 
-        TodoListData.addTodo(name);
+        TodoListData.addTodo(name, pid);
 
         this.setState({
-          todoList: this.method('todo', 'getList')()
+          todoList: this.method('todo', 'getAllList')()
         });
       }
     },
@@ -64,17 +74,16 @@ var TODOLIST = {
 
       if(TodoListData.removeTodo(id)){
         this.setState({
-          todoList: this.method('todo', 'getList')()
+          todoList: this.method('todo', 'getAllList')()
         });
       }else{
 
       }
-    }
-    ,
+    },
     finish(id) {
       if(TodoListData.finishTodo(id)){
         this.setState({
-          todoList: this.method('todo', 'getList')()
+          todoList: this.method('todo', 'getAllList')()
         });
       }else{
         swal("错误", "完成失败", "dangger");
@@ -83,7 +92,7 @@ var TODOLIST = {
     cancelFinish(id) {
       if(TodoListData.cancelFinishTodo(id)){
         this.setState({
-          todoList: this.method('todo', 'getList')()
+          todoList: this.method('todo', 'getAllList')()
         });
       }else{
         swal("错误", "完成失败", "dangger");
@@ -129,7 +138,7 @@ var TODOLIST = {
       const groupId = this.state.currentGroupId;
       const index = TodoListData.getGroup(groupId);
 
-      if(index){
+      if(index !== false){
         return this.method('group', 'getList')()[index];
       }
 
@@ -160,14 +169,34 @@ class App extends React.Component {
     };
 
     TODOLIST.bind(this);
+    this.changeCurrentGroupId = this.changeCurrentGroupId.bind(this);
     this.method = TODOLIST.method;
+  }
+
+  changeCurrentGroupId(groupId) {
+    this.setState({
+      currentGroupId: groupId
+    });
   }
 
   render() {
 
     const currentGroup = this.method('group', 'current')();
+    const that = this;
 
-console.log(this.state.groupList)
+    this.state.groupList.forEach((v)=>{
+
+      var result = that.method('todo', 'getList')(v.id);
+
+      if(!result){
+        throw new Error('错误');
+        return;
+      }
+
+      v.finishSum = result.filter((value)=>value.finish).length;
+      v.unFinishSum = result.filter((value)=>!value.finish).length;
+    });
+
     return (
       <div className={`${css.wrap}`}>
         <header>
@@ -175,11 +204,25 @@ console.log(this.state.groupList)
         </header>
         <Main>
           <Todogroup groupList={ this.state.groupList }
-                     commitGroupName={ this.method('group', 'add') }/>
+                     commitGroupName={ this.method('group', 'add') }
+                     activeGroupI={ this.props.currentGroupId }
+                     groupClickEvent={ this.changeCurrentGroupId }/>
           {
             currentGroup
             &&
             (<Todolist group={ currentGroup }
+                       todoList={
+                         (()=>{
+                           var currentTodolist = that.method('todo', 'getList')(currentGroup.id);
+
+                           if(currentTodolist === false){
+                             throw new Error('获取失败');
+                             return;
+                           }
+
+                           return currentTodolist;
+                         })()
+                       }
                        commitTodoName={ this.method('todo', 'add') }
                        deleteGroup={ this.method('group', 'delete') }
                        finishTodo={ this.method('todo', 'finish') }
@@ -197,14 +240,3 @@ console.log(this.state.groupList)
 }
 
 export default App
-
-
-/*
-grouplist 需要一个 完成总数 和 选中的组id
- *    finishSum {int}
- *  activeGroupId {string}、
- *
- *  完成总数在app.js弄for 赋值上去，
- *
- *
- */

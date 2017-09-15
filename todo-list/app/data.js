@@ -50,10 +50,10 @@ const data = {
     // keys: id todoName finish createTime pid
   ],
   setGroupList(list) {
-    data.todoGroupList = list;
+    data.todoGroupList = list.slice();
   },
   setTodoList(list) {
-    data.todoList = list;
+    data.todoList = list.slice();
   },
   getGroupList() {
     return data.todoGroupList;
@@ -121,7 +121,6 @@ const methods = {
   getTodo(id) {
 
     var list = data.getTodoList();
-
     var index = filterOne(list, (v)=>{
       if(v.id === id){
         return true;
@@ -130,12 +129,23 @@ const methods = {
 
     return index;
   },
-  getTodoList() {
+  getAllTodoList() {
     return data.getTodoList();
+  },
+  getTodoList(pid) {
+
+    var list = this.getAllTodoList();
+
+    if(this.getGroup(pid) !== false){
+      var result = list.filter((v)=>v.pid === pid);
+      return result;
+    }
+
+    return false;
   },
   addTodo(todoName, pid) {
 
-    var list = data.getTodoList();
+    var list = this.getAllTodoList();
 
     list.push({
       id: UUID(),
@@ -149,7 +159,7 @@ const methods = {
   },
   removeTodo(id) {
 
-    var list = data.getTodoList();
+    var list = this.getAllTodoList();
 
     var index = filterOne(list, (v)=>{
       if(v.id === id){
@@ -160,14 +170,14 @@ const methods = {
     if(index !== false){
       list.splice(index, 1);
     }else{
-      return false
+      return false;
     }
 
     data.setTodoList(list);
   },
   finishTodo(id) {
 
-    var list = data.getTodoList();
+    var list = this.getAllTodoList();
 
     var index = filterOne(list, (v)=>{
       if(v.id === id){
@@ -178,14 +188,14 @@ const methods = {
     if(index !== false){
       list[index].state = true;
     }else{
-      return false
+      return false;
     }
 
     data.setTodoList(list);
   },
   cancelFinishTodo(id) {
 
-    var list = data.getTodoList();
+    var list = this.getAllTodoList();
 
     var index = filterOne(list, (v)=>{
       if(v.id === id){
@@ -196,7 +206,7 @@ const methods = {
     if(index !== false){
       list[index].state = false
     }else{
-      return false
+      return false;
     }
 
     data.setTodoList(list);

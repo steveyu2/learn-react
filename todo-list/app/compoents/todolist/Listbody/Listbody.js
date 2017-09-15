@@ -11,7 +11,7 @@ import css from './Listbody.css';
  *     finishTodo {function(){}} 完成事件
  *      @params
  *        id {string}
- *     unfinishTodo {function(){}} 取消完成事件
+ *     cancelFinishTodo {function(){}} 取消完成事件
  *      @params
  *        id {string}
  *     removeTodo {function(){}} 删除事件
@@ -25,7 +25,7 @@ class Listbody extends React.Component {
     super(props);
 
     this.finishTodo = this.finishTodo.bind(this);
-    this.unfinishTodo = this.unfinishTodo.bind(this);
+    this.cancelFinishTodo = this.cancelFinishTodo.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
   }
 
@@ -35,7 +35,7 @@ class Listbody extends React.Component {
   }
 
 
-  unfinishTodo(todoId) {
+  cancelFinishTodo(todoId) {
 
     this.props.unfinishTodo(todoId);
   }
@@ -57,14 +57,14 @@ class Listbody extends React.Component {
               <p className={css.listText}>
                 { todo.todoName }
               </p>
-              <small>{ todo.createTime }</small>
+              <small>{ todo.createTime.string }</small>
             </div>
             <div className={`col-md-1 ${css.btnGroup}`}>
               <div className="btn-group btn-group-xs" role="group">
                 {
                   this.props.finish === true
                     ?(<button type="" className="btn btn-success" onClick={ ()=>{ this.finishTodo(todo.id) } }><i className="glyphicon glyphicon-ok" /></button>)
-                    :(<button type="" className="btn btn-info" onClick={ ()=>{ this.unfinishTodo(todo.id) } }><i className="glyphicon glyphicon-mius" /></button>)
+                    :(<button type="" className="btn btn-info" onClick={ ()=>{ this.cancelFinishTodo(todo.id) } }><i className="glyphicon glyphicon-mius" /></button>)
                 }
                 <button type="" className="btn btn-danger"  onClick={ ()=>{ this.removeTodo(todo.id) } }><i className="glyphicon glyphicon-trash" /></button>
               </div>

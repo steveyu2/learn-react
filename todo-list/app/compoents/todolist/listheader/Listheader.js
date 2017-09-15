@@ -6,6 +6,7 @@ import React from 'react';
  *  commitTodoName {function}
  *    @params
  *      todoName {string}
+ *      groupId {string}
  *  deleteGroup {function}
  *    @params
  *      groupId {string}
@@ -33,7 +34,7 @@ class Listheader extends React.Component {
   }
 
   commitTodoName() {
-    this.props.commitTodoName(this.state.todoName);
+    this.props.commitTodoName(this.state.todoName, this.props.groupId);
   }
 
   deleteGroup() {

@@ -10,7 +10,9 @@ import css from './Grouplist.css';
  *    groupName {string}
  *    createTime {obj}
  *    finishSum {int}
+ *    unFinishSum {int}
  *  activeGroupId {string}
+ *  groupClickEvent (function)
  */
 
 class Grouplist extends React.Component {
@@ -21,18 +23,15 @@ class Grouplist extends React.Component {
     const activeId = this.props.activeGroupId;
     const groupListEls = groupList.map(group=>{
 
-      var items = group.todoList;
-      var okItemLen = items.filter(v=>v.finish).length;
-      var unokItemLen = items.length - okItemLen;
-
       return (
-          <li className={"list-group-item" + group.id === activeId?activeId}
+          <li className={ "list-group-item" + (group.id === activeId? ' active': '') }
+              onClick={ ()=>{this.props.groupClickEvent(group.id)} }
               data-toggle="tooltip"
               data-placement="top"
               title="Tooltip on left"
               key={group.id}>
-            <span className="badge">{ okItemLen }<i className="glyphicon glyphicon-remove" /></span>
-            <span className="badge">{ unokItemLen }<i className="glyphicon glyphicon-ok" /></span>
+            <span className="badge">{ group.finishSum } <i className="glyphicon glyphicon-remove" /></span>
+            <span className="badge">{ group.unFinishSum } <i className="glyphicon glyphicon-ok" /></span>
             <p className={ css.listText }>
               { group.groupName }
             </p>
