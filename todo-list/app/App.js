@@ -286,8 +286,3 @@ class App extends React.Component {
 }
 
 export default App
-
-/*
-* 当前选中组的id也存到本地去
-*
-* */
