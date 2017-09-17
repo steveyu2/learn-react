@@ -4,6 +4,7 @@ import css from './Listtitle.css';
 /**
  * @props
  *  dropDownClick {function}
+ *  resetDropDown {function} 重置按钮状态
  */
 
 class Listtitle extends React.Component {

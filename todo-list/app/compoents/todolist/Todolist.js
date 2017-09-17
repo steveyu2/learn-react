@@ -57,14 +57,14 @@ class Todolist extends React.Component {
                         commitTodoName={ this.props.commitTodoName }
                         deleteGroup={ this.props.deleteGroup }/>
             <div className={ css.listMain }>
-              <Listtitle title="完成" dropDownClick={ this.changeShowFinish } dropDown={ true }/>
+              <Listtitle title="未完成" dropDownClick={ this.changeShowFinish } dropDown={ true }/>
               <div style={{display: this.state.showFinish? 'block': 'none'}}>
                 <Listbody finish={ false }
                           todoList={ this.props.todoList }
                           finishTodo={ this.props.finishTodo }
                           removeTodo={ this.props.removeTodo }/>
               </div>
-              <Listtitle title="未完成" dropDownClick={ this.changeShowUnFinish } dropDown={ true }/>
+              <Listtitle title="完成" dropDownClick={ this.changeShowUnFinish } dropDown={ true }/>
               <div style={{display: this.state.showUnFinish? 'block': 'none'}}>
                 <Listbody finish={ true }
                           todoList={ this.props.todoList }

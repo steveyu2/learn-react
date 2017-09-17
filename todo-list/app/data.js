@@ -61,8 +61,18 @@ const data = {
     var data = localStorage.getItem(this.name);
     if(!data){
       data = JSON.stringify({
-        todoGroupList: [],
-        todoList: []
+        todoGroupList: [{
+          id: '1234',
+          groupName: '例子',
+          createTime: getDate()
+        }],
+        todoList: [{
+          id: '123123',
+          todoName: '待办事项',
+          createTime: getDate(),
+          finish: false,
+          pid: '1234'
+        }]
       });
     }
     return JSON.parse(data);
