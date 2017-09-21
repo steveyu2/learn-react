@@ -5,9 +5,15 @@
 }
 .btnGroup{
   width: 11%;
-  margin-left: 40px;
+  float: right;
+}
+.createTime{
+  font-size: 12px;
+  line-height: 22px;
+  font-style: oblique;
 }
 .listText{
+  font-size: 18px;
   margin: 0;
-  .nowrap;
+  .breakWord();
 }

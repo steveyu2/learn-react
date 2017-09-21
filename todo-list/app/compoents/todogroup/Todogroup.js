@@ -28,18 +28,19 @@ class Todogroup extends React.Component {
     this.props.commitGroupName(groupName);
   }
 
+
   render() {
 
     return (
-      <div className={css.todoGroup}>
+      <div className={ css.todoGroup }>
         <div className={`${css.header} form-group`}>
           <label htmlFor="groupName">创建待办事项组</label>
-          <Inputgroup commitGroupName={this.commitGroupName}/>
+          <Inputgroup commitGroupName={ this.commitGroupName }/>
         </div>
         <Grouplist
-          groupList={this.props.groupList}
-          activeGroupId={this.props.activeGroupId}
-          groupClickEvent={this.props.groupClickEvent}/>
+          groupList={ this.props.groupList }
+          activeGroupId={ this.props.activeGroupId }
+          groupClickEvent={ this.props.groupClickEvent }/>
       </div>
     )
   }

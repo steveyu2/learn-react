@@ -40,35 +40,91 @@ function filterOne(arr, callback) {
   return false;
 }
 
+
+
 // code
 
 const data = {
+  name: 'todoList',
+  /*
   todoGroupList: [
     // keys: id groupName createTime
   ],
   todoList: [
     // keys: id todoName finish createTime pid
   ],
+  */
+  /**
+   * 获取数据
+   */
+  getData() {
+    var data = localStorage.getItem(this.name);
+    if(!data){
+      data = JSON.stringify({
+        todoGroupList: [{
+          id: '1234',
+          groupName: '例子',
+          createTime: getDate()
+        }],
+        todoList: [{
+          id: '123123',
+          todoName: '待办事项',
+          createTime: getDate(),
+          finish: false,
+          pid: '1234'
+        }]
+      });
+    }
+    return JSON.parse(data);
+  },
+  /**
+   * 设置数据
+   * @param data {obj}
+   */
+  setData(data) {
+    localStorage.setItem(this.name, JSON.stringify(data));
+  },
+  /**
+   * 设置待办事项组数据
+   * @param list {array}
+   */
   setGroupList(list) {
-    data.todoGroupList = list.slice();
+    this.setData({
+      todoGroupList: list,
+      todoList: this.getTodoList()
+    });
   },
+  /**
+   * 设置待办事项数据
+   * @param list {array}
+   */
   setTodoList(list) {
-    data.todoList = list.slice();
+    this.setData({
+      todoGroupList: this.getGroupList(),
+      todoList: list
+    });
   },
+  /**
+   * 获取待办事项组数据
+   */
   getGroupList() {
-    return data.todoGroupList;
+    return this.getData().todoGroupList;
   },
+  /**
+   * 获取待办事项数据
+   */
   getTodoList() {
-    return data.todoList;
-  },
+    return this.getData().todoList;
+  }
 };
 
 const methods = {
-  init () {
-
-  },
   /**
    * TodoGroup
+   */
+  /**
+   * 获取单个组的在数据里的下标
+   * @param id
    */
   getGroup(id) {
 
@@ -82,9 +138,17 @@ const methods = {
 
     return index;
   },
+  /**
+   * 获取所有的待办事项组数据
+   * @returns {array}
+   */
   getGroupList() {
     return data.getGroupList();
   },
+  /**
+   * 增加一个待办事项组
+   * @returns {array}
+   */
   addTodoGroup(groupName) {
 
     var list = data.getGroupList();
@@ -97,6 +161,10 @@ const methods = {
 
     data.setGroupList(list);
   },
+  /**
+   * 删除一个待办事项组
+   * @returns {array}
+   */
   removeTodoGroup(id) {
 
     var list = data.getGroupList();
@@ -118,6 +186,11 @@ const methods = {
   /**
    * Todo
    */
+  /**
+   * 获取一个待办事项
+   * @param id {string} 事项id
+   * @returns {string} 事项下标
+   */
   getTodo(id) {
 
     var list = data.getTodoList();
@@ -129,9 +202,18 @@ const methods = {
 
     return index;
   },
+  /**
+   * 获取所有待办事项
+   * @returns {array}
+   */
   getAllTodoList() {
     return data.getTodoList();
   },
+  /**
+   * 获取一个待办事项组的待办事项
+   * @param pid {string} 组id
+   * @returns {array}
+   */
   getTodoList(pid) {
 
     var list = this.getAllTodoList();
@@ -143,6 +225,11 @@ const methods = {
 
     return false;
   },
+  /**
+   * 增加一个待办事项
+   * @param todoName 事项名称
+   * @param pid
+   */
   addTodo(todoName, pid) {
 
     var list = this.getAllTodoList();
@@ -157,6 +244,10 @@ const methods = {
 
     data.setTodoList(list);
   },
+  /**
+   * 删除一个待办事项
+   * @param id 事项id
+   */
   removeTodo(id) {
 
     var list = this.getAllTodoList();
@@ -174,7 +265,12 @@ const methods = {
     }
 
     data.setTodoList(list);
+    return true;
   },
+  /**
+   * 完成一个待办事项
+   * @param id 事项id
+   */
   finishTodo(id) {
 
     var list = this.getAllTodoList();
@@ -186,13 +282,18 @@ const methods = {
     });
 
     if(index !== false){
-      list[index].state = true;
+      list[index].finish = true;
     }else{
       return false;
     }
 
     data.setTodoList(list);
+    return true;
   },
+  /**
+   * 取消完成一个待办事项
+   * @param id 事项id
+   */
   cancelFinishTodo(id) {
 
     var list = this.getAllTodoList();
@@ -204,12 +305,13 @@ const methods = {
     });
 
     if(index !== false){
-      list[index].state = false
+      list[index].finish = false
     }else{
       return false;
     }
 
     data.setTodoList(list);
+    return true;
   }
 };
 

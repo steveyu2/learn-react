@@ -37,26 +37,27 @@ var TODOLIST = {
   },
   todo: {
     getAllList(){
-      return TodoListData.getAllTodoList();
+      return this.data.getAllTodoList();
     },
     getList(pid) {
 
-      var result = TodoListData.getTodoList(pid);
+      var result = this.data.getTodoList(pid);
 
       if(result !== false){
         return result;
       }else{
-        swal("错误", "该待办事项不存在", "dangger");
+        swal("错误", "该待办事项不存在", "error");
       }
     },
     /**
      * 增加一个待办事项
      * @param name 组名
+     * @param pid 所属组id
      */
     add(name, pid) {
 
       if (!name || name.length == 0) {
-        swal("错误", "待办事项名称不能为空", "dangger");
+        swal("错误", "待办事项名称不能为空", "error");
       } else {
 
         TodoListData.addTodo(name, pid);
@@ -68,40 +69,64 @@ var TODOLIST = {
     },
     /**
      * 删除一个待办事项
-     * @param id 组id
+     * @param id 事项id
      */
     delete(id) {
 
-      if(TodoListData.removeTodo(id)){
-        this.setState({
-          todoList: this.method('todo', 'getAllList')()
-        });
-      }else{
+      swal({
+        title: "确定删除吗?",
+        text: "删除之后不可以恢复哦！",
+        icon: "warning",
+        buttons: {
+          no: {
+            text: '取消',
+            value: false
+          },
+          yes: {
+            text: '确定',
+            value: true
+          }
+        }
+      }).then((willDelete) => {
 
-      }
+        if (willDelete) {
+
+          if(this.data.removeTodo(id)){
+            this.setState({
+              todoList: this.method('todo', 'getAllList')()
+            });
+          }else{
+            swal('错误', '删除失败', 'error');
+          }
+        }
+      });
     },
+    /**
+     * 删除一个待办事项
+     * @param id 组id
+     */
     finish(id) {
-      if(TodoListData.finishTodo(id)){
+      if(this.data.finishTodo(id)){
         this.setState({
           todoList: this.method('todo', 'getAllList')()
         });
       }else{
-        swal("错误", "完成失败", "dangger");
+        swal("错误", "完成失败", "error");
       }
     },
     cancelFinish(id) {
-      if(TodoListData.cancelFinishTodo(id)){
+      if(this.data.cancelFinishTodo(id)){
         this.setState({
           todoList: this.method('todo', 'getAllList')()
         });
       }else{
-        swal("错误", "完成失败", "dangger");
+        swal("错误", "完成失败", "error");
       }
     }
   },
   group: {
     getList() {
-      return TodoListData.getGroupList();
+      return this.data.getGroupList();
      },
      /**
      * 增加一个待办事项组
@@ -109,10 +134,10 @@ var TODOLIST = {
      */
     add(name) {
       if (!name || name.length == 0) {
-        swal("错误", "组名称不能为空", "dangger");
+        swal("错误", "组名称不能为空", "error");
       } else {
 
-        TodoListData.addTodoGroup(name);
+        this.data.addTodoGroup(name);
 
         this.setState({
           groupList: this.method('group', 'getList')()
@@ -124,11 +149,34 @@ var TODOLIST = {
      * @param id 组id
      */
     delete(id) {
-      if(TodoListData.removeTodoGroup(id)){
-        this.setState({
-          groupList: this.method('group', 'getList')()
-        });
-      }
+      swal({
+        title: "确定删除吗?",
+        text: "删除之后不可以恢复哦！",
+        icon: "warning",
+        buttons: {
+          no: {
+            text: '取消',
+            value: false
+          },
+          yes: {
+            text: '确定',
+            value: true
+          }
+        }
+      }).then((willDelete) => {
+
+        if (willDelete) {
+
+          if(this.data.removeTodoGroup(id)){
+
+            this.setState({
+              groupList: this.method('group', 'getList')()
+            });
+          }else{
+            swal('错误', '删除失败', 'error');
+          }
+        }
+      });
     },
     /**
      * 获取当前选中的组
@@ -136,7 +184,7 @@ var TODOLIST = {
      */
     current() {
       const groupId = this.state.currentGroupId;
-      const index = TodoListData.getGroup(groupId);
+      const index = this.data.getGroup(groupId);
 
       if(index !== false){
         return this.method('group', 'getList')()[index];
@@ -145,7 +193,7 @@ var TODOLIST = {
       return false;
     }
   }
-}
+};
 
 /**
  * view
@@ -157,20 +205,16 @@ class App extends React.Component {
     super(props);
 
     this.data = TodoListData;
+    TODOLIST.bind(this);
+    this.method = TODOLIST.method;
 
     this.state = {
-      groupList: [
-
-      ],
-      todoList: [
-
-      ],
+      groupList: this.method('group', 'getList')(),
+      todoList: this.method('todo', 'getAllList')(),
       currentGroupId: '' // 当前选中的组id
     };
 
-    TODOLIST.bind(this);
     this.changeCurrentGroupId = this.changeCurrentGroupId.bind(this);
-    this.method = TODOLIST.method;
   }
 
   changeCurrentGroupId(groupId) {
@@ -183,7 +227,9 @@ class App extends React.Component {
 
     const currentGroup = this.method('group', 'current')();
     const that = this;
+    var currentTodolist;
 
+    // 计算当前组的完成，未完成数量
     this.state.groupList.forEach((v)=>{
 
       var result = that.method('todo', 'getList')(v.id);
@@ -197,6 +243,17 @@ class App extends React.Component {
       v.unFinishSum = result.filter((value)=>!value.finish).length;
     });
 
+    // 获取当前组的todoList
+    if(currentGroup){
+
+      currentTodolist = that.method('todo', 'getList')(currentGroup.id);
+
+      if(currentTodolist === false){
+        throw new Error('获取失败');
+        return;
+      }
+    }
+
     return (
       <div className={`${css.wrap}`}>
         <header>
@@ -205,24 +262,13 @@ class App extends React.Component {
         <Main>
           <Todogroup groupList={ this.state.groupList }
                      commitGroupName={ this.method('group', 'add') }
-                     activeGroupI={ this.props.currentGroupId }
+                     activeGroupId={ this.state.currentGroupId }
                      groupClickEvent={ this.changeCurrentGroupId }/>
           {
             currentGroup
             &&
             (<Todolist group={ currentGroup }
-                       todoList={
-                         (()=>{
-                           var currentTodolist = that.method('todo', 'getList')(currentGroup.id);
-
-                           if(currentTodolist === false){
-                             throw new Error('获取失败');
-                             return;
-                           }
-
-                           return currentTodolist;
-                         })()
-                       }
+                       todoList={ currentTodolist }
                        commitTodoName={ this.method('todo', 'add') }
                        deleteGroup={ this.method('group', 'delete') }
                        finishTodo={ this.method('todo', 'finish') }
