@@ -1,10 +1,14 @@
+import React, { Component } from 'react';
+import {SectionList, StyleSheet, Text, View, Button } from 'react-native';
+import { TabNavigator } from "react-navigation";
+
 class MyHomeScreen extends React.Component {
   static navigationOptions = {
     tabBarLabel: 'Home',
     // Note: By default the icon is only shown on iOS. Search the showIcon option below.
     tabBarIcon: ({ tintColor }) => (
       <Image
-        source={require('./chats-icon.png')}
+        source={require('./../../images/icon/book/book.png')}
         style={[styles.icon, {tintColor: tintColor}]}
       />
     ),
@@ -25,7 +29,7 @@ class MyNotificationsScreen extends React.Component {
     tabBarLabel: 'Notifications',
     tabBarIcon: ({ tintColor }) => (
       <Image
-        source={require('./notif-icon.png')}
+        source={require('./../../images/icon/book/book.png')}
         style={[styles.icon, {tintColor: tintColor}]}
       />
     ),
@@ -62,3 +66,5 @@ const MyApp = TabNavigator({
     activeTintColor: '#e91e63',
   },
 });
+
+export default MyApp;
