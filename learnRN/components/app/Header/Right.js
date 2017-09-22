@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default class FindPage extends Component {
+export default class Right extends Component {
   render() {
     return (
       <View>
-        <Text style={styles.title}>发现内容</Text>
+        <Text style={styles.title}>Right</Text>
       </View>
     );
   }

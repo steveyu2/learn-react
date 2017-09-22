@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import HeaderLeft from './Left';
+import HeaderRight from './Right';
 
-export default class FindPage extends Component {
+class Header extends Component {
   render() {
     return (
       <View>
-        <Text style={styles.title}>发现内容</Text>
+        <Text style={styles.title}>头部</Text>
       </View>
     );
   }
@@ -16,3 +18,9 @@ const styles = StyleSheet.create({
     fontSize: 30
   }
 });
+
+export {
+  Header,
+  HeaderLeft,
+  HeaderRight,
+}
