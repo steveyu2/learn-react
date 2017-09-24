@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import {SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
 
-class Home extends Component{
+class Dynamic extends Component{
 
   render() {
-
     return (
-      <View>
-        <Text>首页</Text>
-      </View>
+      <Text>动态</Text>
     )
   }
 }
 
-export default Home
+export default Dynamic;

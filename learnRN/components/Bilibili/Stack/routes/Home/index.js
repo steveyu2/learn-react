@@ -5,6 +5,7 @@ import {
   Home,
   Bangumi,
 } from './Drawer'
+import { ICON } from './../../../../../images';
 /**
  * 给跳转stack的路由。占位置的组件
  */
@@ -37,7 +38,6 @@ const styles = StyleSheet.create({
     marginBottom: 30
   }
 });
-
 const MyApp = DrawerNavigator({
   HomeDrawer: {
     screen: Home,
@@ -45,10 +45,10 @@ const MyApp = DrawerNavigator({
       drawerLabel: '首页',
       drawerIcon: ({ tintColor }) => (
         <Image
-          source={require('./../../../../../images/icon/home/home2.png')}
+          source={ ICON.home2 }
           style={[styles.icon, {tintColor: tintColor}]}
         />
-      ),
+      )
     }
   },
   BangumiDrawer: {
@@ -57,7 +57,7 @@ const MyApp = DrawerNavigator({
       drawerLabel: '番剧',
       drawerIcon: ({ tintColor }) => (
         <Image
-          source={require('./../../../../../images/icon/tv/tv.png')}
+          source={ ICON.tv }
           style={[styles.icon, {tintColor: tintColor}]}
         />
       )
@@ -72,7 +72,7 @@ const MyApp = DrawerNavigator({
       drawerLabel: '历史记录',
       drawerIcon: ({ tintColor }) => (
         <Image
-          source={require('./../../../../../images/icon/time/time.png')}
+          source={ ICON.time }
           style={[styles.icon, {tintColor: tintColor}]}
         />
       )
@@ -84,28 +84,34 @@ const MyApp = DrawerNavigator({
       drawerLabel: '下载',
       drawerIcon: ({ tintColor }) => (
         <Image
-          source={require('./../../../../../images/icon/download/download.png')}
+          source={ ICON.download }
           style={[styles.icon, {tintColor: tintColor}]}
         />
       )
     }
   },
 },{
+  initialRouteName: 'HomeDrawer',
+  order:[
+    'BangumiDrawer',
+    'HomeDrawer',
+    'HistoryDrawer',
+    'DownloadDrawer'
+  ],
   contentComponent: props => (
     <ScrollView
       style={styles.drawer}
       >
-      <Text>sadasd</Text>
-      <Text>sadasd</Text>
-      <Text>sadasd</Text>
-      <Text>sadasd</Text>
-      <Text>sadasd</Text>
-      <Text>sadasd</Text>
-      <Text>sadasd</Text>
+      <Text>测试</Text>
+      <Text>测试</Text>
+      <Text>测试</Text>
+      <Text>测试</Text>
+      <Text>测试</Text>
+      <Text>测试</Text>
       <DrawerItems
         {...props}
         onItemPress={
-          ({route}) => isStackRoute(route,(routeName) => {
+          ({route}) => isStackRoute(route, (routeName) => {
             props.navigation.navigate('DrawerClose');
             setTimeout(() => props.navigation.navigate(routeName), 0);
           })
@@ -114,11 +120,8 @@ const MyApp = DrawerNavigator({
     </ScrollView>
 
   ),
-  contentOptions: {
-    items: [
-      'Home',
-      'Bangumi',
-    ]
+  navigationOptions: {
+    title:'asd'
   },
   drawerWidth: 300, // 侧拉的宽度
 });

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StackNavigator } from "react-navigation";
 import { StyleSheet, Text } from 'react-native';
+import CardStackStyleInterpolator from 'react-navigation/src/views/CardStackStyleInterpolator';
 import {
   Home,
   History,
