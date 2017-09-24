@@ -8,8 +8,8 @@ class RecentChatsScreen extends Component {
       <View>
         <Text>List of recent chats</Text>
         <Button
-          onPress={ () => this.props.navigation.navigate('Chat', { user: 'Lucy' }) }
-          title="Chat with Lucy"
+          onPress={ () => this.props.navigation.navigate('All', { user: 'Lucy' }) }
+          title="GO TO All"
         />
       </View>
     )
