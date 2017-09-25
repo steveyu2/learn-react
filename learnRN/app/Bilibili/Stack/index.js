@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { StackNavigator } from "react-navigation";
 import { StyleSheet, Text } from 'react-native';
@@ -15,11 +14,12 @@ const styles = StyleSheet.create({
   }
 });
 
-const App = StackNavigator({
+const Stack = StackNavigator({
   HomeStack: {
     screen: Drawer,
     navigationOptions: {
-      title: '首页'
+      title: '首页',
+      header: null
     }
   },
   HistoryStack: {
@@ -45,4 +45,4 @@ const App = StackNavigator({
   }
 });
 
-export default App;
+export default Stack;
