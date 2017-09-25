@@ -92,7 +92,7 @@ const Tab = TabNavigator({
     }
   },
 }, {
-  tabBarPosition: 'bottom',
+  tabBarPosition: 'top',
   animationEnabled: true,
   tabBarOptions: {
     pressColor: '#aaa',
