@@ -8,7 +8,7 @@ class MyHomeScreen extends React.Component {
     // Note: By default the icon is only shown on iOS. Search the showIcon option below.
     tabBarIcon: ({ tintColor }) => (
       <Image
-        source={require('./../../images/icon/book/book.png')}
+        source={require('../../images/icon/favor/favor.png')}
         style={[styles.icon, {tintColor: tintColor}]}
       />
     ),
@@ -25,15 +25,6 @@ class MyHomeScreen extends React.Component {
 }
 
 class MyNotificationsScreen extends React.Component {
-  static navigationOptions = {
-    tabBarLabel: '发现',
-    tabBarIcon: ({ tintColor }) => (
-      <Image
-        source={require('./../../images/icon/book/book.png')}
-        style={[styles.icon, {tintColor: tintColor}]}
-      />
-    ),
-  };
 
   render() {
     return (
@@ -58,6 +49,15 @@ const MyApp = TabNavigator({
   },
   Notifications: {
     screen: MyNotificationsScreen,
+    navigationOptions: {
+      tabBarLabel: '发现',
+      tabBarIcon: ({ tintColor }) => (
+        <Image
+          source={require('../../images/icon/favor/favor.png')}
+          style={[styles.icon, {tintColor: tintColor}]}
+        />
+      ),
+    }
   },
 }, {
   tabBarPosition: 'bottom',

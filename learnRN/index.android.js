@@ -8,11 +8,11 @@ import {
   AppRegistry,
   Text
 } from 'react-native';
-import MyHomeScreen from './components/MyHomeScreen'
-import DrawerNavigator from './components/DrawerNavigator'
-import MainScreenNavigator from './components/MainScreenNavigator'
-import StackNavigator from './components/StackNavigator'
-import Bilibili from './components/Bilibili'
+import MyHomeScreen from './components/MyHomeScreen';
+import DrawerNavigator from './components/DrawerNavigator';
+import MainScreenNavigator from './components/MainScreenNavigator';
+import StackNavigator from './components/StackNavigator';
+import Bilibili from './components/Bilibili';
 
 export default class App extends Component {
   render() {
