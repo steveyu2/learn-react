@@ -32,9 +32,11 @@ class TabNav extends Component{
 
   // 点击改变路由
   _onPress(route) {
-    this.setState({
-      currentRoute: route
-    });
+    if(this.state.currentRoute !== route){
+      this.setState({
+        currentRoute: route
+      });
+    }
   }
 
   render(){

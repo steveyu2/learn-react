@@ -25,12 +25,13 @@ const isStackRoute = (route, callback) => {
 
   callback(newRoute !== undefined? newRoute: route.routeName);
 };
+const ICON = {
+  width: 22,
+  height: 22,
+}
 
 const styles = StyleSheet.create({
-  icon: {
-    width: 22,
-    height: 22,
-  },
+  icon: ICON,
   drawer: {
     marginBottom: 30
   }

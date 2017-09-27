@@ -80,16 +80,9 @@ const Tab = TabNav({
     )
   },
 }, {
-  tabBarPosition: 'top',
-  animationEnabled: true,
-  tabBarOptions: {
-    pressColor: '#aaa',
-    showIcon: true,
-    labelStyle: styles.label,
-    tabStyle: {},
-    indicatorStyle: {display: 'none'},
-    style: styles.tab
-  },
+  underlayColor: '#eaeaea',
+  activeColor: 'blue',
+  unActiveColor: '#aaa',
 });
 
 export default Tab;
