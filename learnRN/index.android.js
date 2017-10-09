@@ -8,18 +8,18 @@ import {
   AppRegistry,
   Text
 } from 'react-native';
-import MyHomeScreen from './app/MyHomeScreen';
-import DrawerNavigator from './app/DrawerNavigator';
-import MainScreenNavigator from './app/MainScreenNavigator';
-import StackNavigator from './app/StackNavigator';
+//import MyHomeScreen from './app/MyHomeScreen';
+//import DrawerNavigator from './app/DrawerNavigator';
+//import MainScreenNavigator from './app/MainScreenNavigator';
+//import StackNavigator from './app/StackNavigator';
 import Bilibili from './app/Bilibili';
 
 export default class App extends Component {
   render() {
-    return (
-      <Bilibili />
-  );
-}
+      return (
+        <Bilibili />
+    );
+  }
 }
 
 AppRegistry.registerComponent('learnRN', () => App);

@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { StackNavigator } from "react-navigation";
 import { StyleSheet, Text } from 'react-native';
+import AppConfig from "../config/config.js";
 import Drawer from './../Drawer';
 import History from './History';
 import Download from './Download';
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: '#0099FF'
+    backgroundColor: AppConfig.mainColor
   },
-  headerText: {
+
+headerText: {
     fontSize: 15,
   }
 });

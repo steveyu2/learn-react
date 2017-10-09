@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import {SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
+import { config, images } from "../config";
 import { TabNavigator } from "react-navigation";
 import TabNav from '../components/TabNav';
 import Home from './Home';
@@ -9,13 +10,17 @@ import Zone from './Zone';
 
 const styles = StyleSheet.create({
   icon: {
-    marginTop: -6,
+    marginTop: 0,
     width: 24,
     height: 24,
   },
-  header: {
-    backgroundColor: '#fff',
-  }
+  label: {
+    fontSize: 10,
+    marginTop: 0,
+  },
+  tab: {
+    height: 48,
+  },
 });
 
 const Tab = TabNav({
@@ -26,8 +31,8 @@ const Tab = TabNav({
       <Image
         source={
           focused
-            ?require("../../../images/icon/favor/favor_fill.png")
-            :require("../../../images/icon/favor/favor.png")
+            ?images.home_fill
+            :images.home
         }
         style={[styles.icon, {tintColor: tintColor}]}
       />
@@ -40,8 +45,8 @@ const Tab = TabNav({
       <Image
         source={
           focused
-            ?require("../../../images/icon/favor/favor_fill.png")
-            :require("../../../images/icon/favor/favor.png")
+            ?images.classify
+            :images.classify
         }
         style={[styles.icon, {tintColor: tintColor}]}
       />
@@ -54,8 +59,8 @@ const Tab = TabNav({
       <Image
         source={
           focused
-            ?require("../../../images/icon/favor/favor_fill.png")
-            :require("../../../images/icon/favor/favor.png")
+            ?images.favor_fill
+            :images.favor
         }
         style={[styles.icon, {tintColor: tintColor}]}
       />
@@ -68,19 +73,20 @@ const Tab = TabNav({
       <Image
         source={
           focused
-            ?require("../../../images/icon/favor/favor_fill.png")
-            :require("../../../images/icon/favor/favor.png")
+            ?images.message
+            :images.message
         }
         style={[styles.icon, {tintColor: tintColor}]}
       />
     )
   },
 }, {
-  underlayColor: '#eaeaea',
-  activeColor: 'blue',
+  underlayColor: config.underlayColor,
+  activeColor: config.mainColor,
+  unActiveColor: config.unActiveColor,
+  titleStyle: styles.label,
   headerLeft: <Text>1</Text>,
   headerRight: <Text>2</Text>,
-  unActiveColor: '#aaa',
   headerStyle: styles.header
 });
 

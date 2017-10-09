@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {SectionList, StyleSheet, Text, View, Button, Image, ScrollView } from 'react-native';
 import { DrawerNavigator, DrawerItems } from "react-navigation";
+import AppConfig from "../config/config.js";
 import Tab from './../Tab';
 import Bangumi from './Bangumi';
 /**
@@ -130,6 +131,7 @@ const Drawer = DrawerNavigator({
             setTimeout(() => props.navigation.navigate(routeName), 0);
           })
         }
+        activeTintColor={AppConfig.mainColor}
       />
     </ScrollView>
 

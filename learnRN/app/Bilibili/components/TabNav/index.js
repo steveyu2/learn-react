@@ -64,6 +64,7 @@ class TabNav extends Component{
       underlayColor,
       activeColor,
       unActiveColor,
+      titleStyle,
       headerStyle
     } = this.props;
 
@@ -99,6 +100,7 @@ class TabNav extends Component{
                   underlayColor={ underlayColor }
                   key={ i }
                   title={ item.label }
+                  titleStyle={ [titleStyle,{ color: isCurrentRoute? activeColor: unActiveColor }] }
                   style={ styles.button }
                   onPress={ ()=>{this._onPress(i) } }
                     images={
