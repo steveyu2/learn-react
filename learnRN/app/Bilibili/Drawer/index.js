@@ -13,7 +13,7 @@ class UselessRoute extends Component{
   }
 }
 /**
- * 判断是否需要跳转到stack的路由
+ * 判断是否需要跳转到Stack的路由   m: 考虑到有些是要跳弹出页的路由
  * @param route 路由对象
  * @param callback(routeName) 回调
  */
@@ -26,17 +26,17 @@ const isStackRoute = (route, callback) => {
 
   callback(newRoute !== undefined? newRoute: route.routeName);
 };
-const ICON = {
-  width: 22,
-  height: 22,
-}
 
 const styles = StyleSheet.create({
-  icon: ICON,
+  icon: {
+    width: 22,
+    height: 22,
+  },
   drawer: {
     marginBottom: 30
   }
 });
+
 const Drawer = DrawerNavigator({
   HomeDrawer: {
     screen: Tab,
@@ -108,8 +108,8 @@ const Drawer = DrawerNavigator({
 },{
   initialRouteName: 'HomeDrawer',
   order:[
-    'BangumiDrawer',
     'HomeDrawer',
+    'BangumiDrawer',
     'HistoryDrawer',
     'DownloadDrawer'
   ],
@@ -131,7 +131,8 @@ const Drawer = DrawerNavigator({
             setTimeout(() => props.navigation.navigate(routeName), 0);
           })
         }
-        activeTintColor={Config.mainColor}
+        activeTintColor={ Config.mainColor }
+        activeBackgroundColor={ Config.underlayColor }
       />
     </ScrollView>
 

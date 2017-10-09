@@ -7,7 +7,6 @@ export default {
   homepage_fill: require("../../../images/icon/home/homepage_fill.png"),
   interactive: require("../../../images/icon/comment/interactive.png"),
   interactive_fill: require("../../../images/icon/comment/interactive_fill.png"),
-  manage: require("../../../images/icon/comment/manage.png"),
-  manage_fill: require("../../../images/icon/comment/manage_fill.png"),
-
+  manage: require("../../../images/icon/manage/manage.png"),
+  manage_fill: require("../../../images/icon/manage/manage_fill.png"),
 }

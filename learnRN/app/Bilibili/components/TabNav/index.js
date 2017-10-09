@@ -56,6 +56,19 @@ class TabNav extends Component{
     }
   }
 
+  // 当前标题
+  getCurrentRouteTitle(){
+    const currentRoute = this.state.currentRoute;
+    const route = this.props.navConfigs[currentRoute];
+    var title = false;
+
+    if(route.title !== null){
+      title = route.title || route.label;
+    }
+
+    return title;
+  }
+
   render(){
     const currentRoute = this.state.currentRoute;
     const  {
@@ -72,22 +85,18 @@ class TabNav extends Component{
 
     return (
       <View style={ styles.wrap }>
+        {/* 头部 */}
         <NavHeader
           style={ headerStyle }
           headerLeft={ headerLeft || null }
-          title={
-            navConfigs[currentRoute].title === null?
-              false:
-              navConfigs[currentRoute].title?
-              navConfigs[currentRoute].title:
-              navConfigs[currentRoute].label
-
-          }
+          title={ this.getCurrentRouteTitle() }
           headerRight={ headerRight || null }
         />
+        {/* 路由内容 */}
         <ScrollView style={ styles.content }>
 
         </ScrollView>
+        {/* 路由导航 */}
         <View style={ [styles.bottom, bottomNavStyle] }>
           {(()=>{
             const buttons = [];
@@ -131,7 +140,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#999',
   },
   bottom: {
-    height: 60,
+    height: 50,
     backgroundColor: '#eee',
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -172,11 +181,6 @@ TabNav.propTypes = {
 };
 
 export default (navConfigs, config)=>{
-
-  // 验证navConfig参数
-  for(let i in navConfigs){
-    (<TestConfigProps {...navConfigs[i]}/>)
-  }
 
   return class extends Component{
     render() {

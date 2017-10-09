@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
     height: 48,
   },
   header: {
-    height:40
-  }
+    height:40,
+  },
 });
 
 const Tab = TabNav({
@@ -39,7 +39,8 @@ const Tab = TabNav({
         }
         style={[styles.icon, {tintColor: tintColor}]}
       />
-    )
+    ),
+    headerLeft: 123,
   },
   ZoneTab: {
     screen: Zone,
@@ -48,8 +49,8 @@ const Tab = TabNav({
       <Image
         source={
           focused
-            ?Images.classify
-            :Images.classify
+            ?Images.manage_fill
+            :Images.manage
         }
         style={[styles.icon, {tintColor: tintColor}]}
       />
@@ -62,8 +63,8 @@ const Tab = TabNav({
       <Image
         source={
           focused
-            ?Images.favor_fill
-            :Images.favor
+            ?Images.collection_fill
+            :Images.collection
         }
         style={[styles.icon, {tintColor: tintColor}]}
       />
@@ -76,8 +77,8 @@ const Tab = TabNav({
       <Image
         source={
           focused
-            ?Images.message
-            :Images.message
+            ?Images.interactive_fill
+            :Images.interactive
         }
         style={[styles.icon, {tintColor: tintColor}]}
       />

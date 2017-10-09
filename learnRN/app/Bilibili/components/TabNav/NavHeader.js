@@ -16,7 +16,7 @@ class NavHeader extends Component{
           { !!headerLeft && headerLeft }
         </View>
         <View>
-          <Text>{ !!title && title }</Text>
+          <Text style={ styles.title }>{ !!title && title }</Text>
         </View>
         <View>
           { !!headerRight && headerRight }
@@ -29,9 +29,14 @@ class NavHeader extends Component{
 const styles = StyleSheet.create({
   header: {
     height: 60,
-    backgroundColor: '#aaa',
+    backgroundColor: '#fff',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 18,
+    color: "#000"
   },
 });
 // console.log('styles',styles ,StyleSheet)
