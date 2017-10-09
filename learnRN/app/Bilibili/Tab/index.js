@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
 import {SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
-import { config, images } from "../config";
+import { Config, Images } from "../config";
 import { TabNavigator } from "react-navigation";
 import TabNav from '../components/TabNav';
 import Home from './Home';
@@ -10,17 +10,20 @@ import Zone from './Zone';
 
 const styles = StyleSheet.create({
   icon: {
-    marginTop: 0,
+    marginTop: 5,
     width: 24,
     height: 24,
   },
   label: {
     fontSize: 10,
-    marginTop: 0,
+    marginTop: -2,
   },
   tab: {
     height: 48,
   },
+  header: {
+    height:40
+  }
 });
 
 const Tab = TabNav({
@@ -31,8 +34,8 @@ const Tab = TabNav({
       <Image
         source={
           focused
-            ?images.home_fill
-            :images.home
+            ?Images.homepage_fill
+            :Images.homepage
         }
         style={[styles.icon, {tintColor: tintColor}]}
       />
@@ -45,8 +48,8 @@ const Tab = TabNav({
       <Image
         source={
           focused
-            ?images.classify
-            :images.classify
+            ?Images.classify
+            :Images.classify
         }
         style={[styles.icon, {tintColor: tintColor}]}
       />
@@ -59,8 +62,8 @@ const Tab = TabNav({
       <Image
         source={
           focused
-            ?images.favor_fill
-            :images.favor
+            ?Images.favor_fill
+            :Images.favor
         }
         style={[styles.icon, {tintColor: tintColor}]}
       />
@@ -73,21 +76,22 @@ const Tab = TabNav({
       <Image
         source={
           focused
-            ?images.message
-            :images.message
+            ?Images.message
+            :Images.message
         }
         style={[styles.icon, {tintColor: tintColor}]}
       />
     )
   },
 }, {
-  underlayColor: config.underlayColor,
-  activeColor: config.mainColor,
-  unActiveColor: config.unActiveColor,
-  titleStyle: styles.label,
+  underlayColor: Config.underlayColor,
+  activeColor: Config.mainColor,
+  unActiveColor: Config.unActiveColor,
+  labelStyle: styles.label,
   headerLeft: <Text>1</Text>,
   headerRight: <Text>2</Text>,
-  headerStyle: styles.header
+  headerStyle: styles.header,
+  bottomNavStyle: styles.tab,
 });
 
 export default Tab;

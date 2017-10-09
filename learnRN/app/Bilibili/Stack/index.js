@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { StackNavigator } from "react-navigation";
+import { StackNavigator } from 'react-navigation';
 import { StyleSheet, Text } from 'react-native';
-import AppConfig from "../config/config.js";
-import Drawer from './../Drawer';
+import { Config } from '../config';
+import Drawer from '../Drawer';
 import History from './History';
 import Download from './Download';
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: AppConfig.mainColor
+    backgroundColor: Config.mainColor
   },
 
 headerText: {

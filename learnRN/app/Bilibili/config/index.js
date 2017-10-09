@@ -1,7 +1,7 @@
-import config from './config'
-import images from './images'
+import Config from './config';
+import Images from './images';
 
 export {
-  config,
-  images,
+  Config,
+  Images,
 }

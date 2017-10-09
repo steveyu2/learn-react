@@ -11,7 +11,7 @@ class NavHeader extends Component{
     } = this.props;
 
     return (
-      <View style={ [styles.header, style] }>
+      <View style={ [style ,styles.header] }>
         <View style={ styles.header }>
           { !!headerLeft && headerLeft }
         </View>

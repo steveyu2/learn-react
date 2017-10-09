@@ -1,8 +1,13 @@
 export default {
   favor:  require("../../../images/icon/favor/favor.png"),
   favor_fill: require("../../../images/icon/favor/favor_fill.png"),
-  home: require("../../../images/icon/home/home.png"),
-  home_fill: require("../../../images/icon/home/home_fill.png"),
-  classify: require("../../../images/icon/classify/classify.png"),
-  message: require("../../../images/icon/message/message.png"),
+  collection: require("../../../images/icon/favor/collection.png"),
+  collection_fill: require("../../../images/icon/favor/collection_fill.png"),
+  homepage: require("../../../images/icon/home/homepage.png"),
+  homepage_fill: require("../../../images/icon/home/homepage_fill.png"),
+  interactive: require("../../../images/icon/comment/interactive.png"),
+  interactive_fill: require("../../../images/icon/comment/interactive_fill.png"),
+  manage: require("../../../images/icon/comment/manage.png"),
+  manage_fill: require("../../../images/icon/comment/manage_fill.png"),
+
 }

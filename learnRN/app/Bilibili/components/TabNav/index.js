@@ -24,6 +24,7 @@ import PropTypes from 'prop-types';
  *    activeColor {string} 选中的颜色
  *    unActiveColor {string} 未选中的颜色
  *    headerStyle {obj} 头部样式
+ *    bottomNavStyle {obj} 底部样式
  */
 class TabNav extends Component{
 
@@ -64,11 +65,10 @@ class TabNav extends Component{
       underlayColor,
       activeColor,
       unActiveColor,
-      titleStyle,
-      headerStyle
+      labelStyle,
+      headerStyle,
+      bottomNavStyle
     } = this.props;
-
-    console.log(navConfigs,[currentRoute])
 
     return (
       <View style={ styles.wrap }>
@@ -88,7 +88,7 @@ class TabNav extends Component{
         <ScrollView style={ styles.content }>
 
         </ScrollView>
-        <View style={ [styles.bottom, { backgroundColor: '#ccc' }] }>
+        <View style={ [styles.bottom, bottomNavStyle] }>
           {(()=>{
             const buttons = [];
             for(let i in navConfigs) {
@@ -100,7 +100,7 @@ class TabNav extends Component{
                   underlayColor={ underlayColor }
                   key={ i }
                   title={ item.label }
-                  titleStyle={ [titleStyle,{ color: isCurrentRoute? activeColor: unActiveColor }] }
+                  titleStyle={ [labelStyle,{ color: isCurrentRoute? activeColor: unActiveColor }] }
                   style={ styles.button }
                   onPress={ ()=>{this._onPress(i) } }
                     images={
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   }
 });
 
-class TestConfigProps extends Component{}
+class TestConfigProps extends Component{render(){return <Text/>}}
 
 TestConfigProps.propsTypes = {
   screen: PropTypes.element,
