@@ -13,13 +13,9 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
-  label: {
-    fontSize: 10,
-    marginTop: -4,
-  },
-  tab: {
-    height: 48,
-  },
+  header: {
+    backgroundColor: '#fff',
+  }
 });
 
 const Tab = TabNav({
@@ -82,7 +78,10 @@ const Tab = TabNav({
 }, {
   underlayColor: '#eaeaea',
   activeColor: 'blue',
+  headerLeft: <Text>1</Text>,
+  headerRight: <Text>2</Text>,
   unActiveColor: '#aaa',
+  headerStyle: styles.header
 });
 
 export default Tab;
