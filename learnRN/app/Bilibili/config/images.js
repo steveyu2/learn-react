@@ -9,4 +9,5 @@ export default {
   interactive_fill: require("../../../images/icon/comment/interactive_fill.png"),
   manage: require("../../../images/icon/manage/manage.png"),
   manage_fill: require("../../../images/icon/manage/manage_fill.png"),
+  menu: require("../../../images/icon/menu/menu.png"),
 }

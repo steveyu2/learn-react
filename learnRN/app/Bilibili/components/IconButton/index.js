@@ -1,34 +1,40 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
+import { StyleSheet, Image, TouchableHighlight } from 'react-native';
 import PropTypes from 'prop-types';
 
 
 class TabNav extends Component{
 
   static defaultProps = {
-    noAction: 'false'
+    noAction: 'false',
+    iconStyle: {},
   };
 
   render() {
     const {
-      noAction
+      noAction,
+      icon,
+      iconStyle,
     } = this.props;
     // TouchableWithoutFeedback
 
     return (
-      <TouchableHighlight
-        style={ btnStyle }
-        underlayColor={ underlayColor }
-        onPress={ onPress }
-      >
-        <View style={ styles.wrap }>
-          { images }
-          <Text style={ titleStyle }>{ title }</Text>
-        </View>
-      </TouchableHighlight>);
+      !noAction?
+        <TouchableHighlight
+          style={ btnStyle }
+          underlayColor={ underlayColor }
+          onPress={ onPress }
+        >
+          <Image source={ icon } style={ iconStyle } />
+        </TouchableHighlight>
+        :
+        <TouchableWithoutFeedback style={ btnStyle }>
+          <Image source={ icon } style={ iconStyle } />
+        </TouchableWithoutFeedback>
+    )
   }
 }
 
 TabNav.propsTypes = {
-
+  icon: PropTypes.isRequired,
 };

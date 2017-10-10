@@ -33,18 +33,18 @@ const styles = StyleSheet.create({
 const Tab = TabNav({
   HomeTab: {
     screen: Home,
-    // label: '首页',
-    // title: null,
-    // icon: ({ focused, tintColor }) => (
-    //   <Image
-    //     source={
-    //       focused
-    //         ?Images.homepage_fill
-    //         :Images.homepage
-    //     }
-    //     style={[styles.icon, {tintColor: tintColor}]}
-    //   />
-    // ),
+    label: '首页',
+    title: null,
+    icon: ({ focused, tintColor }) => (
+      <Image
+        source={
+          focused
+            ?Images.homepage_fill
+            :Images.homepage
+        }
+        style={[styles.icon, {tintColor: tintColor}]}
+      />
+    ),
   },
   ZoneTab: {
     screen: Zone,

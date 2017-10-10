@@ -65,19 +65,22 @@ class TabNav extends Component{
       headerRight,
     } = this.props;
 
-    // 标题
+    // 标题 title为null不显示， title > label > i
     var title = null;
 
     if(route.title !== null){
       title = route.title || route.label;
+      title = title === undefined? currentRoute: title;
     }
 
-    //导航左右组件
+    // 导航左右组件
+    // navconfig 的 headerLeft 为null不显示
+    // navconfig[?].headerLeft > config.headerLeft
     if(route.headerLeft !== null){
       headerLeft = route.headerLeft || headerLeft;
     }
 
-
+    // 同上
     if(route.headerRight !== null){
       headerRight = route.headerRight || headerRight;
     }
@@ -114,12 +117,12 @@ class TabNav extends Component{
         <NavButton
           underlayColor={ underlayColor }
           key={ i }
-          title={ item.label }
+          title={ item.label || i }
           titleStyle={ [labelStyle,{ color: isCurrentRoute? activeColor: unActiveColor }] }
           btnStyle={ styles.button }
           onPress={ ()=>{this._onPress(i) } }
           images={
-            item.icon({
+            item.icon && item.icon({
               focused: isCurrentRoute,
               tintColor: isCurrentRoute? activeColor: unActiveColor
             })

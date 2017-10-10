@@ -29,7 +29,7 @@ class NavButton extends Component{
         onPress={ onPress }
       >
         <View style={ styles.wrap }>
-          { images }
+          { images && images }
           <Text style={ titleStyle }>{ title }</Text>
         </View>
       </TouchableHighlight>
