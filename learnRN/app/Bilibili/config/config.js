@@ -1,5 +1,5 @@
 export default {
-  mainColor: '#CD5C5C',//0099FF
+  mainColor: '#1E90FF',//0099FF
   underlayColor: '#e6e6e6',
   unActiveColor: '#999',
 };

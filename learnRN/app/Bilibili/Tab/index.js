@@ -21,26 +21,30 @@ const styles = StyleSheet.create({
   tab: {
     height: 48,
   },
+  title: {
+    color: '#fff',
+  },
   header: {
-    height:40,
+    height:55,
+    backgroundColor: Config.mainColor,
   },
 });
 
 const Tab = TabNav({
   HomeTab: {
     screen: Home,
-    label: '首页',
-    icon: ({ focused, tintColor }) => (
-      <Image
-        source={
-          focused
-            ?Images.homepage_fill
-            :Images.homepage
-        }
-        style={[styles.icon, {tintColor: tintColor}]}
-      />
-    ),
-    headerLeft: 123,
+    // label: '首页',
+    // title: null,
+    // icon: ({ focused, tintColor }) => (
+    //   <Image
+    //     source={
+    //       focused
+    //         ?Images.homepage_fill
+    //         :Images.homepage
+    //     }
+    //     style={[styles.icon, {tintColor: tintColor}]}
+    //   />
+    // ),
   },
   ZoneTab: {
     screen: Zone,
@@ -90,6 +94,7 @@ const Tab = TabNav({
   unActiveColor: Config.unActiveColor,
   labelStyle: styles.label,
   headerLeft: <Text>1</Text>,
+  titleStyle: styles.title,
   headerRight: <Text>2</Text>,
   headerStyle: styles.header,
   bottomNavStyle: styles.tab,

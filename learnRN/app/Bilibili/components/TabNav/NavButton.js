@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
-import {ScrollView, StyleSheet, Text, View, TouchableHighlight, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+
+/**
+ * @props
+ *  style {obj|style} 样式
+ *  underlayColor {string} 点击时按压的颜色
+ *  onPress {function} 点击事件
+ *  images {reactElement} 按钮图片
+ *  title 按钮标题
+ *  title 标题样式
+ */
 
 class NavButton extends Component{
   render() {
     const {
-      style,
+      btnStyle,
       underlayColor,
       onPress,
       images,
@@ -14,7 +24,7 @@ class NavButton extends Component{
 
     return (
       <TouchableHighlight
-        style={ style }
+        style={ btnStyle }
         underlayColor={ underlayColor }
         onPress={ onPress }
       >

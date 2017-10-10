@@ -58,6 +58,7 @@ const Drawer = DrawerNavigator({
     screen: Bangumi,
     navigationOptions: {
       drawerLabel: '番剧',
+      title: '番剧',
       drawerIcon: ({ focused, tintColor }) => (
         <Image
           source={

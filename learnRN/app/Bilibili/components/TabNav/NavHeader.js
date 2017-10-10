@@ -1,24 +1,37 @@
 import React, { Component } from 'react';
-import {ScrollView, StyleSheet, Text, View, TouchableHighlight, Image } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 class NavHeader extends Component{
   render() {
     const {
-      style,
+      headerStyle,
       headerLeft,
       title,
+      titleStyle,
       headerRight,
     } = this.props;
 
     return (
-      <View style={ [style ,styles.header] }>
-        <View style={ styles.header }>
+      <View style={[
+        styles.header,
+        headerStyle,
+      ]}>
+        <View style={[
+          styles.headerChild,
+          styles.headerLeft,
+        ]}>
           { !!headerLeft && headerLeft }
         </View>
-        <View>
-          <Text style={ styles.title }>{ !!title && title }</Text>
+        <View style={[
+          styles.headerChild,
+          styles.headerCenter,
+        ]}>
+          <Text style={ [styles.title, titleStyle] }>{ !!title && title }</Text>
         </View>
-        <View>
+        <View style={[
+          styles.headerChild,
+          styles.headerRight,
+        ]}>
           { !!headerRight && headerRight }
         </View>
       </View>
@@ -37,6 +50,19 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     color: "#000"
+  },
+  headerChild:{
+    flex:1,
+    flexDirection: 'row',
+  },
+  headerLeft: {
+    justifyContent: 'flex-start',
+  },
+  headerCenter: {
+    justifyContent: 'center',
+  },
+  headerRight: {
+    justifyContent: 'flex-end',
   },
 });
 // console.log('styles',styles ,StyleSheet)

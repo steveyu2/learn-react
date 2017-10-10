@@ -1,5 +1,5 @@
 /*
-代码逻辑
+导航逻辑
 Stack->Drawer->Tab
  */
 import React, { Component } from 'react';

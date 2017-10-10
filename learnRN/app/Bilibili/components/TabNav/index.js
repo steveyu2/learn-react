@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ScrollView, StyleSheet, Text, View, Image } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import NavButton from './NavButton';
 import NavHeader from './NavHeader';
 import PropTypes from 'prop-types';
@@ -17,8 +17,8 @@ import PropTypes from 'prop-types';
  *        focused {boolean} 是否选中
  *        tintColor {string} 选中的颜色
  *  config {obj}
- *    headerLeft {ReactElement} 导航头部左边显示的组件会被navConfigs 的 headerLeft
- *    headerRight {ReactElement} 导航头部右边显示的组件会被navConfigs 的 覆盖
+ *    headerLeft {ReactElement} 导航头部左边默认显示的组件，会被navConfigs 的 headerLeft覆盖
+ *    headerRight {ReactElement} 导航头部右边默认显示的组件，会被navConfigs 的 headerRight覆盖
  *    onPress {function(routeName)} 路由按下事件 根据return的boolean判断是否跳转路由
  *    underlayColor {string} 点击时的颜色
  *    activeColor {string} 选中的颜色
@@ -42,7 +42,7 @@ class TabNav extends Component{
     };
   }
 
-  // 点击改变路由
+  // 点击改变路由事件
   _onPress(route) {
     const onPress = this.props.onPress;
     var isJump = true;
@@ -56,20 +56,41 @@ class TabNav extends Component{
     }
   }
 
-  // 当前标题
-  getCurrentRouteTitle(){
+  // 当前路由属性
+  getCurrentRouteConfig() {
     const currentRoute = this.state.currentRoute;
     const route = this.props.navConfigs[currentRoute];
-    var title = false;
+    var {
+      headerLeft,
+      headerRight,
+    } = this.props;
+
+    // 标题
+    var title = null;
 
     if(route.title !== null){
       title = route.title || route.label;
     }
 
-    return title;
+    //导航左右组件
+    if(route.headerLeft !== null){
+      headerLeft = route.headerLeft || headerLeft;
+    }
+
+
+    if(route.headerRight !== null){
+      headerRight = route.headerRight || headerRight;
+    }
+
+    return {
+      headerLeft,
+      headerRight,
+      title
+    };
   }
 
-  render(){
+  // 获取路由导航按钮
+  getNavButtons() {
     const currentRoute = this.state.currentRoute;
     const  {
       navConfigs,
@@ -82,15 +103,52 @@ class TabNav extends Component{
       headerStyle,
       bottomNavStyle
     } = this.props;
+    const buttons = [];
+
+    for(let i in navConfigs) {
+      // 是否当前路由
+      let isCurrentRoute = currentRoute === i;
+      let item = navConfigs[i];
+
+      buttons.push(
+        <NavButton
+          underlayColor={ underlayColor }
+          key={ i }
+          title={ item.label }
+          titleStyle={ [labelStyle,{ color: isCurrentRoute? activeColor: unActiveColor }] }
+          btnStyle={ styles.button }
+          onPress={ ()=>{this._onPress(i) } }
+          images={
+            item.icon({
+              focused: isCurrentRoute,
+              tintColor: isCurrentRoute? activeColor: unActiveColor
+            })
+          }
+        />
+      )
+    }
+    return buttons
+  }
+
+  render(){
+    const currentRoute = this.state.currentRoute;
+    const  {
+      navConfigs,
+      titleStyle,
+      headerStyle,
+      bottomNavStyle
+    } = this.props;
+    const routeConfig = this.getCurrentRouteConfig();
 
     return (
       <View style={ styles.wrap }>
         {/* 头部 */}
         <NavHeader
-          style={ headerStyle }
-          headerLeft={ headerLeft || null }
-          title={ this.getCurrentRouteTitle() }
-          headerRight={ headerRight || null }
+          headerStyle={ headerStyle }
+          headerLeft={ routeConfig.headerLeft }
+          title={ routeConfig.title }
+          titleStyle={ titleStyle }
+          headerRight={ routeConfig.headerRight }
         />
         {/* 路由内容 */}
         <ScrollView style={ styles.content }>
@@ -98,31 +156,7 @@ class TabNav extends Component{
         </ScrollView>
         {/* 路由导航 */}
         <View style={ [styles.bottom, bottomNavStyle] }>
-          {(()=>{
-            const buttons = [];
-            for(let i in navConfigs) {
-              // 是否当前路由
-              let isCurrentRoute = currentRoute === i;
-              let item = navConfigs[i];
-              buttons.push(
-                <NavButton
-                  underlayColor={ underlayColor }
-                  key={ i }
-                  title={ item.label }
-                  titleStyle={ [labelStyle,{ color: isCurrentRoute? activeColor: unActiveColor }] }
-                  style={ styles.button }
-                  onPress={ ()=>{this._onPress(i) } }
-                    images={
-                      item.icon({
-                      focused: isCurrentRoute,
-                      tintColor: isCurrentRoute? activeColor: unActiveColor
-                    })
-                  }
-                />
-              )
-            }
-            return buttons
-          })()}
+          { this.getNavButtons() }
         </View>
       </View>
     )
@@ -155,16 +189,16 @@ const styles = StyleSheet.create({
   }
 });
 
-class TestConfigProps extends Component{render(){return <Text/>}}
-
-TestConfigProps.propsTypes = {
-  screen: PropTypes.element,
-  label: PropTypes.string.isRequired,
-  title: PropTypes.string,
-  icon: PropTypes.func.isRequired,
-  headerLeft: PropTypes.element,
-  headerRight: PropTypes.element,
-};
+// class TestConfigProps extends Component{render(){return <Text/>}}
+//
+// TestConfigProps.propsTypes = {
+//   screen: PropTypes.element,
+//   label: PropTypes.string.isRequired,
+//   title: PropTypes.string,
+//   icon: PropTypes.func.isRequired,
+//   headerLeft: PropTypes.element,
+//   headerRight: PropTypes.element,
+// };
 
 TabNav.propTypes = {
   navConfigs: PropTypes.object,

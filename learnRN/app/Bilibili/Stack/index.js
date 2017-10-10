@@ -21,7 +21,7 @@ const Stack = StackNavigator({
     screen: Drawer,
     navigationOptions: {
       title: '首页',
-      header: null
+      header: null,
     }
   },
   HistoryStack: {
