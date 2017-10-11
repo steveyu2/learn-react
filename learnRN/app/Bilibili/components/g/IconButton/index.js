@@ -37,5 +37,6 @@ class TabNav extends Component{
 }
 
 TabNav.propsTypes = {
+  noAction: PropTypes.string,
   icon: PropTypes.isRequired,
 };

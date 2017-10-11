@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import NavButton from './NavButton';
-import NavHeader from './NavHeader';
+import NavHeader from '../NormalHeader';
 import PropTypes from 'prop-types';
 
 /**
@@ -131,26 +131,33 @@ class TabNav extends Component{
 
   render(){
     const currentRoute = this.state.currentRoute;
-    const  {
+    const {
       navConfigs,
       titleStyle,
       headerStyle,
       bottomNavStyle,
-      navigation
     } = this.props;
+    /*
+      考虑到有一些是父级传入的props,
+      并需要传入到screen或header上的左右组件的props里，
+      这里同一写到componentProps里面，这样可以在组件里调用这些prop
+     */
+    const componentProps = {
+      navigation: this.props.navigation
+    };
     const routeConfig = this.getCurrentRouteConfig();
-debugger
 
     return (
       <View style={ styles.wrap }>
         {/* 头部 */}
         <NavHeader
           headerStyle={ headerStyle }
-          HeaderLeft={ routeConfig.HeaderLeft }
           title={ routeConfig.title }
           titleStyle={ titleStyle }
+          HeaderLeft={ routeConfig.HeaderLeft }
           HeaderRight={ routeConfig.HeaderRight }
-          navigation={ navigation } // 导航
+          //
+          componentProps={ componentProps }
         />
         {/* 路由内容 */}
         <ScrollView style={ styles.content }>

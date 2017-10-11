@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { TouchableWithoutFeedback, Image, View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import { Config, Images } from '../config';
-import TabAvatarIcon from '../components/TabAvatarIcon';
-import IconButton from '../components/IconButton';
+import { Config, Images } from '../config/index';
+import TabAvatarIcon from './g/TabAvatarIcon/index';
+import IconButton from './g/IconButton/index';
 
 export default (iconName, props)=>{
 
@@ -21,8 +21,11 @@ export default (iconName, props)=>{
             {...props}
           />);
         }
-      };
+      }
     case 'download':
+
+      return
+    case 'menu':
 
       return
     default:
@@ -39,8 +42,8 @@ const styles = StyleSheet.create({
     marginLeft: 8
   },
   avatar: {
-    height: 31,
-    width: 31,
+    height: 30,
+    width: 30,
     borderRadius: 50
   },
   button: {

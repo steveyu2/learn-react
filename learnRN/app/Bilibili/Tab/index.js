@@ -1,9 +1,9 @@
 ﻿import React, { Component } from 'react';
-import {SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
+import { SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
 import { Config, Images } from "../config";
 import { TabNavigator } from "react-navigation";
-import TabNav from '../components/TabNav';
-import HeaderIcon from './HeaderIcon';
+import TabNav from '../components/g/TabNav';
+import HeaderIcon from '../components/HeaderIcon';
 import Home from './Home';
 import Dynamic from './Dynamic';
 import Message from './Message';
