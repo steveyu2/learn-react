@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableWithoutFeedback, Image, View } from 'react-native';
+import { TouchableWithoutFeedback, Image, View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
 
@@ -18,18 +18,30 @@ class TabAvatarIcon extends Component{
       iconStyle,
       avatar,
       avatarStyle,
+      onPress,
     } = this.props;
 
     return (
-      <TouchableWithoutFeedback style={ btnStyle }>
-        <Image style={ iconStyle } source={ icon }/>
-        <Image style={ avatarStyle } source={ avatar }/>
+      <TouchableWithoutFeedback style={ [btnStyle] } onPress={ ()=>{onPress(this.props)} }>
+        <View style={ styles.wrap }>
+          <Image style={ iconStyle } source={ icon }/>
+          <Image style={ avatarStyle } source={ avatar }/>
+        </View>
       </TouchableWithoutFeedback>
     )
   }
 }
 
-TabNav.propsTypes = {
+const styles = StyleSheet.create({
+  wrap: {
+    width: 60,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  }
+});
+
+TabAvatarIcon.propsTypes = {
   icon: PropTypes.isRequired,
   avatar: PropTypes.isRequired,
 };

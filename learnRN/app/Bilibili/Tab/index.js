@@ -3,6 +3,7 @@ import {SectionList, StyleSheet, Text, View, Button, Image } from 'react-native'
 import { Config, Images } from "../config";
 import { TabNavigator } from "react-navigation";
 import TabNav from '../components/TabNav';
+import HeaderIcon from './HeaderIcon';
 import Home from './Home';
 import Dynamic from './Dynamic';
 import Message from './Message';
@@ -15,17 +16,18 @@ const styles = StyleSheet.create({
     height: 24,
   },
   label: {
-    fontSize: 10,
+    fontSize: Config.bottomNavLabelSize,
     marginTop: -2,
   },
   tab: {
-    height: 48,
+    height: Config.footerHeight,
   },
   title: {
+    fontSize: Config.headerTitleSize,
     color: '#fff',
   },
   header: {
-    height:55,
+    height: Config.headerHeight,
     backgroundColor: Config.mainColor,
   },
 });
@@ -93,9 +95,13 @@ const Tab = TabNav({
   activeColor: Config.mainColor,
   unActiveColor: Config.unActiveColor,
   labelStyle: styles.label,
-  headerLeft: <Text>1</Text>,
+  HeaderLeft: HeaderIcon('avatar',{
+    onPress: (props)=>{
+      props.navigation.navigate('DrawerOpen')
+    }
+  }),
   titleStyle: styles.title,
-  headerRight: <Text>2</Text>,
+  HeaderRight: class extends Component{render(){return <Text>2</Text>}},
   headerStyle: styles.header,
   bottomNavStyle: styles.tab,
 });

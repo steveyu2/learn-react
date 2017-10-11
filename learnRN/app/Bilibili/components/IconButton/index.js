@@ -15,6 +15,7 @@ class TabNav extends Component{
       noAction,
       icon,
       iconStyle,
+      onPress,
     } = this.props;
     // TouchableWithoutFeedback
 
@@ -23,7 +24,7 @@ class TabNav extends Component{
         <TouchableHighlight
           style={ btnStyle }
           underlayColor={ underlayColor }
-          onPress={ onPress }
+          onPress={ ()=>{onPress(this.props)} }
         >
           <Image source={ icon } style={ iconStyle } />
         </TouchableHighlight>

@@ -10,4 +10,5 @@ export default {
   manage: require("../../../images/icon/manage/manage.png"),
   manage_fill: require("../../../images/icon/manage/manage_fill.png"),
   menu: require("../../../images/icon/menu/menu.png"),
+  defaultAvatar: require("../../../images/icon/avatar/defaultAvatar.jpg")
 }

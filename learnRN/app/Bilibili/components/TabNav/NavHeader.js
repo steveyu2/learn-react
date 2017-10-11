@@ -5,34 +5,31 @@ class NavHeader extends Component{
   render() {
     const {
       headerStyle,
-      headerLeft,
+      HeaderLeft,
       title,
       titleStyle,
-      headerRight,
+      HeaderRight,
+      navigation,
     } = this.props;
 
     return (
-      <View style={[
-        styles.header,
-        headerStyle,
-      ]}>
-        <View style={[
-          styles.headerChild,
-          styles.headerLeft,
-        ]}>
-          { !!headerLeft && headerLeft }
+      <View style={[ styles.header, headerStyle ]}>
+        <View style={[ styles.headerChild, styles.headerLeft]}>
+          {!!HeaderLeft &&
+              <HeaderLeft
+                navigation={ navigation } // 导航
+              />
+          }
         </View>
-        <View style={[
-          styles.headerChild,
-          styles.headerCenter,
-        ]}>
+        <View style={[ styles.headerChild, styles.headerCenter]}>
           <Text style={ [styles.title, titleStyle] }>{ !!title && title }</Text>
         </View>
-        <View style={[
-          styles.headerChild,
-          styles.headerRight,
-        ]}>
-          { !!headerRight && headerRight }
+        <View style={[ styles.headerChild, styles.headerRight]}>
+          {!!HeaderRight &&
+            <HeaderRight
+              navigation={ navigation } // 导航
+            />
+          }
         </View>
       </View>
     )
@@ -48,7 +45,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 18,
+    fontSize: 25,
     color: "#000"
   },
   headerChild:{

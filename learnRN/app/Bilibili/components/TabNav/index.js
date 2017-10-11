@@ -11,14 +11,14 @@ import PropTypes from 'prop-types';
  *     screen {ReactElement} 路由显示组件
  *     label {string} 下面导航路由显示的名称
  *     title {string} 上面显示的标题 null不显示 默认为label
- *     headerLeft {导航头部左边显示的组件} null 为不显示
- *     headerRight {导航头部右边显示的组件} null 为不显示
+ *     HeaderLeft {ReactComponent}导航头部左边显示的组件 null 为不显示
+ *     HeaderRight {ReactComponent}导航头部右边显示的组件 null 为不显示
  *     icon {function(focused,tintColor)}  图标
  *        focused {boolean} 是否选中
  *        tintColor {string} 选中的颜色
  *  config {obj}
- *    headerLeft {ReactElement} 导航头部左边默认显示的组件，会被navConfigs 的 headerLeft覆盖
- *    headerRight {ReactElement} 导航头部右边默认显示的组件，会被navConfigs 的 headerRight覆盖
+ *    HeaderLeft {ReactComponent} 导航头部左边默认显示的组件，会被navConfigs 的 HeaderLeft覆盖
+ *    HeaderRight {ReactComponent} 导航头部右边默认显示的组件，会被navConfigs 的 HeaderRight覆盖
  *    onPress {function(routeName)} 路由按下事件 根据return的boolean判断是否跳转路由
  *    underlayColor {string} 点击时的颜色
  *    activeColor {string} 选中的颜色
@@ -61,8 +61,8 @@ class TabNav extends Component{
     const currentRoute = this.state.currentRoute;
     const route = this.props.navConfigs[currentRoute];
     var {
-      headerLeft,
-      headerRight,
+      HeaderLeft,
+      HeaderRight,
     } = this.props;
 
     // 标题 title为null不显示， title > label > i
@@ -74,20 +74,20 @@ class TabNav extends Component{
     }
 
     // 导航左右组件
-    // navconfig 的 headerLeft 为null不显示
-    // navconfig[?].headerLeft > config.headerLeft
-    if(route.headerLeft !== null){
-      headerLeft = route.headerLeft || headerLeft;
+    // navconfig 的 HeaderLeft 为null不显示
+    // navconfig[?].HeaderLeft > config.HeaderLeft
+    if(route.HeaderLeft !== null){
+      HeaderLeft = route.HeaderLeft || HeaderLeft;
     }
 
     // 同上
-    if(route.headerRight !== null){
-      headerRight = route.headerRight || headerRight;
+    if(route.HeaderRight !== null){
+      HeaderRight = route.HeaderRight || HeaderRight;
     }
 
     return {
-      headerLeft,
-      headerRight,
+      HeaderLeft,
+      HeaderRight,
       title
     };
   }
@@ -97,14 +97,10 @@ class TabNav extends Component{
     const currentRoute = this.state.currentRoute;
     const  {
       navConfigs,
-      headerLeft,
-      headerRight,
       underlayColor,
       activeColor,
       unActiveColor,
       labelStyle,
-      headerStyle,
-      bottomNavStyle
     } = this.props;
     const buttons = [];
 
@@ -139,19 +135,22 @@ class TabNav extends Component{
       navConfigs,
       titleStyle,
       headerStyle,
-      bottomNavStyle
+      bottomNavStyle,
+      navigation
     } = this.props;
     const routeConfig = this.getCurrentRouteConfig();
+debugger
 
     return (
       <View style={ styles.wrap }>
         {/* 头部 */}
         <NavHeader
           headerStyle={ headerStyle }
-          headerLeft={ routeConfig.headerLeft }
+          HeaderLeft={ routeConfig.HeaderLeft }
           title={ routeConfig.title }
           titleStyle={ titleStyle }
-          headerRight={ routeConfig.headerRight }
+          HeaderRight={ routeConfig.HeaderRight }
+          navigation={ navigation } // 导航
         />
         {/* 路由内容 */}
         <ScrollView style={ styles.content }>
@@ -199,8 +198,8 @@ const styles = StyleSheet.create({
 //   label: PropTypes.string.isRequired,
 //   title: PropTypes.string,
 //   icon: PropTypes.func.isRequired,
-//   headerLeft: PropTypes.element,
-//   headerRight: PropTypes.element,
+//   HeaderLeft: PropTypes.element,
+//   HeaderRight: PropTypes.element,
 // };
 
 TabNav.propTypes = {
@@ -208,8 +207,6 @@ TabNav.propTypes = {
   underlayColor: PropTypes.string,
   activeColor: PropTypes.string,
   unActiveColor: PropTypes.string,
-  headerLeft: PropTypes.element,
-  headerRight: PropTypes.element,
   onPress: PropTypes.func,
   headerStyle: PropTypes.oneOfType([
     PropTypes.object,
