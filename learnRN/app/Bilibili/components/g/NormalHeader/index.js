@@ -58,6 +58,7 @@ class NormalHeader extends Component{
 
 const styles = StyleSheet.create({
   header: {
+    flex: 1,
     height: 60,
     backgroundColor: '#1E90FF',
     flexDirection: 'row',
@@ -71,6 +72,7 @@ const styles = StyleSheet.create({
   headerChild:{
     flex: 1,
     flexDirection: 'row',
+    alignItems: 'center',
   },
   headerLeft: {
     justifyContent: 'flex-start',

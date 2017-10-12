@@ -1,42 +1,52 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, TouchableHighlight } from 'react-native';
+import { StyleSheet, Image, TouchableHighlight, View } from 'react-native';
 import PropTypes from 'prop-types';
 
+/**
+ * @props
+ *  noAction {boolean} 是否点击无回馈 默认false
+ *  btnStyle {obj|StyleSheet} 按钮样式
+ *  icon {image} 图片
+ *  iconStyle {obj|StyleSheet} 按钮样式
+ *  onPress {function} 按钮事件
+ */
 
-class TabNav extends Component{
+class IconButton extends Component{
 
   static defaultProps = {
-    noAction: 'false',
+    noAction: false,
+    btnStyle: {},
     iconStyle: {},
+    underlayColor: '#eee',
+    onPress: ()=>{},
   };
 
   render() {
     const {
       noAction,
+      btnStyle,
       icon,
       iconStyle,
+      underlayColor,
       onPress,
     } = this.props;
-    // TouchableWithoutFeedback
 
     return (
-      !noAction?
         <TouchableHighlight
           style={ btnStyle }
-          underlayColor={ underlayColor }
-          onPress={ ()=>{onPress(this.props)} }
+          underlayColor={ !noAction? underlayColor : null }
+          activeOpacity={ null }
+          onPress={ ()=>onPress(this.props) }
         >
           <Image source={ icon } style={ iconStyle } />
         </TouchableHighlight>
-        :
-        <TouchableWithoutFeedback style={ btnStyle }>
-          <Image source={ icon } style={ iconStyle } />
-        </TouchableWithoutFeedback>
     )
   }
 }
 
-TabNav.propsTypes = {
+IconButton.propsTypes = {
   noAction: PropTypes.string,
   icon: PropTypes.isRequired,
 };
+
+export default IconButton;

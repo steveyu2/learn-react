@@ -95,7 +95,7 @@ const Tab = TabNav({
   activeColor: Config.mainColor,
   unActiveColor: Config.unActiveColor,
   labelStyle: styles.label,
-  HeaderLeft: HeaderIcon('avatar',{
+  HeaderLeft: HeaderIcon('drawerNavAvatar',{
     onPress: (props)=>{
       props.navigation.navigate('DrawerOpen')
     }

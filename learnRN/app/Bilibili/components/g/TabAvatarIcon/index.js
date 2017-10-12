@@ -22,8 +22,11 @@ class TabAvatarIcon extends Component{
     } = this.props;
 
     return (
-      <TouchableWithoutFeedback style={ [btnStyle] } onPress={ ()=>{onPress(this.props)} }>
-        <View style={ styles.wrap }>
+      <TouchableWithoutFeedback
+        style={ btnStyle }
+        onPress={ ()=>{onPress(this.props)} }
+      >
+        <View style={ [styles.wrap] }>
           <Image style={ iconStyle } source={ icon }/>
           <Image style={ avatarStyle } source={ avatar }/>
         </View>
@@ -34,7 +37,7 @@ class TabAvatarIcon extends Component{
 
 const styles = StyleSheet.create({
   wrap: {
-    width: 60,
+    width: 55,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'

@@ -4,7 +4,7 @@ export default {
   unActiveColor: '#999',
   iconColor: '#fff',
   headerHeight: 55,
-  headerTitleSize: 18,
+  headerTitleSize: 16,
   bottomNavLabelSize: 10,
   footerHeight: 48,
 };

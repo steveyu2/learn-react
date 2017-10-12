@@ -10,16 +10,23 @@ class DrawerHeader extends Component{
 
   render() {
     const {
-      title
+      title,
+      navigation,
     } = this.props;
 
     return (
       <NormalHeader
         title={ title }
         titleStyle={ styles.title }
+        headerStyle={ styles.header }
         align="left"
-        LeftComponent={
-          HeaderIcon
+        HeaderLeft={
+          HeaderIcon('menu',{
+              onPress: (props)=>{
+                navigation.navigate('DrawerOpen')
+              }
+            }
+          )
         }
       />
     )
@@ -36,7 +43,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: Config.headerTitleSize,
-    marginLeft: 20,
+    marginLeft: 15,
   }
 });
 

@@ -6,36 +6,51 @@ import TabAvatarIcon from './g/TabAvatarIcon/index';
 import IconButton from './g/IconButton/index';
 
 export default (iconName, props)=>{
+  var CurrentComponent;
+  var globalProps = {};
 
   switch(iconName){
-    case 'avatar':
-      return class extends Component{
-        render() {
-          return (<TabAvatarIcon
-            icon={ Images.menu }
-            iconStyle={ styles.icon }
-            btnStyle={ styles.button }
-            avatar={ Images.defaultAvatar }
-            avatarStyle={ styles.avatar }
-            {...this.props}
-            {...props}
-          />);
-        }
-      }
+    case 'drawerNavAvatar':
+      CurrentComponent = TabAvatarIcon;
+      globalProps = {
+        icon: Images.menu,
+        iconStyle: styles.avatarIcon,
+        btnStyle: styles.button,
+        avatar: Images.defaultAvatar,
+        avatarStyle: styles.avatar,
+      };
+      break;
     case 'download':
 
-      return
+      break;
     case 'menu':
-
-      return
+      CurrentComponent = IconButton;
+      globalProps = {
+        noAction: true,
+        icon: Images.menu,
+        iconStyle: [styles.icon, styles.menu],
+        btnStyle: styles.menuBtn
+      };
+      break;
     default:
       throw new Error('iconName error');
+  }
+  return class extends Component{
+    render() {
+      return (
+        <CurrentComponent
+          {...this.props}
+          {...globalProps}
+          {...props}
+        />
+      );
+    }
   }
 };
 
 
 const styles = StyleSheet.create({
-  icon: {
+  avatarIcon: {
     height: 23,
     width: 9,
     tintColor: Config.iconColor,
@@ -46,6 +61,12 @@ const styles = StyleSheet.create({
     width: 30,
     borderRadius: 50
   },
-  button: {
+  icon: {
+    height: 16,
+    width: 23,
+    tintColor: Config.iconColor,
+  },
+  menuBtn: {
+    marginLeft: 22,
   }
 });
