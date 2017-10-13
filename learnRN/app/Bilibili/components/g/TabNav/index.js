@@ -88,7 +88,8 @@ class TabNav extends Component{
     return {
       HeaderLeft,
       HeaderRight,
-      title
+      title,
+      screen: route.screen
     };
   }
 
@@ -137,6 +138,7 @@ class TabNav extends Component{
       headerStyle,
       bottomNavStyle,
     } = this.props;
+
     /*
       考虑到有一些是父级传入的props,
       并需要传入到screen或header上的左右组件的props里，
@@ -146,28 +148,29 @@ class TabNav extends Component{
       navigation: this.props.navigation
     };
     const routeConfig = this.getCurrentRouteConfig();
+    const Screen = routeConfig.screen;
 
     return (
-      <View style={ styles.wrap }>
-        {/* 头部 */}
-        <NavHeader
-          headerStyle={ headerStyle }
-          title={ routeConfig.title }
-          titleStyle={ titleStyle }
-          HeaderLeft={ routeConfig.HeaderLeft }
-          HeaderRight={ routeConfig.HeaderRight }
-          //
-          componentProps={ componentProps }
-        />
-        {/* 路由内容 */}
-        <ScrollView style={ styles.content }>
-
-        </ScrollView>
-        {/* 路由导航 */}
-        <View style={ [styles.bottom, bottomNavStyle] }>
-          { this.getNavButtons() }
+        <View style={ styles.wrap }>
+          {/* 头部 */}
+          <NavHeader
+            headerStyle={ headerStyle }
+            title={ routeConfig.title }
+            titleStyle={ titleStyle }
+            HeaderLeft={ routeConfig.HeaderLeft }
+            HeaderRight={ routeConfig.HeaderRight }
+            //
+            componentProps={ componentProps }
+          />
+          {/* 路由内容 */}
+          <ScrollView style={ styles.content }>
+            <Screen/>
+          </ScrollView>
+          {/* 路由导航 */}
+          <View style={ [styles.bottom, bottomNavStyle] }>
+            { this.getNavButtons() }
+          </View>
         </View>
-      </View>
     )
   }
 }
@@ -180,7 +183,7 @@ const styles = StyleSheet.create({
   },
   content: {
     height: 100,
-    backgroundColor: '#999',
+    backgroundColor: '#eee',
   },
   bottom: {
     height: 50,

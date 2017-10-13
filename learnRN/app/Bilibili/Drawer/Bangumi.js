@@ -13,11 +13,7 @@ class Bangumi extends Component{
           title="历史"
           navigation={ this.props.navigation }
         />
-        <ScrollView >
-          <View style={ styles.content }>
-
-          </View>
-          <Text>asd</Text>
+        <ScrollView  style={ styles.content }>
         </ScrollView>
       </View>
     )
@@ -27,12 +23,10 @@ class Bangumi extends Component{
 const styles = StyleSheet.create({
   wrap: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
   },
-  content:{
-    flex: 1,
+  content: {
     backgroundColor: "#000"
   }
-})
+});
 export default Bangumi;
