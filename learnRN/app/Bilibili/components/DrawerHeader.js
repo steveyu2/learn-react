@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { Config, Images } from '../config/index';
 import NormalHeader from './g/NormalHeader/index';
 import HeaderIcon from './HeaderIcon';
-
+import from
+colors
 
 class DrawerHeader extends Component{
 

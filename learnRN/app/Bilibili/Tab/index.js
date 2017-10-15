@@ -32,11 +32,23 @@ const styles = StyleSheet.create({
   },
 });
 
+function rightIconBox(icons = []){
+  return class extends Component{
+    render(){
+      return <View style={ {flexDirection: 'row',marginRight:5} }>{ icons.map((V,i)=>{ return <V key={i} {...this.props}/> }) }</View>
+    }
+  }
+}
+
 const Tab = TabNav({
   HomeTab: {
     screen: Home,
     label: '首页',
     title: null,
+    HeaderRight: rightIconBox([
+      HeaderIcon('download'),
+      HeaderIcon('search'),
+    ]),
     icon: ({ focused, tintColor }) => (
       <Image
         source={
@@ -101,7 +113,6 @@ const Tab = TabNav({
     }
   }),
   titleStyle: styles.title,
-  HeaderRight: class extends Component{render(){return <Text>2</Text>}},
   headerStyle: styles.header,
   bottomNavStyle: styles.tab,
 });

@@ -21,7 +21,22 @@ export default (iconName, props)=>{
       };
       break;
     case 'download':
-
+      CurrentComponent = IconButton;
+      globalProps = {
+        icon: Images.download,
+        underlayColor: Config.headerIconUnderlayColor,
+        iconStyle: [styles.icon,],
+        btnStyle: styles.button
+      };
+      break
+    case 'search':
+      CurrentComponent = IconButton;
+      globalProps = {
+        icon: Images.search,
+        underlayColor: Config.headerIconUnderlayColor,
+        iconStyle: [styles.icon],
+        btnStyle: styles.button
+      };
       break;
     case 'menu':
       CurrentComponent = IconButton;
@@ -62,11 +77,21 @@ const styles = StyleSheet.create({
     borderRadius: 50
   },
   icon: {
-    height: 16,
-    width: 23,
+    height: 26,
+    width: 26,
     tintColor: Config.iconColor,
+  },
+  button: {
+    marginRight: 2,
+    height:44,
+    width: 42,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   menuBtn: {
     marginLeft: 22,
+  },
+  menu: {
+    height: 16,
   }
 });

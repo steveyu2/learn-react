@@ -21,6 +21,7 @@ class TabAvatarIcon extends Component{
       onPress,
     } = this.props;
 
+
     return (
       <TouchableWithoutFeedback
         style={ btnStyle }

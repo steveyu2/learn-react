@@ -163,9 +163,9 @@ class TabNav extends Component{
             componentProps={ componentProps }
           />
           {/* 路由内容 */}
-          <ScrollView style={ styles.content }>
+          <View style={ styles.content }>
             <Screen/>
-          </ScrollView>
+          </View>
           {/* 路由导航 */}
           <View style={ [styles.bottom, bottomNavStyle] }>
             { this.getNavButtons() }
@@ -179,11 +179,11 @@ const styles = StyleSheet.create({
   wrap: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'space-between',
   },
   content: {
-    height: 100,
-    backgroundColor: '#eee',
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#fff',
   },
   bottom: {
     height: 50,
