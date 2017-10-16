@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: Config.headerTitleSize,
-    marginLeft: 15,
+    marginLeft: 5,
   }
 });
 

@@ -42,6 +42,7 @@ export default (iconName, props)=>{
       CurrentComponent = IconButton;
       globalProps = {
         noAction: true,
+        underlayColor: Config.headerIconUnderlayColor,
         icon: Images.menu,
         iconStyle: [styles.icon, styles.menu],
         btnStyle: styles.menuBtn
@@ -77,21 +78,26 @@ const styles = StyleSheet.create({
     borderRadius: 50
   },
   icon: {
-    height: 26,
-    width: 26,
+    height: 20,
+    width: 20,
     tintColor: Config.iconColor,
   },
   button: {
     marginRight: 2,
-    height:44,
-    width: 42,
+    height:40,
+    width: 40,
     justifyContent: 'center',
     alignItems: 'center',
   },
   menuBtn: {
-    marginLeft: 22,
+    height:40,
+    width: 40,
+    marginLeft: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   menu: {
-    height: 16,
+    height: 14,
+    width: 22,
   }
 });

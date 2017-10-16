@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {SectionList, StyleSheet, Text, View, Button, Image, ScrollView } from 'react-native';
+import {SectionList, StyleSheet, Text, View, Button, Image, ScrollView, Dimensions  } from 'react-native';
 import { DrawerNavigator, DrawerItems } from "react-navigation";
 import { Config } from "../config";
 import Tab from '../Tab';
@@ -141,9 +141,8 @@ const Drawer = DrawerNavigator({
   navigationOptions: {
     title:'标题'
   },
-  drawerWidth: 300, // 侧拉的宽度
+  drawerWidth: Config.drawerWidth, // 侧拉的宽度
 });
-
 export default Drawer;
 
 

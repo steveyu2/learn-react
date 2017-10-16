@@ -5,13 +5,13 @@ import { Config } from '../config';
 import Drawer from '../Drawer';
 import History from './History';
 import Download from './Download';
+import Search from './Search';
 
 const styles = StyleSheet.create({
   header: {
     backgroundColor: Config.mainColor
   },
-
-headerText: {
+  headerText: {
     fontSize: 15,
   }
 });
@@ -34,6 +34,12 @@ const Stack = StackNavigator({
     screen: Download,
     navigationOptions: {
       title: '下载'
+    }
+  },
+  SearchStack: {
+    screen: Search,
+    navigationOptions: {
+      title: '搜索'
     }
   }
 },{
