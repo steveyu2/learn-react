@@ -5,7 +5,7 @@ export default {
   headerIconUnderlayColor: 'rgba(255, 255, 255, 0.2)',
   iconColor: '#fff',
   headerHeight: 55,
-  headerTitleSize: 16,
+  headerTitleSize: 18,
   bottomNavLabelSize: 10,
   footerHeight: 48,
 };
