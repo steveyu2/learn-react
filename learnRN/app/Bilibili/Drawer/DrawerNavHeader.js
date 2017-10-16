@@ -3,22 +3,13 @@ import {ScrollView,SectionList, StyleSheet, Text, View, Button, Image } from 're
 import DrawerHeader from '../components/DrawerHeader';
 import HeaderIcon from '../components/HeaderIcon';
 
-class Bangumi extends Component{
+class DrawerNavHeader extends Component{
 
   render() {
 
     return (
       <View style={ styles.wrap }>
-        <DrawerHeader
-          title="番剧"
-          navigation={ this.props.navigation }
-        />
-        <ScrollView >
-          <View style={ styles.content }>
 
-          </View>
-          <Text>asd</Text>
-        </ScrollView>
       </View>
     )
   }
@@ -35,4 +26,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#000"
   }
 })
-export default Bangumi;
+
+export default DrawerNavHeader;

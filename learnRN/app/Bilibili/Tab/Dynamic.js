@@ -6,7 +6,7 @@ import { Config } from "../config";
 
 //<FadeInView style={ styles.wrap }>
 
-class Dynamic extends Component{
+class Dynamic extends React.PureComponent{
 
   renderScrollComponent(props) {
     //if (this._isNestedWithSameOrientation()) {
@@ -43,7 +43,7 @@ class Dynamic extends Component{
       <FadeInView style={styles.wrap}>
         <FlatList
           renderScrollComponent={this.renderScrollComponent}
-          refreshing={ true }
+          refreshing={ false }
           onRefresh={() => {}}
           ItemSeparatorComponent={ Test }
           data={[

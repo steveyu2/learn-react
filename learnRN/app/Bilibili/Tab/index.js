@@ -35,7 +35,9 @@ const styles = StyleSheet.create({
 function rightIconBox(icons = []){
   return class extends Component{
     render(){
-      return <View style={ {flexDirection: 'row',marginRight:5} }>{ icons.map((V,i)=>{ return <V key={i} {...this.props}/> }) }</View>
+      return <View style={ {flexDirection: 'row',marginRight:5} }>
+              { icons.map((V,i)=>{ return <V key={i} {...this.props}/> }) }
+            </View>
     }
   }
 }
@@ -46,8 +48,12 @@ const Tab = TabNav({
     label: '首页',
     title: null,
     HeaderRight: rightIconBox([
-      HeaderIcon('download'),
-      HeaderIcon('search'),
+      HeaderIcon('download', {
+        onPress: (props)=>props.navigation.navigate('DownloadStack')
+      }),
+      HeaderIcon('search', {
+        onPress: (props)=>props.navigation.navigate('SearchStack')
+      }),
     ]),
     icon: ({ focused, tintColor }) => (
       <Image
@@ -63,6 +69,11 @@ const Tab = TabNav({
   ZoneTab: {
     screen: Zone,
     label: '分区',
+    HeaderRight: rightIconBox([
+      HeaderIcon('search', {
+        onPress: (props)=>props.navigation.navigate('SearchStack')
+      }),
+    ]),
     icon: ({ focused, tintColor }) => (
       <Image
         source={
