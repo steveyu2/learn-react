@@ -3,7 +3,7 @@ import {ScrollView,SectionList, StyleSheet, Text, View, Button, Image } from 're
 import DrawerHeader from '../components/DrawerHeader';
 import HeaderIcon from '../components/HeaderIcon';
 
-class Bangumi extends Component{
+class Collection extends Component{
 
   render() {
 
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
     backgroundColor: "#000"
   }
 })
-export default Bangumi;
+export default Collection;

@@ -3,7 +3,7 @@ import {SectionList, StyleSheet, Text, View, Button, Image, ScrollView, Dimensio
 import { DrawerNavigator, DrawerItems } from "react-navigation";
 import { Config } from "../config";
 import Tab from '../Tab';
-import Bangumi from './Bangumi';
+import Collection from './Collection';
 /**
  * 给跳转stack的路由。占位置的组件
  */
@@ -54,8 +54,8 @@ const Drawer = DrawerNavigator({
       )
     }
   },
-  BangumiDrawer: {
-    screen: Bangumi,
+  CollectionDrawer: {
+    screen: Collection,
     navigationOptions: {
       drawerLabel: '番剧',
       title: '番剧',

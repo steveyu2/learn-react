@@ -164,7 +164,7 @@ class TabNav extends Component{
           />
           {/* 路由内容 */}
           <View style={ styles.content }>
-            <Screen/>
+            <Screen {...componentProps}/>
           </View>
           {/* 路由导航 */}
           <View style={ [styles.bottom, bottomNavStyle] }>
