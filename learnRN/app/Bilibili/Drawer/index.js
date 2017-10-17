@@ -4,6 +4,7 @@ import { DrawerNavigator, DrawerItems } from "react-navigation";
 import { Config } from "../config";
 import Tab from '../Tab';
 import Collection from './Collection';
+import DrawerNavHeader from './DrawerNavHeader';
 /**
  * 给跳转stack的路由。占位置的组件
  */
@@ -57,8 +58,8 @@ const Drawer = DrawerNavigator({
   CollectionDrawer: {
     screen: Collection,
     navigationOptions: {
-      drawerLabel: '番剧',
-      title: '番剧',
+      drawerLabel: '收藏',
+      title: '收藏',
       drawerIcon: ({ focused, tintColor }) => (
         <Image
           source={
@@ -110,7 +111,7 @@ const Drawer = DrawerNavigator({
   initialRouteName: 'HomeDrawer',
   order:[
     'HomeDrawer',
-    'BangumiDrawer',
+    'CollectionDrawer',
     'HistoryDrawer',
     'DownloadDrawer'
   ],
@@ -118,12 +119,7 @@ const Drawer = DrawerNavigator({
     <ScrollView
       style={styles.drawer}
       >
-      <Text>测试</Text>
-      <Text>测试</Text>
-      <Text>测试</Text>
-      <Text>测试</Text>
-      <Text>测试</Text>
-      <Text>测试</Text>
+      <DrawerNavHeader />
       <DrawerItems
         {...props}
         onItemPress={

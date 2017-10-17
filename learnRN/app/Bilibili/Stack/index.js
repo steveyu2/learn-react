@@ -44,7 +44,6 @@ const Stack = StackNavigator({
   }
 },{
   initialRouteName: 'HomeStack', // 默认屏幕
-  initialRouteParams: { foo: 'bar' }, // 初始路由参数
   headerMode: 'screen',
   navigationOptions:{
     headerStyle: styles.header, // 头部样式

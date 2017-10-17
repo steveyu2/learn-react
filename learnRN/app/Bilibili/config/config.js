@@ -4,9 +4,12 @@ export default {
   unActiveColor: '#999',
   headerIconUnderlayColor: 'rgba(255, 255, 255, 0.2)',
   iconColor: '#fff',
+  fontColor: '#fff',
+  TabUnActivefontColor: 'rgba(255, 255, 255, 0.9)',
   drawerWidth: 280,
   headerHeight: 55,
   headerTitleSize: 18,
+  tabTitleSize: 14,
   bottomNavLabelSize: 10,
   footerHeight: 48,
 };

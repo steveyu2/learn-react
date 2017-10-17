@@ -5,56 +5,41 @@ import { Config } from "../../config";
 import Bangumi from "./Bangumi";
 import Recommend from "./Recommend";
 
-const MyAapp = TabNavigator({
+const styles = StyleSheet.create({
+  label: {
+    fontSize: Config.tabTitleSize
+  },
+  indicator: {
+    backgroundColor: Config.fontColor,
+  },
+  tab: {
+    backgroundColor: Config.mainColor
+  }
+});
+
+const Home = TabNavigator({
   TabHomeRecommend: {
     screen: Recommend,
-    // navigationOptions: {
-    //   tabBarLabel: '推荐'
-    // }
+     navigationOptions: {
+       tabBarLabel: '推荐',
+     }
   },
   TabHomeBangumi: {
     screen: Bangumi,
-    // navigationOptions: {
-    //   tabBarLabel: '追番'
-    // }
+     navigationOptions: {
+       tabBarLabel: '追番',
+     }
   },
 },{
   tabBarPosition: 'top',
   animationEnabled: true,
+  lazy: true,
   tabBarOptions: {
-    activeTintColor: '#DC143C',
-    inactiveTintColor: '#E9967A',
+    activeTintColor: Config.fontColor,
+    inactiveTintColor: Config.TabUnActivefontColor,
+    labelStyle: styles.label,
+    tabStyle: styles.tab,
+    indicatorStyle: styles.indicator,
   },
 });
-
-// , {
-//   tabBarPosition: 'bottom',
-//     animationEnabled: true,
-//     tabBarOptions: {
-//     activeTintColor: '#DC143C',
-//       inactiveTintColor: '#E9967A',
-//   },
-// }
-const MyApp = TabNavigator({
-  Home: {
-    screen: Recommend,
-  },
-  Notifications: {
-    screen: Bangumi,
-    navigationOptions: {
-      tabBarLabel: '发现',
-      tabBarIcon: ({ tintColor }) => (
-        <Image />
-      ),
-    }
-  },
-}, {
-  tabBarPosition: 'bottom',
-  animationEnabled: true,
-  tabBarOptions: {
-    showIcon: true,
-    activeTintColor: '#DC143C',
-    inactiveTintColor: '#E9967A',
-  },
-});
-export default MyApp;
+export default Home;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
+import { addNavigationHelpers } from "react-navigation";
 import NavButton from './NavButton';
 import NavHeader from '../NormalHeader';
 import PropTypes from 'prop-types';
@@ -145,10 +146,24 @@ class TabNav extends Component{
       这里同一写到componentProps里面，这样可以在组件里调用这些prop
      */
     const componentProps = {
-      navigation: this.props.navigation
+      NavTion: this.props.navigation,
     };
     const routeConfig = this.getCurrentRouteConfig();
     const Screen = routeConfig.screen;
+
+    //===========Navigation 设置==========
+ /*   const childNavigation = ((navigation)=>{
+      debugger
+      const { state, dispatch } = navigation;
+      const { routes, index } = state;
+
+      let childNavigation = { dispatch, state: routes[index] };
+
+      // Assuming our children want the convenience of calling .navigate() and so on,
+      // we should call addNavigationHelpers to augment our navigation prop:
+      return addNavigationHelpers(childNavigation);
+    })(this.props.navigation);*/
+    //===============================
 
     return (
         <View style={ styles.wrap }>

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
+import FadeInView from '../../components/g/FadeInView';
 
 class Recommend extends Component {
 
   render() {
     return (
-      <Text>Recommend</Text>
+      <FadeInView>
+        <Text>Recommend</Text>
+      </FadeInView>
     );
   }
 }

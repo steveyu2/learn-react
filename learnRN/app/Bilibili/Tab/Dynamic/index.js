@@ -9,10 +9,25 @@ import { Config } from "../../config";
 
 class Dynamic extends Component{
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      text: '123'
+    }
+  }
+
   render() {
 
     return (
-      <FadeInView style={styles.wrap}>
+      <FadeInView style={styles.wrap} >
+        <Button
+          onPress={()=>{
+            this.setState({
+              text: 'dddd'
+            })
+          }} title="buttn"/>
+        <Text>{ this.state.text }</Text>
       </FadeInView>
     );
   }

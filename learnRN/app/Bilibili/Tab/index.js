@@ -49,10 +49,10 @@ const Tab = TabNav({
     title: null,
     HeaderRight: rightIconBox([
       HeaderIcon('download', {
-        onPress: (props)=>props.navigation.navigate('DownloadStack')
+        onPress: (props)=>props.NavTion.navigate('DownloadStack')
       }),
       HeaderIcon('search', {
-        onPress: (props)=>props.navigation.navigate('SearchStack')
+        onPress: (props)=>props.NavTion.navigate('SearchStack')
       }),
     ]),
     icon: ({ focused, tintColor }) => (
@@ -85,7 +85,7 @@ const Tab = TabNav({
     label: '分区',
     HeaderRight: rightIconBox([
       HeaderIcon('search', {
-        onPress: (props)=>props.navigation.navigate('SearchStack')
+        onPress: (props)=>props.NavTion.navigate('SearchStack')
       }),
     ]),
     icon: ({ focused, tintColor }) => (
@@ -120,7 +120,7 @@ const Tab = TabNav({
   labelStyle: styles.label,
   HeaderLeft: HeaderIcon('drawerNavAvatar',{
     onPress: (props)=>{
-      props.navigation.navigate('DrawerOpen')
+      props.NavTion.navigate('DrawerOpen')
     }
   }),
   titleStyle: styles.title,

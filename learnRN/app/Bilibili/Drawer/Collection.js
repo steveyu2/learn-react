@@ -10,7 +10,7 @@ class Collection extends Component{
     return (
       <View style={ styles.wrap }>
         <DrawerHeader
-          title="番剧"
+          title="收藏"
           navigation={ this.props.navigation }
         />
         <ScrollView >
