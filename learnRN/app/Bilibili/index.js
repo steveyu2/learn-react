@@ -17,14 +17,14 @@ class Bilibili extends Component{
     this.setAppState = this.setAppState.bind(this);
     this.getAppState = this.getAppState.bind(this);
   }
-  setAppState(stateName, value){
+  setAppState(stateName, params){
     let state = false;
 
     switch (stateName){
       case 'setMainColor':
         state = {
           color: {
-            mainColor: value
+            mainColor: params[0]
           }
         };
         break;
@@ -48,8 +48,10 @@ class Bilibili extends Component{
   render() {
     return (
       <Stack
-        getAppState={ this.getAppState }
-        setAppState={ this.setAppState }
+        screenProps={{
+          getAppState: this.getAppState,
+          setAppState: this.setAppState,
+        }}
       />
     )
   }

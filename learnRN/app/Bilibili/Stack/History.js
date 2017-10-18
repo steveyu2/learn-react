@@ -4,8 +4,11 @@ import {SectionList, StyleSheet, Text, View, Button, Image } from 'react-native'
 class History extends Component{
 
   render() {
+    console.log(this.props)
     return (
-      <Text>历史记录</Text>
+      <Text onPress={()=>{
+        this.props.screenProps.setAppState('setMainColor', ['sad'])
+      }}>历史记录{this.props.screenProps.getAppState('mainColor')}</Text>
     )
   }
 }
