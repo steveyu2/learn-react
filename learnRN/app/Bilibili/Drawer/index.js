@@ -35,6 +35,10 @@ const styles = StyleSheet.create({
   },
   drawer: {
     marginBottom: 30
+  },
+  label: {
+    fontSize: Config.drawerFontSize,
+    marginLeft: 8,
   }
 });
 
@@ -128,11 +132,11 @@ const Drawer = DrawerNavigator({
             setTimeout(() => props.navigation.navigate(routeName), 0);
           })
         }
+        labelStyle={ styles.label }
         activeTintColor={ Config.mainColor }
-        activeBackgroundColor={ Config.underlayColor }
+        activeBackgroundColor={ Config.drawerUnderlayColor }
       />
     </ScrollView>
-
   ),
   navigationOptions: {
     title:'标题'
@@ -140,6 +144,3 @@ const Drawer = DrawerNavigator({
   drawerWidth: Config.drawerWidth, // 侧拉的宽度
 });
 export default Drawer;
-
-
-

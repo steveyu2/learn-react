@@ -55,9 +55,9 @@ export default (iconName, props)=>{
     render() {
       return (
         <CurrentComponent
-          {...this.props}
           {...globalProps}
           {...props}
+          {...this.props}
         />
       );
     }

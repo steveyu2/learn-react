@@ -17,7 +17,7 @@ class Collection extends Component{
           <View style={ styles.content }>
 
           </View>
-          <Text>asd</Text>
+          <Text>asd{this.props.getAppState('mainColor')}</Text>
         </ScrollView>
       </View>
     )

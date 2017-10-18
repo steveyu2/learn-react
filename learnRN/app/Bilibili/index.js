@@ -15,6 +15,7 @@ class Bilibili extends Component{
     };
 
     this.setAppState = this.setAppState.bind(this);
+    this.getAppState = this.getAppState.bind(this);
   }
   setAppState(stateName, value){
     let state = false;
@@ -36,7 +37,7 @@ class Bilibili extends Component{
     let result = null;
 
     switch (stateName) {
-      case 'setMainColor':
+      case 'mainColor':
         result = this.state.color.mainColor;
         break;
       default:

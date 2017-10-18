@@ -7,7 +7,7 @@ class Bangumi extends Component {
   render() {
     return (
       <FadeInView>
-        <Text>Bangumi</Text>
+        <Text>Bangumi{this.props.getAppState('mainColor')}</Text>
       </FadeInView>
     );
   }
