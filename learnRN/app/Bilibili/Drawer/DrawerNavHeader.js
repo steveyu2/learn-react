@@ -14,12 +14,14 @@ class DrawerNavHeader extends Component{
           <Image source={ Images.defaultAvatar } style={ styles.avatar }/>
         </View>
         <View style={ styles.bottom }>
-          <View style={ styles.bottomOneLine }>
+          <View style={ styles.bottomLine }>
             <Text style={ styles.userName } >未登录</Text>
             <Text style={ [styles.borderText] } >Lv {"0"}</Text>
             <Text style={ [styles.borderText, styles.huiyuan] } >非会员</Text>
           </View>
-          <Text style={ styles.downText }>积分 : {'0'}</Text>
+          <View style={ styles.bottomLine }>
+            <Text style={ styles.downText }>积分 : {'0'}</Text>
+          </View>
         </View>
       </View>
     )
@@ -34,14 +36,16 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     marginBottom: 5,
+    paddingTop: 12,
     paddingLeft: 20,
     paddingRight: 20,
+    paddingBottom: 8,
   },
   top: {
-    flex: 1.7,
+    flex: 1.6,
     flexDirection: 'row',
     //backgroundColor: '#000',
-    alignItems: 'flex-end',
+    alignItems: 'center',
   },
   bottom: {
     flex: 1,
@@ -49,12 +53,11 @@ const styles = StyleSheet.create({
     //backgroundColor: 'blue',
     justifyContent: 'space-around',
     //marginLeft: 8,
-    paddingBottom: 10,
-    paddingTop: 10,
   },
-  bottomOneLine: {
-    flex: 1.5,
+  bottomLine: {
+    flex: 1,
     flexDirection: 'row',
+    alignItems: 'center',
   },
   avatar: {
     height:60,
@@ -76,7 +79,7 @@ const styles = StyleSheet.create({
   },
   borderText: {
     marginLeft: 5,
-    marginTop: 5,
+    // marginTop: 5,
     fontSize: 9,
     height: 15,
     padding: 2,

@@ -10,12 +10,19 @@ const styles = StyleSheet.create({
     fontSize: Config.tabTitleSize
   },
   indicator: {
+    width:80,
     backgroundColor: Config.fontColor,
+    marginLeft: 55,
+  },
+  tabs: {
+    height: Config.TabNavHeight,
   },
   tab: {
-    backgroundColor: Config.mainColor
+    backgroundColor: Config.mainColor,
   }
 });
+
+
 
 const Home = TabNavigator({
   TabHomeRecommend: {
@@ -38,7 +45,8 @@ const Home = TabNavigator({
     activeTintColor: Config.fontColor,
     inactiveTintColor: Config.TabUnActivefontColor,
     labelStyle: styles.label,
-    tabStyle: styles.tab,
+    tabStyle: styles.tabs,
+    style: styles.tab,
     indicatorStyle: styles.indicator,
   },
 });

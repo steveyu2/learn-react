@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import {SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
+import FadeInView from '../components/g/FadeInView';
 
 class Zone extends Component{
 
   render() {
     return (
-      <Text>分区</Text>
+      <FadeInView>
+        <Text>分区</Text>
+      </FadeInView>
     )
   }
 }
