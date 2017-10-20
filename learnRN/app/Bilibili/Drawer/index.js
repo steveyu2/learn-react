@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {SectionList, StyleSheet, Text, View, Button, Image, ScrollView, Dimensions  } from 'react-native';
 import { DrawerNavigator, DrawerItems } from "react-navigation";
-import { Config } from "../config";
+import { Config,Images } from "../config";
 import Tab from '../Tab';
 import Collection from './Collection';
 import DrawerNavHeader from './DrawerNavHeader';
@@ -51,8 +51,8 @@ const Drawer = DrawerNavigator({
         <Image
           source={
             focused
-              ?require("../../../images/icon/favor/favor_fill.png")
-              :require("../../../images/icon/favor/favor.png")
+              ?Images.homepage_fill
+              :Images.homepage
           }
           style={[styles.icon, {tintColor: tintColor}]}
         />
@@ -68,8 +68,8 @@ const Drawer = DrawerNavigator({
         <Image
           source={
             focused
-              ?require("../../../images/icon/favor/favor_fill.png")
-              :require("../../../images/icon/favor/favor.png")
+              ?Images.collection_fill
+              :Images.collection
           }
           style={[styles.icon, {tintColor: tintColor}]}
         />
@@ -87,8 +87,8 @@ const Drawer = DrawerNavigator({
         <Image
           source={
             focused
-              ?require("../../../images/icon/favor/favor_fill.png")
-              :require("../../../images/icon/favor/favor.png")
+              ?Images.manage_fill
+              :Images.manage
           }
           style={[styles.icon, {tintColor: tintColor}]}
         />
@@ -103,8 +103,8 @@ const Drawer = DrawerNavigator({
         <Image
           source={
             focused
-              ?require("../../../images/icon/favor/favor_fill.png")
-              :require("../../../images/icon/favor/favor.png")
+              ?Images.download
+              :Images.download
           }
           style={[styles.icon, {tintColor: tintColor}]}
         />

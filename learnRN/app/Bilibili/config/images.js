@@ -13,4 +13,6 @@ export default {
   defaultAvatar: require("../../../images/icon/avatar/defaultAvatar.jpg"),
   download: require("../../../images/icon/download/download2.png"),
   search: require("../../../images/icon/search/search2.png"),
+  layers: require("../../../images/icon/layers/layers.png"),
+  find: require("../../../images/icon/find/find.png"),
 }

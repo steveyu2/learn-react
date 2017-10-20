@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
+import { SectionList, StyleSheet, Text, View, Button, Image, Dimensions } from 'react-native';
 import { TabNavigator } from "react-navigation";
 import { Config } from "../../config";
 import Bangumi from "./Bangumi";
@@ -10,9 +10,10 @@ const styles = StyleSheet.create({
     fontSize: Config.tabTitleSize
   },
   indicator: {
-    width:80,
+    //width: Dimensions.get('window').width/2 - 20,
+    //marginLeft: 20,
+    //marginRight: 20,
     backgroundColor: Config.fontColor,
-    marginLeft: 55,
   },
   tabs: {
     height: Config.TabNavHeight,
@@ -21,8 +22,6 @@ const styles = StyleSheet.create({
     backgroundColor: Config.mainColor,
   }
 });
-
-
 
 const Home = TabNavigator({
   TabHomeRecommend: {
