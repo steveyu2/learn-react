@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
+import { SectionList, StyleSheet, Text, View, Button, Image, ToastAndroid } from 'react-native';
 import FadeInView from '../../../components/g/FadeInView';
 import SubTitle from './SubTitle';
 import RecommendList from './RecommendList';
@@ -10,12 +10,14 @@ class Recommend extends Component {
     super(props);
     this.state = {
       data: [],
-      refreshing: false
+      refreshing: false, // 刷新按钮状态 是否保持刷新
     }
     this.onRefresh = this.onRefresh.bind(this);
   }
 
+  // 组件加载完毕
   componentDidMount() {
+    // 获取数据
     this.onRefresh();
   }
 
@@ -39,6 +41,7 @@ class Recommend extends Component {
           {id: guid(), title: "asdasd"},
         ];
       this.setState((prevState, props) => {
+        ToastAndroid.show('数据加载成功', ToastAndroid.SHORT);
         return ({
           data: data.concat(prevState.data).map(v=>v),
           refreshing: false
