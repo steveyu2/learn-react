@@ -1,7 +1,8 @@
 import React, { Component,PureComponent  } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
-import FlatList from '../../../components/g/FlatList';
-import { Config,Images } from "../../../config";
+import FlatList from '../../../../components/g/FlatList/index';
+import { Config,Images } from "../../../../config/index";
+import ListItem from './ListLine';
 
 class RecommendList extends PureComponent {
 
@@ -10,16 +11,15 @@ class RecommendList extends PureComponent {
   };
 
   _onPressItem = (id) => {
-    alert(id)
+
   };
 
-  _keyExtractor = (item, index) => item.id;
+  _keyExtractor = (item, index) => item[0].id+item[1].id;
 
   _renderItem = ({item}) => (
     <ListItem
-      id={item.id}
+      data={item}
       onPressItem={this._onPressItem}
-      title={item.title}
     />
   );
 
@@ -29,10 +29,12 @@ class RecommendList extends PureComponent {
       data,
       onRefresh,
       refreshing,
-      } = this.props;
+      style
+    } = this.props;
 
     return (
       <FlatList
+        style={style}
         refreshComponentColor={ Config.mainColor }
         data={data}
         refreshing={refreshing}
@@ -42,21 +44,6 @@ class RecommendList extends PureComponent {
         renderItem={this._renderItem}
       />
     );
-  }
-}
-class ListItem extends React.PureComponent {
-  _onPress = () => {
-    this.props.onPressItem(this.props.id);
-  };
-
-  render() {
-    return (
-      <Text
-        onPress={this._onPress}
-      >
-        {this.props.title}
-      </Text>
-    )
   }
 }
 

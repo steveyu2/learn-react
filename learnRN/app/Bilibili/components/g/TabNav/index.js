@@ -147,6 +147,7 @@ class TabNav extends Component{
      */
     const componentProps = {
       NavTion: this.props.navigation,
+      screenProps: this.props.screenProps,
     };
     const routeConfig = this.getCurrentRouteConfig();
     const Screen = routeConfig.screen;

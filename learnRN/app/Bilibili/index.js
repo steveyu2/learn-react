@@ -4,7 +4,7 @@ Stack->Drawer->Tab
  */
 import React, { Component } from 'react';
 import Stack from './Stack';
-import  from './data';
+import  DATA from './data';
 
 class Bilibili extends Component{
   constructor(props) {
@@ -37,7 +37,7 @@ class Bilibili extends Component{
         let Recommend = this.state.data.Recommend;
         state = {
           data: {
-            ...this.state,
+            ...this.state.data,
             Recommend: params[1] == 'before'? params[0].concat(Recommend): Recommend.concat(params[0])
           }
         };
@@ -54,11 +54,14 @@ class Bilibili extends Component{
       case 'mainColor':
         result = this.state.color.mainColor;
         break;
-      case 'Recommend':
+      case 'newRecommend':
         // count before|after,  function
         DATA.getRecommend(params[0],(data)=>{
-          this.setAppState('setRecommend', data, params[1])
-        }));
+          this.setAppState('setRecommend',[data, params[1]])
+          params[2]&&params[2]();
+        });
+      case 'recommend':
+        result = this.state.data.Recommend;
         break;
       default:
     }

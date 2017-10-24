@@ -7,8 +7,7 @@ class History extends Component{
     console.log(this.props)
     return (
       <Text onPress={()=>{
-        this.props.screenProps.setAppState('setMainColor', ['sad'])
-      }}>历史记录{this.props.screenProps.getAppState('mainColor')}</Text>
+      }}>历史记录</Text>
     )
   }
 }
