@@ -68,9 +68,10 @@ const styles = StyleSheet.create({
     height: 33,
   },
   content: {
-    padding: 12,
+    //padding: 12,
     flex: 1,
     flexDirection: 'column',
+    alignItems: 'center',
   }
 });
 

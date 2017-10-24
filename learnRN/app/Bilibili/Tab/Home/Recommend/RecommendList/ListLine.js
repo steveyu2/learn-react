@@ -55,10 +55,10 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     // alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
   },
   item: {
-    flex: 0.48,
+    flex: 0.4,
     height: 100,
     backgroundColor: 'yellow'
   }
