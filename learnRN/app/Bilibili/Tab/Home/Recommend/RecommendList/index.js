@@ -2,7 +2,7 @@ import React, { Component,PureComponent  } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
 import FlatList from '../../../../components/g/FlatList/index';
 import { Config,Images } from "../../../../config/index";
-import ListItem from './ListLine';
+import ListLine from './ListLine';
 
 class RecommendList extends PureComponent {
 
@@ -17,7 +17,7 @@ class RecommendList extends PureComponent {
   _keyExtractor = (item, index) => item[0].id+item[1].id;
 
   _renderItem = ({item}) => (
-    <ListItem
+    <ListLine
       data={item}
       onPressItem={this._onPressItem}
     />

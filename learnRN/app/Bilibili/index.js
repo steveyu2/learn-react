@@ -35,6 +35,7 @@ class Bilibili extends Component{
       case 'setRecommend':
         params[0] = params[0] instanceof Array? params[0]: []
         let Recommend = this.state.data.Recommend;
+        // debugger
         state = {
           data: {
             ...this.state.data,

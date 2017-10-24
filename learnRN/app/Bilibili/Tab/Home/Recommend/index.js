@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image, ToastAndroid } from 'react-native';
 import FadeInView from '../../../components/g/FadeInView';
 import SubTitle from './SubTitle';
-import RecommendList from './RecommendList/ListLine';
+import RecommendList from './RecommendList';
 
 class Recommend extends PureComponent {
 
@@ -17,6 +17,7 @@ class Recommend extends PureComponent {
   // 组件加载完毕
   componentDidMount() {
     // 获取数据
+    // debugger
     if(this.props.screenProps.getAppState('recommend').length === 0){
       this.onRefresh();
     }
@@ -37,7 +38,6 @@ class Recommend extends PureComponent {
   render() {
 
     const {
-      data,
       refreshing,
       } = this.state;
     const {

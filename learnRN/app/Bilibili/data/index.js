@@ -28,13 +28,14 @@ export default {
       v=Object.assign({},v)
       v.id=uuid()
       // 合并成 [array(2),array[2]]的形式
-      if(result[resultCount] && arr[resultCount].length===1){
-        arr[resultCount].push(v)
+      if(result[resultCount] && result[resultCount].length===1){
+        result[resultCount].push(v)
         resultCount++
       }else{
-        arr[resultCount]=[v]
+        result[resultCount]=[v]
       }
     })
+    result = result.slice(0, count)
       // .slice(0,count)
     setTimeout(()=>{callback(result)},2000)
   }
