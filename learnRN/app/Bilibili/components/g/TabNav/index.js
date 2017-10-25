@@ -9,25 +9,30 @@ import PropTypes from 'prop-types';
  *  navConfigs {obj}
  *   @key {string} 路由名称
  *   @value {obj} 配置信息
- *     screen {ReactElement} 路由显示组件
+ *     screen {ReactClass} 路由显示组件
  *     label {string} 下面导航路由显示的名称
  *     title {string} 上面显示的标题 null不显示 默认为label
- *     HeaderLeft {ReactComponent}导航头部左边显示的组件 null 为不显示
- *     HeaderRight {ReactComponent}导航头部右边显示的组件 null 为不显示
+ *     HeaderLeft {ReactClass}导航头部左边显示的组件 null 为不显示
+ *     HeaderRight {ReactClass}导航头部右边显示的组件 null 为不显示
  *     icon {function(focused,tintColor)}  图标
  *        focused {boolean} 是否选中
  *        tintColor {string} 选中的颜色
  *  config {obj}
- *    HeaderLeft {ReactComponent} 导航头部左边默认显示的组件，会被navConfigs 的 HeaderLeft覆盖
- *    HeaderRight {ReactComponent} 导航头部右边默认显示的组件，会被navConfigs 的 HeaderRight覆盖
+ *    HeaderLeft {ReactClass} 导航头部左边默认显示的组件，会被navConfigs 的 HeaderLeft覆盖
+ *    HeaderRight {ReactClass} 导航头部右边默认显示的组件，会被navConfigs 的 HeaderRight覆盖
  *    onPress {function(routeName)} 路由按下事件 根据return的boolean判断是否跳转路由
  *    underlayColor {string} 点击时的颜色
  *    activeColor {string} 选中的颜色
  *    unActiveColor {string} 未选中的颜色
  *    headerStyle {obj} 头部样式
  *    bottomNavStyle {obj} 底部样式
+ *    componentProps {function} 返回的对象用作屏幕和组件的props
  */
 class TabNav extends Component{
+
+  static defaultProps = {
+    componentProps: ()=>({}),
+  };
 
   constructor(props) {
     super(props);
@@ -145,10 +150,7 @@ class TabNav extends Component{
       并需要传入到screen或header上的左右组件的props里，
       这里同一写到componentProps里面，这样可以在组件里调用这些prop
      */
-    const componentProps = {
-      NavTion: this.props.navigation,
-      screenProps: this.props.screenProps,
-    };
+    const componentProps = this.props.componentProps(this.props);
     const routeConfig = this.getCurrentRouteConfig();
     const Screen = routeConfig.screen;
 

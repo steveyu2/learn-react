@@ -118,14 +118,18 @@ const Tab = TabNav({
   activeColor: Config.mainColor,
   unActiveColor: Config.unActiveColor,
   labelStyle: styles.label,
-  HeaderLeft: HeaderIcon('drawerNavAvatar',{
-    onPress: (props)=>{
+  HeaderLeft: HeaderIcon('drawerNavAvatar', {
+    onPress: (props) => {
       props.NavTion.navigate('DrawerOpen')
     }
   }),
   titleStyle: styles.title,
   headerStyle: styles.header,
   bottomNavStyle: styles.tab,
+  componentProps: (props) => ({
+    NavTion: props.navigation,
+    screenProps: props.screenProps,
+  })
 });
 
 export default Tab;

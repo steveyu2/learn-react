@@ -19,6 +19,7 @@ class NormalHeader extends Component{
     headerStyle: {},
     titleStyle: {},
     align: 'center',
+    componentProps: {},
   };
 
   render() {

@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     //padding: 12,
     flex: 1,
     flexDirection: 'column',
-    alignItems: 'center',
+    // alignItems: 'center',
   }
 });
 
