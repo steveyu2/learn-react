@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, TouchableNativeFeedback, Platform } from 'react-native';
 
 /**
  * @props
@@ -10,7 +10,7 @@ import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
  *  title 按钮标题
  *  title 标题样式
  */
-
+//TouchableNativeFeedback
 class NavButton extends Component{
   render() {
     const {
@@ -22,18 +22,37 @@ class NavButton extends Component{
       titleStyle,
     } = this.props;
 
-    return (
-      <TouchableHighlight
-        style={ btnStyle }
-        underlayColor={ underlayColor }
-        onPress={ onPress }
-      >
-        <View style={ styles.wrap }>
-          { images && images }
-          <Text style={ titleStyle }>{ title }</Text>
-        </View>
-      </TouchableHighlight>
-    )
+    var component;
+
+    if(Platform.OS === 'android' && Platform.Version > 21){
+      component = (
+        <TouchableNativeFeedback
+          style={ btnStyle }
+          onPress={ onPress }
+          background={ TouchableNativeFeedback.Ripple(underlayColor, false) }
+        >
+          <View style={ styles.wrap }>
+            { images && images }
+            <Text style={ titleStyle }>{ title }</Text>
+          </View>
+        </TouchableNativeFeedback>
+      )
+    }else{
+      component = (
+        <TouchableHighlight
+          style={ btnStyle }
+          underlayColor={ underlayColor }
+          onPress={ onPress }
+        >
+          <View style={ styles.wrap }>
+            { images && images }
+            <Text style={ titleStyle }>{ title }</Text>
+          </View>
+        </TouchableHighlight>
+      )
+    }
+
+    return component
   }
 }
 

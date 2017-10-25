@@ -1,5 +1,5 @@
 import React, { PureComponent  } from 'react';
-import { SectionList, StyleSheet, Text, View, Button, Image, TouchableHighlight,Dimensions } from 'react-native';
+import { SectionList, StyleSheet, Text, View, Button, Image, TouchableHighlight, Dimensions, ImageBackground } from 'react-native';
 import { Config,Images } from "../../../../config/index";
 
 
@@ -14,6 +14,11 @@ class ListItem extends PureComponent {
   }
 
   render() {
+
+    const {
+      data,
+      } = this.props;
+
     return (
       <TouchableHighlight
         style={ styles.item }
@@ -22,6 +27,18 @@ class ListItem extends PureComponent {
         onPress={ this._onPress }
       >
         <View>
+          <ImageBackground
+            source={{uri: data.imageUrl}}
+            style={ styles.item_image }
+            resizeMode='cover'
+            resizeMethod='scale'  >
+            <View>
+              <Text>123</Text>
+            </View>
+          </ImageBackground>
+          <View style={ styles.item_bottom }>
+            <Text>123</Text>
+          </View>
         </View>
       </TouchableHighlight>
     )
@@ -62,7 +79,7 @@ const styles = (()=>{
   return StyleSheet.create({
     wrap: {
       flex: 1,
-      paddingTop: mediaWidth * distanceSize(itemFlex) * 3.68,
+      paddingTop: mediaWidth * distanceSize(itemFlex) * 3.4,// 3.68
       paddingLeft: mediaWidth * distanceSize(itemFlex) * 2,
       paddingRight: mediaWidth * distanceSize(itemFlex) * 2,
       flexDirection: 'row',
@@ -70,10 +87,22 @@ const styles = (()=>{
       justifyContent: 'space-around',
     },
     item: {
+      overflow: 'hidden',
       flex: itemFlex,
+      flexDirection: 'column',
       height: itemHeight,
-      borderRadius: 5,
-      backgroundColor: 'gray'
+      borderRadius: 10,
+      backgroundColor: '#f6f6f6'
+    },
+    item_image: {
+      //flex: 1,
+      //overlayColor: '#000',
+      height:90*2,
+      width:160*2,
+    },
+    item_bottom: {
+      flex: 0.5,
+      backgroundColor: 'yellow'
     }
   });
 })()
