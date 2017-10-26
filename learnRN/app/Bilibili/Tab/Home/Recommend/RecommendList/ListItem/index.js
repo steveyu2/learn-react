@@ -6,13 +6,6 @@ import ListItemBottom from "./ListItemBottom";
 
 class ListItem extends PureComponent {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      imageHeight: 0
-    };
-  }
-
   _onPress = () => {
     const {
       onPress,
@@ -21,37 +14,36 @@ class ListItem extends PureComponent {
     onPress(id);
   }
 
-  // 获取外部item的width 设置图片height
-  _onLayout (e){
-    this.setState({
-      imageHeight: 90 * (e.layout.width/160)
-    })
-  }
-
   render() {
 
     const {
       data,
-      itemStyle
+      itemStyle,
+      itemWidth
     } = this.props;
+    const itemHeight = 90 * (itemWidth/160)
 
     return (
       <TouchableHighlight
         style={ [styles.item, itemStyle] }
-        underlayColor={ "#ddd" }
+        underlayColor={ "#eee" }
         activeOpacity={ 0.8 }
         onPress={ this._onPress }
 
       >
         <View
           style={ styles.itemWrap }
-          onLayout={({nativeEvent:e})=>this._onLayout(e)}
         >
           <ListItemTop
-            imageStyle={[styles.item_image, {height: this.state.imageHeight}]}
+            imageStyle={ styles.item_image }
+            imageHeight={ itemHeight }
+            play={data.play}
+            danmu={data.danmu}
             source={{uri: data.imageUrl}}
           />
-          <ListItemBottom />
+          <ListItemBottom
+
+          />
         </View>
       </TouchableHighlight>
     )
@@ -71,7 +63,10 @@ const styles = StyleSheet.create({
     // backgroundColor: '#f6f6f6',
   },
   item_image: {
-    borderRadius: 10,
+    //borderRadius: 10,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    //width: '100%',
   },
 });
 

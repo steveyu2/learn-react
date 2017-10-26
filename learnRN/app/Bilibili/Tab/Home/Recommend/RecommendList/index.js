@@ -1,14 +1,14 @@
-import React, { Component,PureComponent  } from 'react';
-import { SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
+import React, { Component,PureComponent } from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import FlatList from '../../../../components/g/FlatList/index';
 import { Config,Images } from "../../../../config/index";
 import ListLine from './ListLine';
 
 class RecommendList extends PureComponent {
 
-  _onPress = () => {
-    this.props.onPressItem(this.props.id);
-  };
+  //_onPress = () => {
+  //  this.props.onPressItem(this.props.id);
+  //};
 
   _onPressItem = (id) => {
 
