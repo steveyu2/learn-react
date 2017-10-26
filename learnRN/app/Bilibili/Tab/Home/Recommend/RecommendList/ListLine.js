@@ -1,49 +1,7 @@
 import React, { PureComponent  } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image, TouchableHighlight, Dimensions, ImageBackground } from 'react-native';
 import { Config,Images } from "../../../../config/index";
-
-
-class ListItem extends PureComponent {
-
-  _onPress = () => {
-    const {
-      onPress,
-      id
-    } = this.props;
-    onPress(id);
-  }
-
-  render() {
-
-    const {
-      data,
-      } = this.props;
-
-    return (
-      <TouchableHighlight
-        style={ styles.item }
-        underlayColor={ "#ddd" }
-        activeOpacity={ null }
-        onPress={ this._onPress }
-      >
-        <View>
-          <ImageBackground
-            source={{uri: data.imageUrl}}
-            style={ styles.item_image }
-            resizeMode='cover'
-            resizeMethod='scale'  >
-            <View>
-              <Text>123</Text>
-            </View>
-          </ImageBackground>
-          <View style={ styles.item_bottom }>
-            <Text>123</Text>
-          </View>
-        </View>
-      </TouchableHighlight>
-    )
-  }
-}
+import ListItem from "./ListItem";
 
 class ListLine extends PureComponent {
   static defaultProps = {
@@ -54,13 +12,11 @@ class ListLine extends PureComponent {
 
     var leftData = this.props.data[0];
     var rightData = this.props.data[1];
-debugger
+// debugger
     return (
       <View style={ styles.wrap }>
-        <ListItem onPress={this.props.onPressItem} id={ leftData.id } data={leftData}/>
-        <ListItem onPress={this.props.onPressItem} id={ rightData.id } data={rightData}/>
-        {/*<ListItem onPress={this.props.onPressItem} data={leftData}/>*/}
-        {/*<ListItem onPress={this.props.onPressItem}  data={rightData}/>*/}
+        <ListItem onPress={this.props.onPressItem} id={ leftData.id } data={leftData} itemStyle={styles.item}/>
+        <ListItem onPress={this.props.onPressItem} id={ rightData.id } data={rightData} itemStyle={styles.item}/>
       </View>
     )
   }
@@ -73,8 +29,8 @@ const styles = (()=>{
   const distanceSize = (size)=>(fourLostFiveWin((1-size*2)/2/2/2));
   // alert(fourLostFiveWin(190/Dimensions.get('window').height)) // 0.2959
   const mediaWidth = Dimensions.get('window').width;
-  const itemFlex = 0.47; // 0.48
-  const itemHeight = fourLostFiveWin(Dimensions.get('window').height * 0.283); // 0.48
+  const itemFlex = 0.48; // 0.48
+  //const itemHeight = fourLostFiveWin(Dimensions.get('window').height * 0.283); // 0.48
 
   return StyleSheet.create({
     wrap: {
@@ -87,24 +43,10 @@ const styles = (()=>{
       justifyContent: 'space-around',
     },
     item: {
-      overflow: 'hidden',
+      // height: itemHeight,
       flex: itemFlex,
-      flexDirection: 'column',
-      height: itemHeight,
-      borderRadius: 10,
-      backgroundColor: '#f6f6f6'
-    },
-    item_image: {
-      //flex: 1,
-      //overlayColor: '#000',
-      height:90*2,
-      width:160*2,
-    },
-    item_bottom: {
-      flex: 0.5,
-      backgroundColor: 'yellow'
     }
   });
-})()
+})();
 
 export default ListLine;
