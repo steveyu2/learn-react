@@ -49,12 +49,12 @@ const styles = (()=>{
     wrap: {
       flex: 1,
       paddingTop: mediaWidth * distanceSize(itemFlex) * 3.4,// 3.68
-      //paddingLeft: paddingLR,
-      //paddingRight: paddingLR,
       paddingHorizontal: paddingLR,
       flexDirection: 'row',
-      // alignItems: 'center',
       justifyContent: 'space-around',
+      //paddingLeft: paddingLR,
+      //paddingRight: paddingLR,
+      // alignItems: 'center',
     },
     item: {
       // height: itemHeight,

@@ -39,10 +39,12 @@ class ListItem extends PureComponent {
             imageHeight={ itemHeight }
             play={data.play}
             danmu={data.danmu}
+            videoTime={data.videoTime}
             source={{uri: data.imageUrl}}
           />
           <ListItemBottom
-
+            title={ data.title }
+            type={ data.type }
           />
         </View>
       </TouchableHighlight>

@@ -7,9 +7,15 @@ class ListItemBottom extends PureComponent {
 
   render() {
 
+    const {
+      title,
+      type
+    } = this.props;
+
     return (
       <View style={ styles.item_bottom }>
-        <Text>123</Text>
+        <Text style={ styles.title }>{ title }</Text>
+        <Text style={ styles.type }>{ type }</Text>
       </View>
     )
   }
@@ -17,9 +23,18 @@ class ListItemBottom extends PureComponent {
 
 const styles = StyleSheet.create({
   item_bottom: {
-    flex: 0.5,
-    height: 50,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    // height: 50,
     // backgroundColor: '#fff'
+  },
+  title: {
+    fontSize: 14,
+    color: '#000',
+  },
+  type: {
+    marginTop: 10,
+    color: '#eee',
   }
 });
 

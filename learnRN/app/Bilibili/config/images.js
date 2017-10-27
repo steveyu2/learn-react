@@ -15,4 +15,6 @@ export default {
   search: require("../../../images/icon/search/search2.png"),
   layers: require("../../../images/icon/layers/layers.png"),
   find: require("../../../images/icon/find/find.png"),
+  danmu: require("../../../images/icon/danmu/danmu.png"),
+  player: require("../../../images/icon/player/player.png"),
 }
