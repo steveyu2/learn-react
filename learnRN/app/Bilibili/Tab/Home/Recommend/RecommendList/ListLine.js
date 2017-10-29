@@ -41,7 +41,7 @@ const styles = (()=>{
   const distanceSize = (size)=>(fourLostFiveWin((1-size*2)/2/2/2));
   // alert(fourLostFiveWin(190/Dimensions.get('window').height)) // 0.2959
   const mediaWidth = Dimensions.get('window').width;
-  const itemFlex = 0.48; // 0.48
+  const itemFlex = 0.475; // 0.48
   const paddingLR = mediaWidth * distanceSize(itemFlex) * 2; // padding Left Right
   //const itemHeight = fourLostFiveWin(Dimensions.get('window').height * 0.283); // 0.48
   itemWidth = (mediaWidth - paddingLR*2) * itemFlex;

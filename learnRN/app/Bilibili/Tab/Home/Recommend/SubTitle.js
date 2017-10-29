@@ -25,12 +25,12 @@ class SubTitle extends Component {
 
 const styles = StyleSheet.create({
   wrap: {
-    backgroundColor: 'rgba(200,200,200,0.2)',
+    backgroundColor: '#fff',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: "#ddd",
+    borderBottomColor: "#ccc",
     //以下是阴影属性：
     //shadowOffset: {width: 0, height: 5},
     //shadowOpacity: 0.5,

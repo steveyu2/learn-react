@@ -1,5 +1,5 @@
 import React, { PureComponent  } from 'react';
-import { SectionList, StyleSheet, Text, View, Image } from 'react-native';
+import { SectionList, StyleSheet, Text, View, Image,Dimensions } from 'react-native';
 import { Config, Images } from "../../../../../config";
 
 class InfoItem extends PureComponent {
@@ -26,7 +26,7 @@ class ListItemTop extends PureComponent {
 
   render() {
 
-    const {
+    var {
       imageStyle,
       source,
       play,
@@ -34,6 +34,11 @@ class ListItemTop extends PureComponent {
       videoTime,
       imageHeight,
     } = this.props;
+
+    const mediaWidth = Dimensions.get('window').width;
+    const minSize = mediaWidth < 400;
+    play = play.length >= 5&&minSize? '---': play;
+    danmu = danmu.length >= 5&&minSize? '---': danmu;
 
     // cover contain stretch repeat center
     return (
@@ -65,13 +70,14 @@ class ListItemTop extends PureComponent {
   }
 }
 
-const infoHeight = 25;
+const infoHeight = 23;
 const styles = StyleSheet.create({
   wrap: {
     // alignItems: 'center',
     justifyContent: 'space-around',
   },
   info: {
+    paddingHorizontal: 2,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -91,19 +97,19 @@ const styles = StyleSheet.create({
   },
   infoItem: {
     height: '100%',
-    marginLeft: 10,
+    marginLeft: 5,
     flexDirection: 'row',
     alignItems: 'center',
   },
   infoIcon: {
-    height: 21,
+    height: 18,
     width: 18,
     tintColor: '#fff'
   },
   info_text: {
     color: '#fff',
-    fontSize: 12,
-    marginLeft: 5
+    fontSize: 11,
+    marginLeft: 2
   },
   // infoRight
   infoRight: {
@@ -114,8 +120,8 @@ const styles = StyleSheet.create({
   },
   infoRight_text: {
     color: '#fff',
-    fontSize: 12,
-    marginRight: 10
+    fontSize: 11,
+    marginRight: 5
   },
 });
 

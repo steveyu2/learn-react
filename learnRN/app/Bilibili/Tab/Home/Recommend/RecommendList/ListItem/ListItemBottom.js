@@ -14,7 +14,10 @@ class ListItemBottom extends PureComponent {
 
     return (
       <View style={ styles.item_bottom }>
-        <Text style={ styles.title }>{ title }</Text>
+        <Text
+          style={ styles.title }
+          numberOfLines={2}
+        >{ title }</Text>
         <Text style={ styles.type }>{ type }</Text>
       </View>
     )
@@ -25,16 +28,19 @@ const styles = StyleSheet.create({
   item_bottom: {
     paddingHorizontal: 15,
     paddingVertical: 10,
-    // height: 50,
-    // backgroundColor: '#fff'
+    justifyContent: 'space-between',
+    height: 90,
+    backgroundColor: '#fff',
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
   },
   title: {
     fontSize: 14,
     color: '#000',
   },
   type: {
-    marginTop: 10,
-    color: '#eee',
+    fontSize: 14,
+    color: 'rgba(0,0,0, 0.5)',
   }
 });
 

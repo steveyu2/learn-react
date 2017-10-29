@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
   wrap: {
     flex: 1,
     flexDirection: 'column',
+    backgroundColor: 'rgba(100,100,100, 0.1)'
   },
   subTitle: {
     height: 33,
