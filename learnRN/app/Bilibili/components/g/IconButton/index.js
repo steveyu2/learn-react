@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, TouchableHighlight, View } from 'react-native';
+import { StyleSheet, Image, TouchableHighlight, View, TouchableNativeFeedback,Platform } from 'react-native';
 import PropTypes from 'prop-types';
 
 /**
@@ -30,8 +30,21 @@ class IconButton extends Component{
       underlayColor,
       onPress,
     } = this.props;
+    var component;
 
-    return (
+    if(Platform.OS === 'android' && Platform.Version > 21&&!noAction){
+      component = (
+        <TouchableNativeFeedback
+          onPress={ ()=>onPress(this.props) }
+          background={ TouchableNativeFeedback.Ripple(null, false) }
+        >
+          <View style={ btnStyle }>
+            <Image source={ icon } style={ iconStyle } />
+          </View>
+        </TouchableNativeFeedback>
+      )
+    }else{
+      component = (
         <TouchableHighlight
           style={ btnStyle }
           underlayColor={ !noAction? underlayColor : null }
@@ -40,7 +53,10 @@ class IconButton extends Component{
         >
           <Image source={ icon } style={ iconStyle } />
         </TouchableHighlight>
-    )
+      )
+    }
+
+    return component;
   }
 }
 

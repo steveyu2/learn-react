@@ -49,4 +49,20 @@ const Home = TabNavigator({
     indicatorStyle: styles.indicator,
   },
 });
-export default Home;
+
+// 因为下一级是navigation的组件
+// 所以重写下props
+export default class extends Component{
+  render() {
+
+    const {
+      _navigation,
+      screenProps
+    } = this.props;
+
+    return <Home screenProps={{
+      ...screenProps,
+      _navigation
+    }}/>
+  }
+};

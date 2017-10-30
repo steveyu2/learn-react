@@ -48,8 +48,5 @@ class RecommendList extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  wrap: {
-
-  },
 });
 export default RecommendList;

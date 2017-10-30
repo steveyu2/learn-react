@@ -55,10 +55,10 @@ class ListItem extends PureComponent {
 const styles = StyleSheet.create({
   item: {
     overflow:'hidden',
-    borderRadius: 10,
   },
   itemWrap: {
     // backgroundColor: 'transparent',
+    borderRadius: 10,
     overflow: 'hidden',
     flex: 1,
     flexDirection: 'column',

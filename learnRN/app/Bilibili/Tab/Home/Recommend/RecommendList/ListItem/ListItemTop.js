@@ -37,8 +37,8 @@ class ListItemTop extends PureComponent {
 
     const mediaWidth = Dimensions.get('window').width;
     const minSize = mediaWidth < 400;
-    play = play.length >= 5&&minSize? '---': play;
-    danmu = danmu.length >= 5&&minSize? '---': danmu;
+    play = play.length >= 5&&minSize? ' - -': play;
+    danmu = danmu.length >= 5&&minSize? ' - -': danmu;
 
     // cover contain stretch repeat center
     return (

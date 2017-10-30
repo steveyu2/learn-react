@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image, ToastAndroid } from 'react-native';
 import FadeInView from '../../../components/g/FadeInView';
 import SubTitle from './SubTitle';
+import { Config,Images } from "../../../config";
 import RecommendList from './RecommendList';
 
 class Recommend extends PureComponent {
@@ -43,10 +44,11 @@ class Recommend extends PureComponent {
     const {
       screenProps
     } = this.props;
+
 // debugger
     return (
       <FadeInView style={[styles.wrap]}>
-        <SubTitle title="综合" style={ styles.subTitle }/>
+        <SubTitle title="综合" style={ styles.subTitle } _navigation={ screenProps._navigation }/>
         <View style={ styles.content }>
           <RecommendList
             onRefresh={ this.onRefresh }
@@ -63,7 +65,7 @@ const styles = StyleSheet.create({
   wrap: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: 'rgba(100,100,100, 0.1)'
+    backgroundColor: Config.TabNavScreenColor
   },
   subTitle: {
     height: 33,

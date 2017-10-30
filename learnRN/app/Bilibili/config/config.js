@@ -4,6 +4,8 @@ export default {
   headerIconUnderlayColor: 'rgba(255, 255, 255, 0.2)',
   iconColor: '#fff',
   fontColor: '#fff',
+  TabNavScreenColor: 'rgba(150,150,150, 0.1)',
+  TabNavTabColor: '#fff',
   drawerHeaderSmallFontColor: 'rgba(255, 255, 255, 0.8)',
   TabUnActivefontColor: 'rgba(255, 255, 255, 0.9)',
   drawerUnderlayColor: 'rgba(225, 225, 225, 1)', // #eee

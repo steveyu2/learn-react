@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     marginTop: -2,
   },
   tab: {
+    backgroundColor: Config.TabNavTabColor,
     height: Config.footerHeight,
   },
   title: {
@@ -49,10 +50,10 @@ const Tab = TabNav({
     title: null,
     HeaderRight: rightIconBox([
       HeaderIcon('download', {
-        onPress: (props)=>props.NavTion.navigate('DownloadStack')
+        onPress: (props)=>props._navigation.navigate('DownloadStack')
       }),
       HeaderIcon('search', {
-        onPress: (props)=>props.NavTion.navigate('SearchStack')
+        onPress: (props)=>props._navigation.navigate('SearchStack')
       }),
     ]),
     icon: ({ focused, tintColor }) => (
@@ -85,7 +86,7 @@ const Tab = TabNav({
     label: '分区',
     HeaderRight: rightIconBox([
       HeaderIcon('search', {
-        onPress: (props)=>props.NavTion.navigate('SearchStack')
+        onPress: (props)=>props._navigation.navigate('SearchStack')
       }),
     ]),
     icon: ({ focused, tintColor }) => (
@@ -120,14 +121,15 @@ const Tab = TabNav({
   labelStyle: styles.label,
   HeaderLeft: HeaderIcon('drawerNavAvatar', {
     onPress: (props) => {
-      props.NavTion.navigate('DrawerOpen')
+      props._navigation.navigate('DrawerOpen')
     }
   }),
   titleStyle: styles.title,
   headerStyle: styles.header,
   bottomNavStyle: styles.tab,
   componentProps: (props) => ({
-    NavTion: props.navigation,
+    // 给左右组件和屏幕 传入父级传下来的props
+    _navigation: props.navigation,
     screenProps: props.screenProps,
   })
 });

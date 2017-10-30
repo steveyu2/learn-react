@@ -17,4 +17,6 @@ export default {
   find: require("../../../images/icon/find/find.png"),
   danmu: require("../../../images/icon/danmu/danmu1.png"),
   player: require("../../../images/icon/player/player1.png"),
+  ranking: require("../../../images/icon/ranking/ranking.png"),
+  tag: require("../../../images/icon/tag/tag.png"),
 }

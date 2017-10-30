@@ -41,6 +41,12 @@ const Stack = StackNavigator({
     navigationOptions: {
       title: '搜索'
     }
+  },
+  PlaceholderStack: {
+    screen: class extends Component{ render = () => <Text>空页面</Text>; },
+    navigationOptions: {
+      title: '空页面'
+    }
   }
 },{
   initialRouteName: 'HomeStack', // 默认屏幕

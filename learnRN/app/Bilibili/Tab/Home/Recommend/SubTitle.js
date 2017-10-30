@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
 import { Config,Images } from "../../../config";
+import IconButton from '../../../components/g/IconButton';
 
 class SubTitle extends Component {
 
@@ -8,15 +9,22 @@ class SubTitle extends Component {
 
     const {
       title,
-      style
+      style,
+      _navigation
       } = this.props;
 
     return (
       <View style={[styles.wrap, style]}>
         <Text style={ styles.title }>{ title }</Text>
-        <View style={ styles.iconGruop } >
-          <Image source={ Images.find } style={ styles.icon } />
-          <Image source={ Images.layers } style={ styles.icon } />
+        <View style={ styles.iconGruop }>
+          <IconButton icon={ Images.ranking }  iconStyle={ styles.icon } noAction={true} onPress={()=>{
+              _navigation.navigate('PlaceholderStack')
+          }}/>
+          <Text>排行榜</Text>
+          <IconButton icon={ Images.tag }  iconStyle={ styles.icon } noAction={true} onPress={()=>{
+              _navigation.navigate('PlaceholderStack')
+          }}/>
+          <Text>标签</Text>
         </View>
       </View>
     );
@@ -29,8 +37,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
+    borderBottomWidth: 2,
+    borderBottomColor: "#ddd",
     //以下是阴影属性：
     //shadowOffset: {width: 0, height: 5},
     //shadowOpacity: 0.5,
