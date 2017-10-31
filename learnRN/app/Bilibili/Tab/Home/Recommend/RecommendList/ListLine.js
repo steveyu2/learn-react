@@ -48,8 +48,9 @@ const styles = (()=>{
   return StyleSheet.create({
     wrap: {
       flex: 1,
-      paddingTop: mediaWidth * distanceSize(itemFlex) * 3.4,// 3.68
+      marginTop: mediaWidth * distanceSize(itemFlex) * 3.4,// 3.68
       paddingHorizontal: paddingLR,
+      //backgroundColor:'rgba(0,0,0,0)',
       flexDirection: 'row',
       justifyContent: 'space-around',
       //paddingLeft: paddingLR,

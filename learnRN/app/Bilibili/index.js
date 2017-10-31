@@ -88,3 +88,7 @@ export default Bilibili;
 //    callback(isConnected);
 //  }
 //);
+//shouldComponentUpdate() {
+//  //完全静态的组件,无需更新
+//  return false;
+//}

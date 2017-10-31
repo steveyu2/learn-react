@@ -54,20 +54,35 @@ class ListItem extends PureComponent {
 
 const styles = StyleSheet.create({
   item: {
-    overflow:'hidden',
+    //borderBottomRightRadius: 5,
+    //shadowOffset: {width: 0, height: 0},
+    //shadowColor: '#fff',
+    //shadowOpacity: 1,
+    //shadowRadius: 5
   },
   itemWrap: {
-    // backgroundColor: 'transparent',
-    borderRadius: 10,
-    overflow: 'hidden',
+    borderWidth: 10,
+    borderRadius: 3,
+    borderColor: 'rgba(150,150,150,0.1)',
+    backgroundColor: 'transparent',
+    //borderBottomWidth: 2,
+    //borderBottomColor: '#000',
+    //borderLeftColor: '#eee',
+    //borderRightColor: '#666',
+    //borderLeftColor: '#000',
+    //borderRightColor: 'red',
+    borderTopWidth: 0,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    borderBottomWidth: 3,
     flex: 1,
     flexDirection: 'column',
     // backgroundColor: '#f6f6f6',
   },
   item_image: {
     //borderRadius: 10,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    borderTopLeftRadius: 3,
+    borderTopRightRadius: 3,
     //width: '100%',
   },
 });
