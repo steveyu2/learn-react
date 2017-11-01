@@ -7,7 +7,7 @@ class FlatLists extends Component{
     super(props);
 
     this.state = {
-      bottomRefresh: false
+      bottomRefresh: null // nomore refresh null
     }
 
     this.onEndReached = this.onEndReached.bind(this)
@@ -44,15 +44,21 @@ class FlatLists extends Component{
 
   footerComponent() {
     const isRefresh = this.state.bottomRefresh;
+    var text = false;
 
+    if(isRefresh === 'refresh') {
+      text = <TwinkleText style={styles.footerRefreshText}>数据加载中...</TwinkleText>
+    }else if(isRefresh === 'nomore'){
+      text = <Text style={styles.footerRefreshText}>没有更多了 : )</Text>
+    }
 
-      return <View style={styles.footerRefresh}>{isRefresh && <TwinkleText style={styles.footerRefreshText}>数据加载中...</TwinkleText>}</View>
+    return <View style={styles.footerRefresh}>{text}</View>
   }
 
   onEndReached() {
     this.props.onEndReached((loadSuccess)=>{
       this.setState({
-        bottomRefresh: !loadSuccess
+        bottomRefresh: loadSuccess
       })
     })
   }

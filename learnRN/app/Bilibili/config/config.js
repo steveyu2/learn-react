@@ -1,3 +1,7 @@
+import {Dimensions} from 'react-native';
+
+const mediaWidth = Dimensions.get('window').width;
+
 export default {
   mainColor: '#1E90FF',//0099FF
   underlayColor: 'rgba(0, 0, 0, 0.1)', // #eee
@@ -14,6 +18,7 @@ export default {
   headerHeight: 55,
   TabNavHeight: 41,
   footerHeight: 48,
+  TabNavScreenPadding: mediaWidth * 2.2/100,
   drawerFontSize: 13.5,
   drawerHeaderFontSize: 14,
   drawerHeaderSmallFontSize: 12,

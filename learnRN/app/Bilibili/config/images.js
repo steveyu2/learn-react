@@ -19,4 +19,9 @@ export default {
   player: require("../../../images/icon/player/player1.png"),
   ranking: require("../../../images/icon/ranking/ranking.png"),
   tag: require("../../../images/icon/tag/tag.png"),
+  cd: require("../../../images/icon/cd/cd.png"),
+  other: require("../../../images/icon/other/other.png"),
+  novel: require("../../../images/icon/novel/novel.png"),
+  game: require("../../../images/icon/game/game.png"),
+  starBall: require("../../../images/icon/starBall/starBall.png"),
 }

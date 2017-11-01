@@ -14,7 +14,8 @@ class Bilibili extends Component{
         mainColor: '#40E0D0'
       },
       data: {
-        Recommend: []
+        Recommend: [],
+        SpecialColumnSwipeImages:[]
       }
     };
 
@@ -63,6 +64,9 @@ class Bilibili extends Component{
         });
       case 'recommend':
         result = this.state.data.Recommend;
+        break;
+      case 'SpecialColumnSwipeImages':
+        result = DATA.getSpecialColumnSwipeImages.apply(DATA, params);
         break;
       default:
     }

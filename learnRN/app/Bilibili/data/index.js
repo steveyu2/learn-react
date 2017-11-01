@@ -1,5 +1,6 @@
 import {
-  Recommend
+  Recommend,
+  SpecialColumnSwipeImages
 } from './data';
 
 function uuid() {
@@ -37,7 +38,12 @@ export default {
     })
     result = result.slice(0, count)
       // .slice(0,count)
-    setTimeout(()=>{callback(result)},2000)
+    setTimeout(()=>{callback&&callback(result)},2000)
+  },
+  getSpecialColumnSwipeImages(callback) {
+    setTimeout((v)=>{
+      callback&&callback(SpecialColumnSwipeImages)
+    },500)
   }
 }
 

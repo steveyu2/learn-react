@@ -1,4 +1,5 @@
 // 模拟假数据
+// 视频推荐
 const Recommend = [
   [
     "【火影手书】暁众人的POKAPOKA之歌",
@@ -64,14 +65,14 @@ const Recommend = [
     "1.3万",
     "短片·手书·配音"
   ],
-  [
-    "【12月】国外污动画GIF/{TOP19}",
-    "https://i2.hdslb.com/bfs/archive/8a385ae49a369b40002f6d9262e4ba624adf0f99.jpg@160w_100h.webp",
-    "10:50",
-    "40.4万",
-    "1149",
-    "综合"
-  ],
+  //[
+  //  "【12月】国外污动画GIF/{TOP19}",
+  //  "https://i2.hdslb.com/bfs/archive/8a385ae49a369b40002f6d9262e4ba624adf0f99.jpg@160w_100h.webp",
+  //  "10:50",
+  //  "40.4万",
+  //  "1149",
+  //  "综合"
+  //],
   [
     "Stickman Vs Bendy and The Ink Machine, Chapter 3 in a nutshell Animation",
     "https://i1.hdslb.com/bfs/archive/4d3436b23a49aee9c4e41a3b741db88a764e800e.jpg@160w_100h.webp",
@@ -169,9 +170,19 @@ const Recommend = [
     videoTime: v[2],
     play: v[3],
     danmu: v[4],
-    type: v[5],  }
-
+    type: v[5],
+  }
 ))
+
+// 专栏图片轮播
+const SpecialColumnSwipeImages = [
+  'https://i0.hdslb.com/bfs/archive/2d3a993b1c5201526ad7ced72619916870a08dc3.jpg@680w_212h.webp',
+  'https://i0.hdslb.com/bfs/archive/4290e8d939778a4bce79a662910ecfb3a3fefc99.jpg@680w_212h.webp',
+  'https://i0.hdslb.com/bfs/archive/412988903400bb46145ac37c3440780c9d42ae5b.jpg@680w_212h.webp',
+  'https://i0.hdslb.com/bfs/archive/61ee0a32a3b17c10b75ac0a32bb466e5f44b21ca.jpg@680w_212h.webp',
+];
+
 export {
-  Recommend //推荐
+  Recommend,
+  SpecialColumnSwipeImages
 }

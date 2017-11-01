@@ -26,7 +26,7 @@ export default (iconName, props)=>{
         icon: Images.download,
         underlayColor: Config.headerIconUnderlayColor,
         iconStyle: [styles.icon,],
-        btnStyle: styles.button
+        wrapperStyle: styles.button
       };
       break
     case 'search':
@@ -35,7 +35,7 @@ export default (iconName, props)=>{
         icon: Images.search,
         underlayColor: Config.headerIconUnderlayColor,
         iconStyle: [styles.icon],
-        btnStyle: styles.button
+        wrapperStyle: styles.button
       };
       break;
     case 'menu':

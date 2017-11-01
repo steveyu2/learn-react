@@ -17,6 +17,7 @@ class IconButton extends Component{
     noAction: false,
     btnStyle: {},
     iconStyle: {},
+    wrapperStyle: {},
     underlayColor: '#eee',
     onPress: ()=>{},
   };
@@ -25,6 +26,7 @@ class IconButton extends Component{
     const {
       noAction,
       btnStyle,
+      wrapperStyle,
       icon,
       iconStyle,
       underlayColor,
@@ -35,11 +37,13 @@ class IconButton extends Component{
     if(Platform.OS === 'android' && Platform.Version > 21&&!noAction){
       component = (
         <TouchableNativeFeedback
+          style={ btnStyle }
           onPress={ ()=>onPress(this.props) }
           background={ TouchableNativeFeedback.Ripple(null, false) }
         >
-          <View style={ btnStyle }>
+          <View style={ wrapperStyle }>
             <Image source={ icon } style={ iconStyle } />
+            {this.props.children}
           </View>
         </TouchableNativeFeedback>
       )
@@ -51,7 +55,7 @@ class IconButton extends Component{
           activeOpacity={ null }
           onPress={ ()=>onPress(this.props) }
         >
-          <View style={{flexDirection: 'row'}}>
+          <View style={[{flexDirection: 'row'},wrapperStyle]}>
             <Image source={ icon } style={ iconStyle } />
             {this.props.children}
           </View>

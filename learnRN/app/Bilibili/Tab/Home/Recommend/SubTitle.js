@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   iconText: {
-    marginLeft: 2,
+    marginLeft: 4,
     fontSize:13
   }
 });

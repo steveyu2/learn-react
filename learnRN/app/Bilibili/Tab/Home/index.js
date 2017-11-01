@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image, Dimensions } from 'react-native';
 import { TabNavigator } from "react-navigation";
 import { Config } from "../../config";
-import Bangumi from "./Bangumi";
+import SpecialColumn from "./SpecialColumn";
 import Recommend from "./Recommend";
 
 const styles = StyleSheet.create({
@@ -31,7 +31,7 @@ const Home = TabNavigator({
      }
   },
   TabHomeBangumi: {
-    screen: Bangumi,
+    screen: SpecialColumn,
      navigationOptions: {
        tabBarLabel: '专栏',
      }

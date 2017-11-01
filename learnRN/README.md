@@ -5,7 +5,9 @@
 
 导航用的是react-navigation
 
-APK
+效果图
+
+APK下载
 
    [v1.1](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.1.apk)
 

@@ -48,8 +48,8 @@ const styles = (()=>{
   return StyleSheet.create({
     wrap: {
       flex: 1,
-      marginTop: mediaWidth * distanceSize(itemFlex) * 3.4,// 3.68
-      paddingHorizontal: paddingLR,
+      marginTop: Config.TabNavScreenPadding,// 3.68
+      paddingHorizontal: Config.TabNavScreenPadding - 4,
       //backgroundColor:'rgba(0,0,0,0)',
       flexDirection: 'row',
       justifyContent: 'space-around',
