@@ -15,8 +15,8 @@
     
     react+webpack
 
-* [learnRN](https://qw110946.github.io/learn-react/todo-list/build/)
-  [说明](https://github.com/qw110946/learn-react/tree/master/todo-list)
+* [learnRN.apk](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.1.apk)
+  [说明](https://github.com/qw110946/learn-react/tree/master/learnRN)
  
     环境：
     
