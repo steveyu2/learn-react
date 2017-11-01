@@ -16,12 +16,12 @@ export default class FadeInView extends Component {
     };
   }
   componentDidMount() {
-    Animated.timing(                            // 随时间变化而执行的动画类型
-      this.state.fadeAnim,                      // 动画中的变量值
+    Animated.timing(
+      this.state.fadeAnim,
       {
-        toValue: 1,                             // 透明度最终变为1，即完全不透明
+        toValue: 1,
       }
-    ).start();                                  // 开始执行动画
+    ).start();
   }
   render() {
     return (

@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
   },
   item_image: {
     //borderRadius: 10,
-    borderTopLeftRadius: 3,
-    borderTopRightRadius: 3,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
     //width: '100%',
   },
 });

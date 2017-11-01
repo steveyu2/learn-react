@@ -4,9 +4,6 @@ import FadeInView from '../components/g/FadeInView';
 import { Config, Images } from "../config";
 
 class Message extends Component{
-  componentWillUnmount(){
-    alert('componentWillUnmount')
-  }
   render() {
     return (
       <FadeInView style={ styles.wrap }>

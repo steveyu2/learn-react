@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View, Animated } from 'react-native';
 import { addNavigationHelpers } from "react-navigation";
 import NavButton from './NavButton';
 import NavHeader from '../NormalHeader';
@@ -37,13 +37,16 @@ class TabNav extends Component{
   constructor(props) {
     super(props);
     const routes = [];
-    this.routes = {};
+    this.routeScreens=[]
     for(let i in this.props.navConfigs){
       routes.push(i);
+      this.routeScreens.push(this.props.navConfigs[i].screen)
     }
 
+    this.routes = routes
     // 当前路由
     this.state={
+      fadeAnim: new Animated.Value(1), // 屏幕动效
       currentRoute: routes[0]
     };
   }
@@ -55,9 +58,17 @@ class TabNav extends Component{
 
     onPress && (isJump = onPress(route));
 
-    if(this.state.currentRoute !== route || isJump){
+    if(this.state.currentRoute !== route && isJump){
       this.setState({
+        fadeAnim: new Animated.Value(0),
         currentRoute: route
+      },()=>{
+        Animated.timing(
+          this.state.fadeAnim,
+          {
+            toValue: 1,
+          }
+        ).start();
       });
     }
   }
@@ -153,9 +164,7 @@ class TabNav extends Component{
     const componentProps = this.props.componentProps(this.props);
     const routeConfig = this.getCurrentRouteConfig();
     const Screen = routeConfig.screen;
-    if(!this.routes[currentRoute]){
-      this.routes[currentRoute] = <Screen {...componentProps}/>
-    }
+
     //===========Navigation 设置==========
  /*   const childNavigation = ((navigation)=>{
       debugger
@@ -167,8 +176,11 @@ class TabNav extends Component{
       // Assuming our children want the convenience of calling .navigate() and so on,
       // we should call addNavigationHelpers to augment our navigation prop:
       return addNavigationHelpers(childNavigation);
-    })(this.props.navigation);*/
+    })(this.props.navigation);
+  <Screen {...componentProps}/>*/
     //===============================
+
+    const ScreenNum = this.routes.indexOf(currentRoute);
 
     return (
         <View style={ styles.wrap }>
@@ -183,9 +195,17 @@ class TabNav extends Component{
             componentProps={ componentProps }
           />
           {/* 路由内容 */}
-          <View style={ styles.content }>
-            {this.routes[currentRoute]}
-          </View>
+          <Animated.View style={ [
+            styles.content,
+            {width: this.routes.length*100+'%',marginLeft: ScreenNum*-100+'%'},
+            {opacity: this.state.fadeAnim},
+            ] }>
+            {
+              this.routeScreens.map((V,i)=>{
+                return <V {...componentProps} key={i}/>
+              })
+            }
+          </Animated.View>
           {/* 路由导航 */}
           <View style={ [styles.bottom, bottomNavStyle] }>
             { this.getNavButtons() }
@@ -202,7 +222,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    // flexDirection: 'row',
+   flexDirection: 'row',
     //justifyContent: 'center',
     backgroundColor: '#fff',
   },
