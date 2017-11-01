@@ -1,7 +1,7 @@
 export default {
   mainColor: '#1E90FF',//0099FF
-  underlayColor: 'rgba(225, 225, 225, 0.1)', // #eee
-  headerIconUnderlayColor: 'rgba(255, 255, 255, 0.2)',
+  underlayColor: 'rgba(0, 0, 0, 0.2)', // #eee
+  headerIconUnderlayColor: 'rgba(255, 255, 255, 0.1)',
   iconColor: '#fff',
   fontColor: '#fff',
   TabNavScreenColor: 'rgba(150,150,150, 0.1)',

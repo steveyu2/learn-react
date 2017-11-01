@@ -51,7 +51,10 @@ class IconButton extends Component{
           activeOpacity={ null }
           onPress={ ()=>onPress(this.props) }
         >
-          <Image source={ icon } style={ iconStyle } />
+          <View style={{flexDirection: 'row'}}>
+            <Image source={ icon } style={ iconStyle } />
+            {this.props.children}
+          </View>
         </TouchableHighlight>
       )
     }

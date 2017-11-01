@@ -19,12 +19,14 @@ class SubTitle extends Component {
         <View style={ styles.iconGruop }>
           <IconButton icon={ Images.ranking }  iconStyle={ styles.icon } noAction={true} onPress={()=>{
               _navigation.navigate('PlaceholderStack')
-          }}/>
-          <Text>排行榜</Text>
+          }}>
+            <Text style={styles.iconText}>排行榜</Text>
+          </IconButton>
           <IconButton icon={ Images.tag }  iconStyle={ styles.icon } noAction={true} onPress={()=>{
               _navigation.navigate('PlaceholderStack')
-          }}/>
-          <Text>标签</Text>
+          }}>
+            <Text style={styles.iconText}>标签</Text>
+          </IconButton>
         </View>
       </View>
     );
@@ -54,14 +56,18 @@ const styles = StyleSheet.create({
     color: '#888'
   },
   icon: {
-    height:22,
-    width: 22,
+    height:20,
+    width: 20,
     marginLeft: 8,
     tintColor: Config.mainColor
   },
   iconGruop: {
     flexDirection: 'row',
     marginRight: 15,
+  },
+  iconText: {
+    marginLeft: 2,
+    fontSize:13
   }
 });
 export default SubTitle;

@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
-import { FlatList, ScrollView, RefreshControl } from 'react-native';
+import { StyleSheet,FlatList, ScrollView, RefreshControl,Text,View } from 'react-native';
+import TwinkleText from '../TwinkleText';
 
 class FlatLists extends Component{
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      bottomRefresh: false
+    }
+
+    this.onEndReached = this.onEndReached.bind(this)
+  }
 
   renderScrollComponent(props) {
     //if (this._isNestedWithSameOrientation()) {
@@ -31,14 +41,45 @@ class FlatLists extends Component{
       return <ScrollView {...props} />;
     }
   }
+
+  footerComponent() {
+    const isRefresh = this.state.bottomRefresh;
+
+
+      return <View style={styles.footerRefresh}>{isRefresh && <TwinkleText style={styles.footerRefreshText}>数据加载中...</TwinkleText>}</View>
+  }
+
+  onEndReached() {
+    this.props.onEndReached((loadSuccess)=>{
+      this.setState({
+        bottomRefresh: !loadSuccess
+      })
+    })
+  }
+
   render() {
     return (
       <FlatList
         renderScrollComponent={this.renderScrollComponent}
         {...this.props}
+        ListFooterComponent={ this.footerComponent()}
+        onEndReached={this.onEndReached}
       />
     )
   }
 }
+
+const styles = StyleSheet.create({
+  footerRefresh: {
+    width: "100%",
+    height: 60,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  footerRefreshText: {
+    marginTop: -5
+  }
+})
 
 export default FlatLists;

@@ -29,14 +29,17 @@ class RecommendList extends PureComponent {
       data,
       onRefresh,
       refreshing,
-      style
+      style,
+      pullUpRefresh
     } = this.props;
-
+    //
     return (
       <FlatList
         style={style}
         refreshComponentColor={ Config.mainColor }
         data={data}
+        onEndReached={pullUpRefresh}
+        onEndReachedThreshold={0.1}
         refreshing={refreshing}
         onRefresh={onRefresh}
         extraData={this.state}

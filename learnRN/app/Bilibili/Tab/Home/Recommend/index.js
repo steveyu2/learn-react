@@ -13,6 +13,7 @@ class Recommend extends PureComponent {
       refreshing: false, // 刷新按钮状态 是否保持刷新
     }
     this.onRefresh = this.onRefresh.bind(this);
+    this.pullUpRefresh = this.pullUpRefresh.bind(this);
   }
 
   // 组件加载完毕
@@ -36,6 +37,14 @@ class Recommend extends PureComponent {
     });
   }
 
+  pullUpRefresh(callback) {
+    callback(false)
+    this.props.screenProps.getAppState('newRecommend',[6,'after',()=>{
+      callback(true)
+    }])
+  }
+
+
   render() {
 
     const {
@@ -52,6 +61,7 @@ class Recommend extends PureComponent {
         <View style={ styles.content }>
           <RecommendList
             onRefresh={ this.onRefresh }
+            pullUpRefresh={ this.pullUpRefresh }
             refreshing={ refreshing }
             data={ screenProps.getAppState('recommend') }
           />
