@@ -7,7 +7,7 @@
 
 APK
 
-    [v1.1](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.1.apk)
+   [v1.1](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.1.apk)
 
 learnRN/app/bilibili  项目文件夹
 
