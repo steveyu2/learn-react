@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, View, Animated } from 'react-native';
+import { ScrollView, StyleSheet, View, Animated, Easing } from 'react-native';
 import { addNavigationHelpers } from "react-navigation";
 import NavButton from './NavButton';
 import NavHeader from '../NormalHeader';
@@ -58,17 +58,17 @@ class TabNav extends Component{
 
     onPress && (isJump = onPress(route));
 
+    this.state.fadeAnim.setValue(0)
+    Animated.timing(
+      this.state.fadeAnim,
+      {
+        toValue: 1,
+      }
+    ).start();
+
     if(this.state.currentRoute !== route && isJump){
       this.setState({
-        fadeAnim: new Animated.Value(0),
         currentRoute: route
-      },()=>{
-        Animated.timing(
-          this.state.fadeAnim,
-          {
-            toValue: 1,
-          }
-        ).start();
       });
     }
   }

@@ -67,20 +67,6 @@ const Tab = TabNav({
       />
     ),
   },
-  DynamicTab: {
-    screen: Dynamic,
-    label: '专栏',
-    icon: ({ focused, tintColor }) => (
-      <Image
-        source={
-          focused
-            ?Images.collection_fill
-            :Images.collection
-        }
-        style={[styles.icon, {tintColor: tintColor}]}
-      />
-    )
-  },
   ZoneTab: {
     screen: Zone,
     label: '分区',
@@ -95,6 +81,20 @@ const Tab = TabNav({
           focused
             ?Images.manage_fill
             :Images.manage
+        }
+        style={[styles.icon, {tintColor: tintColor}]}
+      />
+    )
+  },
+  DynamicTab: {
+    screen: Dynamic,
+    label: '动态',
+    icon: ({ focused, tintColor }) => (
+      <Image
+        source={
+          focused
+            ?Images.collection_fill
+            :Images.collection
         }
         style={[styles.icon, {tintColor: tintColor}]}
       />

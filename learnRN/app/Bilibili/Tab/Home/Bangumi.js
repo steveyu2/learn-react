@@ -8,7 +8,7 @@ class Bangumi extends Component {
   render() {
     return (
       <FadeInView style={ styles.wrap }>
-        <Text>Bangumi{}</Text>
+        <Text>专栏</Text>
       </FadeInView>
     );
   }

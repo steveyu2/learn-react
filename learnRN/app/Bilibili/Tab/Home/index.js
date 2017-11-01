@@ -33,7 +33,7 @@ const Home = TabNavigator({
   TabHomeBangumi: {
     screen: Bangumi,
      navigationOptions: {
-       tabBarLabel: '追番',
+       tabBarLabel: '专栏',
      }
   },
 },{
