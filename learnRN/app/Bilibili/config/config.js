@@ -1,6 +1,6 @@
 export default {
   mainColor: '#1E90FF',//0099FF
-  underlayColor: 'rgba(0, 0, 0, 0.2)', // #eee
+  underlayColor: 'rgba(0, 0, 0, 0.1)', // #eee
   headerIconUnderlayColor: 'rgba(255, 255, 255, 0.1)',
   iconColor: '#fff',
   fontColor: '#fff',

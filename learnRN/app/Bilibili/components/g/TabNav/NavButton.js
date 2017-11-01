@@ -29,7 +29,7 @@ class NavButton extends Component{
         <TouchableNativeFeedback
           style={ btnStyle }
           onPress={ onPress }
-          background={ TouchableNativeFeedback.Ripple(underlayColor) }
+          background={ TouchableNativeFeedback.Ripple("#ccc") }
         >
           <View style={ styles.wrap }>
             { images && images }

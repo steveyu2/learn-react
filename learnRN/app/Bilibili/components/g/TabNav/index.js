@@ -37,7 +37,7 @@ class TabNav extends Component{
   constructor(props) {
     super(props);
     const routes = [];
-
+    this.routes = {};
     for(let i in this.props.navConfigs){
       routes.push(i);
     }
@@ -153,7 +153,9 @@ class TabNav extends Component{
     const componentProps = this.props.componentProps(this.props);
     const routeConfig = this.getCurrentRouteConfig();
     const Screen = routeConfig.screen;
-
+    if(!this.routes[currentRoute]){
+      this.routes[currentRoute] = <Screen {...componentProps}/>
+    }
     //===========Navigation 设置==========
  /*   const childNavigation = ((navigation)=>{
       debugger
@@ -182,7 +184,7 @@ class TabNav extends Component{
           />
           {/* 路由内容 */}
           <View style={ styles.content }>
-            <Screen {...componentProps}/>
+            {this.routes[currentRoute]}
           </View>
           {/* 路由导航 */}
           <View style={ [styles.bottom, bottomNavStyle] }>
@@ -200,7 +202,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    flexDirection: 'column',
+    // flexDirection: 'row',
     //justifyContent: 'center',
     backgroundColor: '#fff',
   },
