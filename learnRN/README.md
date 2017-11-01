@@ -2,9 +2,11 @@
 介绍
 
 仿照bilibili客户端制作的react-native半成品demo（大部分页面是空的）。
+
 导航用的是react-navigation
 
 APK
+
     [v1.1](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.1.apk)
 
 learnRN/app/bilibili  项目文件夹
