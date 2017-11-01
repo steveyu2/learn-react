@@ -21,4 +21,5 @@
     环境：
     
     react-native
+    
     react-navigation
