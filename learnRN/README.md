@@ -12,14 +12,14 @@ APK
 learnRN/app/bilibili  项目文件夹
 
     ├─components 组件
-    │  └─g   公用组件
-    │      ├─FadeInView
-    │      ├─FlatList
-    │      ├─IconButton
-    │      ├─NormalHeader
-    │      ├─TabAvatarIcon
-    │      ├─TabNav
-    │      └─TwinkleText
+    │  └─g   自己实现的公用组件
+    │      ├─FadeInView 
+    │      ├─FlatList 封装了FlatList的上拉下拉加载
+    │      ├─IconButton 
+    │      ├─NormalHeader 
+    │      ├─TabAvatarIcon 
+    │      ├─TabNav 类似TabNavigator的导航 主要因为TabNavigator不满足我需要的效果，就写了个
+    │      └─TwinkleText 透明度1-0-1闪烁的文字，用在上拉加载的文字
     ├─config 配置 颜色之类全局属性
     ├─data 静态数据
     ├─Drawer 抽屉二级导航

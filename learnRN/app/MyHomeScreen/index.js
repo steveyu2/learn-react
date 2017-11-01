@@ -13,7 +13,9 @@ class MyHomeScreen extends React.Component {
       />
     ),
   };
-
+  componentWillUnmount(){
+    alert('componentWillUnmount')
+  }
   render() {
     return (
       <Button
@@ -61,11 +63,13 @@ const MyApp = TabNavigator({
   },
 }, {
   tabBarPosition: 'bottom',
-  animationEnabled: true,
+  animationEnabled: false,
+  swipeEnabled:false,
   tabBarOptions: {
     showIcon: true,
     activeTintColor: '#DC143C',
     inactiveTintColor: '#E9967A',
+    indicatorStyle: {height:0}
   },
 });
 
