@@ -9,20 +9,27 @@ class ClassifyBtn extends Component {
   };
 
   iconButtons() {
+
+    const {
+      onItemPress
+    } = this.props;
+
     return [
-      [Images.cd, '动画'],
-      [Images.game, '游戏'],
-      [Images.novel, '轻小说'],
-      [Images.starBall, '科技'],
-      [Images.other, '其他'],
+      [Images.cd, '动画', 'anime'],
+      [Images.game, '游戏', 'game'],
+      [Images.novel, '轻小说', 'novel'],
+      [Images.starBall, '科技', 'science'],
+      [Images.other, '其他', 'other'],
     ].map((v,i)=>(
       <IconButton
         key={i}
         icon={v[0]}
         iconStyle={styles.itemIcon}
         wrapperStyle={styles.item}
-        btnStyle={styles.itembtn}>
-        <Text>{v[1]}</Text>
+        btnStyle={styles.itembtn}
+        noAction={true}
+        onPress={()=>{onItemPress(v[2])}}>
+        <Text style={styles.itemText}>{v[1]}</Text>
       </IconButton>
     ))
   }
@@ -47,18 +54,25 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingVertical: Config.TabNavScreenPadding * 2,
+    paddingHorizontal: Config.TabNavScreenPadding * 2
   },
   itembtn: {
-    width:100,
   },
   item: {
+    //width:100,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
   itemIcon: {
-    height: 30,
-    width: 30
+    height: 40,
+    width: 40
+  },
+  itemText: {
+    marginTop: 5,
+    fontSize: 12,
+    color: '#333',
   }
 });
 

@@ -6,6 +6,7 @@ import Drawer from '../Drawer';
 import History from './History';
 import Download from './Download';
 import Search from './Search';
+import SpecialColumn from './SpecialColumn';
 
 const styles = StyleSheet.create({
   header: {
@@ -42,6 +43,14 @@ const Stack = StackNavigator({
       title: '搜索'
     }
   },
+  SpecialColumnStack: {
+    screen: SpecialColumn,
+    navigationOptions: {
+      title: '专栏',
+      headerStyle: [styles.header,{elevation:0}]
+    }
+  },
+  //----------------------------------------------
   PlaceholderStack: {
     screen: class extends Component{ render = () => <Text>空页面</Text>; },
     navigationOptions: {

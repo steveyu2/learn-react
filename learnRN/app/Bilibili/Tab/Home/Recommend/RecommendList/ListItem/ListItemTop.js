@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
   infoItem: {
     height: '100%',
     marginLeft: 5,
+    borderWidth:0,
     flexDirection: 'row',
     alignItems: 'center',
   },
