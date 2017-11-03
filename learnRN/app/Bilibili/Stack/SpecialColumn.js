@@ -21,44 +21,39 @@ const styles = StyleSheet.create({
   }
 });
 
+screenItem = (title)=>(class extends Component {render(){return <Text>{title}</Text>}})
+
+
 const SpecialColumn = (initialRouteName)=>{
   return TabNavigator({
     Recommend: {
-      screen: class extends Component {
-        //componentDidMount() {
-        //  const { params } = this.props.navigation.state;
-        //  this.props.navigation.navigate(params.SpecialColumn.keyword)
-        //}
-        render() {
-          return <Text>推荐</Text>
-        }
-      },
+      screen: screenItem('推荐'),
       navigationOptions: { tabBarLabel: '推荐' }
     },
     anime: {
-      screen: class extends Component {componentDidMount(){alert('11')}render(){return <Text>动画</Text>}},
+      screen: screenItem('动画'),
       navigationOptions: { tabBarLabel: '动画' }
     },
     game: {
-      screen: class extends Component {render(){return <Text>游戏</Text>}},
+      screen: screenItem('游戏'),
       navigationOptions: { tabBarLabel: '游戏' }
     },
     novel: {
-      screen: class extends Component {render(){return <Text>轻小说</Text>}},
+      screen: screenItem('轻小说'),
       navigationOptions: { tabBarLabel: '轻小说' }
     },
     science: {
-      screen: class extends Component {render(){return <Text>科技</Text>}},
+      screen: screenItem('科技'),
       navigationOptions: { tabBarLabel: '科技' }
     },
     other: {
-      screen: class extends Component {render(){return <Text>其他</Text>}},
+      screen: screenItem('其他'),
       navigationOptions: { tabBarLabel: '其他' }
     },
   },{
     initialRouteName: initialRouteName,
     tabBarPosition: 'top',
-    animationEnabled: false,
+    animationEnabled: true,
     lazy: true,
     tabBarOptions: {
       activeTintColor: Config.fontColor,
@@ -73,16 +68,20 @@ const SpecialColumn = (initialRouteName)=>{
 export default class extends Component {
   constructor(props) {
     super(props);
-    this.SpecialColumn = <View />
+    this.state={
+      SpecialColumn: <View />
+    }
   }
   componentDidMount() {
     const { params } = this.props.navigation.state;
     //this.props.navigation.navigate(params.SpecialColumn.keyword)
     const SC = SpecialColumn(params.SpecialColumn.keyword);
-    this.SpecialColumn = <SC />
+    this.setState({
+      SpecialColumn: <SC />
+    })
   }
   render() {
-    const SpecialColumn = this.SpecialColumn;
+    const SpecialColumn = this.state.SpecialColumn;
     return SpecialColumn;
   }
 };

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
-import IconButton from '../../../components/g/IconButton';
-import { Config,Images } from "../../../config";
+import IconButton from '../../../../components/g/IconButton/index';
+import { Config,Images } from "../../../../config/index";
 
 class ClassifyBtn extends Component {
 

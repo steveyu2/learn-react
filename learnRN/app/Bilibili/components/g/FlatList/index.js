@@ -67,9 +67,9 @@ class FlatLists extends Component{
     return (
       <FlatList
         renderScrollComponent={this.renderScrollComponent}
-        {...this.props}
         ListFooterComponent={ this.footerComponent()}
         onEndReached={this.onEndReached}
+        {...this.props}
       />
     )
   }
