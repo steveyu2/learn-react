@@ -29,7 +29,6 @@ class ListItem extends PureComponent {
         underlayColor={ "#eee" }
         activeOpacity={ 0.8 }
         onPress={ this._onPress }
-
       >
         <View
           style={ styles.itemWrap }
@@ -61,8 +60,8 @@ const styles = StyleSheet.create({
     //shadowRadius: 5
   },
   itemWrap: {
-    borderWidth: 10,
-    borderRadius: 3,
+    borderWidth: 20,
+    borderRadius: 5,
     borderColor: 'rgba(50,50,50,0.1)',
     backgroundColor: 'transparent',
     //borderBottomWidth: 2,
@@ -71,6 +70,7 @@ const styles = StyleSheet.create({
     //borderRightColor: '#666',
     //borderLeftColor: '#000',
     //borderRightColor: 'red',
+    overflow: 'hidden',
     borderTopWidth: 0,
     borderLeftWidth: 1.2,
     borderRightWidth: 1.2,

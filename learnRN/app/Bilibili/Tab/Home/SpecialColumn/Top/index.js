@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
-import IconButton from '../../../components/g/IconButton';
-import { Config, Images } from "../../../config";
+import IconButton from '../../../../components/g/IconButton';
+import { Config, Images } from "../../../../config";
 import ImgSwiper from "./ImgSwiper";
 import ClassifyBtn from "./ClassifyBtn";
+import SubHeader from "./SubHeader";
 
 class RecommendList extends Component {
 
@@ -14,13 +15,17 @@ class RecommendList extends Component {
   render() {
     const {
       images,
-      onItemPress
+      onItemPress,
+      screenProps
     } = this.props;
 
     return (
-      <View style={styles.wrapper}>
+      <View>
+        <View style={styles.wrapper}>
           <ImgSwiper data={images}/>
           <ClassifyBtn onItemPress={onItemPress}/>
+        </View>
+        <SubHeader screenProps={screenProps}/>
       </View>
     )
   }

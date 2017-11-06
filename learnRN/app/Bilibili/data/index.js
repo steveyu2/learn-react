@@ -1,6 +1,7 @@
 import {
   Recommend,
-  SpecialColumnSwipeImages
+  SpecialColumnSwipeImages,
+  SpecialColumnRecommend
 } from './data';
 
 function uuid() {
@@ -43,6 +44,13 @@ export default {
   getSpecialColumnSwipeImages(callback) {
     setTimeout((v)=>{
       callback&&callback(SpecialColumnSwipeImages)
+    },500)
+  },
+  getSpecialColumnRecommend(callback) {
+    var data = SpecialColumnRecommend.slice().sort(v=>(0.5-Math.random()));
+    data = data.slice(0, 8)
+    setTimeout((v)=>{
+      callback&&callback(data.map(v=>{v.id=uuid();return v}))
     },500)
   }
 }

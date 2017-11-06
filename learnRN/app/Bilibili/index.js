@@ -68,6 +68,9 @@ class Bilibili extends Component{
       case 'SpecialColumnSwipeImages':
         result = DATA.getSpecialColumnSwipeImages.apply(DATA, params);
         break;
+      case 'SpecialColumnRecommend':
+        result = DATA.getSpecialColumnRecommend.apply(DATA, params);
+        break;
       default:
     }
 

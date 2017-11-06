@@ -4,6 +4,7 @@ import FadeInView from '../../../components/g/FadeInView';
 import FlatList from '../../../components/g/FlatList';
 import { Config,Images } from "../../../config";
 import TopCompt from "./Top";
+import RecommendItem from "./RecommendItem";
 
 class SpecialColumn extends Component {
 
@@ -18,18 +19,17 @@ class SpecialColumn extends Component {
     this.ClassifyPress=this.ClassifyPress.bind(this)
   }
 
-  _onPressItem = (id) => {
+  _onPressItem = (id) => {};
 
-  };
-
-  _keyExtractor = (item, index) => item[0].id;
+  _keyExtractor = (item, index) => item.id;
 
   _renderItem = ({item}) => (
-
+    <RecommendItem data={item}/>
   );
 
   componentDidMount() {
     this.getSpecialColumnSwipeImages()
+    this.getSpecialColumnRecommend()
   }
 
   // 获取轮播图片
@@ -41,6 +41,19 @@ class SpecialColumn extends Component {
     getAppState('SpecialColumnSwipeImages', [(data)=>{
       this.setState({
         images: data
+      })
+    }])
+  }
+
+  // 获取推荐文章
+  getSpecialColumnRecommend() {
+    const {
+      getAppState
+    } = this.props.screenProps;
+
+    getAppState('SpecialColumnRecommend', [(data)=>{
+      this.setState({
+        RecommendData: data
       })
     }])
   }
@@ -57,20 +70,22 @@ class SpecialColumn extends Component {
   render() {
 
     const {
-
+      screenProps
     } = this.props;
 
     return (
       <FadeInView style={ styles.wrap }>
         <FlatList
-          // style={}
+          style={{flex:1}}
           refreshComponentColor={ Config.mainColor }
-          data={data}
+          data={this.state.RecommendData}
           // onEndReached={pullUpRefresh}
           // onEndReachedThreshold={0.1}
           // refreshing={refreshing}
           // onRefresh={onRefresh}
-          ListHeaderComponent={ <TopCompt images={} onItemPress={this.ClassifyPress}/> }
+          ListHeaderComponent={ <TopCompt images={this.state.images}
+                                          onItemPress={this.ClassifyPress}
+                                          screenProps={screenProps}/> }
           extraData={this.state}
           keyExtractor={this._keyExtractor}
           renderItem={this._renderItem}

@@ -41,7 +41,7 @@ class IconButton extends Component{
           onPress={ ()=>onPress(this.props) }
           background={ TouchableNativeFeedback.Ripple(null, false) }
         >
-          <View style={ wrapperStyle }>
+          <View style={ [{flexDirection: 'row',alignItems: 'center'},wrapperStyle] }>
             <Image source={ icon } style={ iconStyle } />
             {this.props.children}
           </View>
@@ -55,7 +55,7 @@ class IconButton extends Component{
           activeOpacity={ null }
           onPress={ ()=>onPress(this.props) }
         >
-          <View style={[{flexDirection: 'row'},wrapperStyle]}>
+          <View style={[{flexDirection: 'row',alignItems: 'center'},wrapperStyle]}>
             <Image source={ icon } style={ iconStyle } />
             {this.props.children}
           </View>

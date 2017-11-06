@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
+import { SectionList, StyleSheet, Text, View, Button, Image, Dimensions } from 'react-native';
 import FadeInView from '../../../../components/g/FadeInView/index';
 import { Config,Images } from "../../../../config/index";
 import Swiper from 'react-native-swiper';
@@ -24,6 +24,7 @@ class ImgSwiper extends Component {
           autoplay={true}
           dot={<Dot active={false}/>}
           activeDot={<Dot active={true}/>}
+          autoplayTimeout={4}
           paginationStyle={styles.pagination}>
           {
             data.map((v,i)=>{
@@ -46,10 +47,11 @@ class Dot extends Component {
   }
 }
 const borderRadius = 5;
+const SwiperHeight = (Dimensions.get('window').width - Config.TabNavScreenPadding * 2) * 212/680;
 const styles = StyleSheet.create({
   wrapper: {
     width: '100%',
-    height: 150,
+    height: SwiperHeight,
     borderRadius
   },
   imgItem: {

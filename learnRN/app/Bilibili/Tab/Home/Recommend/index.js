@@ -38,10 +38,12 @@ class Recommend extends PureComponent {
   }
 
   pullUpRefresh(setRefreshState) {
-    setRefreshState('refresh')
-    this.props.screenProps.getAppState('newRecommend',[6,'after',()=>{
-      setRefreshState(null)
-    }])
+    debugger
+    setRefreshState('refresh', ()=>{
+      this.props.screenProps.getAppState('newRecommend',[6,'after',()=>{
+        setRefreshState(null)
+      }])
+    })
   }
 
 

@@ -3,6 +3,10 @@ import { StyleSheet,FlatList, ScrollView, RefreshControl,Text,View } from 'react
 import TwinkleText from '../TwinkleText';
 
 class FlatLists extends Component{
+  static defaultProps = {
+    onEndReached: ()=>{}
+  }
+
   constructor(props) {
     super(props);
 
@@ -56,10 +60,10 @@ class FlatLists extends Component{
   }
 
   onEndReached() {
-    this.props.onEndReached((loadSuccess)=>{
+    this.props.onEndReached((loadSuccess, callback = ()=>{})=>{
       this.setState({
         bottomRefresh: loadSuccess
-      })
+      }, callback)
     })
   }
 
@@ -67,9 +71,9 @@ class FlatLists extends Component{
     return (
       <FlatList
         renderScrollComponent={this.renderScrollComponent}
+        {...this.props}
         ListFooterComponent={ this.footerComponent()}
         onEndReached={this.onEndReached}
-        {...this.props}
       />
     )
   }
