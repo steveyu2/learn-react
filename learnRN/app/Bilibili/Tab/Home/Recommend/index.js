@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     backgroundColor: Config.TabNavScreenColor
   },
   subTitle: {
-    height: 33,
+    height: 38,
   },
   content: {
     //padding: 12,

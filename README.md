@@ -15,7 +15,7 @@
     
     react+webpack
 
-* learnRN [apk下载](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.1.apk)
+* learnRN [apk下载](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.2.apk)
   [说明](https://github.com/qw110946/learn-react/tree/master/learnRN)
  
     环境：

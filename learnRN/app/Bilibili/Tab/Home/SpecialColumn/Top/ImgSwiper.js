@@ -20,7 +20,7 @@ class ImgSwiper extends Component {
     return (
       <View style={styles.wrapper}>
         <Swiper
-          style={{flex:1,borderRadius}}
+          style={{flex:1,borderRadius: 50}}
           autoplay={true}
           dot={<Dot active={false}/>}
           activeDot={<Dot active={true}/>}
