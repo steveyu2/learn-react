@@ -12,20 +12,32 @@ class RecommendContent extends Component {
 
     const paddingStyle = {padding: this.props._padding};
     const {
-      title
+      title,
+      cover,
+      content
     } = this.props;
+
+    const contentPaddingStyle = {
+      paddingTop: this.props._padding - 5,
+      padding: this.props._padding,
+    };
+
     return (
       <View style={styles.wrapper}>
         <Text style={[paddingStyle, styles.title]} numberOfLines={2}>
           {title}
         </Text>
-        <Image />
+        <Image source={{uri: cover}} style={ styles.cover }/>
+        <Text style={[contentPaddingStyle, styles.content]} numberOfLines={2}>
+          {content}
+        </Text>
       </View>
     )
   }
 }
 
 const mediaWidth = Dimensions.get('window').width;
+const mediaHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -36,7 +48,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingTop: 0,
   },
-
+  content: {
+    color: '#777',
+    fontSize: 16,
+    lineHeight: 28,
+  },
+  cover: {
+    width: '100%',
+    height: mediaHeight * 1/7
+  }
 });
 
 export default RecommendContent;

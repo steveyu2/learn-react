@@ -29,7 +29,8 @@ class ClassifyBtn extends Component {
 
 const styles = StyleSheet.create({
   wrapper: {
-    paddingVertical: Config.TabNavScreenPadding + 5,
+    paddingTop: Config.TabNavScreenPadding + 5,
+    paddingBottom: Config.TabNavScreenPadding - 5,
     paddingHorizontal: Config.TabNavScreenPadding,
     flexDirection: 'row',
     justifyContent: 'space-between',

@@ -22,7 +22,8 @@ class RecommendItem extends Component {
   render() {
 
     const {
-      data
+      data,
+      _key,
     } = this.props;
 
     return (
@@ -31,14 +32,22 @@ class RecommendItem extends Component {
         underlayColor={ "#eee" }
         activeOpacity={ 0.8 }
         onPress={ this._onPress }
+        key={_key}
       >
         <View style={styles.wrapper}>
           <UserInfo _padding={ this._padding }
                     avatar={data.faceImg}
                     nikeName={data.nikeName}/>
           <RecommendContent  _padding={ this._padding }
-                             title={data.title}/>
-          <Bottom  _padding={ this._padding }/>
+                             title={data.title}
+                             cover={data.cover}
+                             content={data.info}/>
+          <Bottom  _padding={ this._padding }
+                   type={data.type}
+                   view={data.view}
+                   like={data.like}
+                   reply={data.reply}
+          />
         </View>
       </TouchableHighlight>
     )
@@ -51,7 +60,7 @@ const styles = StyleSheet.create({
   item: {
     alignSelf: 'center',
     width: mediaWidth - Config.TabNavScreenPadding * 2,
-    marginBottom: 10,
+    marginTop: 15,
   },
   wrapper: {
     flex: 1,

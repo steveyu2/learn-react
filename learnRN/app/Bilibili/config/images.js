@@ -24,4 +24,6 @@ export default {
   novel: require("../../../images/icon/novel/novel.png"),
   game: require("../../../images/icon/game/game.png"),
   starBall: require("../../../images/icon/starBall/starBall.png"),
+  community: require("../../../images/icon/community/community.png"),
+  good: require("../../../images/icon/good/good.png"),
 }

@@ -51,7 +51,7 @@ export default {
     data = data.slice(0, 8)
     setTimeout((v)=>{
       callback&&callback(data.map(v=>{v.id=uuid();return v}))
-    },500)
+    },1000)
   }
 }
 

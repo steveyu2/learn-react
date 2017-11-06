@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   iconText: {
     fontSize: 15,
-    color: '#999',
+    color: '#888',
     marginLeft: 10,
   }
 });

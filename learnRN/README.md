@@ -5,10 +5,16 @@
 
 导航用的是react-navigation
 
+数据是假数据
+
+支持android 4.4 5.1 (其他没试过)
+
 效果图
 
 APK下载
 
+   [v1.2](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.2.apk)
+   
    [v1.1](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.1.apk)
 
 learnRN/app/bilibili  项目文件夹

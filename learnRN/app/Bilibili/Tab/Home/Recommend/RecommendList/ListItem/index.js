@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     //shadowRadius: 5
   },
   itemWrap: {
-    borderWidth: 20,
+    borderWidth: 2,
     borderRadius: 5,
     borderColor: 'rgba(50,50,50,0.1)',
     backgroundColor: 'transparent',

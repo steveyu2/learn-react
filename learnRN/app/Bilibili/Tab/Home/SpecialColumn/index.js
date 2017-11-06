@@ -12,11 +12,19 @@ class SpecialColumn extends Component {
     super(props);
 
     this.state={
+      refreshing: false,
       images: undefined,
       RecommendData: [],
     }
 
     this.ClassifyPress=this.ClassifyPress.bind(this)
+    this.pullUpRefresh=this.pullUpRefresh.bind(this)
+    this.onRefresh=this.onRefresh.bind(this)
+  }
+
+  componentDidMount() {
+    this.getSpecialColumnSwipeImages()
+    this.onRefresh()
   }
 
   _onPressItem = (id) => {};
@@ -24,12 +32,32 @@ class SpecialColumn extends Component {
   _keyExtractor = (item, index) => item.id;
 
   _renderItem = ({item}) => (
-    <RecommendItem data={item}/>
+    <RecommendItem data={item} _key={item.id}/>
   );
 
-  componentDidMount() {
-    this.getSpecialColumnSwipeImages()
-    this.getSpecialColumnRecommend()
+  // 上拉
+  onRefresh() {
+    this.setState({
+      refreshing: true
+    },()=>{
+      this.props.screenProps.getAppState('SpecialColumnRecommend',[(data)=>{
+        this.setState({
+          RecommendData: data,
+          refreshing: false
+        })
+      }])
+    })
+  }
+
+  // 下拉
+  pullUpRefresh(setRefreshState) {
+    setRefreshState('refresh', ()=>{
+      this.props.screenProps.getAppState('SpecialColumnRecommend',[(data)=>{
+        this.setState({
+          RecommendData: this.state.RecommendData.concat(data)
+        })
+      }])
+    })
   }
 
   // 获取轮播图片
@@ -41,19 +69,6 @@ class SpecialColumn extends Component {
     getAppState('SpecialColumnSwipeImages', [(data)=>{
       this.setState({
         images: data
-      })
-    }])
-  }
-
-  // 获取推荐文章
-  getSpecialColumnRecommend() {
-    const {
-      getAppState
-    } = this.props.screenProps;
-
-    getAppState('SpecialColumnRecommend', [(data)=>{
-      this.setState({
-        RecommendData: data
       })
     }])
   }
@@ -89,6 +104,10 @@ class SpecialColumn extends Component {
           extraData={this.state}
           keyExtractor={this._keyExtractor}
           renderItem={this._renderItem}
+          onRefresh={this.onRefresh}
+          onEndReached={this.pullUpRefresh}
+          onEndReachedThreshold={0.1}
+          refreshing={this.state.refreshing}
         />
       </FadeInView>
     );
