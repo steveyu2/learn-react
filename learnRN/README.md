@@ -11,6 +11,9 @@
 
 效果图
 
+![.](http://chuantu.biz/t6/131/1510024677x989513218.gif)
+![.](http://chuantu.biz/t6/131/1510024695x989513218.gif)
+
 APK下载
 
    [v1.2](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.2.apk)

@@ -33,6 +33,9 @@ const mediaWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   wrapper: {
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
   },
   icon: {
     height: 22,

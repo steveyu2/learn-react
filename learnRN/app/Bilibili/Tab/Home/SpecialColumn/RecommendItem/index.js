@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     // paddingVertical: Config.TabNavScreenPadding,
     borderWidth: 3,
-    // borderRadius: 3,
+    borderRadius: 5,
     borderColor: 'rgba(50,50,50, 0.1)',
     backgroundColor: '#fff',
     // backgroundColor: 'transparent',

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
-import { TabNavigator } from "react-navigation";
+import { TabNavigator,TabView } from "react-navigation";
 import { Config } from "../config";
 
 const styles = StyleSheet.create({
   label: {
-    fontSize: Config.tabTitleSize
+    fontSize: Config.tabTitleSize,
   },
   indicator: {
     //width: Dimensions.get('window').width/2 - 20,
@@ -15,9 +15,11 @@ const styles = StyleSheet.create({
   },
   tabs: {
     height: Config.TabNavHeight,
+    width: 80,
   },
   tab: {
     backgroundColor: Config.mainColor,
+    overflow: 'scroll'
   }
 });
 
@@ -60,6 +62,7 @@ const SpecialColumn = (initialRouteName)=>{
       inactiveTintColor: Config.TabUnActivefontColor,
       labelStyle: styles.label,
       tabStyle: styles.tabs,
+      scrollEnabled: true,
       style: styles.tab,
       indicatorStyle: styles.indicator,
     },

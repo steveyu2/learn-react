@@ -41,7 +41,7 @@ const mediaHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   wrapper: {
-
+    backgroundColor: '#fff'
   },
   title: {
     color: '#000',
