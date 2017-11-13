@@ -89,13 +89,3 @@ class Bilibili extends Component{
 }
 
 export default Bilibili;
-
-//NetInfo.isConnected.fetch().done(
-//  (isConnected) => {
-//    callback(isConnected);
-//  }
-//);
-//shouldComponentUpdate() {
-//  //完全静态的组件,无需更新
-//  return false;
-//}

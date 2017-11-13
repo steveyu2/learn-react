@@ -1,3 +1,5 @@
+import { Component } from 'react'
+
 export default (props, propName)=>{
   var callback;
 

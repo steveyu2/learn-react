@@ -1,30 +1,9 @@
 import React, { Component } from 'react';
-import {SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
-import { TabNavigator,TabView } from "react-navigation";
+import { StyleSheet, Text, View } from 'react-native';
+import { TabNavigator } from "react-navigation";
 import { Config } from "../config";
 
-const styles = StyleSheet.create({
-  label: {
-    fontSize: Config.tabTitleSize,
-  },
-  indicator: {
-    //width: Dimensions.get('window').width/2 - 20,
-    //marginLeft: 20,
-    //marginRight: 20,
-    backgroundColor: Config.fontColor,
-  },
-  tabs: {
-    height: Config.TabNavHeight,
-    width: 80,
-  },
-  tab: {
-    backgroundColor: Config.mainColor,
-    overflow: 'scroll'
-  }
-});
-
-screenItem = (title)=>(class extends Component {render(){return <Text>{title}</Text>}})
-
+const screenItem = (title)=>(class extends Component {render(){return <Text>{title}</Text>}})
 
 const SpecialColumn = (initialRouteName)=>{
   return TabNavigator({
@@ -68,6 +47,27 @@ const SpecialColumn = (initialRouteName)=>{
     },
   });
 }
+
+const styles = StyleSheet.create({
+  label: {
+    fontSize: Config.tabTitleSize,
+  },
+  indicator: {
+    //width: Dimensions.get('window').width/2 - 20,
+    //marginLeft: 20,
+    //marginRight: 20,
+    backgroundColor: Config.fontColor,
+  },
+  tabs: {
+    height: Config.TabNavHeight,
+    width: 80,
+  },
+  tab: {
+    backgroundColor: Config.mainColor,
+    overflow: 'scroll'
+  }
+});
+
 export default class extends Component {
   constructor(props) {
     super(props);
@@ -77,14 +77,15 @@ export default class extends Component {
   }
   componentDidMount() {
     const { params } = this.props.navigation.state;
-    //this.props.navigation.navigate(params.SpecialColumn.keyword)
-    const SC = SpecialColumn(params.SpecialColumn.keyword);
+    const Screen = SpecialColumn(params.SpecialColumn.keyword);
+
+    // 根据路由参数决定当前显示页
     this.setState({
-      SpecialColumn: <SC />
+      SpecialColumn: <Screen />
     })
   }
   render() {
-    const SpecialColumn = this.state.SpecialColumn;
-    return SpecialColumn;
+    const screen = this.state.SpecialColumn;
+    return screen;
   }
 };

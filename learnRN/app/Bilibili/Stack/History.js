@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import {SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
+import { Text } from 'react-native';
 
 class History extends Component{
 
   render() {
     console.log(this.props)
     return (
-      <Text onPress={()=>{
-      }}>历史记录</Text>
+      <Text>历史记录</Text>
     )
   }
 }

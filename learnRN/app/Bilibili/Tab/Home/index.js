@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SectionList, StyleSheet, Text, View, Button, Image, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { TabNavigator } from "react-navigation";
 import { Config } from "../../config";
 import SpecialColumn from "./SpecialColumn";

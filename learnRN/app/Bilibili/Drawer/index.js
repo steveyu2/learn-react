@@ -1,32 +1,10 @@
 import React, { Component } from 'react';
-import {SectionList, StyleSheet, Text, View, Button, Image, ScrollView, Dimensions  } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import { DrawerNavigator, DrawerItems } from "react-navigation";
 import { Config,Images } from "../config";
 import Tab from '../Tab';
 import Collection from './Collection';
 import DrawerNavHeader from './DrawerNavHeader';
-/**
- * 给跳转stack的路由。占位置的组件
- */
-class UselessRoute extends Component{
-  render(){
-    return <View><Text>UselessRoute</Text></View>
-  }
-}
-/**
- * 判断是否需要跳转到Stack的路由   m: 考虑到有些是要跳弹出页的路由
- * @param route 路由对象
- * @param callback(routeName) 回调
- */
-const isStackRoute = (route, callback) => {
-  const stackRoute = {
-    HistoryDrawer: 'HistoryStack',
-    DownloadDrawer: 'DownloadStack'
-  };
-  const newRoute = stackRoute[route.routeName];
-
-  callback(newRoute !== undefined? newRoute: route.routeName);
-};
 
 const styles = StyleSheet.create({
   icon: {
@@ -41,6 +19,28 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   }
 });
+/**
+ * 给跳转stack的路由。占位置的组件
+ */
+class UselessRoute extends Component{
+  render(){
+    return <View><Text>UselessRoute</Text></View>
+  }
+}
+/**
+ * 判断是否需要跳转到Stack的路由   p: 考虑到有些是要跳弹出页(Stack)的路由
+ * @param route 路由对象
+ * @param callback(routeName) 回调
+ */
+const isStackRoute = (route, callback) => {
+  const stackRoute = {
+    HistoryDrawer: 'HistoryStack',
+    DownloadDrawer: 'DownloadStack'
+  };
+  const newRoute = stackRoute[route.routeName];
+
+  callback(newRoute !== undefined? newRoute: route.routeName);
+};
 
 const Drawer = DrawerNavigator({
   HomeDrawer: {
@@ -143,4 +143,5 @@ const Drawer = DrawerNavigator({
   },
   drawerWidth: Config.drawerWidth, // 侧拉的宽度
 });
+
 export default Drawer;

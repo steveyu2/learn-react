@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {ScrollView,SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
+import {ScrollView, StyleSheet, Text, View } from 'react-native';
 import DrawerHeader from '../components/DrawerHeader';
-import HeaderIcon from '../components/HeaderIcon';
+// import HeaderIcon from '../components/HeaderIcon';
 
 class Collection extends Component{
 
@@ -35,4 +35,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#000"
   }
 })
+
 export default Collection;

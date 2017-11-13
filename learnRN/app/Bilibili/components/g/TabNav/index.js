@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, View, Animated, Easing } from 'react-native';
-import { addNavigationHelpers } from "react-navigation";
+import { StyleSheet, View, Animated } from 'react-native';
+// import { addNavigationHelpers } from "react-navigation";
 import NavButton from './NavButton';
 import NavHeader from '../NormalHeader';
 import isReactComponent from '../isReactComponent';

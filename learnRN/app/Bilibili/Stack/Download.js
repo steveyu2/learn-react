@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
+import { Text } from 'react-native';
 
 class Download extends Component{
 

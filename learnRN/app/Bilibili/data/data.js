@@ -62,6 +62,7 @@ SpecialColumnRecommend = JSON.parse(SpecialColumnRecommend).map((v)=>({
   reply : v[7],
   cover : v[8],
 }));
+
 export {
   Recommend,
   SpecialColumnSwipeImages,

@@ -1,13 +1,23 @@
 ﻿import React, { Component } from 'react';
-import { SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { Config, Images } from "../config";
-import { TabNavigator } from "react-navigation";
+// import { TabNavigator } from "react-navigation";
 import TabNav from '../components/g/TabNav';
 import HeaderIcon from '../components/HeaderIcon';
 import Home from './Home';
 import Dynamic from './Dynamic';
 import Message from './Message';
 import Zone from './Zone';
+
+function rightIconBox(icons = []){
+  return class extends Component{
+    render(){
+      return <View style={ {flexDirection: 'row',marginRight:5} }>
+              { icons.map((V,i)=>{ return <V key={i} {...this.props}/> }) }
+            </View>
+    }
+  }
+}
 
 const styles = StyleSheet.create({
   icon: {
@@ -33,16 +43,6 @@ const styles = StyleSheet.create({
     backgroundColor: Config.mainColor,
   },
 });
-
-function rightIconBox(icons = []){
-  return class extends Component{
-    render(){
-      return <View style={ {flexDirection: 'row',marginRight:5} }>
-              { icons.map((V,i)=>{ return <V key={i} {...this.props}/> }) }
-            </View>
-    }
-  }
-}
 
 const Tab = TabNav({
   HomeTab: {

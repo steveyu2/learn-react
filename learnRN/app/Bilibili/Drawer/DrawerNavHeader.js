@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {ScrollView,SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
-import DrawerHeader from '../components/DrawerHeader';
-import HeaderIcon from '../components/HeaderIcon';
+import { StyleSheet, Text, View, Image } from 'react-native';
+// import DrawerHeader from '../components/DrawerHeader';
+// import HeaderIcon from '../components/HeaderIcon';
 import { Images, Config } from "../config";
 
 class DrawerNavHeader extends Component{

@@ -74,10 +74,10 @@ const styles = StyleSheet.create({
 });
 
 
-TabNav.propTypes = {
+NavButton.propTypes = {
   underlayColor: PropTypes.string,
   onPress: PropTypes.func,
-  images: PropTypes.isReactComponent((props, propsName) => props[propsName]? new Error(propName + '为必填项'): null),
+  images: PropTypes.element,
   title: PropTypes.string,
 };
 

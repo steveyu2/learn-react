@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { TouchableWithoutFeedback, Image, View, StyleSheet } from 'react-native';
-import PropTypes from 'prop-types';
+import {  StyleSheet } from 'react-native';
+// import PropTypes from 'prop-types';
 import { Config, Images } from '../config/index';
 import TabAvatarIcon from './g/TabAvatarIcon/index';
 import IconButton from './g/IconButton/index';

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import FadeInView from '../components/g/FadeInView';
-import { Config, Images } from "../config";
+import { Config } from "../config";
 
 class Message extends Component{
   render() {

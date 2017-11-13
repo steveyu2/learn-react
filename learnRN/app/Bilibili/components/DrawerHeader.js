@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableWithoutFeedback, Image, View, StyleSheet } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { Config, Images } from '../config/index';
 import NormalHeader from './g/NormalHeader/index';
@@ -56,7 +56,7 @@ DrawerHeader.propTypes = {
   title: PropTypes.string,
   navigation: PropTypes.objectOf(PropTypes.shape({
     navigate: PropTypes.func,
-  })
+  }))
 };
 
 export default DrawerHeader;

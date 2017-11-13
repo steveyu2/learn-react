@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { SectionList, StyleSheet, Text, View, Button, Image, ToastAndroid } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import FadeInView from '../../../components/g/FadeInView';
 import SubTitle from './SubTitle';
 import { Config,Images } from "../../../config";
@@ -13,8 +13,8 @@ class Recommend extends PureComponent {
       refreshing: false, // 刷新按钮状态 是否保持刷新
     }
     this.onRefresh = this.onRefresh.bind(this);
-    this.pullUpRefresh = this.pullUpRefresh.bind(this);
-  }
+  this.pullUpRefresh = this.pullUpRefresh.bind(this);
+}
 
   // 组件加载完毕
   componentDidMount() {
