@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: Config.bottomNavLabelSize,
     marginTop: -2,
+    color: Config.TabUnActivefontColor,
   },
   tab: {
     backgroundColor: Config.TabNavTabColor,
@@ -117,7 +118,7 @@ const Tab = TabNav({
 }, {
   underlayColor: Config.underlayColor,
   activeColor: Config.mainColor,
-  unActiveColor: Config.unActiveColor,
+  unActiveColor: Config.TabBottomUnActivefontColor,
   labelStyle: styles.label,
   HeaderLeft: HeaderIcon('drawerNavAvatar', {
     onPress: (props) => {

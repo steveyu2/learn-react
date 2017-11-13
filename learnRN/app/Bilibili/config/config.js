@@ -11,7 +11,8 @@ export default {
   TabNavScreenColor: 'rgba(150,150,150, 0.1)',
   TabNavTabColor: '#fff',
   drawerHeaderSmallFontColor: 'rgba(255, 255, 255, 0.8)',
-  TabUnActivefontColor: 'rgba(255, 255, 255, 0.9)',
+  TabTopUnActivefontColor: 'rgba(255, 255, 255, 0.9)',
+  TabBottomUnActivefontColor: 'rgba(120, 120, 120, 0.7)',
   drawerUnderlayColor: 'rgba(225, 225, 225, 1)', // #eee
   drawerNativeUnderlayColor: 'rgba(255, 255, 255, 0.5)', // #eee
   drawerWidth: 280,

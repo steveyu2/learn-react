@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, View, Animated, Easing } from 'react-native';
 import { addNavigationHelpers } from "react-navigation";
 import NavButton from './NavButton';
 import NavHeader from '../NormalHeader';
+import isReactComponent from '../isReactComponent';
 import PropTypes from 'prop-types';
 
 /**
@@ -91,8 +92,8 @@ class TabNav extends Component{
     }
 
     // 导航左右组件
-    // navconfig 的 HeaderLeft 为null不显示
-    // navconfig[?].HeaderLeft > config.HeaderLeft
+    // navconfig[].HeaderLeft 为null不显示
+    // navconfig[].HeaderLeft > config.HeaderLeft
     if(route.HeaderLeft !== null){
       HeaderLeft = route.HeaderLeft || HeaderLeft;
     }
@@ -230,23 +231,24 @@ const styles = StyleSheet.create({
   }
 });
 
-// class TestConfigProps extends Component{render(){return <Text/>}}
-//
-// TestConfigProps.propsTypes = {
-//   screen: PropTypes.element,
-//   label: PropTypes.string.isRequired,
-//   title: PropTypes.string,
-//   icon: PropTypes.func.isRequired,
-//   HeaderLeft: PropTypes.element,
-//   HeaderRight: PropTypes.element,
-// };
-
 TabNav.propTypes = {
-  navConfigs: PropTypes.object,
+  navConfigs: PropTypes.objectOf(PropTypes.shape({
+    screen: isReactComponent((props, propsName) => props[propsName]? new Error(propName + '为必填项'): null),
+    label: PropTypes.string,
+    title: PropTypes.string,
+    HeaderLeft: isReactComponent,
+    HeaderRight: isReactComponent,
+    icon: PropTypes.func,
+    focused: PropTypes.bool,
+    tintColor: PropTypes.string,
+  })),
   underlayColor: PropTypes.string,
   activeColor: PropTypes.string,
   unActiveColor: PropTypes.string,
   onPress: PropTypes.func,
+  HeaderLeft: isReactComponent,
+  HeaderRight:  isReactComponent,
+  componentProps: PropTypes.func,
 };
 
 export default (navConfigs, config)=>{

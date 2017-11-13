@@ -42,7 +42,7 @@ const Home = TabNavigator({
   lazy: true,
   tabBarOptions: {
     activeTintColor: Config.fontColor,
-    inactiveTintColor: Config.TabUnActivefontColor,
+    inactiveTintColor: Config.TabTopUnActivefontColor,
     labelStyle: styles.label,
     tabStyle: styles.tabs,
     style: styles.tab,
