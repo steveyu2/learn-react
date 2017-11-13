@@ -25,6 +25,7 @@ export default (iconName, props)=>{
       globalProps = {
         icon: Images.download,
         underlayColor: Config.headerIconUnderlayColor,
+        nativeUnderlayColor: Config.drawerNativeUnderlayColor,
         iconStyle: [styles.icon,],
         wrapperStyle: styles.button
       };
@@ -34,6 +35,7 @@ export default (iconName, props)=>{
       globalProps = {
         icon: Images.search,
         underlayColor: Config.headerIconUnderlayColor,
+        nativeUnderlayColor: Config.drawerNativeUnderlayColor,
         iconStyle: [styles.icon],
         wrapperStyle: styles.button
       };
@@ -43,6 +45,7 @@ export default (iconName, props)=>{
       globalProps = {
         noAction: true,
         underlayColor: Config.headerIconUnderlayColor,
+        nativeUnderlayColor: Config.drawerNativeUnderlayColor,
         icon: Images.menu,
         iconStyle: [styles.icon, styles.menu],
         btnStyle: styles.menuBtn

@@ -43,7 +43,7 @@ class TabNav extends Component{
       this.routeScreens.push(this.props.navConfigs[i].screen)
     }
 
-    this.routes = routes
+    this.routes = routes;
     // 当前路由
     this.state={
       fadeAnim: new Animated.Value(1), // 屏幕动效
@@ -159,52 +159,40 @@ class TabNav extends Component{
     /*
       考虑到有一些是父级传入的props,
       并需要传入到screen或header上的左右组件的props里，
-      这里同一写到componentProps里面，这样可以在组件里调用这些prop
+      这里通过componentProps过滤出来然后传到屏幕或头部导航左右组件里,
+      这样可以在组件里调用这些prop
      */
     const componentProps = this.props.componentProps(this.props);
-    const routeConfig = this.getCurrentRouteConfig();
-    const Screen = routeConfig.screen;
-
-    //===========Navigation 设置==========
- /*   const childNavigation = ((navigation)=>{
-      debugger
-      const { state, dispatch } = navigation;
-      const { routes, index } = state;
-
-      let childNavigation = { dispatch, state: routes[index] };
-
-      // Assuming our children want the convenience of calling .navigate() and so on,
-      // we should call addNavigationHelpers to augment our navigation prop:
-      return addNavigationHelpers(childNavigation);
-    })(this.props.navigation);
-  <Screen {...componentProps}/>*/
-    //===============================
-
+    const {
+      title,
+      HeaderLeft,
+      HeaderRight,
+    } = this.getCurrentRouteConfig();
+    // const Screen = routeConfig.screen;
     const ScreenNum = this.routes.indexOf(currentRoute);
+
 
     return (
         <View style={ styles.wrap }>
           {/* 头部 */}
           <NavHeader
             headerStyle={ headerStyle }
-            title={ routeConfig.title }
+            title={ title }
             titleStyle={ titleStyle }
-            HeaderLeft={ routeConfig.HeaderLeft }
-            HeaderRight={ routeConfig.HeaderRight }
-            //
-            componentProps={ componentProps }
+            HeaderLeft={ HeaderLeft? <HeaderLeft {...componentProps}/>: null }
+            HeaderRight={ HeaderRight? <HeaderRight {...componentProps}/>: null }
           />
           {/* 路由内容 */}
-          <Animated.View style={ [
+          <Animated.View style={[
             styles.content,
             {width: this.routes.length*100+'%',marginLeft: ScreenNum*-100+'%'},
             {opacity: this.state.fadeAnim},
-            ] }>
-            {
-              this.routeScreens.map((V,i)=>{
-                return <V {...componentProps} key={i}/>
-              })
-            }
+            ]}>
+              {
+                this.routeScreens.map((V,i)=>{
+                  return <V {...componentProps} key={i}/>
+                })
+              }
           </Animated.View>
           {/* 路由导航 */}
           <View style={ [styles.bottom, bottomNavStyle] }>
@@ -259,10 +247,6 @@ TabNav.propTypes = {
   activeColor: PropTypes.string,
   unActiveColor: PropTypes.string,
   onPress: PropTypes.func,
-  headerStyle: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.number
-  ]),
 };
 
 export default (navConfigs, config)=>{

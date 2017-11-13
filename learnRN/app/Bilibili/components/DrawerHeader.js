@@ -13,20 +13,20 @@ class DrawerHeader extends Component{
       navigation,
     } = this.props;
 
+    const HeaderLeft = HeaderIcon('menu',{
+        onPress: (props)=>{
+          navigation.navigate('DrawerOpen')
+        }
+      }
+    )
+
     return (
       <NormalHeader
         title={ title }
         titleStyle={ styles.title }
         headerStyle={ styles.header }
         align="left"
-        HeaderLeft={
-          HeaderIcon('menu',{
-              onPress: (props)=>{
-                navigation.navigate('DrawerOpen')
-              }
-            }
-          )
-        }
+        HeaderLeft={ <HeaderLeft  /> }
       />
     )
   }

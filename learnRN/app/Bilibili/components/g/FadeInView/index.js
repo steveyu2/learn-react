@@ -4,6 +4,10 @@ import {
   Animated,
 } from 'react-native';
 
+/**
+ * 透明渐变组件
+ */
+
 export default class FadeInView extends Component {
   static defaultProps = {
     style: {},

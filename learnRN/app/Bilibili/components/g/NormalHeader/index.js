@@ -3,13 +3,13 @@ import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 /**
+ * 头部导航组件
  * @props
  *   headerStyle {obj|StyleSheet} 头部样式
  *   title {string} 标题
  *   titleStyle {obj|StyleSheet} 标题
  *   HeaderLeft {ReactComponent} 左侧组件
  *   HeaderRight {ReactComponent} 右侧组件
- *   componentProps {obj} 传入左右侧组件props
  *   align {string} 标题对齐
  */
 
@@ -19,7 +19,8 @@ class NormalHeader extends Component{
     headerStyle: {},
     titleStyle: {},
     align: 'center',
-    componentProps: {},
+    HeaderLeft: null,
+    HeaderRight: null,
   };
 
   render() {
@@ -29,18 +30,15 @@ class NormalHeader extends Component{
       titleStyle,
       HeaderLeft,
       HeaderRight,
-      componentProps,
       align
     } = this.props;
 
-    const TITLE = <Text style={ [styles.title, titleStyle] }>{ !!title && title }</Text>;
+    const TITLE = !!title? <Text style={ [styles.title, titleStyle] }>{ title }</Text>: null;
 
     return (
       <View style={[ styles.header, headerStyle ]}>
         <View style={[ styles.headerChild, styles.headerLeft]}>
-          {!!HeaderLeft &&
-            <HeaderLeft { ...componentProps }/>
-          }
+          { HeaderLeft }
           { align === 'left' && TITLE }
         </View>
         <View style={[ styles.headerChild, styles.headerCenter]}>
@@ -48,9 +46,7 @@ class NormalHeader extends Component{
         </View>
         <View style={[ styles.headerChild, styles.headerRight]}>
           { align === 'right' && TITLE }
-          {!!HeaderRight &&
-            <HeaderRight { ...componentProps }/>
-          }
+          { HeaderRight}
         </View>
       </View>
     )
@@ -86,8 +82,11 @@ const styles = StyleSheet.create({
 });
 
 NormalHeader.propsTypes = {
+  title: PropTypes.string,
   icon: PropTypes.isRequired,
-  align: PropTypes.string.isRequired,
+  align: PropTypes.string,
+  HeaderRight: PropTypes.element,
+  HeaderLeft: PropTypes.element,
 };
 
 export default NormalHeader;

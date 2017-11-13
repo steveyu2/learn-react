@@ -13,7 +13,7 @@ export default {
   drawerHeaderSmallFontColor: 'rgba(255, 255, 255, 0.8)',
   TabUnActivefontColor: 'rgba(255, 255, 255, 0.9)',
   drawerUnderlayColor: 'rgba(225, 225, 225, 1)', // #eee
-  unActiveColor: '#999',
+  drawerNativeUnderlayColor: 'rgba(255, 255, 255, 0.5)', // #eee
   drawerWidth: 280,
   headerHeight: 55,
   TabNavHeight: 41,

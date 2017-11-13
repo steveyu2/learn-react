@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 import { StyleSheet,FlatList, ScrollView, RefreshControl,Text,View } from 'react-native';
 import TwinkleText from '../TwinkleText';
+import PropTypes from 'prop-types';
+
+/**
+ * 封装FlatList上拉下拉
+ * @props
+ *  refreshComponentColor 下拉控件颜色
+ *  progressBackgroundColor 背景颜色
+ */
 
 class FlatLists extends Component{
   static defaultProps = {
-    onEndReached: ()=>{}
+    onEndReached: ()=>{},
+    refreshComponentColor: '#000',
+    progressBackgroundColor: '#fff',
   }
 
   constructor(props) {
@@ -32,13 +42,14 @@ class FlatLists extends Component{
         <ScrollView
           {...props}
           refreshControl={
-                <RefreshControl
-                  colors={[props.refreshComponentColor]}
-                  refreshing={props.refreshing}
-                  onRefresh={props.onRefresh}
-                  progressViewOffset={props.progressViewOffset}
-                />
-              }
+            <RefreshControl
+              progressBackgroundColor={props.progressBackgroundColor}
+              colors={[props.refreshComponentColor]}
+              refreshing={props.refreshing}
+              onRefresh={props.onRefresh}
+              progressViewOffset={props.progressViewOffset}
+            />
+          }
         />
       );
     } else {
@@ -68,10 +79,12 @@ class FlatLists extends Component{
   }
 
   render() {
+    const props = this.props;
+
     return (
       <FlatList
         renderScrollComponent={this.renderScrollComponent}
-        {...this.props}
+        {...props}
         ListFooterComponent={ this.footerComponent()}
         onEndReached={this.onEndReached}
       />
@@ -91,5 +104,11 @@ const styles = StyleSheet.create({
     marginTop: -5
   }
 })
+
+FlatLists.propTypes = {
+  onEndReached: PropTypes.func,
+  refreshComponentColor: PropTypes.string,
+  progressBackgroundColor: PropTypes.string,
+};
 
 export default FlatLists;

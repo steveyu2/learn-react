@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import { TouchableWithoutFeedback, Image, View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
+/**
+ * 头像组件
+ * @props
+ *  btnStyle 按钮样式
+ *  icon 图标source
+ *  icon 图标样式
+ *  avatar 头像source
+ *  avatarStyle 头像样式
+ *  onPress 点击事件
+ */
 
 class TabAvatarIcon extends Component{
 
@@ -48,6 +58,7 @@ const styles = StyleSheet.create({
 TabAvatarIcon.propsTypes = {
   icon: PropTypes.isRequired,
   avatar: PropTypes.isRequired,
+  onPress: PropTypes.func
 };
 
 export default TabAvatarIcon;
