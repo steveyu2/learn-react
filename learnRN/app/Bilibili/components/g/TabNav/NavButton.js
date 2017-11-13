@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, TouchableNativeFeedback, Platform } from 'react-native';
+import PropTypes from 'prop-types';
+import isReactComponent from '../isReactComponent';
 
 /**
  * @props
@@ -8,10 +10,17 @@ import { StyleSheet, Text, View, TouchableHighlight, TouchableNativeFeedback, Pl
  *  onPress {function} 点击事件
  *  images {reactElement} 按钮图片
  *  title 按钮标题
- *  title 标题样式
+ *  titleStyle 标题样式
  */
 //TouchableNativeFeedback
 class NavButton extends Component{
+
+  static defaultProps = {
+    style: {},
+    titleStyle: {},
+    onPress: ()=>{}
+  }
+
   render() {
     const {
       btnStyle,
@@ -63,5 +72,13 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
 });
+
+
+TabNav.propTypes = {
+  underlayColor: PropTypes.string,
+  onPress: PropTypes.func,
+  images: PropTypes.isReactComponent((props, propsName) => props[propsName]? new Error(propName + '为必填项'): null),
+  title: PropTypes.string,
+};
 
 export default NavButton;

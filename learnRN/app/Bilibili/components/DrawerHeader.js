@@ -5,6 +5,12 @@ import { Config, Images } from '../config/index';
 import NormalHeader from './g/NormalHeader/index';
 import HeaderIcon from './HeaderIcon';
 
+/**
+ * 抽屉路由导航
+ * title 标题
+ * navigation 路由导航
+ */
+
 class DrawerHeader extends Component{
 
   render() {
@@ -45,5 +51,12 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   }
 });
+
+DrawerHeader.propTypes = {
+  title: PropTypes.string,
+  navigation: PropTypes.objectOf(PropTypes.shape({
+    navigate: PropTypes.func,
+  })
+};
 
 export default DrawerHeader;

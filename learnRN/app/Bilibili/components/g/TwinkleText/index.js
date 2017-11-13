@@ -4,6 +4,10 @@ import {
   Text
 } from 'react-native';
 
+/**
+ * 闪烁的文字
+ */
+
 export default class TwinkleText extends Component {
   static defaultProps = {
     style: {},

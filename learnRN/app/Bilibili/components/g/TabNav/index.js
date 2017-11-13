@@ -33,6 +33,8 @@ class TabNav extends Component{
 
   static defaultProps = {
     componentProps: ()=>({}),
+    headerStyle: {},
+    bottomNavStyle: {},
   };
 
   constructor(props) {
