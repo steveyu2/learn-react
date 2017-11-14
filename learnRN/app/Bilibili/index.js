@@ -3,12 +3,16 @@
 Stack->Drawer->Tab
  */
 import React, { Component } from 'react';
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import thunk from 'redux-thunk';
 import Stack from './Stack';
 import reducers from './reducers'
 
-let store = createStore(reducers)
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk)
+);
 
 class Bilibili extends Component{
 

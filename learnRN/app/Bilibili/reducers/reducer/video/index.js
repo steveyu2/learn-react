@@ -12,7 +12,7 @@ export default function video(state = initialState, action) {
   switch (action.type) {
     case FETCH_VIDEO_RECOMMEND:
       return {
-        recommend: []
+        recommend:
       }
     default:
       return state

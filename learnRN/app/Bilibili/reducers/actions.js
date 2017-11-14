@@ -1,3 +1,7 @@
+import {
+  VideoRecommend,
+} from './data'
+
 /*
  * action 类型
  */
