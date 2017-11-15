@@ -72,7 +72,7 @@ function delay(data){
   }
 }
 
-export {
+export default{
   VideoRecommend: delay(VideoRecommend),
   SpecialColumnBanners: delay(SpecialColumnBanners),
   SpecialColumnRecommend: delay(SpecialColumnRecommend),

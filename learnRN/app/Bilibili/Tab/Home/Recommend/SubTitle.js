@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
 import { Config,Images } from "../../../config";
 import IconButton from '../../../components/g/IconButton';
+import SimplePropTypes from '../../../components/g/simple-prop-types';
 
 class SubTitle extends Component {
 
@@ -70,4 +71,46 @@ const styles = StyleSheet.create({
     fontSize:13
   }
 });
+
+SubTitle.propTypes = (({ strRq, boolRq, objOfRq, arrOfRq, shape, shapeRq, funcRq })=>({
+  //video: shapeRq({
+  //  recommend: shapeRq({
+  //    loading: boolRq,
+  //    data: arrOfRq(shape({
+  //      title: strRq,
+  //      videoUrl: strRq,
+  //      imageUrl: strRq,
+  //      videoTime: strRq,
+  //      play: strRq,
+  //      danmu: strRq,
+  //      type: strRq,
+  //    }))
+  //  })
+  //}),
+  //specialColumn: shapeRq({
+  //  banners: shapeRq({
+  //    loading: boolRq,
+  //    data: arrOfRq(shape({})),
+  //  }),
+  //  recommend: shapeRq({
+  //    loading: boolRq,
+  //    data: arrOfRq(shape({
+  //      title: strRq,
+  //      info: strRq,
+  //      faceImg: strRq,
+  //      nikeName: strRq,
+  //      type: strRq,
+  //      view: strRq,
+  //      like : strRq,
+  //      reply : strRq,
+  //      cover : strRq,
+  //    }))
+  //  })
+  //})
+  title: strRq,
+  _navigation: shapeRq({
+    navigate: funcRq,
+  })
+}))(SimplePropTypes);
+
 export default SubTitle;

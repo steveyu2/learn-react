@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { TabNavigator } from "react-navigation";
 import { Config } from "../../config";
 import SpecialColumn from "./SpecialColumn";
@@ -50,7 +50,7 @@ const Home = TabNavigator({
   },
 });
 
-export default View || Home;
+export default Home;
 // 因为下一级是navigation的组件
 // 所以重写下props
 /*

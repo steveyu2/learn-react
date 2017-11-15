@@ -46,9 +46,9 @@ class App extends Component{
   }
 }
 
-App.propTypes = (({ strRq, boolRq, objOfRq, arrOfRq, shape })=>({
-  video: objOfRq(shape({
-    recommend: objOfRq(shape({
+App.propTypes = (({ strRq, boolRq, objOfRq, arrOfRq, shape, shapeRq})=>({
+  video: shapeRq({
+    recommend: shapeRq({
       loading: boolRq,
       data: arrOfRq(shape({
         title: strRq,
@@ -59,11 +59,14 @@ App.propTypes = (({ strRq, boolRq, objOfRq, arrOfRq, shape })=>({
         danmu: strRq,
         type: strRq,
       }))
-    }))
-  })),
-  specialColumn: objOfRq(shape({
-    banners: arrOfRq(strRq),
-    recommend: objOfRq(shape({
+    })
+  }),
+  specialColumn: shapeRq({
+    banners: shapeRq({
+      loading: boolRq,
+      data: arrOfRq(shape({})),
+    }),
+    recommend: shapeRq({
       loading: boolRq,
       data: arrOfRq(shape({
         title: strRq,
@@ -76,8 +79,8 @@ App.propTypes = (({ strRq, boolRq, objOfRq, arrOfRq, shape })=>({
         reply : strRq,
         cover : strRq,
       }))
-    }))
-  }))
+    })
+  })
 }))(SimplePropTypes);
 
 function select(state) {

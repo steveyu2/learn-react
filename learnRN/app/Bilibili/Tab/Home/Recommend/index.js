@@ -82,9 +82,9 @@ const styles = StyleSheet.create({
     height: 38,
   },
   content: {
-    //padding: 12,
     flex: 1,
     flexDirection: 'column',
+    //padding: 12,
     // alignItems: 'center',
   }
 });
