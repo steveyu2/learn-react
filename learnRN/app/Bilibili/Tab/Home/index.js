@@ -50,8 +50,10 @@ const Home = TabNavigator({
   },
 });
 
+export default View || Home;
 // 因为下一级是navigation的组件
 // 所以重写下props
+/*
 export default class extends Component{
   render() {
 
@@ -65,4 +67,4 @@ export default class extends Component{
       _navigation
     }}/>
   }
-};
+};*/

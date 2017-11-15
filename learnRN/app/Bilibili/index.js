@@ -4,27 +4,86 @@ Stack->Drawer->Tab
  */
 import React, { Component } from 'react';
 import { createStore, applyMiddleware } from 'redux'
-import { Provider } from 'react-redux'
+import { Provider, connect } from 'react-redux'
 import thunk from 'redux-thunk';
 import Stack from './Stack';
+import PropTypes from 'prop-types';
+import SimplePropTypes from './components/g/simple-prop-types'
 import reducers from './reducers'
 
 const store = createStore(
-  rootReducer,
+  reducers,
   applyMiddleware(thunk)
 );
 
-class Bilibili extends Component{
+class Wrap extends Component{
 
   render() {
     return (
       <Provider store={ store }>
-        <Stack
-          screenProps={{}}
-        />
+        <App/>
       </Provider>
     )
   }
 }
 
-export default Bilibili;
+class App extends Component{
+  render() {
+
+    const {
+      video,
+      specialColumn,
+    } = this.props;
+
+    return (
+      <Stack
+        screenProps={{
+          video,
+          specialColumn
+        }}
+      />
+    )
+  }
+}
+
+App.propTypes = (({ strRq, boolRq, objOfRq, arrOfRq, shape })=>({
+  video: objOfRq(shape({
+    recommend: objOfRq(shape({
+      loading: boolRq,
+      data: arrOfRq(shape({
+        title: strRq,
+        videoUrl: strRq,
+        imageUrl: strRq,
+        videoTime: strRq,
+        play: strRq,
+        danmu: strRq,
+        type: strRq,
+      }))
+    }))
+  })),
+  specialColumn: objOfRq(shape({
+    banners: arrOfRq(strRq),
+    recommend: objOfRq(shape({
+      loading: boolRq,
+      data: arrOfRq(shape({
+        title: strRq,
+        info: strRq,
+        faceImg: strRq,
+        nikeName: strRq,
+        type: strRq,
+        view: strRq,
+        like : strRq,
+        reply : strRq,
+        cover : strRq,
+      }))
+    }))
+  }))
+}))(SimplePropTypes);
+
+function select(state) {
+  return state;
+}
+
+App = connect(select)(App)
+
+export default Wrap;

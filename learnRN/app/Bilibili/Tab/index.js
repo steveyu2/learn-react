@@ -130,8 +130,10 @@ const Tab = TabNav({
   bottomNavStyle: styles.tab,
   componentProps: (props) => ({
     // 给左右组件和屏幕 传入父级传下来的props
-    _navigation: props.navigation,
-    screenProps: props.screenProps,
+    screenProps: {
+      ...props.screenProps,
+      _navigation: props.navigation
+    }
   })
 });
 
