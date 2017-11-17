@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image, Dimensions, TouchableHighlight } from 'react-native';
 import IconButton from '../../../../components/g/IconButton';
+import SimplePropTypes from '../../../../components/g/simple-prop-types';
 import { Config, Images } from "../../../../config";
 
 class UserInfo extends Component {
 
-  static defaultProps = {
-  };
+  // static defaultProps = {
+  //
+  // };
 
   render() {
 
@@ -48,5 +50,12 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   }
 });
+
+UserInfo.propTypes = (({ strRq })=>({
+  type: strRq,
+  view: strRq,
+  like: strRq,
+  reply: strRq,
+}))(SimplePropTypes);
 
 export default UserInfo;

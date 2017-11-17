@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image, Dimensions, TouchableHighlight } from 'react-native';
 import IconButton from '../../../../components/g/IconButton';
+import SimplePropTypes from '../../../../components/g/simple-prop-types';
 import { Config, Images } from "../../../../config";
 
 class Bottom extends Component {
 
-  static defaultProps = {
-  };
+  // static defaultProps = {
+  //
+  // };
 
   render() {
 
@@ -23,14 +25,14 @@ class Bottom extends Component {
     };
 
     return (
-      <View style={[paddingStyle,styles.wrapper]}>
-        <Text style={styles.text}>{type} · {view}阅读</Text>
-        <View style={styles.btnGroup}>
+      <View style={[ paddingStyle, styles.wrapper ]}>
+        <Text style={ styles.text}>{ type } · { view }阅读</Text>
+        <View style={ styles.btnGroup}>
           <IconButton icon={ Images.good }
-                      iconStyle={styles.icon}
-                      wrapperStyle={styles.btn}
-                      noAction={true}>
-            <Text style={[styles.btnText, styles.text]}>
+                      iconStyle={ styles.icon }
+                      wrapperStyle={ styles.btn }
+                      noAction={ true }>
+            <Text style={[ styles.btnText, styles.text ]}>
               {like}
             </Text>
           </IconButton>
@@ -80,5 +82,12 @@ const styles = StyleSheet.create({
     tintColor: '#aaa',
   },
 });
+
+Bottom.propTypes = (({ strRq })=>({
+  type: strRq,
+  view: strRq,
+  like: strRq,
+  reply: strRq,
+}))(SimplePropTypes);
 
 export default Bottom;
