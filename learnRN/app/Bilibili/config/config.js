@@ -1,8 +1,17 @@
 import { Dimensions } from 'react-native';
 
-const mediaWidth = Dimensions.get('window').width;
+var mediaWidth = Dimensions.get('window').width;
+var mediaHeight = Dimensions.get('window').height;
+
+// 横屏情况
+if(mediaWidth > mediaHeight) {
+  mediaWidth = mediaHeight;
+  mediaHeight = Dimensions.get('window').width;
+}
 
 export default {
+  mediaWidth,
+  mediaHeight,
   mainColor: '#1E90FF',//0099FF
   underlayColor: 'rgba(0, 0, 0, 0.1)', // #eee
   headerIconUnderlayColor: 'rgba(255, 255, 255, 0.1)',

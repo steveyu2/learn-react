@@ -44,9 +44,12 @@ var VideoRecommend = [
   ["【7月】将国之天鹰星 15", "https://i2.hdslb.com/bfs/archive/0b451e2b66ebdece7777c94cf569fe350954d452.jpg@160w_100h.webp", "24:08", "1.3万", "387", "将国之天鹰星"],
   ["【4月】月色真美 09【独家正版】", "https://i0.hdslb.com/bfs/archive/5131c630c8023a03a196a07aada19be42e20ef59.jpg@160w_100h.webp", "24:21", "87.3万", "5.0万", "月色真美"]
 ]
+
+// 数据太少了乘个2
 VideoRecommend = VideoRecommend.concat(VideoRecommend)
+
 // 数据取成2的倍数
-VideoRecommend.length % 2 !== 0 && VideoRecommend.pop()
+//VideoRecommend.length % 2 !== 0 && VideoRecommend.pop()
 
 // map设置key reduce分组成 [array(2), array(2)] 的格式
 VideoRecommend = VideoRecommend.map(v=>(

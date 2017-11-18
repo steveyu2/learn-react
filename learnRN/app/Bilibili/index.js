@@ -8,14 +8,13 @@ import { Provider, connect } from 'react-redux'
 import thunk from 'redux-thunk';
 import Stack from './Stack';
 import PropTypes from 'prop-types';
+import Orientation from 'react-native-orientation'
 import SimplePropTypes from './components/g/simple-prop-types'
 import reducers from './reducers'
 import {
-  fetchVideoRecommendLocal,
-  fetchSpecialColumnRecommendLocal,
-  fetchSpecialColumnBannersLocal,
   FETCH_DIRECTION
 } from './reducers/actions'
+import * as actions from './reducers/actions'
 
 const {
   BEFORE,
@@ -26,6 +25,23 @@ const store = createStore(
   reducers,
   applyMiddleware(thunk)
 );
+
+/*------------数据本地模式------------*/
+var
+  fetchVideoRecommend,
+  fetchSpecialColumnRecommend,
+  fetchSpecialColumnBanners;
+
+if(false) {
+  fetchVideoRecommend = actions.fetchVideoRecommendLocal;
+  fetchSpecialColumnRecommend = actions.fetchSpecialColumnRecommendLocal;
+  fetchSpecialColumnBanners = actions.fetchSpecialColumnBannersLocal;
+}else{
+  fetchVideoRecommend = actions.fetchVideoRecommend;
+  fetchSpecialColumnRecommend = actions.fetchSpecialColumnRecommend;
+  fetchSpecialColumnBanners = actions.fetchSpecialColumnBanners;
+}
+/*-----------------------------------*/
 
 class Wrap extends Component{
 
@@ -41,20 +57,20 @@ class Wrap extends Component{
 class App extends Component{
 
   _fetchVideoRecommendToBefore = (callback) => {
-    this.props.dispatch(fetchVideoRecommendLocal(BEFORE, callback))
+    this.props.dispatch(fetchVideoRecommend(BEFORE, callback))
   }
   _fetchVideoRecommendToAfter = (callback) => {
-    this.props.dispatch(fetchVideoRecommendLocal(AFTER, callback))
+    this.props.dispatch(fetchVideoRecommend(AFTER, callback))
   }
 
   _fetchSpecialColumnRecommendToBefore = (callback) => {
-    this.props.dispatch(fetchSpecialColumnRecommendLocal(BEFORE, callback))
+    this.props.dispatch(fetchSpecialColumnRecommend(BEFORE, callback))
   }
   _fetchSpecialColumnRecommendToAfter = (callback) => {
-    this.props.dispatch(fetchSpecialColumnRecommendLocal(AFTER, callback))
+    this.props.dispatch(fetchSpecialColumnRecommend(AFTER, callback))
   }
 
-  _fetchSpecialColumnBanners = () => { this.props.dispatch(fetchSpecialColumnBannersLocal()) }
+  _fetchSpecialColumnBanners = () => { this.props.dispatch(fetchSpecialColumnBanners()) }
 
 
   render() {
@@ -63,6 +79,8 @@ class App extends Component{
       video,
       specialColumn,
     } = this.props;
+
+    Orientation.lockToPortrait();
 
     return (
       <Stack

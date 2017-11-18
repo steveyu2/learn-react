@@ -1,6 +1,6 @@
 import React, { PureComponent  } from 'react';
-import { SectionList, StyleSheet, Text, View, Button, Image, TouchableHighlight, Dimensions, ImageBackground } from 'react-native';
-import { Config,Images } from "../../../../../config/index";
+import { SectionList, StyleSheet, Text, View, Button, Image, TouchableHighlight, ImageBackground } from 'react-native';
+import { Config, Images } from "../../../../../config/index";
 import SimplePropTypes from "../../../../../components/g/simple-prop-types"
 
 class ListItemBottom extends PureComponent {

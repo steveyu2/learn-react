@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SectionList, StyleSheet, Text, View, Button, Image, Dimensions, TouchableHighlight } from 'react-native';
+import { SectionList, StyleSheet, Text, View, Button, Image, TouchableHighlight } from 'react-native';
 import IconButton from '../../../../components/g/IconButton';
 import SimplePropTypes from '../../../../components/g/simple-prop-types';
 import { Config, Images } from "../../../../config";
@@ -54,7 +54,7 @@ class RecommendItem extends Component {
   }
 }
 
-const mediaWidth = Dimensions.get('window').width;
+const mediaWidth = Config.mediaWidth;
 
 const styles = StyleSheet.create({
   item: {

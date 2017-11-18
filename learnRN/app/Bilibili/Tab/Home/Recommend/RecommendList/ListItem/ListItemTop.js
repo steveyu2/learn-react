@@ -1,5 +1,5 @@
 import React, { PureComponent  } from 'react';
-import { SectionList, StyleSheet, Text, View, Image,Dimensions } from 'react-native';
+import { SectionList, StyleSheet, Text, View, Image } from 'react-native';
 import { Config, Images } from "../../../../../config";
 import SimplePropTypes from "../../../../../components/g/simple-prop-types"
 
@@ -40,7 +40,7 @@ class ListItemTop extends PureComponent {
       imageHeight,
     } = this.props;
 
-    const mediaWidth = Dimensions.get('window').width;
+    const mediaWidth = Config.mediaWidth;
     const minSize = mediaWidth < 400;
     play = play.length >= 5&&minSize? ' - -': play;
     danmu = danmu.length >= 5&&minSize? ' - -': danmu;
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
   wrap: {
     // alignItems: 'center',
     justifyContent: 'space-around',
+    backgroundColor: '#fff'
   },
   info: {
     paddingHorizontal: 2,

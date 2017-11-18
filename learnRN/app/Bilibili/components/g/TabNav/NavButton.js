@@ -51,7 +51,8 @@ class NavButton extends Component{
         <TouchableHighlight
           style={ btnStyle }
           underlayColor={ underlayColor }
-          onPress={ onPress }
+          onShowUnderlay={ onPress }
+          onPress={ ()=>{} }
         >
           <View style={ styles.wrap }>
             { images && images }

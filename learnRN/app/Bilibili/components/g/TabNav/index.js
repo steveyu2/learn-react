@@ -47,6 +47,7 @@ class TabNav extends Component{
     }
 
     this.routes = routes;
+    //this.buttons = {};
     // 当前路由
     this.state={
       fadeAnim: new Animated.Value(1), // 屏幕动效
@@ -61,15 +62,15 @@ class TabNav extends Component{
 
     onPress && (isJump = onPress(route));
 
-    this.state.fadeAnim.setValue(0)
-    Animated.timing(
-      this.state.fadeAnim,
-      {
-        toValue: 1,
-      }
-    ).start();
-
     if(this.state.currentRoute !== route && isJump){
+      this.state.fadeAnim.setValue(0)
+      Animated.timing(
+        this.state.fadeAnim,
+        {
+          toValue: 1,
+        }
+      ).start();
+
       this.setState({
         currentRoute: route
       });
@@ -116,6 +117,9 @@ class TabNav extends Component{
   // 获取路由导航按钮
   getNavButtons() {
     const currentRoute = this.state.currentRoute;
+    //if(this.buttons[currentRoute]){
+    //  return this.buttons[currentRoute];
+    //}
     const  {
       navConfigs,
       underlayColor,
@@ -129,6 +133,8 @@ class TabNav extends Component{
       // 是否当前路由
       let isCurrentRoute = currentRoute === i;
       let item = navConfigs[i];
+
+      //isCurrentRoute && (this.buttons[currentRoute] = buttons)
 
       buttons.push(
         <NavButton
@@ -166,6 +172,7 @@ class TabNav extends Component{
       这样可以在组件里调用这些prop
      */
     const componentProps = this.props.componentProps(this.props);
+
     const {
       title,
       HeaderLeft,

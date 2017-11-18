@@ -11,11 +11,13 @@
 
 效果图
 
-![.](http://chuantu.biz/t6/131/1510024677x989513218.gif)
-![.](http://chuantu.biz/t6/131/1510024695x989513218.gif)
+![.](http://i4.bvimg.com/619059/777f861e79dcbb05.png)
+![.](http://i4.bvimg.com/619059/fe174e984aa7403cs.png)
 
 APK下载
 
+   [v1.3](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.3.apk)
+   
    [v1.2](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.2.apk)
    
    [v1.1](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.1.apk)

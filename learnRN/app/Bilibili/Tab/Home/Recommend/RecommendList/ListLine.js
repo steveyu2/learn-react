@@ -1,5 +1,5 @@
 import React, { PureComponent  } from 'react';
-import { StyleSheet, View, TouchableHighlight, Dimensions} from 'react-native';
+import { StyleSheet, View, TouchableHighlight} from 'react-native';
 import { Config, Images } from "../../../../config/index";
 import SimplePropTypes from "../../../../components/g/simple-prop-types"
 import ListItem from "./ListItem";
@@ -41,7 +41,7 @@ const styles = (()=>{
   const fourLostFiveWin = (num)=>(num.toFixed(5)*1)
   const distanceSize = (size)=>(fourLostFiveWin((1-size*2)/2/2/2));
   // alert(fourLostFiveWin(190/Dimensions.get('window').height)) // 0.2959
-  const mediaWidth = Dimensions.get('window').width;
+  const mediaWidth = Config.mediaWidth;
   const itemFlex = 0.475; // 0.48
   const paddingLR = mediaWidth * distanceSize(itemFlex) * 2; // padding Left Right
   //const itemHeight = fourLostFiveWin(Dimensions.get('window').height * 0.283); // 0.48
