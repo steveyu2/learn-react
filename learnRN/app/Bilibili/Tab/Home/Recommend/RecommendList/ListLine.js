@@ -1,18 +1,19 @@
 import React, { PureComponent  } from 'react';
 import { StyleSheet, View, TouchableHighlight, Dimensions} from 'react-native';
-import { Config,Images } from "../../../../config/index";
+import { Config, Images } from "../../../../config/index";
+import SimplePropTypes from "../../../../components/g/simple-prop-types"
 import ListItem from "./ListItem";
 
 class ListLine extends PureComponent {
   static defaultProps = {
-    data: [[],[]]
+    data: [{},{}]
   };
 
   render() {
 
     var leftData = this.props.data[0];
     var rightData = this.props.data[1];
-// debugger
+
     return (
       <View style={ styles.wrap }>
         <ListItem
@@ -33,7 +34,7 @@ class ListLine extends PureComponent {
     )
   }
 }
-const itemWidth = 0;
+var itemWidth = 0;
 const styles = (()=>{
   // 这里对上下左右间距 和 item的高度做了适应
   // 用item的flex 来算 wrap 的 padding
@@ -50,9 +51,9 @@ const styles = (()=>{
       flex: 1,
       marginTop: Config.TabNavScreenPadding,// 3.68
       paddingHorizontal: Config.TabNavScreenPadding - 4,
-      //backgroundColor:'rgba(0,0,0,0)',
       flexDirection: 'row',
       justifyContent: 'space-around',
+      //backgroundColor:'rgba(0,0,0,0)',
       //paddingLeft: paddingLR,
       //paddingRight: paddingLR,
       // alignItems: 'center',
@@ -63,5 +64,19 @@ const styles = (()=>{
     }
   });
 })();
+
+ListLine.propTypes = SimplePropTypes(({ arrOfRq, strRq, shape, funcRq })=>({
+  data: arrOfRq(shape({
+    id: strRq,
+    title: strRq,
+    //videoUrl: strRq,
+    imageUrl: strRq,
+    videoTime: strRq,
+    play: strRq,
+    danmu: strRq,
+    type: strRq,
+  })),
+  onPressItem: funcRq
+}))
 
 export default ListLine;

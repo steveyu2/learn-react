@@ -1,7 +1,7 @@
 import React, { PureComponent  } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image, TouchableHighlight, Dimensions, ImageBackground } from 'react-native';
 import { Config,Images } from "../../../../../config/index";
-
+import SimplePropTypes from "../../../../../components/g/simple-prop-types"
 
 class ListItemBottom extends PureComponent {
 
@@ -43,5 +43,10 @@ const styles = StyleSheet.create({
     color: 'rgba(0,0,0, 0.5)',
   }
 });
+
+ListItemBottom.propTypes = SimplePropTypes(({ strRq, numRq, anyRq })=>({
+  title: anyRq,
+  type: strRq,
+}))
 
 export default ListItemBottom;

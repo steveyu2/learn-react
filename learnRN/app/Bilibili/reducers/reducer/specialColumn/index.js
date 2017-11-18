@@ -6,12 +6,19 @@ import {
   FETCH_SPECIAL_COLUMN_RECOMMEND_REQUEST,
   FETCH_SPECIAL_COLUMN_RECOMMEND_SUCCESS,
   FETCH_SPECIAL_COLUMN_RECOMMEND_FAILURE,
+
+  FETCH_DIRECTION
 } from '../../actions'
+
+const {
+  BEFORE,
+  AFTER
+  } = FETCH_DIRECTION;
 
 const initialState = {
   banners: {
     loading: false,
-    data: []
+    data: new Array(4).fill(' ')
   },
   recommend: {
     loading: false,
@@ -42,7 +49,7 @@ function banners(state, action) {
   }
 }
 
-function recommend(state = [], action) {
+function recommend(state = {}, action) {
   switch (action.type) {
     case FETCH_SPECIAL_COLUMN_RECOMMEND_REQUEST:
       return {
@@ -50,12 +57,12 @@ function recommend(state = [], action) {
         loading: true
       }
     case FETCH_SPECIAL_COLUMN_RECOMMEND_SUCCESS:
-      var data = [action.data, state.recommend];
+      var data = [ action.data, state.data ];
 
       return {
         ...state,
         loading: false,
-        data: [].apply([], action.type === BEFORE? data: data.reverse())
+        data: [].concat.apply([], action.direction === BEFORE? data: data.reverse())
       }
     case FETCH_SPECIAL_COLUMN_RECOMMEND_FAILURE:
       return {

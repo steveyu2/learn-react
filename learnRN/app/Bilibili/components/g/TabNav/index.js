@@ -258,9 +258,9 @@ export default (navConfigs, config)=>{
   return class extends Component{
     render() {
       return <TabNav
-        {...this.props}
+        { ...this.props }
         navConfigs={ navConfigs }
-        {...config}
+        { ...config }
       />
     }
   }

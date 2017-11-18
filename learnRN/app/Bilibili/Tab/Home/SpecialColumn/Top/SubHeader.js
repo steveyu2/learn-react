@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
 import IconButton from '../../../../components/g/IconButton';
 import { Config,Images } from "../../../../config/index";
+import SimplePropTypes from '../../../../components/g/simple-prop-types';
 
 class ClassifyBtn extends Component {
 
@@ -53,5 +54,13 @@ const styles = StyleSheet.create({
     color: Config.mainColor
   }
 });
+
+ClassifyBtn.propTypes = SimplePropTypes(({ shapeRq, funcRq })=>({
+  screenProps:shapeRq({
+    _navigation: shapeRq({
+      navigate: funcRq,
+    })
+  })
+}))
 
 export default ClassifyBtn;

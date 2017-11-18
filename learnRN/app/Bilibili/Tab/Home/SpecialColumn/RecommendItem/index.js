@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image, Dimensions, TouchableHighlight } from 'react-native';
 import IconButton from '../../../../components/g/IconButton';
+import SimplePropTypes from '../../../../components/g/simple-prop-types';
 import { Config, Images } from "../../../../config";
 import Bottom from "./Bottom";
 import RecommendContent from "./RecommendContent";
@@ -32,7 +33,6 @@ class RecommendItem extends Component {
         underlayColor={ "#eee" }
         activeOpacity={ 0.8 }
         onPress={ this._onPress }
-        key={_key}
       >
         <View style={styles.wrapper}>
           <UserInfo _padding={ this._padding }
@@ -77,5 +77,19 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
   }
 });
+
+RecommendItem.propTypes = SimplePropTypes(({ strRq, numRq, shapeRq })=>({
+  data: shapeRq({
+    type: strRq,
+    view: strRq,
+    like: strRq,
+    reply: strRq,
+    title: strRq,
+    cover: strRq,
+    info: strRq,
+    faceImg: strRq,
+    nikeName: strRq
+  }),
+}))
 
 export default RecommendItem;

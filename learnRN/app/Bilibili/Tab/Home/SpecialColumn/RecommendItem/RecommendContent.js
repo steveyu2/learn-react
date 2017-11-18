@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image, Dimensions, TouchableHighlight } from 'react-native';
 import IconButton from '../../../../components/g/IconButton';
+import SimplePropTypes from '../../../../components/g/simple-prop-types';
 import { Config, Images } from "../../../../config";
 
 class RecommendContent extends Component {
 
-  static defaultProps = {
-  };
+  //static defaultProps = {
+  //
+  //};
 
   render() {
 
-    const paddingStyle = {padding: this.props._padding};
     const {
       title,
       cover,
-      content
+      content,
+      _padding
     } = this.props;
+    const paddingStyle = {padding: _padding};
 
     const contentPaddingStyle = {
-      paddingTop: this.props._padding - 5,
-      padding: this.props._padding,
+      paddingTop: _padding - 5,
+      padding: _padding,
     };
 
     return (
@@ -58,5 +61,12 @@ const styles = StyleSheet.create({
     height: mediaHeight * 1/7
   }
 });
+
+RecommendContent.propTypes = SimplePropTypes(({ strRq, numRq })=>({
+  title: strRq,
+  cover: strRq,
+  content: strRq,
+  _padding: numRq
+}))
 
 export default RecommendContent;

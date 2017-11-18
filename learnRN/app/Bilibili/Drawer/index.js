@@ -128,6 +128,7 @@ const Drawer = DrawerNavigator({
         {...props}
         onItemPress={
           ({route}) => isStackRoute(route, (routeName) => {
+            //console.log(props,'123')
             props.navigation.navigate('DrawerClose');
             setTimeout(() => props.navigation.navigate(routeName), 0);
           })

@@ -3,12 +3,9 @@ import { SectionList, StyleSheet, Text, View, Button, Image, Dimensions } from '
 import FadeInView from '../../../../components/g/FadeInView/index';
 import { Config,Images } from "../../../../config/index";
 import Swiper from 'react-native-swiper';
+import SimplePropTypes from '../../../../components/g/simple-prop-types';
 
 class ImgSwiper extends Component {
-
-  static defaultProps = {
-    data: Array(4).fill('1'),
-  };
 
   render() {
 
@@ -18,19 +15,19 @@ class ImgSwiper extends Component {
 
     //data = ['','','','']
     return (
-      <View style={styles.wrapper}>
+      <View style={styles.wrapper }>
         <Swiper
-          style={{flex:1,borderRadius: 50}}
-          autoplay={true}
-          dot={<Dot active={false}/>}
-          activeDot={<Dot active={true}/>}
-          autoplayTimeout={4}
-          paginationStyle={styles.pagination}>
+          style={{ flex:1,borderRadius: 50 }}
+          autoplay={ true }
+          dot={ <Dot active={ false }/> }
+          activeDot={ <Dot active={ true }/> }
+          autoplayTimeout={ 4 }
+          paginationStyle={ styles.pagination }>
           {
-            data.map((v,i)=>{
+            data.map((v, i)=>{
               return (
-                <View key={i} style={{flex:1,borderRadius}}>
-                  <Image style={styles.imgItem} source={{uri: v}}/>
+                <View key={ i } style={{flex:1,borderRadius }}>
+                  <Image style={ styles.imgItem } source={{ uri: v }}/>
                 </View>
               )
             })
@@ -43,7 +40,7 @@ class ImgSwiper extends Component {
 
 class Dot extends Component {
   render() {
-    return <View style={this.props.active?styles.activeDot:styles.dot}/> ;
+    return <View style={this.props.active? styles.activeDot: styles.dot}/> ;
   }
 }
 const borderRadius = 5;
@@ -80,5 +77,9 @@ const styles = StyleSheet.create({
     bottom: 10
   }
 });
+
+ImgSwiper.propTypes = SimplePropTypes(({ arrOfRq, strRq, boolRq })=>({
+  data: arrOfRq(strRq),
+}))
 
 export default ImgSwiper;

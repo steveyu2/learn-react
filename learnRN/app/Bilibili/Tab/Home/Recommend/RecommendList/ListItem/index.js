@@ -1,6 +1,7 @@
 import React, { PureComponent  } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image, TouchableHighlight, Dimensions, ImageBackground } from 'react-native';
 import { Config,Images } from "../../../../../config/index";
+import SimplePropTypes from "../../../../../components/g/simple-prop-types"
 import ListItemTop from "./ListItemTop";
 import ListItemBottom from "./ListItemBottom";
 
@@ -52,13 +53,13 @@ class ListItem extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  item: {
+  /*item: {
     //borderBottomRightRadius: 5,
     //shadowOffset: {width: 0, height: 0},
     //shadowColor: '#fff',
     //shadowOpacity: 1,
     //shadowRadius: 5
-  },
+  },*/
   itemWrap: {
     borderWidth: 2,
     borderRadius: 5,
@@ -80,11 +81,25 @@ const styles = StyleSheet.create({
     // backgroundColor: '#f6f6f6',
   },
   item_image: {
+    //width: '100%',
     //borderRadius: 10,
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
-    //width: '100%',
   },
 });
+
+ListItem.propTypes = SimplePropTypes(({ strRq, shapeRq, funcRq })=>({
+  data: shapeRq({
+    title: strRq,
+    //videoUrl: strRq,
+    imageUrl: strRq,
+    videoTime: strRq,
+    play: strRq,
+    danmu: strRq,
+    type: strRq,
+  }),
+  id: strRq,
+  onPress: funcRq
+}))
 
 export default ListItem;

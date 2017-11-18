@@ -10,6 +10,17 @@ import Stack from './Stack';
 import PropTypes from 'prop-types';
 import SimplePropTypes from './components/g/simple-prop-types'
 import reducers from './reducers'
+import {
+  fetchVideoRecommendLocal,
+  fetchSpecialColumnRecommendLocal,
+  fetchSpecialColumnBannersLocal,
+  FETCH_DIRECTION
+} from './reducers/actions'
+
+const {
+  BEFORE,
+  AFTER
+  } = FETCH_DIRECTION;
 
 const store = createStore(
   reducers,
@@ -28,6 +39,24 @@ class Wrap extends Component{
 }
 
 class App extends Component{
+
+  _fetchVideoRecommendToBefore = (callback) => {
+    this.props.dispatch(fetchVideoRecommendLocal(BEFORE, callback))
+  }
+  _fetchVideoRecommendToAfter = (callback) => {
+    this.props.dispatch(fetchVideoRecommendLocal(AFTER, callback))
+  }
+
+  _fetchSpecialColumnRecommendToBefore = (callback) => {
+    this.props.dispatch(fetchSpecialColumnRecommendLocal(BEFORE, callback))
+  }
+  _fetchSpecialColumnRecommendToAfter = (callback) => {
+    this.props.dispatch(fetchSpecialColumnRecommendLocal(AFTER, callback))
+  }
+
+  _fetchSpecialColumnBanners = () => { this.props.dispatch(fetchSpecialColumnBannersLocal()) }
+
+
   render() {
 
     const {
@@ -39,32 +68,37 @@ class App extends Component{
       <Stack
         screenProps={{
           video,
-          specialColumn
+          fetchVideoRecommendToBefore: this._fetchVideoRecommendToBefore,
+          fetchVideoRecommendToAfter: this._fetchVideoRecommendToAfter,
+          specialColumn,
+          fetchSpecialColumnRecommendToBefore: this._fetchSpecialColumnRecommendToBefore,
+          fetchSpecialColumnRecommendToAfter: this._fetchSpecialColumnRecommendToAfter,
+          fetchSpecialColumnBanners: this._fetchSpecialColumnBanners
         }}
       />
     )
   }
 }
 
-App.propTypes = (({ strRq, boolRq, objOfRq, arrOfRq, shape, shapeRq})=>({
+App.propTypes = SimplePropTypes(({ strRq, boolRq, objOfRq, arrOfRq, shape, shapeRq})=>({
   video: shapeRq({
     recommend: shapeRq({
       loading: boolRq,
-      data: arrOfRq(shape({
+      data: arrOfRq(arrOfRq(shape({
         title: strRq,
-        videoUrl: strRq,
+        //videoUrl: strRq,
         imageUrl: strRq,
         videoTime: strRq,
         play: strRq,
         danmu: strRq,
         type: strRq,
-      }))
+      })))
     })
   }),
   specialColumn: shapeRq({
     banners: shapeRq({
       loading: boolRq,
-      data: arrOfRq(shape({})),
+      data: arrOfRq(strRq),
     }),
     recommend: shapeRq({
       loading: boolRq,
@@ -77,11 +111,11 @@ App.propTypes = (({ strRq, boolRq, objOfRq, arrOfRq, shape, shapeRq})=>({
         view: strRq,
         like : strRq,
         reply : strRq,
-        cover : strRq,
+        cover : strRq
       }))
     })
   })
-}))(SimplePropTypes);
+}))
 
 function select(state) {
   return state;

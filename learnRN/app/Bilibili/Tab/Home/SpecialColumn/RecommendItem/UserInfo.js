@@ -51,11 +51,9 @@ const styles = StyleSheet.create({
   }
 });
 
-UserInfo.propTypes = (({ strRq })=>({
-  type: strRq,
-  view: strRq,
-  like: strRq,
-  reply: strRq,
-}))(SimplePropTypes);
+UserInfo.propTypes = SimplePropTypes(({ strRq })=>({
+  avatar: strRq,
+  nikeName: strRq
+}))
 
 export default UserInfo;

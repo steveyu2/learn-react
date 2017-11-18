@@ -61,7 +61,7 @@ class FlatLists extends Component{
     const isRefresh = this.state.bottomRefresh;
     var text = false;
 
-    if(isRefresh === 'refresh') {
+    if(isRefresh === 'load') {
       text = <TwinkleText style={styles.footerRefreshText}>数据加载中...</TwinkleText>
     }else if(isRefresh === 'nomore'){
       text = <Text style={styles.footerRefreshText}>没有更多了 : )</Text>
@@ -71,7 +71,7 @@ class FlatLists extends Component{
   }
 
   onEndReached() {
-    this.props.onEndReached((loadSuccess, callback = ()=>{})=>{
+    this.props.onEndReached((loadSuccess, callback = ()=>{}) => {
       this.setState({
         bottomRefresh: loadSuccess
       }, callback)

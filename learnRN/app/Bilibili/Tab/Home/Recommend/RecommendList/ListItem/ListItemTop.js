@@ -1,6 +1,7 @@
 import React, { PureComponent  } from 'react';
 import { SectionList, StyleSheet, Text, View, Image,Dimensions } from 'react-native';
 import { Config, Images } from "../../../../../config";
+import SimplePropTypes from "../../../../../components/g/simple-prop-types"
 
 class InfoItem extends PureComponent {
   render() {
@@ -23,6 +24,10 @@ class InfoItem extends PureComponent {
 }
 
 class ListItemTop extends PureComponent {
+
+  static defaultProps = {
+    imageStyle: {}
+  }
 
   render() {
 
@@ -125,5 +130,13 @@ const styles = StyleSheet.create({
     marginRight: 5
   },
 });
+
+ListItemTop.propTypes = SimplePropTypes(({ strRq, numRq, anyRq })=>({
+  source: anyRq,
+  play: strRq,
+  danmu: strRq,
+  videoTime: strRq,
+  imageHeight: numRq
+}))
 
 export default ListItemTop;

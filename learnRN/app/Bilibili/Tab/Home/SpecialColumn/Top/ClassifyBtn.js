@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { SectionList, StyleSheet, Text, View, Button, Image } from 'react-native';
 import IconButton from '../../../../components/g/IconButton/index';
+import SimplePropTypes from '../../../../components/g/simple-prop-types';
 import { Config,Images } from "../../../../config/index";
 
 class ClassifyBtn extends Component {
@@ -15,12 +16,12 @@ class ClassifyBtn extends Component {
     } = this.props;
 
     return [
-      [Images.cd, '动画', 'anime'],
-      [Images.game, '游戏', 'game'],
-      [Images.novel, '轻小说', 'novel'],
-      [Images.starBall, '科技', 'science'],
-      [Images.other, '其他', 'other'],
-    ].map((v,i)=>(
+      [ Images.cd, '动画', 'anime' ],
+      [ Images.game, '游戏', 'game' ],
+      [ Images.novel, '轻小说', 'novel' ],
+      [ Images.starBall, '科技', 'science' ],
+      [ Images.other, '其他', 'other' ]
+    ].map((v,i) => (
       <IconButton
         key={i}
         icon={v[0]}
@@ -36,9 +37,9 @@ class ClassifyBtn extends Component {
 
   render() {
 
-    var {
-      data
-      } = this.props;
+    //var {
+    //  data
+    //  } = this.props;
 
     //data = ['','','','']
     return (
@@ -75,5 +76,9 @@ const styles = StyleSheet.create({
     color: '#333',
   }
 });
+
+ClassifyBtn.propTypes = SimplePropTypes(({ funcRq })=>({
+  onItemPress: funcRq
+}))
 
 export default ClassifyBtn;

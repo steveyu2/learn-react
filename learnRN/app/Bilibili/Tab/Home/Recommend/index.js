@@ -1,70 +1,72 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ToastAndroid } from 'react-native';
 import FadeInView from '../../../components/g/FadeInView';
 import SubTitle from './SubTitle';
 import { Config,Images } from "../../../config";
 import RecommendList from './RecommendList';
+import SimplePropTypes from '../../../components/g/simple-prop-types';
 
 class Recommend extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = {
-      refreshing: false, // 刷新按钮状态 是否保持刷新
-    }
     this.onRefresh = this.onRefresh.bind(this);
-  this.pullUpRefresh = this.pullUpRefresh.bind(this);
-}
+    this.pullUpRefresh = this.pullUpRefresh.bind(this);
+  }
 
   // 组件加载完毕
   componentDidMount() {
-    // 获取数据
-    // debugger
-    if(this.props.screenProps.getAppState('recommend').length === 0){
+    const data = this.props.screenProps.video.recommend.data;
+
+    // 判断数据是否已经存在
+    if(data.length === 0){
       this.onRefresh();
     }
   }
 
   onRefresh() {
-    this.setState({
-      refreshing: true
-    },()=>{
-      this.props.screenProps.getAppState('newRecommend',[6,'before',()=>{
-        this.setState({
-          refreshing: false
-        });
-      }])
-    });
+    this.props.screenProps.fetchVideoRecommendToBefore(({noMore, error})=>{
+      if(!error){
+        noMore &&ToastAndroid.showWithGravity('没有更多了...', ToastAndroid.SHORT, ToastAndroid.CENTER);
+      }else{
+        ToastAndroid.showWithGravity('获取失败', ToastAndroid.SHORT, ToastAndroid.CENTER);
+      }
+    })
   }
 
   pullUpRefresh(setRefreshState) {
-    setRefreshState('refresh', ()=>{
-      this.props.screenProps.getAppState('newRecommend',[6,'after',()=>{
-        setRefreshState(null)
-      }])
+    setRefreshState('load')
+    this.props.screenProps.fetchVideoRecommendToAfter(({noMore, error})=> {
+      if(!error){
+        setRefreshState(noMore? 'nomore': null)
+      }else{
+        ToastAndroid.showWithGravity('获取失败', ToastAndroid.SHORT, ToastAndroid.CENTER);
+      }
     })
   }
 
 
   render() {
-
-    const {
-      refreshing,
-      } = this.state;
     const {
       screenProps
     } = this.props;
 
+    const {
+      _navigation,
+      video
+    } = screenProps;
+
 // debugger
     return (
-      <FadeInView style={[styles.wrap]}>
-        <SubTitle title="综合" style={ styles.subTitle } _navigation={ screenProps._navigation }/>
+      <FadeInView style={[ styles.wrap ]}>
+        <SubTitle title="综合" style={ styles.subTitle } _navigation={ _navigation }/>
         <View style={ styles.content }>
           <RecommendList
+            extraData={ video.recommend }
             onRefresh={ this.onRefresh }
             pullUpRefresh={ this.pullUpRefresh }
-            refreshing={ refreshing }
-            data={ screenProps.getAppState('recommend') }
+            refreshing={ video.recommend.loading }
+            data={ video.recommend.data }
           />
         </View>
       </FadeInView>
@@ -79,7 +81,7 @@ const styles = StyleSheet.create({
     backgroundColor: Config.TabNavScreenColor
   },
   subTitle: {
-    height: 38,
+    height: 38
   },
   content: {
     flex: 1,
@@ -88,5 +90,26 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
   }
 });
+
+Recommend.propTypes = SimplePropTypes(({ strRq, boolRq, arrOfRq, shape, shapeRq, funcRq })=>({
+  screenProps: shapeRq({
+    fetchVideoRecommendToBefore: funcRq,
+    fetchVideoRecommendToAfter: funcRq,
+    video: shapeRq({
+      recommend: shapeRq({
+        loading: boolRq,
+        data: arrOfRq(arrOfRq(shape({
+          title: strRq,
+          //videoUrl: strRq,
+          imageUrl: strRq,
+          videoTime: strRq,
+          play: strRq,
+          danmu: strRq,
+          type: strRq
+        })))
+      })
+    })
+  })
+}))
 
 export default Recommend;

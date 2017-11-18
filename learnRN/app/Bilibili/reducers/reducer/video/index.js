@@ -25,12 +25,12 @@ function recommend(state, action) {
         loading: true
       }
     case FETCH_VIDEO_RECOMMEND_SUCCESS:
-      var data = [action.data, state.recommend];
+      var data = [ action.data, state.data ];
 
       return {
         ...state,
         loading: false,
-        data: [].apply([], action.type === BEFORE? data: data.reverse())
+        data: [].concat.apply([], action.direction === BEFORE? data: data.reverse())
       }
     case FETCH_VIDEO_RECOMMEND_FAILURE:
       return {

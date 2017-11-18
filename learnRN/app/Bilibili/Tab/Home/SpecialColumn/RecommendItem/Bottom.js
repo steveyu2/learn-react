@@ -83,11 +83,11 @@ const styles = StyleSheet.create({
   },
 });
 
-Bottom.propTypes = (({ strRq })=>({
+Bottom.propTypes = SimplePropTypes(({ strRq })=>({
   type: strRq,
   view: strRq,
   like: strRq,
   reply: strRq,
-}))(SimplePropTypes);
+}))
 
 export default Bottom;
