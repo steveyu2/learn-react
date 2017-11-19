@@ -11,10 +11,8 @@
 
 效果图
 
-<!--![.](http://i4.bvimg.com/619059/777f861e79dcbb05.png)-->
-![.](http://i4.bvimg.com/619059/777f861e79dcbb05s.png)
-![.](http://i4.bvimg.com/619059/fe174e984aa7403c.png)
-<!--![.](http://i4.bvimg.com/619059/fe174e984aa7403cs.png)-->
+![.](http://img1.ph.126.net/8aO0__IYkMtpmPrmMbF8UA==/6632648863420472059.png)
+![.](http://img2.ph.126.net/EMAnVxZWmr8yJhM9BOEBEA==/6632287124097527867.png)
 
 APK下载
 
