@@ -11,8 +11,8 @@
 
 效果图
 
-![.](http://i4.bvimg.com/619059/777f861e79dcbb05.png)
-![.](http://i4.bvimg.com/619059/fe174e984aa7403cs.png)
+![.](i4.bvimg.com/619059/777f861e79dcbb05.png)
+![.](i4.bvimg.com/619059/fe174e984aa7403cs.png)
 
 APK下载
 
