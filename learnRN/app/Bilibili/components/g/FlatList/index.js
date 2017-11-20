@@ -62,12 +62,14 @@ class FlatLists extends Component{
     var text = false;
 
     if(isRefresh === 'load') {
-      text = <TwinkleText style={styles.footerRefreshText}>数据加载中...</TwinkleText>
+      text = <TwinkleText style={styles.footerRefreshText }>数据加载中...</TwinkleText>
     }else if(isRefresh === 'nomore'){
-      text = <Text style={styles.footerRefreshText}>没有更多了 : )</Text>
+      text = <Text style={ styles.footerRefreshText }>没有更多了 : )</Text>
+    }else if(isRefresh === 'fail'){
+      text = <Text style={ styles.footerRefreshText } onPress={ this.onEndReached }>加载失败了 : )，点击重试</Text>
     }
 
-    return <View style={styles.footerRefresh}>{text}</View>
+    return <View style={ styles.footerRefresh }>{text}</View>
   }
 
   onEndReached() {

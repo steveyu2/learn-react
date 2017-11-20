@@ -54,9 +54,9 @@ const styles = StyleSheet.create({
 
 DrawerHeader.propTypes = {
   title: PropTypes.string,
-  navigation: PropTypes.objectOf(PropTypes.shape({
+  navigation: PropTypes.shape({
     navigate: PropTypes.func,
-  }))
+  })
 };
 
 export default DrawerHeader;

@@ -56,7 +56,7 @@ class SpecialColumn extends Component {
       if(!error){
         setRefreshState(noMore? 'nomore': null)
       }else{
-        ToastAndroid.showWithGravity('获取失败', ToastAndroid.SHORT, ToastAndroid.CENTER);
+        setRefreshState('fail')
       }
     })
   }

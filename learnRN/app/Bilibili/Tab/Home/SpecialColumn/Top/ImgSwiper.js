@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
   wrapper: {
     width: '100%',
     height: SwiperHeight,
-    borderRadius
+    borderRadius,
+    backgroundColor: '#fff'
   },
   imgItem: {
     flex: 1,
