@@ -21,7 +21,7 @@ class FlatLists extends Component{
     super(props);
 
     this.state = {
-      bottomRefresh: null // nomore refresh null
+      bottomRefresh: null // nomore refresh fail null
     }
 
     this.onEndReached = this.onEndReached.bind(this)

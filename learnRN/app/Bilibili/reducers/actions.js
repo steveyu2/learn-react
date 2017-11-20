@@ -122,7 +122,7 @@ export function fetchVideoRecommendSuccess(data, direction) {
   return { type: FETCH_VIDEO_RECOMMEND_SUCCESS, data, direction }
 }
 export function fetchVideoRecommendFailure(callback) {
-  callback({fail: true})
+  callback({error: true})
   return { type: FETCH_VIDEO_RECOMMEND_FAILURE }
 }
 
