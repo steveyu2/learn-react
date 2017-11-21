@@ -10,8 +10,11 @@ const
   str = PropTypes.string,
   sym = PropTypes.symbol,
   any = PropTypes.any,
+  el = PropTypes.element,
+  node = PropTypes.node,
   types = {
-    arr, bool, func, num, obj, str, sym, any,
+    arr, bool, func, num, obj,
+    str, sym, any, el, node,
     arrRq: arr.isRequired,
     boolRq: bool.isRequired,
     funcRq: func.isRequired,
@@ -20,12 +23,17 @@ const
     strRq: str.isRequired,
     symRq: sym.isRequired,
     anyRq: any.isRequired,
+    elRq: eq.isRequired,
+    node: node.isRequired,
     objOf: (arg) => PropTypes.objectOf(arg),
     objOfRq: (arg) => PropTypes.objectOf(arg).isRequired,
     arrOf: PropTypes.arrayOf,
     arrOfRq: (arg) => PropTypes.arrayOf(arg).isRequired,
     shape: (arg) => PropTypes.shape(arg),
-    shapeRq: (arg) => PropTypes.shape(arg).isRequired
+    shapeRq: (arg) => PropTypes.shape(arg).isRequired,
+    instanceOf: (arg)=>PropTypes.instanceOf(arg),
+    oneOf: (arg)=>PropTypes.oneOf(arg),
+    oneOfType: (arg)=>PropTypes.oneOfType(arg),
   };
 
 export default (callback) => callback({...types})

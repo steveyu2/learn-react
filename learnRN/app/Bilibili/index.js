@@ -43,6 +43,9 @@ if(false) {
 }
 /*-----------------------------------*/
 
+// 竖屏幕显示
+Orientation.lockToPortrait();
+
 class Wrap extends Component{
 
   render() {
@@ -79,8 +82,6 @@ class App extends Component{
       video,
       specialColumn,
     } = this.props;
-
-    Orientation.lockToPortrait();
 
     return (
       <Stack
