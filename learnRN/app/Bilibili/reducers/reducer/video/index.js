@@ -43,6 +43,7 @@ function recommend(state, action) {
 }
 
 export default function video(state = initialState, action) {
+  // alert(action.type)
   switch (action.type) {
     case FETCH_VIDEO_RECOMMEND_REQUEST:
     case FETCH_VIDEO_RECOMMEND_SUCCESS:

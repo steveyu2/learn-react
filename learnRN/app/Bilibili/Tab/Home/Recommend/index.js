@@ -15,24 +15,29 @@ class Recommend extends PureComponent {
   }
 
   // 组件加载完毕
-  componentDidMount() {
+  /*componentDidMount() {
     const data = this.props.screenProps.video.recommend.data;
 
     // 判断数据是否已经存在
     if(data.length === 0){
       this.onRefresh();
     }
-  }
+  }*/
 
   onRefresh({show, hide}) {
     this.props.screenProps.fetchVideoRecommendToBefore(({noMore, error})=>{
       if(!error){
-        noMore &&ToastAndroid.showWithGravity('没有更多了...', ToastAndroid.SHORT, ToastAndroid.CENTER);
-      }else{
-        if(this.props.video.recommend.data.length === 0){
-          show()
+        if(noMore){
+          ToastAndroid.showWithGravity('没有更多了...', ToastAndroid.SHORT, ToastAndroid.CENTER);
+        }else{
+          hide()
         }
-        ToastAndroid.showWithGravity('获取失败', ToastAndroid.SHORT, ToastAndroid.CENTER);
+      }else{
+        if(this.props.screenProps.video.recommend.data.length === 0){
+          show()
+        }else{
+          ToastAndroid.showWithGravity('获取失败', ToastAndroid.SHORT, ToastAndroid.CENTER);
+        }
       }
     })
   }
@@ -65,6 +70,7 @@ class Recommend extends PureComponent {
         <SubTitle title="综合" style={ styles.subTitle } _navigation={ _navigation }/>
         <View style={ styles.content }>
           <RecommendList
+            firstOnRefresh={ video.recommend.data.length === 0 }
             extraData={ video.recommend }
             onRefresh={ this.onRefresh }
             pullUpRefresh={ this.pullUpRefresh }
@@ -73,9 +79,15 @@ class Recommend extends PureComponent {
             failComponent={class extends Component{
               render() {
                 return (
-                  <View>
-                    <Text>加载失败</Text>
-                    <Button onPress={ this.props.onPress }>重试</Button>
+                  <View style={{
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginTop: 200
+                  }}>
+                    <Text style={{ marginRight: 10 }}>加载失败了</Text>
+                    <Button onPress={ this.props.onPress } style={{ height: 10 }} title="点击重试"/>
+                    <Text style={{ marginLeft: 10  }}>:  )</Text>
                   </View>
                 )
               }

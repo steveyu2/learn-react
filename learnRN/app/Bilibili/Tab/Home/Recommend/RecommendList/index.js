@@ -32,7 +32,8 @@ class RecommendList extends PureComponent {
       refreshing,
       style,
       pullUpRefresh,
-      failComponent
+      failComponent,
+      firstOnRefresh
     } = this.props;
 
     return (
@@ -48,6 +49,7 @@ class RecommendList extends PureComponent {
         keyExtractor={ this._keyExtractor }
         renderItem={ this._renderItem }
         failComponent={ failComponent }
+        firstOnRefresh={ firstOnRefresh }
       />
     );
   }
@@ -71,6 +73,7 @@ RecommendList.propTypes = SimplePropTypes(({ arrOfRq, strRq, shape, funcRq, bool
   pullUpRefresh: funcRq,
   onRefresh: funcRq,
   refreshing: boolRq,
+  firstOnRefresh: boolRq,
   failComponent: isReactComponent
 }))
 

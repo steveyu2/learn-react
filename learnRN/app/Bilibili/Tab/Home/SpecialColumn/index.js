@@ -17,20 +17,19 @@ class SpecialColumn extends Component {
     this.onRefresh=this.onRefresh.bind(this)
   }
 
-  componentDidMount() {
+  /*componentDidMount() {
     const recommendData = this.props.screenProps.specialColumn.recommend.data;
     const bannersData = this.props.screenProps.specialColumn.banners.data;
 
     // 判断数据是否已经存在
-    if(recommendData.length === 0){
+    if(){
       this.onRefresh()
     }
 
-    if(bannersData[0].indexOf('http') === -1 ){
-      this.getSpecialColumnSwipeImages()
+    if(){
     }
 
-  }
+  }*/
 
   _onPressItem = (id) => {};
 
@@ -40,12 +39,22 @@ class SpecialColumn extends Component {
     <RecommendItem data={ item }/>
   );
 
-  onRefresh() {
+  onRefresh({show, hide}) {
+    this.getSpecialColumnSwipeImages()
+
     this.props.screenProps.fetchSpecialColumnRecommendToBefore(({noMore, error})=>{
       if(!error){
-        noMore &&ToastAndroid.showWithGravity('没有更多了...', ToastAndroid.SHORT, ToastAndroid.CENTER);
+        if(noMore){
+          ToastAndroid.showWithGravity('没有更多了...', ToastAndroid.SHORT, ToastAndroid.CENTER);
+        }else{
+          hide()
+        }
       }else{
-        ToastAndroid.showWithGravity('获取失败', ToastAndroid.SHORT, ToastAndroid.CENTER);
+        if(this.props.screenProps.specialColumn.recommend.data.length === 0){
+          show()
+        }else{
+          ToastAndroid.showWithGravity('获取失败', ToastAndroid.SHORT, ToastAndroid.CENTER);
+        }
       }
     })
   }
@@ -63,7 +72,6 @@ class SpecialColumn extends Component {
 
   // 获取轮播图片
   getSpecialColumnSwipeImages() {
-
     this.props.screenProps.fetchSpecialColumnBanners()
   }
 
@@ -82,12 +90,16 @@ class SpecialColumn extends Component {
       specialColumn
     } = this.props.screenProps;
 
+    // 是否进行初次渲染
+    const firstOnRefresh = specialColumn.recommend.data.length === 0 || specialColumn.banners.data[0].indexOf('http') === -1;
+
     // 判断是否渲染 来 同步渲染
-    isRender = specialColumn.recommend.data.length > 0 && specialColumn.banners.data.length > 0;
+    const isRender = specialColumn.recommend.data.length > 0 && specialColumn.banners.data.length > 0;
 
     return (
       <FadeInView style={ styles.wrap }>
         <FlatList
+          firstOnRefresh={ firstOnRefresh }
           style={{ flex:1 }}
           refreshComponentColor={ Config.mainColor }
           data={ specialColumn.recommend.data }
@@ -102,6 +114,22 @@ class SpecialColumn extends Component {
           onEndReachedThreshold={ 0.1 }
           refreshing={ specialColumn.recommend.loading }
           extraData={ specialColumn.recommend }
+          failComponent={class extends Component{
+            render() {
+              return (
+                <View style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 200
+                }}>
+                  <Text style={{ marginRight: 10 }}>加载失败了</Text>
+                  <Button onPress={ this.props.onPress } style={{ height: 10 }} title="点击重试"/>
+                  <Text style={{ marginLeft: 10  }}>:  )</Text>
+                </View>
+              )
+            }
+          }}
         />
       </FadeInView>
     );

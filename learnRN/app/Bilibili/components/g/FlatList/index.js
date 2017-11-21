@@ -30,6 +30,7 @@ class FlatLists extends Component{
 
     this.onEndReached = this.onEndReached.bind(this)
     this.onRefresh = this.onRefresh.bind(this)
+    this.renderScrollComponent = this.renderScrollComponent.bind(this)
   }
 
   componentDidMount() {
@@ -46,7 +47,7 @@ class FlatLists extends Component{
     } = this.props;
 
     onRefresh && onRefresh({
-      show: (callback) => this.setState({ bottomRefresh: failComponent }, callback),
+      show: (callback) => this.setState({ bottomRefresh: 'failComponent' }, callback),
       hide: (callback) => this.setState({ bottomRefresh: null }, callback)
     })
   }
@@ -70,7 +71,7 @@ class FlatLists extends Component{
               progressBackgroundColor={ props.progressBackgroundColor }
               colors={[ props.refreshComponentColor ]}
               refreshing={ props.refreshing }
-              onRefresh={ props.onRefresh }
+              onRefresh={ this.onRefresh }
               progressViewOffset={ props.progressViewOffset }
             />
           }
@@ -93,7 +94,7 @@ class FlatLists extends Component{
     }else if(isRefresh === 'fail'){
       text = <Text style={ styles.footerRefreshText } onPress={ this.onEndReached }>加载失败了 : )，点击重试</Text>
     }else if(isRefresh === 'failComponent'){
-      text = <FailComponent onPress={ this.onRefresh }/>
+      return <FailComponent onPress={ this.onRefresh }/>
     }
 
     return <View style={ styles.footerRefresh }>{text}</View>
