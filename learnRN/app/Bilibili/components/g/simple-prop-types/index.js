@@ -23,7 +23,7 @@ const
     strRq: str.isRequired,
     symRq: sym.isRequired,
     anyRq: any.isRequired,
-    elRq: eq.isRequired,
+    elRq: el.isRequired,
     node: node.isRequired,
     objOf: (arg) => PropTypes.objectOf(arg),
     objOfRq: (arg) => PropTypes.objectOf(arg).isRequired,

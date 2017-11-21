@@ -1,6 +1,7 @@
 import React, { PureComponent, Component } from 'react';
 import { StyleSheet, View, ToastAndroid, Text, Button } from 'react-native';
 import FadeInView from '../../../components/g/FadeInView';
+import LoadFail from '../../../components/LoadFail';
 import SubTitle from './SubTitle';
 import { Config,Images } from "../../../config";
 import RecommendList from './RecommendList';
@@ -10,9 +11,29 @@ class Recommend extends PureComponent {
 
   constructor(props) {
     super(props);
+    this.state = {
+      failText: '加载失败'
+    }
+
+    this.handleNetInfo()
+
     this.onRefresh = this.onRefresh.bind(this);
     this.pullUpRefresh = this.pullUpRefresh.bind(this);
   }
+
+  handleNetInfo() {
+    // 判断网络状态 设置失败信息
+    NetInfo.isConnected.fetch().done((isConnected) => {
+      this.setState({ failText: isConnected? '加载失败':'网络好像断开了，请连接网络' })
+    });
+
+    NetInfo.isConnected.addEventListener(
+      'change',
+      () => this.setState({ failText: '网络好像断开了，请连接网络' })
+    );
+  }
+
+  toast = (msg) => ToastAndroid.showWithGravity(msg, ToastAndroid.SHORT, ToastAndroid.CENTER);
 
   // 组件加载完毕
   /*componentDidMount() {
@@ -28,7 +49,7 @@ class Recommend extends PureComponent {
     this.props.screenProps.fetchVideoRecommendToBefore(({noMore, error})=>{
       if(!error){
         if(noMore){
-          ToastAndroid.showWithGravity('没有更多了...', ToastAndroid.SHORT, ToastAndroid.CENTER);
+          this.toast('没有更多了...')
         }else{
           hide()
         }
@@ -36,7 +57,7 @@ class Recommend extends PureComponent {
         if(this.props.screenProps.video.recommend.data.length === 0){
           show()
         }else{
-          ToastAndroid.showWithGravity('获取失败', ToastAndroid.SHORT, ToastAndroid.CENTER);
+          this.toast(this.state.failText)
         }
       }
     })
@@ -76,22 +97,7 @@ class Recommend extends PureComponent {
             pullUpRefresh={ this.pullUpRefresh }
             refreshing={ video.recommend.loading }
             data={ video.recommend.data }
-            failComponent={class extends Component{
-              render() {
-                return (
-                  <View style={{
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    marginTop: 200
-                  }}>
-                    <Text style={{ marginRight: 10 }}>加载失败了</Text>
-                    <Button onPress={ this.props.onPress } style={{ height: 10 }} title="点击重试"/>
-                    <Text style={{ marginLeft: 10  }}>:  )</Text>
-                  </View>
-                )
-              }
-            }}
+            failComponent={ <LoadFail /> }
           />
         </View>
       </FadeInView>

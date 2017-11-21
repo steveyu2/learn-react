@@ -1,5 +1,5 @@
 import React, { Component,PureComponent } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, NetInfo } from 'react-native';
 import FlatList from '../../../../components/g/FlatList/index';
 import SimplePropTypes from '../../../../components/g/simple-prop-types';
 import isReactComponent from '../../../../components/g/isReactComponent';
@@ -12,9 +12,11 @@ class RecommendList extends PureComponent {
   //  this.props.onPressItem(this.props.id);
   //};
 
-  _onPressItem = (id) => {
+  constructor(props) {
+    super(props);
+  }
 
-  };
+  _onPressItem = (id) => { };
 
   _keyExtractor = (item, index) => item[0].id + item[1].id;
 
@@ -42,10 +44,9 @@ class RecommendList extends PureComponent {
         refreshComponentColor={ Config.mainColor }
         data={ data }
         onEndReached={ pullUpRefresh }
-        onEndReachedThreshold={ 0.1 }
+        onEndReachedThreshold={ 0.02 }
         refreshing={ refreshing }
         onRefresh={ onRefresh }
-        extraData={ this.state }
         keyExtractor={ this._keyExtractor }
         renderItem={ this._renderItem }
         failComponent={ failComponent }

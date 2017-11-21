@@ -18,19 +18,36 @@ class FlatLists extends Component{
     onEndReached: ()=>{},
     refreshComponentColor: '#000',
     progressBackgroundColor: '#fff',
-    failComponent: <Text>加载失败，点击重试...</Text>
+    failComponent: class extends Component {
+      render() { return <Text onPress={ this.props.onPress }>{ this.props.failText }，点击重试...</Text> }
+    }
   }
 
   constructor(props) {
     super(props);
 
     this.state = {
-      bottomRefresh: null // nomore refresh fail null
+      bottomRefresh: null, // nomore refresh fail null
+      failText: '加载失败了'
     }
+
+    this.handleNetInfo()
 
     this.onEndReached = this.onEndReached.bind(this)
     this.onRefresh = this.onRefresh.bind(this)
     this.renderScrollComponent = this.renderScrollComponent.bind(this)
+  }
+
+  handleNetInfo() {
+    // 判断网络状态 设置失败信息
+    NetInfo.isConnected.fetch().done((isConnected) => {
+      this.setState({ failText: isConnected? '加载失败了':'网络好像断开了' })
+    });
+
+    NetInfo.isConnected.addEventListener(
+      'change',
+      () => this.setState({ failText: '网络好像断开了' })
+    );
   }
 
   componentDidMount() {
@@ -92,9 +109,9 @@ class FlatLists extends Component{
     }else if(isRefresh === 'nomore'){
       text = <Text style={ styles.footerRefreshText }>没有更多了 : )</Text>
     }else if(isRefresh === 'fail'){
-      text = <Text style={ styles.footerRefreshText } onPress={ this.onEndReached }>加载失败了 : )，点击重试</Text>
+      text = <Text style={ styles.footerRefreshText } onPress={ this.onEndReached }>{this.state.failText} : )，点击重试</Text>
     }else if(isRefresh === 'failComponent'){
-      return <FailComponent onPress={ this.onRefresh }/>
+      return <FailComponent onPress={ this.onRefresh } failText={ this.state.failText }/>
     }
 
     return <View style={ styles.footerRefresh }>{text}</View>
