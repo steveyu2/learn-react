@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react';
-import { StyleSheet, View, ToastAndroid } from 'react-native';
+import React, { PureComponent, Component } from 'react';
+import { StyleSheet, View, ToastAndroid, Text, Button } from 'react-native';
 import FadeInView from '../../../components/g/FadeInView';
 import SubTitle from './SubTitle';
 import { Config,Images } from "../../../config";
@@ -24,11 +24,14 @@ class Recommend extends PureComponent {
     }
   }
 
-  onRefresh() {
+  onRefresh({show, hide}) {
     this.props.screenProps.fetchVideoRecommendToBefore(({noMore, error})=>{
       if(!error){
         noMore &&ToastAndroid.showWithGravity('没有更多了...', ToastAndroid.SHORT, ToastAndroid.CENTER);
       }else{
+        if(this.props.video.recommend.data.length === 0){
+          show()
+        }
         ToastAndroid.showWithGravity('获取失败', ToastAndroid.SHORT, ToastAndroid.CENTER);
       }
     })
@@ -67,6 +70,16 @@ class Recommend extends PureComponent {
             pullUpRefresh={ this.pullUpRefresh }
             refreshing={ video.recommend.loading }
             data={ video.recommend.data }
+            failComponent={class extends Component{
+              render() {
+                return (
+                  <View>
+                    <Text>加载失败</Text>
+                    <Button onPress={ this.props.onPress }>重试</Button>
+                  </View>
+                )
+              }
+            }}
           />
         </View>
       </FadeInView>

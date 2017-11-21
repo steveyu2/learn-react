@@ -2,6 +2,7 @@ import React, { Component,PureComponent } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import FlatList from '../../../../components/g/FlatList/index';
 import SimplePropTypes from '../../../../components/g/simple-prop-types';
+import isReactComponent from '../../../../components/g/isReactComponent';
 import { Config,Images } from "../../../../config/index";
 import ListLine from './ListLine';
 
@@ -30,7 +31,8 @@ class RecommendList extends PureComponent {
       onRefresh,
       refreshing,
       style,
-      pullUpRefresh
+      pullUpRefresh,
+      failComponent
     } = this.props;
 
     return (
@@ -45,6 +47,7 @@ class RecommendList extends PureComponent {
         extraData={ this.state }
         keyExtractor={ this._keyExtractor }
         renderItem={ this._renderItem }
+        failComponent={ failComponent }
       />
     );
   }
@@ -68,6 +71,7 @@ RecommendList.propTypes = SimplePropTypes(({ arrOfRq, strRq, shape, funcRq, bool
   pullUpRefresh: funcRq,
   onRefresh: funcRq,
   refreshing: boolRq,
+  failComponent: isReactComponent
 }))
 
 export default RecommendList;

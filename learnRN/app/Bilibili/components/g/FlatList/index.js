@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { StyleSheet,FlatList, ScrollView, RefreshControl,Text,View } from 'react-native';
 import TwinkleText from '../TwinkleText';
+import isReactComponent from '../isReactComponent'
 import PropTypes from 'prop-types';
 
 /**
  * 封装FlatList上拉下拉
  * @props
+ *  firstOnRefresh 是否进行初次onRefresh
  *  refreshComponentColor 下拉控件颜色
  *  progressBackgroundColor 背景颜色
+ *  failComponent 失败的组件
  */
 
 class FlatLists extends Component{
@@ -15,6 +18,7 @@ class FlatLists extends Component{
     onEndReached: ()=>{},
     refreshComponentColor: '#000',
     progressBackgroundColor: '#fff',
+    failComponent: <Text>加载失败，点击重试...</Text>
   }
 
   constructor(props) {
@@ -25,6 +29,26 @@ class FlatLists extends Component{
     }
 
     this.onEndReached = this.onEndReached.bind(this)
+    this.onRefresh = this.onRefresh.bind(this)
+  }
+
+  componentDidMount() {
+    const {
+      firstOnRefresh
+    } = this.props
+
+    firstOnRefresh && this.onRefresh()
+  }
+
+  onRefresh() {
+    const {
+      onRefresh
+    } = this.props;
+
+    onRefresh && onRefresh({
+      show: (callback) => this.setState({ bottomRefresh: failComponent }, callback),
+      hide: (callback) => this.setState({ bottomRefresh: null }, callback)
+    })
   }
 
   renderScrollComponent(props) {
@@ -43,11 +67,11 @@ class FlatLists extends Component{
           {...props}
           refreshControl={
             <RefreshControl
-              progressBackgroundColor={props.progressBackgroundColor}
-              colors={[props.refreshComponentColor]}
-              refreshing={props.refreshing}
-              onRefresh={props.onRefresh}
-              progressViewOffset={props.progressViewOffset}
+              progressBackgroundColor={ props.progressBackgroundColor }
+              colors={[ props.refreshComponentColor ]}
+              refreshing={ props.refreshing }
+              onRefresh={ props.onRefresh }
+              progressViewOffset={ props.progressViewOffset }
             />
           }
         />
@@ -59,23 +83,26 @@ class FlatLists extends Component{
 
   footerComponent() {
     const isRefresh = this.state.bottomRefresh;
+    const FailComponent = this.props.failComponent;
     var text = false;
 
     if(isRefresh === 'load') {
-      text = <TwinkleText style={styles.footerRefreshText }>数据加载中...</TwinkleText>
+      text = <TwinkleText style={ styles.footerRefreshText }>数据加载中...</TwinkleText>
     }else if(isRefresh === 'nomore'){
       text = <Text style={ styles.footerRefreshText }>没有更多了 : )</Text>
     }else if(isRefresh === 'fail'){
       text = <Text style={ styles.footerRefreshText } onPress={ this.onEndReached }>加载失败了 : )，点击重试</Text>
+    }else if(isRefresh === 'failComponent'){
+      text = <FailComponent onPress={ this.onRefresh }/>
     }
 
     return <View style={ styles.footerRefresh }>{text}</View>
   }
 
   onEndReached() {
-    this.props.onEndReached((loadSuccess, callback = ()=>{}) => {
+    this.props.onEndReached((loadState, callback = ()=>{}) => {
       this.setState({
-        bottomRefresh: loadSuccess
+        bottomRefresh: loadState
       }, callback)
     })
   }
@@ -85,10 +112,11 @@ class FlatLists extends Component{
 
     return (
       <FlatList
-        renderScrollComponent={this.renderScrollComponent}
+        renderScrollComponent={ this.renderScrollComponent }
         {...props}
-        ListFooterComponent={ this.footerComponent()}
-        onEndReached={this.onEndReached}
+        ListFooterComponent={ this.footerComponent() }
+        onEndReached={ this.onEndReached }
+        onRefresh={ this.onRefresh }
       />
     )
   }
@@ -108,6 +136,8 @@ const styles = StyleSheet.create({
 })
 
 FlatLists.propTypes = {
+  failComponent: isReactComponent,
+  firstOnRefresh: PropTypes.bool,
   onEndReached: PropTypes.func,
   refreshComponentColor: PropTypes.string,
   progressBackgroundColor: PropTypes.string,
