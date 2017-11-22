@@ -21,7 +21,7 @@ class RecommendList extends Component {
       isRender
     } = this.props;
 
-    return isRender &&
+    return isRender ?
       <View>
         <View style={styles.wrapper}>
           <ImgSwiper data={ images }/>
@@ -29,6 +29,7 @@ class RecommendList extends Component {
         </View>
         <SubHeader screenProps={ screenProps }/>
       </View>
+      : <View />
   }
 }
 

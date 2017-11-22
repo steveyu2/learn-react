@@ -31,7 +31,7 @@ class SpecialColumn extends Component {
     });
 
     NetInfo.isConnected.addEventListener(
-      'change',
+      'connectionChange',
       () => this.setState({ failText: '网络好像断开了，请连接网络' })
     );
   }

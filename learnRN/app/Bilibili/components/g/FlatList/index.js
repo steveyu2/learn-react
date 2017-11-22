@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet,FlatList, ScrollView, RefreshControl,Text,View } from 'react-native';
+import { StyleSheet, FlatList, ScrollView, RefreshControl, Text, View, NetInfo } from 'react-native';
 import TwinkleText from '../TwinkleText';
 import isReactComponent from '../isReactComponent'
 import PropTypes from 'prop-types';
@@ -40,12 +40,12 @@ class FlatLists extends Component{
 
   handleNetInfo() {
     // 判断网络状态 设置失败信息
-    NetInfo.isConnected.fetch().done((isConnected) => {
-      this.setState({ failText: isConnected? '加载失败了':'网络好像断开了' })
-    });
+    // NetInfo.isConnected.fetch().done((isConnected) => {
+    //   this.setState({ failText: isConnected? '加载失败了':'网络好像断开了' })
+    // });
 
     NetInfo.isConnected.addEventListener(
-      'change',
+      'connectionChange',
       () => this.setState({ failText: '网络好像断开了' })
     );
   }

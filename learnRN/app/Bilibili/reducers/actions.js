@@ -237,6 +237,7 @@ export function fetchSpecialColumnRecommend(type, callback=()=>{}) {
   const dataSource = (callbackToRes, dispatch)=>{
     myfetch('post/specialColumn/recommend.txt')
     .then((response) => {
+      alert(2)
       if(response.ok) {
         return response.json()
       } else {
@@ -247,6 +248,7 @@ export function fetchSpecialColumnRecommend(type, callback=()=>{}) {
       callbackToRes(JSON.stringify(res))
     })
     .catch((e)=>{
+      alert(1)
       dispatch(fetchSpecialColumnRecommendFailure(callback))
     });
   }

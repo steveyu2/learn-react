@@ -1,5 +1,5 @@
 import React, { PureComponent, Component } from 'react';
-import { StyleSheet, View, ToastAndroid, Text, Button } from 'react-native';
+import { StyleSheet, View, ToastAndroid, Text, Button, NetInfo } from 'react-native';
 import FadeInView from '../../../components/g/FadeInView';
 import LoadFail from '../../../components/LoadFail';
 import SubTitle from './SubTitle';
@@ -28,7 +28,7 @@ class Recommend extends PureComponent {
     });
 
     NetInfo.isConnected.addEventListener(
-      'change',
+      'connectionChange',
       () => this.setState({ failText: '网络好像断开了，请连接网络' })
     );
   }
