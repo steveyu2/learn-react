@@ -94,6 +94,7 @@ export function fetchVideoRecommendLocal(type, callback=()=>{}) {
 export function fetchVideoRecommend(type, callback=()=>{}) {
   const dataSource = (callbackToRes, dispatch)=>{
     myfetch('post/video/recommend.txt').then((response) => {
+      alert(2)
       if(response.ok) {
         return response.json()
       } else {
@@ -108,6 +109,9 @@ export function fetchVideoRecommend(type, callback=()=>{}) {
       }, [])
 
       callbackToRes(JSON.stringify(res))
+    }, ()=>{
+      alert(1)
+      dispatch(fetchVideoRecommendFailure(callback))
     })
     .catch((e)=>{
       dispatch(fetchVideoRecommendFailure(callback))
@@ -157,7 +161,7 @@ export function fetchSpecialColumnBanners() {
     })
     .then((res)=>{
       dispatch(fetchSpecialColumnBannersSuccess(res))
-    })
+    },()=>dispatch(fetchSpecialColumnBannersFailure()))
     .catch((e)=>{
       dispatch(fetchSpecialColumnBannersFailure())
     });
@@ -237,7 +241,7 @@ export function fetchSpecialColumnRecommend(type, callback=()=>{}) {
   const dataSource = (callbackToRes, dispatch)=>{
     myfetch('post/specialColumn/recommend.txt')
     .then((response) => {
-      alert(2)
+      //alert(2)
       if(response.ok) {
         return response.json()
       } else {
@@ -246,9 +250,8 @@ export function fetchSpecialColumnRecommend(type, callback=()=>{}) {
     })
     .then((res)=>{
       callbackToRes(JSON.stringify(res))
-    })
+    },()=>dispatch(fetchSpecialColumnRecommendFailure(callback)))
     .catch((e)=>{
-      alert(1)
       dispatch(fetchSpecialColumnRecommendFailure(callback))
     });
   }

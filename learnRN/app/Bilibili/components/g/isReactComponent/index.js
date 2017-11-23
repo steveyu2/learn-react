@@ -7,11 +7,12 @@ export default (props, propName)=>{
     callback = props;
     return (props, propName)=>{
       if(props[propName]){
-        props[propName].prototype instanceof Component? new Error(propName + '必须继承至React.Component'): null;
+        props[propName].prototype instanceof Component || new Error(propName + '必须继承至React.Component')
       }
       callback();
     }
   }else if(props[propName]){
-    props[propName].prototype instanceof Component? new Error(propName + '必须继承至React.Component'): null;
+    //alert(props[propName].prototype instanceof Component)
+    props[propName].prototype instanceof Component || new Error(propName + '必须继承至React.Component')
   }
 }

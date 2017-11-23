@@ -97,7 +97,7 @@ class Recommend extends PureComponent {
             pullUpRefresh={ this.pullUpRefresh }
             refreshing={ video.recommend.loading }
             data={ video.recommend.data }
-            failComponent={ <LoadFail /> }
+            failComponent={ LoadFail }
           />
         </View>
       </FadeInView>

@@ -135,7 +135,7 @@ class SpecialColumn extends Component {
           onEndReachedThreshold={ 0.02 }
           refreshing={ specialColumn.recommend.loading }
           extraData={ specialColumn.recommend }
-          failComponent={ <LoadFail /> }
+          failComponent={ LoadFail }
         />
       </FadeInView>
     );

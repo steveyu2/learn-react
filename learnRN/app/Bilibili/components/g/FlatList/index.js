@@ -126,7 +126,18 @@ class FlatLists extends Component{
   }
 
   render() {
-    const props = this.props;
+    var props = {...this.props};
+
+    //
+    const deleteProps = [
+      'failComponent',
+      'firstOnRefresh',
+    ];
+
+    for(let i in props)
+      if(deleteProps.indexOf(i) !== -1){
+        delete props[i]
+      }
 
     return (
       <FlatList
