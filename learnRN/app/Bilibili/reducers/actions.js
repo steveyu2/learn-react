@@ -94,7 +94,6 @@ export function fetchVideoRecommendLocal(type, callback=()=>{}) {
 export function fetchVideoRecommend(type, callback=()=>{}) {
   const dataSource = (callbackToRes, dispatch)=>{
     myfetch('post/video/recommend.txt').then((response) => {
-      alert(2)
       if(response.ok) {
         return response.json()
       } else {
@@ -109,10 +108,7 @@ export function fetchVideoRecommend(type, callback=()=>{}) {
       }, [])
 
       callbackToRes(JSON.stringify(res))
-    }, ()=>{
-      alert(1)
-      dispatch(fetchVideoRecommendFailure(callback))
-    })
+    }, ()=>dispatch(fetchVideoRecommendFailure(callback)))
     .catch((e)=>{
       dispatch(fetchVideoRecommendFailure(callback))
     });

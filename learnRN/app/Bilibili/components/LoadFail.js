@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, NetInfo } from 'react-native';
+import { StyleSheet, NetInfo, View, Text, Button } from 'react-native';
 
 /**
  * 加载失败组件
