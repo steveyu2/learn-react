@@ -14,11 +14,11 @@
 ![.](http://img1.ph.126.net/8aO0__IYkMtpmPrmMbF8UA==/6632648863420472059.png)
 ![.](http://img2.ph.126.net/EMAnVxZWmr8yJhM9BOEBEA==/6632287124097527867.png)
 
-上拉加载
+下拉加载
 
 ![.](http://img1.ph.126.net/rYE3ucTEcpIMQPNXuOqXxw==/6632302517260367557.png)
 
-下拉加载
+上拉加载
 
 ![.](http://img0.ph.126.net/61xibI20_d1hRN9wNhBfTQ==/6632423463539428608.png)
 -
