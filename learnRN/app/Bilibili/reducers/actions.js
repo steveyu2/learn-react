@@ -99,7 +99,7 @@ export function fetchVideoRecommend(type, callback=()=>{}) {
       } else {
         throw new Error('fetch post/video/recommend.txt fail')
       }
-    })
+    }, ()=>dispatch(fetchVideoRecommendFailure(callback)))
     .then((res)=>{
       res = res.reduce((arr, v, i)=>{
         const index = ~~(i / 2);
@@ -154,10 +154,10 @@ export function fetchSpecialColumnBanners() {
       } else {
         throw new Error('fetch post/specialColumn/banners.txt fail')
       }
-    })
+    }, ()=>dispatch(fetchVideoRecommendFailure(callback)))
     .then((res)=>{
       dispatch(fetchSpecialColumnBannersSuccess(res))
-    },()=>dispatch(fetchSpecialColumnBannersFailure()))
+    }, ()=>dispatch(fetchSpecialColumnBannersFailure()))
     .catch((e)=>{
       dispatch(fetchSpecialColumnBannersFailure())
     });
@@ -243,7 +243,7 @@ export function fetchSpecialColumnRecommend(type, callback=()=>{}) {
       } else {
         throw new Error('fetch post/specialColumn/recommend.txt fail')
       }
-    })
+    }, ()=>dispatch(fetchVideoRecommendFailure(callback)))
     .then((res)=>{
       callbackToRes(JSON.stringify(res))
     },()=>dispatch(fetchSpecialColumnRecommendFailure(callback)))

@@ -22,14 +22,16 @@ class Recommend extends PureComponent {
   }
 
   handleNetInfo() {
-    // 判断网络状态 设置失败信息
-    NetInfo.isConnected.fetch().done((isConnected) => {
+    const setFailText = (isConnected) => {
       this.setState({ failText: isConnected? '加载失败':'网络好像断开了，请连接网络' })
-    });
+    }
+
+    // 判断网络状态 设置失败信息
+    NetInfo.isConnected.fetch().done(setFailText);
 
     NetInfo.isConnected.addEventListener(
       'connectionChange',
-      () => this.setState({ failText: '网络好像断开了，请连接网络' })
+      setFailText
     );
   }
 

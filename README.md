@@ -23,3 +23,5 @@
     react-native
     
     react-navigation
+    
+    redux

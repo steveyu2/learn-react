@@ -14,6 +14,23 @@
 ![.](http://img1.ph.126.net/8aO0__IYkMtpmPrmMbF8UA==/6632648863420472059.png)
 ![.](http://img2.ph.126.net/EMAnVxZWmr8yJhM9BOEBEA==/6632287124097527867.png)
 
+上拉加载
+
+![.](http://img1.ph.126.net/rYE3ucTEcpIMQPNXuOqXxw==/6632302517260367557.png)
+
+下拉加载
+
+![.](http://img0.ph.126.net/61xibI20_d1hRN9wNhBfTQ==/6632423463539428608.png)
+-
+![.](http://img0.ph.126.net/vno4v4hltE0tfZKDKRuM4g==/6632478439120816638.png)
+-
+![.](http://img0.ph.126.net/ORVN2trd7hLYhOEjVjWZ7A==/6632430060609195222.png)
+
+页面初次加载失败
+
+
+![.](http://img2.ph.126.net/LDk1QG9Svb-Rkui3QAMnuQ==/91479367450244336.png)
+
 APK下载
 
    [v1.3](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.3.apk)
@@ -40,3 +57,22 @@ learnRN/app/bilibili  项目文件夹
     └─Tab 抽屉导航的首页 三级导航
         ├─Dynamic
         └─Home
+    
+package.json
+    
+      "dependencies": {
+        "prop-types": "^15.6.0", // 类型检测
+        "react": "16.0.0-alpha.12",
+        "react-native": "0.48.3",
+        "react-native-orientation": "^3.1.0", //  控制屏幕旋转
+        "react-native-swiper": "^1.5.13", // 轮播图
+        "react-navigation": "^1.0.0-beta.11", // 导航
+        "react-redux": "^5.0.6", 
+        "redux": "^3.7.2", // 状态管理
+        "redux-thunk": "^2.2.0" 
+      },
+      "devDependencies": {
+        "babel-jest": "21.0.2",
+        "babel-preset-react-native": "4.0.0",
+        "jest": "21.1.0",
+        "react-test-renderer": "16.0.0-alpha.12"
