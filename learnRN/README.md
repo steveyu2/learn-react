@@ -11,20 +11,14 @@
 
 效果图
 
-![.](http://img1.ph.126.net/8aO0__IYkMtpmPrmMbF8UA==/6632648863420472059.png)
-![.](http://img2.ph.126.net/EMAnVxZWmr8yJhM9BOEBEA==/6632287124097527867.png)
 
-下拉加载
-
-![.](http://img1.ph.126.net/rYE3ucTEcpIMQPNXuOqXxw==/6632302517260367557.png)
-
-上拉加载
-
-![.](http://img0.ph.126.net/61xibI20_d1hRN9wNhBfTQ==/6632423463539428608.png)
--
-![.](http://img0.ph.126.net/vno4v4hltE0tfZKDKRuM4g==/6632478439120816638.png)
--
-![.](http://img0.ph.126.net/ORVN2trd7hLYhOEjVjWZ7A==/6632430060609195222.png)
+完成项
+ 
+ - [x] 完成导航嵌套 Stack -> Drawer -> Tab
+ - [x] 封装FlatList 上下拉加载
+ - [x] 加入redux
+ - [x] 判断网络状态 (fetch函数 catch不到的错误 reject等情况) 
+ - [ ] 启动页
 
 页面初次加载失败
 
@@ -33,9 +27,7 @@
 
 APK下载
 
-   之前数据都是本地的，这个版本之后都放在ftp上了,当然数据还是静态的 orz
-
-   [v1.3](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.3.apk) 
+   [v1.3](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.3.apk) (之前数据都是本地的，1.3之后都放在ftp上了,当然数据还是静态的 orz)
    
    [v1.2](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.2.apk)
    
