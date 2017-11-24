@@ -33,7 +33,9 @@
 
 APK下载
 
-   [v1.3](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.3.apk)
+   之前数据都是本地的，这个版本之后都放在ftp上了,当然数据还是静态的 orz
+
+   [v1.3](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.3.apk) 
    
    [v1.2](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.2.apk)
    
