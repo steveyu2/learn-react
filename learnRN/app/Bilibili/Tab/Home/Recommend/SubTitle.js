@@ -11,20 +11,22 @@ class SubTitle extends Component {
     const {
       title,
       style,
-      _navigation
-      } = this.props;
+      mainColor,
+      navigation
+      } = this.props,
+      iconStyle = [styles.icon, {tintColor: mainColor}];
 
     return (
       <View style={[styles.wrap, style]}>
         <Text style={ styles.title }>{ title }</Text>
         <View style={ styles.iconGruop }>
-          <IconButton icon={ Images.ranking }  iconStyle={ styles.icon } noAction={true} onPress={()=>{
-              _navigation.navigate('PlaceholderStack')
+          <IconButton icon={ Images.ranking }  iconStyle={ iconStyle } noAction={true} onPress={()=>{
+              navigation.navigate('PlaceholderStack', navigation.state.params)
           }}>
             <Text style={styles.iconText}>排行榜</Text>
           </IconButton>
-          <IconButton icon={ Images.tag }  iconStyle={ styles.icon } noAction={true} onPress={()=>{
-              _navigation.navigate('PlaceholderStack')
+          <IconButton icon={ Images.tag }  iconStyle={ iconStyle } noAction={true} onPress={()=>{
+              navigation.navigate('PlaceholderStack', navigation.state.params)
           }}>
             <Text style={styles.iconText}>标签</Text>
           </IconButton>
@@ -59,8 +61,7 @@ const styles = StyleSheet.create({
   icon: {
     height:20,
     width: 20,
-    marginLeft: 8,
-    tintColor: Config.mainColor
+    marginLeft: 8
   },
   iconGruop: {
     flexDirection: 'row',
@@ -74,7 +75,8 @@ const styles = StyleSheet.create({
 
 SubTitle.propTypes = SimplePropTypes(({ strRq, boolRq, objOfRq, arrOfRq, shape, shapeRq, funcRq })=>({
   title: strRq,
-  _navigation: shapeRq({
+  mainColor: strRq,
+  navigation: shapeRq({
     navigate: funcRq,
   })
 }))

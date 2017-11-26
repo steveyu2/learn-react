@@ -7,17 +7,24 @@ class Collection extends Component{
 
   render() {
 
+    const {
+      screenProps,
+      navigation
+      } = this.props;
+
     return (
       <View style={ styles.wrap }>
         <DrawerHeader
           title="收藏"
-          navigation={ this.props.navigation }
+          navigation={ navigation }
+          mainColor={ screenProps.mainColor }
         />
         <ScrollView >
           <View style={ styles.content }>
 
+
           </View>
-          <Text>asd</Text>
+          <Text>收藏</Text>
         </ScrollView>
       </View>
     )

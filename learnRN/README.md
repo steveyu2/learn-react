@@ -18,12 +18,9 @@
  - [x] 封装FlatList 上下拉加载
  - [x] 加入redux
  - [x] 判断网络状态 (fetch函数 catch不到的错误 reject等情况) 
- - [ ] 启动页
-
-页面初次加载失败
-
-
-![.](http://img2.ph.126.net/LDk1QG9Svb-Rkui3QAMnuQ==/91479367450244336.png)
+ - [x] 启动页 
+ - [x] 切换主题
+ - [ ] 引入react-native-image-header-scroll-view 折叠导航
 
 APK下载
 

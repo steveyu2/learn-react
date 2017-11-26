@@ -171,7 +171,8 @@ class TabNav extends Component{
       这里通过componentProps过滤出来然后传到屏幕或头部导航左右组件里,
       这样可以在组件里调用这些prop
      */
-    const componentProps = this.props.componentProps(this.props);
+    var componentProps = this.props.componentProps;
+    typeof componentProps === 'function' && (componentProps = componentProps(this.props))
 
     const {
       title,
@@ -180,7 +181,6 @@ class TabNav extends Component{
     } = this.getCurrentRouteConfig();
     // const Screen = routeConfig.screen;
     const ScreenNum = this.routes.indexOf(currentRoute);
-
 
     return (
         <View style={ styles.wrap }>
@@ -257,17 +257,23 @@ TabNav.propTypes = {
   onPress: PropTypes.func,
   HeaderLeft: isReactComponent,
   HeaderRight:  isReactComponent,
-  componentProps: PropTypes.func,
+  componentProps: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.Object
+  ])
 };
 
 export default (navConfigs, config)=>{
 
   return class extends Component{
+
     render() {
+      var  newConfig = typeof config === 'function'? config(this.props): config;
+
       return <TabNav
         { ...this.props }
         navConfigs={ navConfigs }
-        { ...config }
+        { ...newConfig }
       />
     }
   }

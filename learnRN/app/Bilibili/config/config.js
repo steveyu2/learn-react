@@ -8,11 +8,23 @@ if(mediaWidth > mediaHeight) {
   mediaWidth = mediaHeight;
   mediaHeight = Dimensions.get('window').width;
 }
-
+// 主题
+var themes = [
+  ['#2196f3', '胖次蓝'],
+  ['#f87197', '少女粉'],
+  ['#ffc107', '咸蛋黄'],
+  ['#8bc34a', '早苗绿']
+].map((v)=>({
+  color: v[0],
+  name: v[1]
+}))
+global.yzh666 = 123;
 export default {
+  // 屏幕宽高
   mediaWidth,
   mediaHeight,
-  mainColor: '#1E90FF',//0099FF
+  themes,
+  mainColor: '#2196f3',// 初始颜色
   underlayColor: 'rgba(0, 0, 0, 0.1)', // #eee
   headerIconUnderlayColor: 'rgba(255, 255, 255, 0.1)',
   iconColor: '#fff',

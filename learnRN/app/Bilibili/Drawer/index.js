@@ -4,6 +4,7 @@ import { DrawerNavigator, DrawerItems } from "react-navigation";
 import { Config,Images } from "../config";
 import Tab from '../Tab';
 import Collection from './Collection';
+import Theme from './Theme';
 import DrawerNavHeader from './DrawerNavHeader';
 
 const styles = StyleSheet.create({
@@ -76,6 +77,23 @@ const Drawer = DrawerNavigator({
       )
     }
   },
+  ThemeDrawer: {
+    screen: Theme,
+    navigationOptions: {
+      drawerLabel: '主题',
+      title: '主题',
+      drawerIcon: ({ focused, tintColor }) => (
+        <Image
+          source={
+            focused
+              ?Images.windmill_fill
+              :Images.windmill
+          }
+          style={[styles.icon, {tintColor: tintColor}]}
+        />
+      )
+    }
+  },
   /**
    * 跳Stack
    */
@@ -116,32 +134,40 @@ const Drawer = DrawerNavigator({
   order:[
     'HomeDrawer',
     'CollectionDrawer',
+    'ThemeDrawer',
     'HistoryDrawer',
     'DownloadDrawer'
   ],
-  contentComponent: props => (
-    <ScrollView
-      style={styles.drawer}
-      >
-      <DrawerNavHeader />
-      <DrawerItems
-        {...props}
-        onItemPress={
-          ({route}) => isStackRoute(route, (routeName) => {
-            console.log(props, '123')
-            props.navigation.navigate('DrawerClose');
-            setTimeout(() => props.navigation.navigate(routeName), 0);
-          })
-        }
-        labelStyle={ styles.label }
-        activeTintColor={ Config.mainColor }
-        activeBackgroundColor={ Config.drawerUnderlayColor }
-      />
-    </ScrollView>
-  ),
-  navigationOptions: {
-    title:'标题'
-  },
+  contentComponent: props => {
+    const mainColor = props.screenProps.mainColor;
+
+    return (
+      <ScrollView
+        style={ styles.drawer }
+        >
+        <DrawerNavHeader
+          //这里路由是DrawerClose没有参数，我直接懵逼，然后看了下结构，就顺着来了。。
+          mainColor={ mainColor } />
+        <DrawerItems
+          {...props}
+          onItemPress={
+            ({route}) => isStackRoute(route, (routeName) => {
+              const navigation = props.navigation;
+              navigation.navigate('DrawerClose')
+              //alert(JSON.stringify(navigation.state.params))
+              setTimeout(() => navigation.navigate(routeName), 0);
+            })
+          }
+          labelStyle={ styles.label }
+          activeTintColor={ mainColor }
+          activeBackgroundColor={ Config.drawerUnderlayColor }
+        />
+      </ScrollView>
+  )},
+  navigationOptions: ({navigation}) => ({
+    title:'标题',
+    //headerStyle:{ backgroundColor: navigation.state.params.mainColor }, // 头部样式
+  }),
   drawerWidth: Config.drawerWidth, // 侧拉的宽度
 });
 

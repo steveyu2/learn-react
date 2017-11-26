@@ -51,10 +51,10 @@ const Tab = TabNav({
     title: null,
     HeaderRight: rightIconBox([
       HeaderIcon('download', {
-        onPress: ({screenProps})=>screenProps._navigation.navigate('DownloadStack')
+        onPress: ({screenProps})=>screenProps.navigation.navigate('DownloadStack')
       }),
       HeaderIcon('search', {
-        onPress: ({screenProps})=>screenProps._navigation.navigate('SearchStack')
+        onPress: ({screenProps})=>screenProps.navigation.navigate('SearchStack')
       }),
     ]),
     icon: ({ focused, tintColor }) => (
@@ -115,24 +115,31 @@ const Tab = TabNav({
       />
     )
   },
-}, {
-  underlayColor: Config.underlayColor,
-  activeColor: Config.mainColor,
-  unActiveColor: Config.TabBottomUnActivefontColor,
-  labelStyle: styles.label,
-  HeaderLeft: HeaderIcon('drawerNavAvatar', {
-    onPress: ({screenProps})=>screenProps._navigation.navigate('DrawerOpen')
-  }),
-  titleStyle: styles.title,
-  headerStyle: styles.header,
-  bottomNavStyle: styles.tab,
-  componentProps: (props) => ({
-    // 给左右组件和屏幕 传入父级传下来的props
-    screenProps: {
-      ...props.screenProps,
-      _navigation: props.navigation
+}, (props)=>{
+
+  const mainColor = props.screenProps.mainColor;
+
+  return { //
+    underlayColor: Config.underlayColor,
+    activeColor: mainColor,
+    unActiveColor: Config.TabBottomUnActivefontColor,
+    labelStyle: styles.label,
+    HeaderLeft: HeaderIcon('drawerNavAvatar', {
+        onPress: ({screenProps})=>{
+          screenProps.navigation.navigate('DrawerOpen')
+        }
+    }),
+    titleStyle: styles.title,
+    headerStyle: [styles.header, {backgroundColor: mainColor}],
+    bottomNavStyle: styles.tab,
+    componentProps: {
+      // 给左右组件和屏幕 传入父级传下来的props
+      screenProps: {
+        ...props.screenProps,
+        navigation: props.navigation
+      }
     }
-  })
+  }
 });
 
 export default Tab;

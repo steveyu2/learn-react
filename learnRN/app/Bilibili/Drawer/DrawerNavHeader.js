@@ -8,16 +8,18 @@ class DrawerNavHeader extends Component{
 
   render() {
 
+    const mainColor = this.props.mainColor;
+
     return (
-      <View style={ styles.wrap }>
+      <View style={[ styles.wrap, {backgroundColor: mainColor} ]}>
         <View style={ styles.top }>
           <Image source={ Images.defaultAvatar } style={ styles.avatar }/>
         </View>
         <View style={ styles.bottom }>
           <View style={ styles.bottomLine }>
             <Text style={ styles.userName } >未登录</Text>
-            <Text style={ [styles.borderText] } >Lv {"0"}</Text>
-            <Text style={ [styles.borderText, styles.huiyuan] } >非会员</Text>
+            <Text style={[ styles.borderText ]} >Lv {"0"}</Text>
+            <Text style={[ styles.borderText, styles.huiyuan, {color: mainColor}  ]} >非会员</Text>
           </View>
           <View style={ styles.bottomLine }>
             <Text style={ styles.downText }>积分 : {'0'}</Text>

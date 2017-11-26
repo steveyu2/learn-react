@@ -75,7 +75,7 @@ RecommendList.propTypes = SimplePropTypes(({ arrOfRq, strRq, shape, funcRq, bool
   onRefresh: funcRq,
   refreshing: boolRq,
   firstOnRefresh: boolRq,
-  failComponent: isReactComponent
+  failComponent: isReactComponent,
 }))
 
 export default RecommendList;

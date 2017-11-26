@@ -45,10 +45,10 @@ const Stack = StackNavigator({
   },
   SpecialColumnStack: {
     screen: SpecialColumn,
-    navigationOptions: {
+    navigationOptions:  ({screenProps}) => ({
       title: '专栏',
-      headerStyle: [styles.header,{elevation:0}]
-    }
+      headerStyle: [ styles.header,{elevation:0, backgroundColor: screenProps.mainColor} ]
+    })
   },
   //----------------------------------------------
   PlaceholderStack: {
@@ -59,11 +59,15 @@ const Stack = StackNavigator({
   }
 },{
   initialRouteName: 'HomeStack', // 默认屏幕
+  //initialRouteParams: { mainColor: '#f87197' },
   headerMode: 'screen',
-  navigationOptions:{
-    headerStyle: styles.header, // 头部样式
-    headerTintColor: '#fff', // 标题及返回按钮的颜色
-    headerTitleStyle: styles.headerText, // 标题样式
+  navigationOptions: ({screenProps}) => {
+    //alert(navigation.state.params.mainColor)
+    return {
+      headerStyle: [ styles.header, {backgroundColor: screenProps.mainColor} ], // 头部样式
+      headerTintColor: '#fff', // 标题及返回按钮的颜色
+      headerTitleStyle: styles.headerText, // 标题样式
+    }
   }
 });
 

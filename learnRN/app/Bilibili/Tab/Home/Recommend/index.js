@@ -48,7 +48,9 @@ class Recommend extends PureComponent {
   }*/
 
   onRefresh({show, hide}) {
-    this.props.screenProps.fetchVideoRecommendToBefore(({noMore, error})=>{
+    const screenProps = this.props.screenProps;
+
+    screenProps.fetchVideoRecommendToBefore(({noMore, error})=>{
       if(!error){
         if(noMore){
           this.toast('没有更多了...')
@@ -56,7 +58,7 @@ class Recommend extends PureComponent {
           hide()
         }
       }else{
-        if(this.props.screenProps.video.recommend.data.length === 0){
+        if(screenProps.video.recommend.data.length === 0){
           show()
         }else{
           this.toast(this.state.failText)
@@ -80,17 +82,22 @@ class Recommend extends PureComponent {
   render() {
     const {
       screenProps
-    } = this.props;
-
-    const {
-      _navigation,
+    } = this.props,
+      {
+      navigation,
       video
-    } = screenProps;
+    } = screenProps,
+      mainColor = screenProps.mainColor;
 
 // debugger
     return (
       <FadeInView style={[ styles.wrap ]}>
-        <SubTitle title="综合" style={ styles.subTitle } _navigation={ _navigation }/>
+        <SubTitle
+          style={ styles.subTitle }
+          title="综合"
+          navigation={ navigation }
+          mainColor={ mainColor }
+        />
         <View style={ styles.content }>
           <RecommendList
             firstOnRefresh={ video.recommend.data.length === 0 }
@@ -141,8 +148,12 @@ Recommend.propTypes = SimplePropTypes(({ strRq, boolRq, arrOfRq, shape, shapeRq,
           type: strRq
         })))
       })
-    })
-  })
+    }),
+    navigation: shapeRq({
+      navigate: funcRq,
+    }),
+    mainColor: strRq
+  }),
 }))
 
 export default Recommend;

@@ -17,6 +17,7 @@ class DrawerHeader extends Component{
     const {
       title,
       navigation,
+      mainColor
     } = this.props;
 
     const HeaderLeft = HeaderIcon('menu',{
@@ -30,7 +31,7 @@ class DrawerHeader extends Component{
       <NormalHeader
         title={ title }
         titleStyle={ styles.title }
-        headerStyle={ styles.header }
+        headerStyle={ [styles.header, { backgroundColor: mainColor }]}
         align="left"
         HeaderLeft={ <HeaderLeft  /> }
       />

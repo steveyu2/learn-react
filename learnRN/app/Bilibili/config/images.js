@@ -26,4 +26,8 @@ export default {
   starBall: require("../../../images/icon/starBall/starBall.png"),
   community: require("../../../images/icon/community/community.png"),
   good: require("../../../images/icon/good/good.png"),
+  windmill: require("../../../images/icon/windmill/windmill.png"),
+  windmill_fill: require("../../../images/icon/windmill/windmill_fill.png"),
+  tick: require("../../../images/icon/tick/tick.png"),
+  tick_fill: require("../../../images/icon/tick/tick_fill.png")
 }

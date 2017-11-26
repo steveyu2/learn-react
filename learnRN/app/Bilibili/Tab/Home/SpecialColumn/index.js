@@ -99,16 +99,21 @@ class SpecialColumn extends Component {
   // 专栏类型点击事件
   ClassifyPress(type) {
     const {
-      _navigation,
+      navigation,
     } = this.props.screenProps;
-
-    _navigation.navigate('SpecialColumnStack',{ SpecialColumn: { keyword: type }})
+    //alert(JSON.stringify(navigation.state.params))
+    navigation.navigate('SpecialColumnStack', {
+        ...navigation.state.params,
+        SpecialColumn: { keyword: type }
+    })
   }
 
   render() {
 
     const {
-      specialColumn
+      specialColumn,
+      navigation,
+      mainColor
     } = this.props.screenProps;
 
     // 是否进行初次渲染
@@ -126,8 +131,9 @@ class SpecialColumn extends Component {
           data={ specialColumn.recommend.data }
           ListHeaderComponent={ <TopCompt images={ specialColumn.banners.data }
                                         onItemPress={ this.ClassifyPress }
-                                        screenProps={ this.props.screenProps }
-                                        isRender={ isRender }/> }
+                                        navigation={ navigation }
+                                        isRender={ isRender }
+                                        mainColor={ mainColor }/> }
           keyExtractor={ this._keyExtractor }
           renderItem={ this._renderItem }
           onRefresh={ this.onRefresh }
@@ -154,9 +160,6 @@ SpecialColumn.propTypes = SimplePropTypes(({ strRq, boolRq, arrOfRq, shape, shap
   screenProps: shapeRq({
     fetchVideoRecommendToBefore: funcRq,
     fetchVideoRecommendToAfter: funcRq,
-    _navigation: shapeRq({
-      navigate: funcRq,
-    }),
     specialColumn: shapeRq({
       banners: shapeRq({
         loading: boolRq,
@@ -176,7 +179,10 @@ SpecialColumn.propTypes = SimplePropTypes(({ strRq, boolRq, arrOfRq, shape, shap
           cover : strRq,
         }))
       })
-    })
+    }),
+    navigation: shapeRq({
+      navigate: funcRq,
+    }),
   })
 }))
 

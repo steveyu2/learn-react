@@ -17,8 +17,9 @@ class RecommendList extends Component {
     const {
       images,
       onItemPress,
-      screenProps,
-      isRender
+      navigation,
+      isRender,
+      mainColor
     } = this.props;
 
     return isRender ?
@@ -27,7 +28,7 @@ class RecommendList extends Component {
           <ImgSwiper data={ images }/>
           <ClassifyBtn onItemPress={onItemPress}/>
         </View>
-        <SubHeader screenProps={ screenProps }/>
+        <SubHeader navigation={ navigation } mainColor={ mainColor }/>
       </View>
       : <View />
   }
@@ -45,10 +46,8 @@ const styles = StyleSheet.create({
 RecommendList.propTypes = SimplePropTypes(({ arrOfRq, shapeRq, strRq, boolRq, funcRq })=>({
   images: arrOfRq(strRq),
   onItemPress: funcRq,
-  screenProps:shapeRq({
-    _navigation: shapeRq({
-      navigate: funcRq,
-    })
+  navigation: shapeRq({
+    navigate: funcRq,
   }),
   isRender: boolRq
 }))

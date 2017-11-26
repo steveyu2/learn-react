@@ -3,16 +3,18 @@
 Stack->Drawer->Tab
  */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import SimplePropTypes from './components/g/simple-prop-types'
+import SplashScreen from 'react-native-splash-screen'
+import Orientation from 'react-native-orientation'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider, connect } from 'react-redux'
 import thunk from 'redux-thunk';
-import Stack from './Stack';
-import PropTypes from 'prop-types';
-import Orientation from 'react-native-orientation'
-import SimplePropTypes from './components/g/simple-prop-types'
 import reducers from './reducers'
+import Stack from './Stack';
 import {
-  FETCH_DIRECTION
+  FETCH_DIRECTION,
+  setMainColor
 } from './reducers/actions'
 import * as actions from './reducers/actions'
 
@@ -59,6 +61,10 @@ class Wrap extends Component{
 
 class App extends Component{
 
+  componentDidMount() {
+    SplashScreen.hide(); // 隐藏启动屏
+  }
+
   _fetchVideoRecommendToBefore = (callback) => {
     this.props.dispatch(fetchVideoRecommend(BEFORE, callback))
   }
@@ -75,12 +81,16 @@ class App extends Component{
 
   _fetchSpecialColumnBanners = () => { this.props.dispatch(fetchSpecialColumnBanners()) }
 
+  _setMainColor = (color) => {
+    this.props.dispatch(setMainColor(color))
+  }
 
   render() {
 
     const {
       video,
       specialColumn,
+      mainColor
     } = this.props;
 
     return (
@@ -92,13 +102,15 @@ class App extends Component{
           specialColumn,
           fetchSpecialColumnRecommendToBefore: this._fetchSpecialColumnRecommendToBefore,
           fetchSpecialColumnRecommendToAfter: this._fetchSpecialColumnRecommendToAfter,
-          fetchSpecialColumnBanners: this._fetchSpecialColumnBanners
+          fetchSpecialColumnBanners: this._fetchSpecialColumnBanners,
+          mainColor: mainColor,
+          setMainColor: this._setMainColor,
         }}
       />
     )
   }
 }
-
+alert(yzh666)
 App.propTypes = SimplePropTypes(({ strRq, boolRq, objOfRq, arrOfRq, shape, shapeRq})=>({
   video: shapeRq({
     recommend: shapeRq({
@@ -133,7 +145,8 @@ App.propTypes = SimplePropTypes(({ strRq, boolRq, objOfRq, arrOfRq, shape, shape
         cover : strRq
       }))
     })
-  })
+  }),
+  mainColor: strRq
 }))
 
 function select(state) {

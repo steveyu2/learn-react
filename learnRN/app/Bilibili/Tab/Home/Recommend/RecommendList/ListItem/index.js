@@ -22,7 +22,7 @@ class ListItem extends PureComponent {
       itemStyle,
       itemWidth
     } = this.props;
-    const itemHeight = 90 * (itemWidth/160)
+    const itemHeight = itemWidth * (80/160)  // 80/160 图片比例
 
     return (
       <TouchableHighlight

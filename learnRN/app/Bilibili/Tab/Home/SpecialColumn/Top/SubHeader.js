@@ -4,7 +4,7 @@ import IconButton from '../../../../components/g/IconButton';
 import { Config,Images } from "../../../../config/index";
 import SimplePropTypes from '../../../../components/g/simple-prop-types';
 
-class ClassifyBtn extends Component {
+class SubHeader extends Component {
 
   static defaultProps = {
   };
@@ -12,16 +12,17 @@ class ClassifyBtn extends Component {
   render() {
 
     var {
-      screenProps
+      navigation,
+      mainColor
     } = this.props;
 
     return (
       <View style={styles.wrapper}>
         <Text style={styles.title}>推荐文章</Text>
-        <IconButton icon={ Images.ranking }  iconStyle={ styles.icon } noAction={true} onPress={()=>{
-          screenProps._navigation.navigate('PlaceholderStack')
+        <IconButton icon={ Images.ranking }  iconStyle={[ styles.icon, {tintColor: mainColor} ]} noAction={true} onPress={()=>{
+          navigation.navigate('PlaceholderStack')
         }}>
-          <Text style={styles.iconText}>排行榜</Text>
+          <Text style={[ styles.iconText,{color: mainColor} ]}>排行榜</Text>
         </IconButton>
       </View>
     );
@@ -45,22 +46,18 @@ const styles = StyleSheet.create({
   icon: {
     height:20,
     width: 20,
-    marginLeft: 8,
-    tintColor: Config.mainColor
+    marginLeft: 8
   },
   iconText: {
     marginLeft: 4,
-    fontSize:13,
-    color: Config.mainColor
+    fontSize:13
   }
 });
 
-ClassifyBtn.propTypes = SimplePropTypes(({ shapeRq, funcRq })=>({
-  screenProps:shapeRq({
-    _navigation: shapeRq({
-      navigate: funcRq,
-    })
+SubHeader.propTypes = SimplePropTypes(({ shapeRq, funcRq })=>({
+  navigation: shapeRq({
+    navigate: funcRq,
   })
 }))
 
-export default ClassifyBtn;
+export default SubHeader;

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { TabNavigator } from "react-navigation";
+import { TabNavigator, TabBarTop } from "react-navigation";
+import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
+import DefaultTabBar from '../../components/DefaultTabBar'
 import { Config } from "../../config";
 import SpecialColumn from "./SpecialColumn";
 import Recommend from "./Recommend";
@@ -22,6 +24,20 @@ const styles = StyleSheet.create({
     backgroundColor: Config.mainColor,
   }
 });
+/*class Home extends Component{
+
+  render() {
+
+    return (
+      <ScrollableTabView
+        tabBarPosition='top'
+        renderTabBar={() => <DefaultTabBar />}>
+        <Recommend tabLabel='Tab1' {...this.props}/>
+        <SpecialColumn tabLabel='Tab3' {...this.props}/>
+      </ScrollableTabView>
+    );
+  }
+}*/
 
 const Home = TabNavigator({
   TabHomeRecommend: {
@@ -34,12 +50,25 @@ const Home = TabNavigator({
     screen: SpecialColumn,
      navigationOptions: {
        tabBarLabel: '专栏',
+       activeTintColor: '#000'
      }
   },
 },{
   tabBarPosition: 'top',
   animationEnabled: true,
   lazy: true,
+  tabBarComponent: class extends Component{
+    render () {
+      const {
+        screenProps
+        } = this.props;
+
+      return <TabBarTop {...this.props} style={[
+        this.props.style,
+        {backgroundColor: screenProps.mainColor}
+      ]}/>
+    }
+  },
   tabBarOptions: {
     activeTintColor: Config.fontColor,
     inactiveTintColor: Config.TabTopUnActivefontColor,
@@ -47,7 +76,7 @@ const Home = TabNavigator({
     tabStyle: styles.tabs,
     style: styles.tab,
     indicatorStyle: styles.indicator,
-  },
+  }
 });
 
 export default Home;
