@@ -18,7 +18,7 @@ var themes = [
   color: v[0],
   name: v[1]
 }))
-global.yzh666 = 123;
+
 export default {
   // 屏幕宽高
   mediaWidth,

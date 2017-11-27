@@ -1,3 +1,4 @@
+import storage from '../storage'
 import localData from './data'
 const {
   VideoRecommend,
@@ -266,6 +267,18 @@ export function fetchSpecialColumnRecommendFailure(callback) {
   return { type: FETCH_SPECIAL_COLUMN_RECOMMEND_FAILURE }
 }
 
+/**
+ * 颜色设置
+ */
+
 export function setMainColor(color) {
+
+  // 保存到本地
+  storage.save({
+    key: 'mainColor',  // 注意:请不要在key中使用_下划线符号!
+    data: color,
+    expires: null
+  });
+
   return { type: SET_MAIN_COLOR, color }
 }

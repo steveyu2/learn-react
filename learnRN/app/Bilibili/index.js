@@ -110,7 +110,7 @@ class App extends Component{
     )
   }
 }
-alert(yzh666)
+
 App.propTypes = SimplePropTypes(({ strRq, boolRq, objOfRq, arrOfRq, shape, shapeRq})=>({
   video: shapeRq({
     recommend: shapeRq({
