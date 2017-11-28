@@ -63,13 +63,19 @@ class Wrap extends Component{
 class App extends Component{
 
   componentDidMount() {
-    SplashScreen.hide(); // 隐藏启动屏
 
-    // 检测本地是否保存主题
+    // 检测本地是否保存主题   加载完成再隐藏启动屏幕
     storage.load({
       key: 'mainColor'
-    }).then(this._setMainColor)
+    }).then((v)=>{
+        this._setMainColor(v)
+        this.splashScreenHide()
+    }, this.splashScreenHide)
+    .catch(this.splashScreenHide)
   }
+
+  // 隐藏启动屏幕
+  splashScreenHide = ()=>SplashScreen.hide()
 
   _fetchVideoRecommendToBefore = (callback) => {
     this.props.dispatch(fetchVideoRecommend(BEFORE, callback))

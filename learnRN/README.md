@@ -16,14 +16,16 @@
 完成项
  
  - [x] 完成导航嵌套 Stack -> Drawer -> Tab
- - [x] 封装FlatList 上下拉加载
+ - [x] 封装FlatList 上下拉加载 (处理加载失败，网络断开)
  - [x] 加入redux
- - [x] 判断网络状态 (fetch函数 catch不到的错误 reject等情况) 
+ - [x] 判断网络状态 (处理fetch函数 catch不到的错误 reject了错误时的情况) 
  - [x] 启动页 
- - [x] 切换主题
+ - [x] 切换主题(保存当前主题到本地
  - [ ] 引入react-native-image-header-scroll-view 折叠导航
 
 APK下载
+
+   [v1.3.1](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.3.1.apk) (更新切换主题
 
    [v1.3](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.3.apk) (之前数据都是本地的，1.3之后都放在ftp上了,当然数据还是静态的 orz)
    
