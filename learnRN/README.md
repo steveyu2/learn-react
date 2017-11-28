@@ -11,7 +11,11 @@
 
 效果图
 
- ![.](https://qw110946.github.io/learn-react/learnRN/images/other/demo.gif)
+<p align="center">
+  <a href="#">
+    <img alt="bilibili-demo" src="https://github.com/qw110946/learn-react/blob/master/learnRN/images/other/demo.gif">
+  </a>
+</p>
  
 完成项
  
