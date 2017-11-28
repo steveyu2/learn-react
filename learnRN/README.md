@@ -11,7 +11,7 @@
 
 效果图
 
- ![.](https://github.com/qw110946/learn-react/tree/master/learnRN/images/other/demo.gif)
+ ![.](https://qw110946.github.io/learn-react/learnRN/images/other/demo.gif)
  
 完成项
  
