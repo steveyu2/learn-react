@@ -11,7 +11,8 @@
 
 效果图
 
-
+ ![.](https://github.com/qw110946/learn-react/tree/master/learnRN/images/other/demo.gif)
+ 
 完成项
  
  - [x] 完成导航嵌套 Stack -> Drawer -> Tab
