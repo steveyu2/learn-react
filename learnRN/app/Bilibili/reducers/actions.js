@@ -278,7 +278,7 @@ export function setMainColor(color) {
     key: 'mainColor',  // 注意:请不要在key中使用_下划线符号!
     data: color,
     expires: null
-  });
+});
 
   return { type: SET_MAIN_COLOR, color }
 }

@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import SimplePropTypes from './components/g/simple-prop-types'
 import SplashScreen from 'react-native-splash-screen'
 import Orientation from 'react-native-orientation'
+import storage from './storage'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider, connect } from 'react-redux'
 import thunk from 'redux-thunk';
@@ -63,6 +64,11 @@ class App extends Component{
 
   componentDidMount() {
     SplashScreen.hide(); // 隐藏启动屏
+
+    // 检测本地是否保存主题
+    storage.load({
+      key: 'mainColor'
+    }).then(this._setMainColor)
   }
 
   _fetchVideoRecommendToBefore = (callback) => {
