@@ -11,7 +11,12 @@
 
 效果图
 
-
+<p align="center">
+  <a href="#">
+    <img alt="bilibili-demo" src="https://github.com/qw110946/learn-react/blob/master/learnRN/images/other/demo.gif">
+  </a>
+</p>
+ 
 完成项
  
  - [x] 完成导航嵌套 Stack -> Drawer -> Tab
