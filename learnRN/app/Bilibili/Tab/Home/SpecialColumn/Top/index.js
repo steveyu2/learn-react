@@ -25,7 +25,7 @@ class RecommendList extends Component {
     return isRender ?
       <View>
         <View style={styles.wrapper}>
-          <ImgSwiper data={ images }/>
+          <ImgSwiper data={ images } mainColor={ mainColor }/>
           <ClassifyBtn onItemPress={onItemPress}/>
         </View>
         <SubHeader navigation={ navigation } mainColor={ mainColor }/>

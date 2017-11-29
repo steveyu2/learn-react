@@ -35,13 +35,14 @@ class RecommendList extends PureComponent {
       style,
       pullUpRefresh,
       failComponent,
-      firstOnRefresh
+      firstOnRefresh,
+      refreshComponentColor
     } = this.props;
 
     return (
       <FlatList
         style={ style }
-        refreshComponentColor={ Config.mainColor }
+        refreshComponentColor={ refreshComponentColor }
         data={ data }
         onEndReached={ pullUpRefresh }
         onEndReachedThreshold={ 0.02 }
@@ -75,6 +76,7 @@ RecommendList.propTypes = SimplePropTypes(({ arrOfRq, strRq, shape, funcRq, bool
   onRefresh: funcRq,
   refreshing: boolRq,
   firstOnRefresh: boolRq,
+  refreshComponentColor: strRq,
   failComponent: isReactComponent,
 }))
 

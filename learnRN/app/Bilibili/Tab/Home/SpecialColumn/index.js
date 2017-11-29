@@ -127,7 +127,7 @@ class SpecialColumn extends Component {
         <FlatList
           firstOnRefresh={ firstOnRefresh }
           style={{ flex:1 }}
-          refreshComponentColor={ Config.mainColor }
+          refreshComponentColor={ mainColor }
           data={ specialColumn.recommend.data }
           ListHeaderComponent={ <TopCompt images={ specialColumn.banners.data }
                                         onItemPress={ this.ClassifyPress }

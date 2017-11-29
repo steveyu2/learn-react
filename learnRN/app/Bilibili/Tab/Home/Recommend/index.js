@@ -100,6 +100,7 @@ class Recommend extends PureComponent {
         />
         <View style={ styles.content }>
           <RecommendList
+            refreshComponentColor={ mainColor }
             firstOnRefresh={ video.recommend.data.length === 0 }
             extraData={ video.recommend }
             onRefresh={ this.onRefresh }

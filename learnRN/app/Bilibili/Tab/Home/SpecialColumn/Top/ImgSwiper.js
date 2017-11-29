@@ -10,23 +10,24 @@ class ImgSwiper extends Component {
   render() {
 
     var {
-      data
+      data,
+      mainColor
       } = this.props;
 
     //data = ['','','','']
     return (
       <View style={styles.wrapper }>
         <Swiper
-          style={{ flex:1,borderRadius: 50 }}
+          style={{ flex:1, borderRadius: 50 }}
           autoplay={ true }
-          dot={ <Dot active={ false }/> }
-          activeDot={ <Dot active={ true }/> }
+          dot={ <Dot active={ false } mainColor={ mainColor }/> }
+          activeDot={ <Dot active={ true }/> mainColor={ mainColor }}
           autoplayTimeout={ 4 }
           paginationStyle={ styles.pagination }>
           {
             data.map((v, i)=>{
               return (
-                <View key={ i } style={{flex:1,borderRadius }}>
+                <View key={ i } style={{flex:1, borderRadius }}>
                   <Image style={ styles.imgItem } source={{ uri: v }}/>
                 </View>
               )
@@ -40,7 +41,11 @@ class ImgSwiper extends Component {
 
 class Dot extends Component {
   render() {
-    return <View style={this.props.active? styles.activeDot: styles.dot}/> ;
+    const {
+      mainColor,
+      active
+    } = this.props;
+    return <View style={ active? [ styles.activeDot, {backgroundColor: mainColor} ]: styles.dot }/> ;
   }
 }
 const borderRadius = 5;
@@ -79,8 +84,9 @@ const styles = StyleSheet.create({
   }
 });
 
-ImgSwiper.propTypes = SimplePropTypes(({ arrOfRq, strRq, boolRq })=>({
+ImgSwiper.propTypes = SimplePropTypes(({ arrOfRq, strRq })=>({
   data: arrOfRq(strRq),
+  mainColor: strRq
 }))
 
 export default ImgSwiper;
