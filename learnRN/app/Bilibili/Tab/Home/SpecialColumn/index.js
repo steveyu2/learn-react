@@ -102,10 +102,7 @@ class SpecialColumn extends Component {
       navigation,
     } = this.props.screenProps;
     //alert(JSON.stringify(navigation.state.params))
-    navigation.navigate('SpecialColumnStack', {
-        ...navigation.state.params,
-        SpecialColumn: { keyword: type }
-    })
+    navigation.navigate('SpecialColumnStack', {SpecialColumn: { keyword: type }})
   }
 
   render() {

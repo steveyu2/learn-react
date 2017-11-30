@@ -16,14 +16,12 @@ class RecommendList extends PureComponent {
     super(props);
   }
 
-  _onPressItem = (id) => { };
-
   _keyExtractor = (item, index) => item[0].id + item[1].id;
 
   _renderItem = ({item}) => (
     <ListLine
       data={ item }
-      onPressItem={ this._onPressItem }
+      onPressItem={ this.props.onPressItem }
     />
   );
 
@@ -72,6 +70,7 @@ RecommendList.propTypes = SimplePropTypes(({ arrOfRq, strRq, shape, funcRq, bool
     danmu: strRq,
     type: strRq,
   }))),
+  onPressItem: funcRq,
   pullUpRefresh: funcRq,
   onRefresh: funcRq,
   refreshing: boolRq,

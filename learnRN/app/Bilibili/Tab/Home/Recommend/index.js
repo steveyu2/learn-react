@@ -78,12 +78,15 @@ class Recommend extends PureComponent {
     })
   }
 
+  _onPressItem = (id) => {
+    this.props.screenProps.navigation.navigate('VideoStack', { video: { currentShowId: id } })
+  }
 
   render() {
     const {
       screenProps
     } = this.props,
-      {
+     {
       navigation,
       video
     } = screenProps,
@@ -100,6 +103,7 @@ class Recommend extends PureComponent {
         />
         <View style={ styles.content }>
           <RecommendList
+            onPressItem={ this._onPressItem }
             refreshComponentColor={ mainColor }
             firstOnRefresh={ video.recommend.data.length === 0 }
             extraData={ video.recommend }

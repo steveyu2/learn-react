@@ -6,6 +6,7 @@ import Drawer from '../Drawer';
 import History from './History';
 import Download from './Download';
 import Search from './Search';
+import Video from './Video';
 import SpecialColumn from './SpecialColumn';
 
 const styles = StyleSheet.create({
@@ -41,6 +42,12 @@ const Stack = StackNavigator({
     screen: Search,
     navigationOptions: {
       title: '搜索'
+    }
+  },
+  VideoStack: {
+    screen: Video,
+    navigationOptions: {
+      header: null
     }
   },
   SpecialColumnStack: {

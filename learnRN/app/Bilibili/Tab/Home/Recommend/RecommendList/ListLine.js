@@ -17,17 +17,17 @@ class ListLine extends PureComponent {
     return (
       <View style={ styles.wrap }>
         <ListItem
-          onPress={this.props.onPressItem}
+          onPress={ this.props.onPressItem }
           id={ leftData.id }
-          data={leftData}
-          itemStyle={styles.item}
+          data={ leftData }
+          itemStyle={ styles.item }
           itemWidth={ itemWidth }
         />
         <ListItem
           onPress={this.props.onPressItem}
           id={ rightData.id }
-          data={rightData}
-          itemStyle={styles.item}
+          data={ rightData }
+          itemStyle={ styles.item }
           itemWidth={ itemWidth }
         />
       </View>

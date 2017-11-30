@@ -21,12 +21,12 @@ class SubTitle extends Component {
         <Text style={ styles.title }>{ title }</Text>
         <View style={ styles.iconGruop }>
           <IconButton icon={ Images.ranking }  iconStyle={ iconStyle } noAction={true} onPress={()=>{
-              navigation.navigate('PlaceholderStack', navigation.state.params)
+              navigation.navigate('PlaceholderStack')
           }}>
             <Text style={styles.iconText}>排行榜</Text>
           </IconButton>
           <IconButton icon={ Images.tag }  iconStyle={ iconStyle } noAction={true} onPress={()=>{
-              navigation.navigate('PlaceholderStack', navigation.state.params)
+              navigation.navigate('PlaceholderStack')
           }}>
             <Text style={styles.iconText}>标签</Text>
           </IconButton>
