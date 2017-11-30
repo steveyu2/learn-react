@@ -20,8 +20,8 @@ class ImgSwiper extends Component {
         <Swiper
           style={{ flex:1, borderRadius: 50 }}
           autoplay={ true }
-          dot={ <Dot active={ false } mainColor={ mainColor }/> }
-          activeDot={ <Dot active={ true }/> mainColor={ mainColor }}
+          dot={ <Dot active={ false } mainColor={ mainColor } /> }
+          activeDot={ <Dot active={ true } mainColor={ mainColor } />}
           autoplayTimeout={ 4 }
           paginationStyle={ styles.pagination }>
           {
