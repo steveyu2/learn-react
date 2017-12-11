@@ -36,7 +36,7 @@ class FlatLists extends Component{
     this.onEndReached = this.onEndReached.bind(this)
     this.onRefresh = this.onRefresh.bind(this)
     this.renderScrollComponent = this.renderScrollComponent.bind(this)
-  }
+}
 
   handleNetInfo() {
     // 判断网络状态 设置失败信息

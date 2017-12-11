@@ -5,10 +5,10 @@ Stack->Drawer->Tab
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SimplePropTypes from './components/g/simple-prop-types'
-import SplashScreen from 'react-native-splash-screen'
+//import SplashScreen from 'react-native-splash-screen'
 import Orientation from 'react-native-orientation'
 import storage from './storage'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, dispatch } from 'redux'
 import { Provider, connect } from 'react-redux'
 import thunk from 'redux-thunk';
 import reducers from './reducers'
@@ -75,7 +75,7 @@ class App extends Component{
   }
 
   // 隐藏启动屏幕
-  splashScreenHide = ()=>SplashScreen.hide()
+  splashScreenHide = ()=>(0)//SplashScreen.hide()
 
   _fetchVideoRecommendToBefore = (callback) => {
     this.props.dispatch(fetchVideoRecommend(BEFORE, callback))
@@ -86,7 +86,7 @@ class App extends Component{
 
   _fetchSpecialColumnRecommendToBefore = (callback) => {
     this.props.dispatch(fetchSpecialColumnRecommend(BEFORE, callback))
-  }
+}
   _fetchSpecialColumnRecommendToAfter = (callback) => {
     this.props.dispatch(fetchSpecialColumnRecommend(AFTER, callback))
   }

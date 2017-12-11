@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { TabNavigator, TabBarTop } from "react-navigation";
-import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
 import DefaultTabBar from '../../components/DefaultTabBar'
 import { Config } from "../../config";
 import SpecialColumn from "./SpecialColumn";
