@@ -3,10 +3,16 @@ package com.learnrn;
 import android.os.Bundle; // here
 import com.facebook.react.ReactActivity;
 // react-native-splash-screen >= 0.3.1
+import org.devio.rn.splashscreen.SplashScreen; // here
 import android.content.Intent; // <--- import
 import android.content.res.Configuration; // <--- import
 
 public class MainActivity extends ReactActivity {
+   @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen.show(this);  // here
+        super.onCreate(savedInstanceState);
+    }
 
     /**
      * Returns the name of the main component registered from JavaScript.

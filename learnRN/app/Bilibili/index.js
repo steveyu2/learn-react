@@ -5,7 +5,7 @@ Stack->Drawer->Tab
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SimplePropTypes from './components/g/simple-prop-types'
-//import SplashScreen from 'react-native-splash-screen'
+import SplashScreen from 'react-native-splash-screen'
 import Orientation from 'react-native-orientation'
 import storage from './storage'
 import { createStore, applyMiddleware, dispatch } from 'redux'
@@ -75,7 +75,7 @@ class App extends Component{
   }
 
   // 隐藏启动屏幕
-  splashScreenHide = ()=>(0)//SplashScreen.hide()
+  splashScreenHide = ()=>SplashScreen.hide()
 
   _fetchVideoRecommendToBefore = (callback) => {
     this.props.dispatch(fetchVideoRecommend(BEFORE, callback))
