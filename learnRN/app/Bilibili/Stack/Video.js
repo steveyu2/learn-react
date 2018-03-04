@@ -24,6 +24,7 @@ class History extends Component{
         renderForeground={()=>(
           <Text style={{color: '#fff'}}>sadasdasdasd</Text>
         )}
+
         renderFixedForeground={() => (
           <View style={{
             //backgroundColor: screenProps.mainColor,
