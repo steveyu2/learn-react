@@ -13,7 +13,7 @@ var storage = new Storage({
   defaultExpires: null,
 
   // 读写时在内存中缓存数据。默认启用。
-  enableCache: true,
+  enableCache: true
 
   // 如果storage中没有相应数据，或数据已过期，
   // 则会调用相应的sync方法，无缝返回最新数据。

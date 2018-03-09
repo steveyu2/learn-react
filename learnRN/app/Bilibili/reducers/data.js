@@ -74,7 +74,7 @@ const SpecialColumnBanners = [
   'https://i0.hdslb.com/bfs/archive/2d3a993b1c5201526ad7ced72619916870a08dc3.jpg@680w_212h.webp',
   'https://i0.hdslb.com/bfs/archive/4290e8d939778a4bce79a662910ecfb3a3fefc99.jpg@680w_212h.webp',
   'https://i0.hdslb.com/bfs/archive/412988903400bb46145ac37c3440780c9d42ae5b.jpg@680w_212h.webp',
-  'https://i0.hdslb.com/bfs/archive/61ee0a32a3b17c10b75ac0a32bb466e5f44b21ca.jpg@680w_212h.webp',
+  'https://i0.hdslb.com/bfs/archive/61ee0a32a3b17c10b75ac0a32bb466e5f44b21ca.jpg@680w_212h.webp'
 ];
 
 // 专栏推荐
@@ -89,7 +89,7 @@ SpecialColumnRecommend = SpecialColumnRecommend.map((v)=>({
   view: v[5],
   like : v[6],
   reply : v[7],
-  cover : v[8],
+  cover : v[8]
 }));
 
 // 模拟数据延迟
@@ -104,5 +104,5 @@ function delay(data){
 export default {
   VideoRecommend: delay(VideoRecommend),
   SpecialColumnBanners: delay(SpecialColumnBanners),
-  SpecialColumnRecommend: delay(SpecialColumnRecommend),
+  SpecialColumnRecommend: delay(SpecialColumnRecommend)
 }

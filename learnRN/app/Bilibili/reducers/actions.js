@@ -33,7 +33,7 @@ export const FETCH_DIRECTION = {
   AFTER: 'AFTER'
 }
 const myfetch = (url) => fetch('http://daregashira.top/' + url)
-/**
+ /**
  * action 创建函数
  */
 /**
@@ -42,7 +42,13 @@ const myfetch = (url) => fetch('http://daregashira.top/' + url)
 let videoRecommendFetchCount = 7; // 每次获取的数量
 let videoRecommendFetchTopIndex = 10; // 获取的上坐标
 let videoRecommendFetchDownIndex = videoRecommendFetchTopIndex; // 获取的下坐标
-
+/**
+ * 数据操作函数
+ * @param dataSource {function} 获取数据的函数 接受获取成功的回调
+ * @param type  获取类型 向上获取向下获取
+ * @param callback 数据获取成功的回调
+ * @returns {Function}
+ */
 function handleVideoRecommend(dataSource, type, callback) {
   let index;
   let count = videoRecommendFetchCount;
@@ -91,9 +97,11 @@ function handleVideoRecommend(dataSource, type, callback) {
     }, dispatch)
   }
 }
+// 本地数据源
 export function fetchVideoRecommendLocal(type, callback=()=>{}) {
   return handleVideoRecommend(VideoRecommend, type, callback)
 }
+// 网络数据源
 export function fetchVideoRecommend(type, callback=()=>{}) {
   const dataSource = (callbackToRes, dispatch)=>{
     myfetch('post/video/recommend.txt').then((response) => {
@@ -132,6 +140,7 @@ export function fetchVideoRecommendFailure(callback) {
 /**
  * 获取专栏banner
  */
+// 本地数据
 export function fetchSpecialColumnBannersLocal() {
   return (dispatch) => {
     dispatch(fetchSpecialColumnBannersRequest())
@@ -146,7 +155,7 @@ export function fetchSpecialColumnBannersLocal() {
     })
   }
 }
-
+// 网络数据
 export function fetchSpecialColumnBanners() {
   return (dispatch) => {
     dispatch(fetchSpecialColumnBannersRequest())
@@ -183,7 +192,13 @@ export function fetchSpecialColumnBannersFailure() {
 let SpecialColumnRecommendFetchCount = 7; // 每次获取的数量
 let SpecialColumnRecommendFetchTopIndex = 10; // 获取的上坐标
 let SpecialColumnRecommendFetchDownIndex = SpecialColumnRecommendFetchTopIndex; // 获取的下坐标
-
+/**
+ * 数据操作函数
+ * @param dataSource {function} 获取数据的函数 接受获取成功的回调
+ * @param type  获取类型 向上获取向下获取
+ * @param callback 数据获取成功的回调
+ * @returns {Function}
+ */
 function handleSpecialColumnRecommend(dataSource, type, callback) {
   let index;
   let count = SpecialColumnRecommendFetchCount;
@@ -232,10 +247,11 @@ function handleSpecialColumnRecommend(dataSource, type, callback) {
     }, dispatch)
   }
 }
-
+// 本地数据源
 export function fetchSpecialColumnRecommendLocal(type, callback=()=>{}) {
   return handleSpecialColumnRecommend(SpecialColumnRecommend, type, callback)
 }
+// 网络数据源
 export function fetchSpecialColumnRecommend(type, callback=()=>{}) {
   const dataSource = (callbackToRes, dispatch)=>{
     myfetch('post/specialColumn/recommend.txt')

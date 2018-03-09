@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
     //shadowRadius: 5
   },*/
   itemWrap: {
-    borderWidth: 2,
-    borderRadius: 5,
+    borderWidth: 1,
+    borderRadius: 3,
     borderColor: 'rgba(50,50,50,0.1)',
     backgroundColor: 'transparent',
     //borderBottomWidth: 2,
@@ -73,9 +73,9 @@ const styles = StyleSheet.create({
     //borderRightColor: 'red',
     overflow: 'hidden',
     borderTopWidth: 0,
-    borderLeftWidth: 1.2,
-    borderRightWidth: 1.2,
-    borderBottomWidth: 2,
+    borderLeftWidth: 0.5,
+    borderRightWidth: 0.5,
+    borderBottomWidth: 1.5,
     flex: 1,
     flexDirection: 'column',
     // backgroundColor: '#f6f6f6',

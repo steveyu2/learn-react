@@ -38,12 +38,12 @@ var itemWidth = 0;
 const styles = (()=>{
   // 这里对上下左右间距 和 item的高度做了适应
   // 用item的flex 来算 wrap 的 padding
-  const fourLostFiveWin = (num)=>(num.toFixed(5)*1)
+  const fourLostFiveWin = (num)=>(num.toFixed(5)*1) // 取5位小数
   const distanceSize = (size)=>(fourLostFiveWin((1-size*2)/2/2/2));
   // alert(fourLostFiveWin(190/Dimensions.get('window').height)) // 0.2959
   const mediaWidth = Config.mediaWidth;
-  const itemFlex = 0.475; // 0.48
-  const paddingLR = mediaWidth * distanceSize(itemFlex) * 2; // padding Left Right
+  const itemFlex = 0.48; // 0.48 一块占用屏幕的flex
+  const paddingLR = mediaWidth * distanceSize(itemFlex) * 2; // padding Left Right 根据itemFlex来适应
   //const itemHeight = fourLostFiveWin(Dimensions.get('window').height * 0.283); // 0.48
   itemWidth = (mediaWidth - paddingLR*2) * itemFlex;
   return StyleSheet.create({
