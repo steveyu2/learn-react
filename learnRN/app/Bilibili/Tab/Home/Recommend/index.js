@@ -78,8 +78,11 @@ class Recommend extends PureComponent {
     })
   }
 
-  _onPressItem = (id) => {
-    this.props.screenProps.navigation.navigate('VideoStack', { video: { currentShowId: id } })
+  _onPressItem = (id, title) => {
+    this.props.screenProps.navigation.navigate('VideoStack', { video: {
+      currentId: id,
+      currentTitle: title
+    } })
   }
 
   render() {

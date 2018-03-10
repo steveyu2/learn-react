@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 
-class Download extends Component{
+class Search extends Component{
 
   render() {
     return (
@@ -10,4 +10,4 @@ class Download extends Component{
   }
 }
 
-export default Download;
+export default Search;

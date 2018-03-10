@@ -10,9 +10,10 @@ class ListItem extends PureComponent {
   _onPress = () => {
     const {
       onPress,
-      id
+      id,
+      data
     } = this.props;
-    onPress(id);
+    onPress(id, data.title);
   }
 
   render() {

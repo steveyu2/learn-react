@@ -4,20 +4,25 @@ Stack->Drawer->Tab
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SimplePropTypes from './components/g/simple-prop-types'
-import SplashScreen from 'react-native-splash-screen'
-import Orientation from 'react-native-orientation'
-import storage from './storage'
-import { createStore, applyMiddleware, dispatch } from 'redux'
-import { Provider, connect } from 'react-redux'
+import SimplePropTypes from './components/g/simple-prop-types';
+import SplashScreen from 'react-native-splash-screen';
+import Orientation from 'react-native-orientation';
+import storage from './storage';
+import { createStore, applyMiddleware, dispatch } from 'redux';
+import { Provider, connect } from 'react-redux';
 import thunk from 'redux-thunk';
-import reducers from './reducers'
+import reducers from './reducers';
 import Stack from './Stack';
 import {
   FETCH_DIRECTION,
   setMainColor
 } from './reducers/actions'
-import * as actions from './reducers/actions'
+import {
+  fetchVideoRecommend,
+  fetchSpecialColumnRecommend,
+  fetchSpecialColumnBanners,
+  fetchSingleVideo
+}  from './reducers/actions'
 
 const {
   BEFORE,
@@ -28,23 +33,6 @@ const store = createStore(
   reducers,
   applyMiddleware(thunk)
 );
-
-/*------------数据本地模式------------*/
-var
-  fetchVideoRecommend,
-  fetchSpecialColumnRecommend,
-  fetchSpecialColumnBanners;
-
-if(false) {
-  fetchVideoRecommend = actions.fetchVideoRecommendLocal;
-  fetchSpecialColumnRecommend = actions.fetchSpecialColumnRecommendLocal;
-  fetchSpecialColumnBanners = actions.fetchSpecialColumnBannersLocal;
-}else{
-  fetchVideoRecommend = actions.fetchVideoRecommend;
-  fetchSpecialColumnRecommend = actions.fetchSpecialColumnRecommend;
-  fetchSpecialColumnBanners = actions.fetchSpecialColumnBanners;
-}
-/*-----------------------------------*/
 
 // 竖屏幕显示
 Orientation.lockToPortrait();
@@ -86,12 +74,14 @@ class App extends Component{
 
   _fetchSpecialColumnRecommendToBefore = (callback) => {
     this.props.dispatch(fetchSpecialColumnRecommend(BEFORE, callback))
-}
+  }
   _fetchSpecialColumnRecommendToAfter = (callback) => {
     this.props.dispatch(fetchSpecialColumnRecommend(AFTER, callback))
   }
 
   _fetchSpecialColumnBanners = () => { this.props.dispatch(fetchSpecialColumnBanners()) }
+
+  _fetchSingleVideo = (id) => { this.props.dispatch(fetchSingleVideo(id)) }
 
   _setMainColor = (color) => {
     this.props.dispatch(setMainColor(color))
@@ -111,12 +101,13 @@ class App extends Component{
           video,
           fetchVideoRecommendToBefore: this._fetchVideoRecommendToBefore,
           fetchVideoRecommendToAfter: this._fetchVideoRecommendToAfter,
+          fetchSingleVideo: this._fetchSingleVideo,
           specialColumn,
           fetchSpecialColumnRecommendToBefore: this._fetchSpecialColumnRecommendToBefore,
           fetchSpecialColumnRecommendToAfter: this._fetchSpecialColumnRecommendToAfter,
           fetchSpecialColumnBanners: this._fetchSpecialColumnBanners,
           mainColor: mainColor,
-          setMainColor: this._setMainColor,
+          setMainColor: this._setMainColor
         }}
       />
     )
@@ -127,21 +118,34 @@ App.propTypes = SimplePropTypes(({ strRq, boolRq, objOfRq, arrOfRq, shape, shape
   video: shapeRq({
     recommend: shapeRq({
       loading: boolRq,
-      data: arrOfRq(arrOfRq(shape({
+      data: arrOfRq(shape({
         title: strRq,
         //videoUrl: strRq,
         imageUrl: strRq,
         videoTime: strRq,
         play: strRq,
         danmu: strRq,
-        type: strRq,
-      })))
-    })
+        type: strRq
+      }))
+    }),
+    details: arrOfRq(shape({
+      id: strRq,
+      loading: boolRq,
+      data: shape({
+        title: strRq,
+        //videoUrl: strRq,
+        imageUrl: strRq,
+        videoTime: strRq,
+        play: strRq,
+        danmu: strRq,
+        type: strRq
+      })
+    }))
   }),
   specialColumn: shapeRq({
     banners: shapeRq({
       loading: boolRq,
-      data: arrOfRq(strRq),
+      data: arrOfRq(strRq)
     }),
     recommend: shapeRq({
       loading: boolRq,
@@ -159,12 +163,12 @@ App.propTypes = SimplePropTypes(({ strRq, boolRq, objOfRq, arrOfRq, shape, shape
     })
   }),
   mainColor: strRq
-}))
+}));
 
 function select(state) {
   return state;
 }
 
-App = connect(select)(App)
+App = connect(select)(App);
 
 export default Wrap;

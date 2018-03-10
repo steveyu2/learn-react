@@ -6,25 +6,35 @@ const {
   SpecialColumnRecommend
   } = localData;
 /**
- * action 类型
- *                REQUEST  发起请求
- *                SUCCESS  成功
- *                FAILURE  失败
+ * action类型
+ *             REQUEST  发起请求
+ *             SUCCESS  成功
+ *             FAILURE  失败
  */
+// 视频推荐
 export const FETCH_VIDEO_RECOMMEND_REQUEST = 'FETCH_VIDEO_RECOMMEND_REQUEST';
 export const FETCH_VIDEO_RECOMMEND_SUCCESS = 'FETCH_VIDEO_RECOMMEND_SUCCESS';
 export const FETCH_VIDEO_RECOMMEND_FAILURE = 'FETCH_VIDEO_RECOMMEND_FAILURE';
-
+// 单个视频获取
+export const FETCH_SINGLE_VIDEO_REQUEST = 'FETCH_SINGLE_VIDEO_REQUEST';
+export const FETCH_SINGLE_VIDEO_SUCCESS = 'FETCH_SINGLE_VIDEO_SUCCESS';
+export const FETCH_SINGLE_VIDEO_FAILURE = 'FETCH_SINGLE_VIDEO_FAILURE';
+// banner
 export const FETCH_SPECIAL_COLUMN_BANNERS_REQUEST = "FETCH_SPECIAL_COLUMN_BANNERS_REQUEST";
 export const FETCH_SPECIAL_COLUMN_BANNERS_SUCCESS = "FETCH_SPECIAL_COLUMN_BANNERS_SUCCESS";
 export const FETCH_SPECIAL_COLUMN_BANNERS_FAILURE = "FETCH_SPECIAL_COLUMN_BANNERS_FAILURE";
-
+// 专栏推荐
 export const FETCH_SPECIAL_COLUMN_RECOMMEND_REQUEST = 'FETCH_SPECIAL_COLUMN_RECOMMEND_REQUEST';
 export const FETCH_SPECIAL_COLUMN_RECOMMEND_SUCCESS = 'FETCH_SPECIAL_COLUMN_RECOMMEND_SUCCESS';
 export const FETCH_SPECIAL_COLUMN_RECOMMEND_FAILURE = 'FETCH_SPECIAL_COLUMN_RECOMMEND_FAILURE';
-
+// 单个专栏获取
+export const FETCH_SINGLE_SPECIAL_COLUMN_REQUEST = 'FETCH_SINGLE_SPECIAL_COLUMN_REQUEST';
+export const FETCH_SINGLE_SPECIAL_COLUMN_SUCCESS = 'FETCH_SINGLE_SPECIAL_COLUMN_SUCCESS';
+export const FETCH_SINGLE_SPECIAL_COLUMN_FAILURE = 'FETCH_SINGLE_SPECIAL_COLUMN_FAILURE';
+// 主色调
 export const SET_MAIN_COLOR = 'SET_MAIN_COLOR';
-
+// 普通常量
+const LOCAL_DATA_MODE = false; // 本地数据模式
 /**
  * 其它的常量
  */
@@ -32,12 +42,14 @@ export const FETCH_DIRECTION = {
   BEFORE: 'BEFORE',
   AFTER: 'AFTER'
 }
+
+// 网络数据  (网络上的数据实际上也是固定的)
 const myfetch = (url) => fetch('http://daregashira.top/' + url)
  /**
- * action 创建函数
+ * action创建函数
  */
 /**
- * 获取视频推荐
+ * 获取视频推荐  (因为数据是固定的，所以用变量模拟分页
  */
 let videoRecommendFetchCount = 7; // 每次获取的数量
 let videoRecommendFetchTopIndex = 10; // 获取的上坐标
@@ -102,7 +114,7 @@ export function fetchVideoRecommendLocal(type, callback=()=>{}) {
   return handleVideoRecommend(VideoRecommend, type, callback)
 }
 // 网络数据源
-export function fetchVideoRecommend(type, callback=()=>{}) {
+export function fetchVideoRecommendNet(type, callback=()=>{}) {
   const dataSource = (callbackToRes, dispatch)=>{
     myfetch('post/video/recommend.txt').then((response) => {
       if(response.ok) {
@@ -126,6 +138,11 @@ export function fetchVideoRecommend(type, callback=()=>{}) {
   }
   return handleVideoRecommend(dataSource, type, callback)
 }
+// 变更获取数据方式
+export let fetchVideoRecommend = LOCAL_DATA_MODE
+                                    ?fetchVideoRecommendLocal
+                                    :fetchVideoRecommendNet;
+
 export function fetchVideoRecommendRequest() {
   return { type: FETCH_VIDEO_RECOMMEND_REQUEST }
 }
@@ -136,7 +153,41 @@ export function fetchVideoRecommendFailure(callback) {
   callback({error: true})
   return { type: FETCH_VIDEO_RECOMMEND_FAILURE }
 }
+/**
+ * 获取单个视频信息 (这里直接用本地数据了
+ */
+export function fetchSingleVideo(id, callback=()=>{}) {
 
+  fetchSingleVideoRequest(id);
+
+  return (dispatch) => {
+    VideoRecommend((res)=> {
+      try {
+        var data = JSON.parse(res);
+        var targetData = data.filter(v=>v.id === id)[0];
+
+        if (!targetData) { // id不存在)
+          dispatch(fetchSingleVideoFailure(id, callback);
+        }
+
+        dispatch(fetchSingleVideoSuccess(id, targetData);
+      } catch (e) {
+        dispatch(fetchSingleVideoFailure(id, callback))
+      }
+    })
+  }
+}
+
+export function fetchSingleVideoRequest(id) {
+  return { type: FETCH_SINGLE_VIDEO_REQUEST, id }
+}
+export function fetchSingleVideoSuccess(id, data) {
+  return { type: FETCH_SINGLE_VIDEO_SUCCESS, id, data }
+}
+export function fetchSingleVideoFailure(id, callback) {
+  callback({error: true})
+  return { type: FETCH_SINGLE_VIDEO_FAILURE, id}
+}
 /**
  * 获取专栏banner
  */
@@ -156,7 +207,7 @@ export function fetchSpecialColumnBannersLocal() {
   }
 }
 // 网络数据
-export function fetchSpecialColumnBanners() {
+export function fetchSpecialColumnBannersNet() {
   return (dispatch) => {
     dispatch(fetchSpecialColumnBannersRequest())
     myfetch('post/specialColumn/banners.txt')
@@ -175,6 +226,10 @@ export function fetchSpecialColumnBanners() {
     });
   }
 }
+// 变更获取数据方式
+export let fetchSpecialColumnBanners = LOCAL_DATA_MODE
+                                          ?fetchSpecialColumnBannersLocal
+                                          :fetchSpecialColumnBannersNet;
 
 export function fetchSpecialColumnBannersRequest() {
   return { type: FETCH_SPECIAL_COLUMN_BANNERS_REQUEST }
@@ -187,7 +242,7 @@ export function fetchSpecialColumnBannersFailure() {
 }
 
 /**
- * 获取专栏推荐
+ * 获取专栏推荐 (因为数据是固定的，所以用变量模拟分页
  */
 let SpecialColumnRecommendFetchCount = 7; // 每次获取的数量
 let SpecialColumnRecommendFetchTopIndex = 10; // 获取的上坐标
@@ -252,7 +307,7 @@ export function fetchSpecialColumnRecommendLocal(type, callback=()=>{}) {
   return handleSpecialColumnRecommend(SpecialColumnRecommend, type, callback)
 }
 // 网络数据源
-export function fetchSpecialColumnRecommend(type, callback=()=>{}) {
+export function fetchSpecialColumnRecommendNet(type, callback=()=>{}) {
   const dataSource = (callbackToRes, dispatch)=>{
     myfetch('post/specialColumn/recommend.txt')
     .then((response) => {
@@ -272,6 +327,11 @@ export function fetchSpecialColumnRecommend(type, callback=()=>{}) {
   }
   return handleSpecialColumnRecommend(dataSource, type, callback)
 }
+// 变更获取数据方式
+export let fetchSpecialColumnRecommend = LOCAL_DATA_MODE
+                                            ?fetchSpecialColumnRecommendLocal
+                                            :fetchSpecialColumnRecommendNet;
+
 export function fetchSpecialColumnRecommendRequest() {
   return { type: FETCH_SPECIAL_COLUMN_RECOMMEND_REQUEST }
 }
