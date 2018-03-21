@@ -32,8 +32,8 @@ const
     shape: (arg) => PropTypes.shape(arg),
     shapeRq: (arg) => PropTypes.shape(arg).isRequired,
     instanceOf: (arg)=>PropTypes.instanceOf(arg),
-    oneOf: (arg)=>PropTypes.oneOf(arg),
-    oneOfType: (arg)=>PropTypes.oneOfType(arg),
+    oneOf: PropTypes.oneOf,
+    oneOfType: PropTypes.oneOfType,
   };
 
 export default (callback) => callback({...types})

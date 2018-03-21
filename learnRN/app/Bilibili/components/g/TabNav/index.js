@@ -157,6 +157,7 @@ class TabNav extends Component{
   }
 
   render(){
+    debugger
     const currentRoute = this.state.currentRoute;
     const {
       navConfigs,
@@ -259,7 +260,7 @@ TabNav.propTypes = {
   HeaderRight:  isReactComponent,
   componentProps: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.Object
+    PropTypes.object
   ])
 };
 

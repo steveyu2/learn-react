@@ -118,7 +118,7 @@ App.propTypes = SimplePropTypes(({ strRq, boolRq, objOfRq, arrOfRq, shape, shape
   video: shapeRq({
     recommend: shapeRq({
       loading: boolRq,
-      data: arrOfRq(shape({
+      data: arrOfRq(arrOfRq(shape({
         title: strRq,
         //videoUrl: strRq,
         imageUrl: strRq,
@@ -126,7 +126,7 @@ App.propTypes = SimplePropTypes(({ strRq, boolRq, objOfRq, arrOfRq, shape, shape
         play: strRq,
         danmu: strRq,
         type: strRq
-      }))
+      })))
     }),
     details: arrOfRq(shape({
       id: strRq,

@@ -51,7 +51,7 @@ class VideoView extends Component{
   }
 }
 
-VideoView.propTypes = SimplePropTypes(({ strRq, arrOfRq, shape, shapeRq, funcRq })=>({
+VideoView.propTypes = SimplePropTypes(({ strRq, arrOfRq, shape, shapeRq, funcRq, boolRq })=>({
   screenProps: shapeRq({
     fetchVideoRecommendToBefore: funcRq,
     fetchVideoRecommendToAfter: funcRq,
@@ -75,7 +75,7 @@ VideoView.propTypes = SimplePropTypes(({ strRq, arrOfRq, shape, shapeRq, funcRq 
       state: shapeRq({
         params: shapeRq({
           currentId: strRq,
-          currentTitle: strRq,
+          currentTitle: strRq
         })
       })
     }),
