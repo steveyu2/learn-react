@@ -5,6 +5,14 @@ import SimplePropTypes from '../components/g/simple-prop-types';
 
 class VideoView extends Component{
 
+  componentDidMount() {
+    const {
+      navigation,
+      screenProps
+    } = this.props;
+    screenProps.fetchSingleVideo(navigation.state.params.video.currentId);
+  }
+
   render() {
     const {
       navigation,
@@ -14,7 +22,8 @@ class VideoView extends Component{
         video
       } = navigation.state.params;
 
-
+    const data = screenProps.video.details[video.currentId] || {};
+ debugger
 
     return (
       <HeaderImageScrollView
@@ -23,7 +32,7 @@ class VideoView extends Component{
         overlayColor={ screenProps.mainColor }
         fadeOutForeground={ true }
         renderForeground={()=>(
-          <Text style={{color: '#fff'}}>sadasdasdasd</Text>
+          <Text style={{ color: '#000' }}>{ video.currentTitle }</Text>
         )}
 
         renderFixedForeground={() => (
@@ -38,7 +47,7 @@ class VideoView extends Component{
         )}
         renderHeader={() => (
           <Image
-            source={{uri: 'http://imgsrc.baidu.com/imgad/pic/item/03087bf40ad162d9ef62aa311adfa9ec8a13cd0b.jpg'}}
+            source={{uri: data.imageUrl}}
             style={{ width: '100%', height: '100%' }}
           />
         )}
@@ -51,35 +60,38 @@ class VideoView extends Component{
   }
 }
 
-VideoView.propTypes = SimplePropTypes(({ strRq, arrOfRq, shape, shapeRq, funcRq, boolRq })=>({
+VideoView.propTypes = SimplePropTypes(({ str, strRq, arrOfRq, objOf, shape, shapeRq, funcRq, boolRq })=>({
   screenProps: shapeRq({
-    fetchVideoRecommendToBefore: funcRq,
-    fetchVideoRecommendToAfter: funcRq,
+    // fetchVideoRecommendToBefore: funcRq,
+    // fetchVideoRecommendToAfter: funcRq,
+    fetchSingleVideo: funcRq,
     video: shapeRq({
-      details: arrOfRq(shape({
+      details: objOf(shape({
         id: strRq,
         loading: boolRq,
         data: shape({
-          title: strRq,
+          title: str,
           //videoUrl: strRq,
-          imageUrl: strRq,
-          videoTime: strRq,
-          play: strRq,
-          danmu: strRq,
-          type: strRq
+          imageUrl: str,
+          videoTime: str,
+          play: str,
+          danmu: str,
+          type: str
         })
       }))
     }),
-    navigation: shapeRq({
-      navigate: funcRq,
-      state: shapeRq({
-        params: shapeRq({
+    // mainColor: strRq
+  }),
+  navigation: shapeRq({
+    navigate: funcRq,
+    state: shapeRq({
+      params: shapeRq({
+        video: shapeRq({
           currentId: strRq,
           currentTitle: strRq
         })
       })
-    }),
-    mainColor: strRq
+    })
   })
 }))
 

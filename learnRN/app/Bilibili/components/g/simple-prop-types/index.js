@@ -25,15 +25,15 @@ const
     anyRq:  any.isRequired,
     elRq:   el.isRequired,
     node:   node.isRequired,
-    objOf:      PropTypes.objectOf(arg),
+    objOf:      PropTypes.objectOf,
     objOfRq:    (arg) => PropTypes.objectOf(arg).isRequired,
     arrOf:      PropTypes.arrayOf,
     arrOfRq:    (arg) => PropTypes.arrayOf(arg).isRequired,
-    shape:      PropTypes.shape(arg),
+    shape:      PropTypes.shape,
     shapeRq:    (arg) => PropTypes.shape(arg).isRequired,
-    instanceOf: PropTypes.instanceOf(arg),
-    oneOf:      PropTypes.oneOf(arg),
-    oneOfType:  PropTypes.oneOfType(arg),
+    instanceOf: PropTypes.instanceOf,
+    oneOf:      PropTypes.oneOf,
+    oneOfType:  PropTypes.oneOfType,
   };
 
 export default (callback) => callback({...types})

@@ -21,16 +21,16 @@ const initialState = {
     data: []
   },
   // 存储视频详情
-  details: [
-    //{
-    //  id: ..
+  details: {
+    //'id': {
     //  loading: boolean
+    //  error: boolean
     //  data: {
     //    id: ..
     //    name: ..
     //  }
     //}
-  ]
+  }
 }
 
 function recommend(state, action) {
@@ -59,38 +59,33 @@ function recommend(state, action) {
 }
 
 function details(state, action) {
-  var index;
-  state = state.slice()
-  state.some((v, i)=>{
-    if(v.id === action.id){
-      index = i; // 记录下标
-      return true;
-    }
-  });
+  var id = action.id;
+  var newState = {...state};
 
   switch (action.type) {
     case FETCH_SINGLE_VIDEO_REQUEST:
         // 是否存在
-      if(index !== undefined){
-        state[index].loading = true;
-        return state;
+      if(state[id] !== undefined){
+        // 设置loading和error
+        newState[id].loading = true;
+        newState[id].error = false;
       }else{
-        return[
-          ...state,
-          {
-            id: action.id,
-            loading: true,
-            data: {}
-          }
-        ]
+        newState[id] = {
+          id: id,
+          loading: true,
+          error: false,
+          data: {}
+        }
       }
+      return newState;
     case FETCH_SINGLE_VIDEO_SUCCESS:
-      state[index].loading = false;
-      state[index].data = action.data;
-      return state;
+      newState[id].loading = false;
+      newState[id].data = action.data;
+      return newState;
     case FETCH_SINGLE_VIDEO_FAILURE:
-      state[index].loading = false;
-      return state;
+      newState[id].loading = false;
+      newState[id].error = true;
+      return newState;
     default:
       return state
   }

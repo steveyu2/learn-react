@@ -157,7 +157,7 @@ class TabNav extends Component{
   }
 
   render(){
-    debugger
+    // debugger
     const currentRoute = this.state.currentRoute;
     const {
       navConfigs,

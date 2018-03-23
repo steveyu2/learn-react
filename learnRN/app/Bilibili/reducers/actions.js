@@ -156,7 +156,7 @@ export function fetchVideoRecommendFailure(callback) {
 /**
  * 获取单个视频信息 (这里直接用本地数据了
  */
-export function fetchSingleVideo(id, callback=()=>{}) {
+export function fetchSingleVideo(id) {
 
 
   return (dispatch) => {
@@ -167,12 +167,12 @@ export function fetchSingleVideo(id, callback=()=>{}) {
         var targetData = data.filter(v=>v.id === id)[0];
 
         if (!targetData) { // id不存在)
-          dispatch(fetchSingleVideoFailure(id, callback));
+          dispatch(fetchSingleVideoFailure(id));
         }
 
         dispatch(fetchSingleVideoSuccess(id, targetData));
       } catch (e) {
-        dispatch(fetchSingleVideoFailure(id, callback))
+        dispatch(fetchSingleVideoFailure(id))
       }
     })
   }
@@ -184,8 +184,7 @@ export function fetchSingleVideoRequest(id) {
 export function fetchSingleVideoSuccess(id, data) {
   return { type: FETCH_SINGLE_VIDEO_SUCCESS, id, data }
 }
-export function fetchSingleVideoFailure(id, callback) {
-  callback({error: true})
+export function fetchSingleVideoFailure(id) {
   return { type: FETCH_SINGLE_VIDEO_FAILURE, id}
 }
 /**

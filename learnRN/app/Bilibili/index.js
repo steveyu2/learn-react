@@ -114,7 +114,7 @@ class App extends Component{
   }
 }
 
-App.propTypes = SimplePropTypes(({ strRq, boolRq, objOfRq, arrOfRq, shape, shapeRq})=>({
+App.propTypes = SimplePropTypes(({ str, strRq, boolRq, objOf, objOfRq, arrOfRq, shape, shapeRq})=>({
   video: shapeRq({
     recommend: shapeRq({
       loading: boolRq,
@@ -128,17 +128,17 @@ App.propTypes = SimplePropTypes(({ strRq, boolRq, objOfRq, arrOfRq, shape, shape
         type: strRq
       })))
     }),
-    details: arrOfRq(shape({
+    details: objOf(shape({
       id: strRq,
       loading: boolRq,
       data: shape({
-        title: strRq,
+        title: str,
         //videoUrl: strRq,
-        imageUrl: strRq,
-        videoTime: strRq,
-        play: strRq,
-        danmu: strRq,
-        type: strRq
+        imageUrl: str,
+        videoTime: str,
+        play: str,
+        danmu: str,
+        type: str
       })
     }))
   }),
