@@ -158,19 +158,19 @@ export function fetchVideoRecommendFailure(callback) {
  */
 export function fetchSingleVideo(id) {
 
-
   return (dispatch) => {
     dispatch(fetchSingleVideoRequest(id));
     VideoRecommend((res)=> {
       try {
         var data = JSON.parse(res);
-        var targetData = data.filter(v=>v.id === id)[0];
+        var targetData = data.filter(v=>v.some(v=>v.id==id))[0].filter(v=>v.id==id)[0];
 
         if (!targetData) { // id不存在)
           dispatch(fetchSingleVideoFailure(id));
+        }else{
+          dispatch(fetchSingleVideoSuccess(id, targetData));
         }
 
-        dispatch(fetchSingleVideoSuccess(id, targetData));
       } catch (e) {
         dispatch(fetchSingleVideoFailure(id))
       }

@@ -3,6 +3,7 @@
 Stack->Drawer->Tab
  */
 import React, { Component } from 'react';
+import { StatusBar, View } from 'react-native';
 import PropTypes from 'prop-types';
 import SimplePropTypes from './components/g/simple-prop-types';
 import SplashScreen from 'react-native-splash-screen';
@@ -96,20 +97,23 @@ class App extends Component{
     } = this.props;
 
     return (
-      <Stack
-        screenProps={{
-          video,
-          fetchVideoRecommendToBefore: this._fetchVideoRecommendToBefore,
-          fetchVideoRecommendToAfter: this._fetchVideoRecommendToAfter,
-          fetchSingleVideo: this._fetchSingleVideo,
-          specialColumn,
-          fetchSpecialColumnRecommendToBefore: this._fetchSpecialColumnRecommendToBefore,
-          fetchSpecialColumnRecommendToAfter: this._fetchSpecialColumnRecommendToAfter,
-          fetchSpecialColumnBanners: this._fetchSpecialColumnBanners,
-          mainColor: mainColor,
-          setMainColor: this._setMainColor
-        }}
-      />
+      <View style={{flex: 1}}>
+        <StatusBar backgroundColor={mainColor}/>
+        <Stack
+          screenProps={{
+            video,
+            fetchVideoRecommendToBefore: this._fetchVideoRecommendToBefore,
+            fetchVideoRecommendToAfter: this._fetchVideoRecommendToAfter,
+            fetchSingleVideo: this._fetchSingleVideo,
+            specialColumn,
+            fetchSpecialColumnRecommendToBefore: this._fetchSpecialColumnRecommendToBefore,
+            fetchSpecialColumnRecommendToAfter: this._fetchSpecialColumnRecommendToAfter,
+            fetchSpecialColumnBanners: this._fetchSpecialColumnBanners,
+            mainColor: mainColor,
+            setMainColor: this._setMainColor
+          }}
+        />
+      </View>
     )
   }
 }

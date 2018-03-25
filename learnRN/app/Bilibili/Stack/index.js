@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StackNavigator } from 'react-navigation';
-import { StyleSheet, Text } from 'react-native';
+import { StackNavigator, Header } from 'react-navigation';
+import { StyleSheet, Text, StatusBar } from 'react-native';
 import { Config } from '../config';
 import Drawer from '../Drawer';
 import History from './History';
@@ -46,9 +46,23 @@ const Stack = StackNavigator({
   },
   VideoStack: {
     screen: Video,
-    navigationOptions: {
-      header: null
-    }
+    navigationOptions: ({screenProps}) => ({
+        headerStyle: [{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          left: 0,
+          elevation: 0,
+          height:  Header.HEIGHT + StatusBar.currentHeight,
+          paddingTop: StatusBar.currentHeight,
+          shadowColor: 'transparent',
+          backgroundColor: 'transparent',
+          shadowRadius: 0,
+          shadowOffset: {
+            height: 0,
+          },
+        }]
+    })
   },
   SpecialColumnStack: {
     screen: SpecialColumn,
