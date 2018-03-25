@@ -5,7 +5,8 @@ import * as Animatable from 'react-native-animatable';
 import { Header } from 'react-navigation';
 import { Config, Images } from '../../config';
 import SimplePropTypes from '../../components/g/simple-prop-types';
-import Details from './Details'
+import Details from './Details';
+
 
 const HEADER_HEIGHT = Header.HEIGHT + StatusBar.currentHeight;
 
@@ -106,21 +107,21 @@ class VideoView extends Component{
                       />
                     )}
                 >
-                    <View style={{ height: 1000 }}>
+                    <View style={{ height: Config.mediaHeight - HEADER_HEIGHT }}>
                         <Details
-                            screenProps = {{
-                                ...screenProps,
-                                title: style=>
-                                    <TriggeringView
-                                        onHide={() => this.fixedTitle.fadeInUp(200)}
-                                        onDisplay={() => this.fixedTitle.fadeOutDown(200)}
-                                    >
-                                        <Text style={style}>
-                                        {videoTitle}
-                                        </Text>
-                                    </TriggeringView>
+                          screenProps = {{
+                            ...screenProps,
+                            title: style=>
+                              <TriggeringView
+                                onHide={() => this.fixedTitle.fadeInUp(200)}
+                                onDisplay={() => this.fixedTitle.fadeOutDown(200)}
+                              >
+                                  <Text style={style}>
+                                    {videoTitle}
+                                  </Text>
+                              </TriggeringView>
 
-                            }}
+                          }}
                         />
                     </View>
                 </HeaderImageScrollView>

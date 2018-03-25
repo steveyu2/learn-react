@@ -11,19 +11,21 @@ import SimplePropTypes from '../../components/g/simple-prop-types';
 
 const styles = StyleSheet.create({
     label: {
-        fontSize: Config.tabTitleSize
+        fontSize: Config.tabTitleSize,
     },
     indicator: {
         //width: Dimensions.get('window').width/2 - 20,
         //marginLeft: 20,
         //marginRight: 20,
-        backgroundColor: Config.fontColor
+        backgroundColor: Config.mainColor
     },
     tabs: {
-        height: Config.TabNavHeight
+        height: Config.TabNavHeight,
+        // backgroundColor: 'rgba(0,0,0,0)'
+        // backgroundColor: '#fff'
     },
     tab: {
-        backgroundColor: '#fff'
+      backgroundColor: '#fff'
     }
 });
 
@@ -38,27 +40,26 @@ const Details = TabNavigator({
         screen: Comments,
         navigationOptions: {
             tabBarLabel: '评论',
-            activeTintColor: '#000'
         }
     }
 },{
     tabBarPosition: 'top',
     animationEnabled: true,
     lazy: true,
-    tabBarComponent: class extends Component{
-        render () {
-            const {
-                screenProps,
-                style
-                } = this.props;
-
-            return <TabBarTop {...this.props} style={[
-                  ]}/>
-        }
-    },
+    // tabBarComponent: class extends Component{
+    //     render () {
+    //         const {
+    //             screenProps,
+    //             style
+    //             } = this.props;
+    //
+    //         return <TabBarTop {...this.props} style={[
+    //               ]}/>
+    //     }
+    // },
     tabBarOptions: {
-        activeTintColor: Config.fontColor,
-        inactiveTintColor: Config.TabTopUnActivefontColor,
+        activeTintColor: Config.mainColor,
+        inactiveTintColor: '#000',
         labelStyle: styles.label,
         tabStyle: styles.tabs,
         style: styles.tab,

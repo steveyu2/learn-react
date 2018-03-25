@@ -1,25 +1,26 @@
 // 评论
 import React, { Component } from 'react';
-import { StyleSheet, Text } from 'react-native';
-import FadeInView from '../../components/g/FadeInView';
+import { StyleSheet, Text, View } from 'react-native';
+// import FadeInView from '../../components/g/FadeInView';
 import { Config } from "../../config";
 
 class Comments extends Component{
-    render() {
-        return (
-            <FadeInView style={ styles.wrap }>
-                <Text>评论</Text>
-            </FadeInView>
-        )
-    }
+  render() {
+    return (
+      <View style={ styles.wrap }>
+          <Text>评论</Text>
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
-    wrap: {
-        flex: 1,
-        flexDirection: 'column',
-        backgroundColor: Config.TabNavScreenColor
-    }
+  wrap: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: Config.TabNavScreenColor,
+    height: 1000
+  }
 });
 
 export default Comments;

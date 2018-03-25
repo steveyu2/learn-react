@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     //width: Dimensions.get('window').width/2 - 20,
     //marginLeft: 20,
     //marginRight: 20,
-    backgroundColor: Config.fontColor,
+    backgroundColor: '#fff',
   },
   tabs: {
     height: Config.TabNavHeight,
