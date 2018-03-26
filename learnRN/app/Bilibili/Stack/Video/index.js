@@ -74,12 +74,12 @@ class VideoView extends Component{
             <View style={{ flex: 1 }}>
                 <StatusBar translucent={true} backgroundColor="transparent" animated={true}/>
                 <HeaderImageScrollView
-                    maxHeight={210 + StatusBar.currentHeight}
+                    maxHeight={190 + StatusBar.currentHeight}
                     minHeight={ HEADER_HEIGHT }
                     maxOverlayOpacity='1'
                     overlayColor={ screenProps.mainColor }
-                    fadeOutForeground={ true }
-                    foregroundParallaxRatio={0.2}
+                    //fadeOutForeground={ true }
+                    foregroundParallaxRatio={0}
                     //顶部标题
                     renderForeground={()=>(
                       <View style={ styles.titleWrap }>
@@ -107,19 +107,19 @@ class VideoView extends Component{
                       />
                     )}
                 >
-                    <View style={{ height: Config.mediaHeight - HEADER_HEIGHT }}>
+                    <View style={{ height: Config.mediaHeight - HEADER_HEIGHT + 100 }}>
                         <Details
                           screenProps = {{
                             ...screenProps,
-                            title: style=>
-                              <TriggeringView
-                                onHide={() => this.fixedTitle.fadeInUp(200)}
-                                onDisplay={() => this.fixedTitle.fadeOutDown(200)}
-                              >
-                                  <Text style={style}>
-                                    {videoTitle}
-                                  </Text>
-                              </TriggeringView>
+                            //title: style=>
+                            //  <TriggeringView
+                            //    onHide={() => this.fixedTitle.fadeInUp(200)}
+                            //    onDisplay={() => this.fixedTitle.fadeOutDown(200)}
+                            //  >
+                            //      <Text style={style}>
+                            //        {videoTitle}
+                            //      </Text>
+                            //  </TriggeringView>
 
                           }}
                         />
