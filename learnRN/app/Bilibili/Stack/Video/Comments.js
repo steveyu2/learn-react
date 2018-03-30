@@ -13,29 +13,6 @@ class Comments extends Component{
             <Text style={{fontSize: 40}}>简介</Text>
             <Text style={{fontSize: 40}}>简介</Text>
             <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
-            <Text style={{fontSize: 40}}>简介</Text>
         </ScrollView>
     )
   }
@@ -46,7 +23,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: Config.TabNavScreenColor,
-    height: 1000
   }
 });
 
