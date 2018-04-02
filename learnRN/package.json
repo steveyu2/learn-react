@@ -7,9 +7,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "mao-rn-android-kit": "^0.5.0",
     "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-native": "^0.50.0",
+    "react": "16.0.0-alpha.6",
+    "react-native": "^0.44.3",
     "react-native-animatable": "^1.2.4",
     "react-native-image-header-scroll-view": "^0.8.2",
     "react-native-loader": "^1.2.1",

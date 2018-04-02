@@ -7,13 +7,13 @@ import { Config } from "../../config";
 class Comments extends Component{
   render() {
     return (
-        <ScrollView style={ styles.wrap }>
+        <View style={ styles.wrap }>
             <Text style={{fontSize: 40}}>简介</Text>
             <Text style={{fontSize: 40}}>简介</Text>
             <Text style={{fontSize: 40}}>简介</Text>
             <Text style={{fontSize: 40}}>简介</Text>
             <Text style={{fontSize: 40}}>简介</Text>
-        </ScrollView>
+        </View>
     )
   }
 }

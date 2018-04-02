@@ -39,19 +39,19 @@ const styles = StyleSheet.create({
 }*/
 
 const Home = TabNavigator({
-  TabHomeRecommend: {
-    screen: Recommend,
-     navigationOptions: {
-       tabBarLabel: '推荐',
-     }
-  },
-  TabHomeBangumi: {
-    screen: SpecialColumn,
-     navigationOptions: {
-       tabBarLabel: '专栏',
-       activeTintColor: '#000'
-     }
-  },
+  // TabHomeRecommend: {
+  //   screen: Recommend,
+  //    navigationOptions: {
+  //      tabBarLabel: '推荐',
+  //    }
+  // },
+  // TabHomeBangumi: {
+  //   screen: SpecialColumn,
+  //    navigationOptions: {
+  //      tabBarLabel: '专栏',
+  //      activeTintColor: '#000'
+  //    }
+  // },
 },{
   tabBarPosition: 'top',
   animationEnabled: true,

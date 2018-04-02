@@ -110,7 +110,6 @@ class VideoView extends Component{
                            </Text>
                          </Animatable.View>
                      )}
-                    ref={(scrollView) => { _scrollView = scrollView; }}
                 >
                     {/*<View style={{ height: Config.mediaHeight - HEADER_HEIGHT }}>*/}
                     <TriggeringView>
@@ -118,8 +117,7 @@ class VideoView extends Component{
                     </TriggeringView>
                     <View style={{ height: 300, width: 200 }}>
 
-                        <ScrollView style={ styles.wrap } overScrollMode="always"
-                                    >
+                        <ScrollView style={ styles.wrap } >
                             <Text style={{fontSize: 40}}>简介</Text>
                             <Text style={{fontSize: 40}}>简介</Text>
                             <Text style={{fontSize: 40}}>简介</Text>
@@ -137,7 +135,7 @@ class VideoView extends Component{
                             <Text style={{fontSize: 40}}>简介</Text>
                         </ScrollView>
                     </View>
-                    <Button title="asd" onPress={()=>_scrollView.scrollToEnd({animated: true})} style={{height:200}} />
+                    <Button title="asd"  style={{height:200}} />
                     <Button title="asd" onPress={()=>alert(123)} style={{height:200}} />
                     <Button title="asd" onPress={()=>alert(123)} style={{height:200}} />
                     <Button title="asd" onPress={()=>alert(123)} style={{height:200}} />

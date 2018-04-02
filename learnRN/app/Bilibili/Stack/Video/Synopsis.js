@@ -12,28 +12,6 @@ class Synopsis extends Component{
                   title="123123"
                   onPress={()=>alert(123)}
                 />
-                <ScrollView>
-                    <FlatList
-                      horizontal={false}
-                      data={[
-                        {key: '简介'},
-                        {key: 'Jackson'},
-                        {key: 'James'},
-                        {key: 'Joel'},
-                        {key: 'John'},
-                        {key: 'Jillian'},
-                        // {key: 'Jimmy'},
-                        // {key: 'John'},
-                        // {key: 'Jillian'},
-                        // {key: 'Jimmy'},
-                        // {key: 'Julie'},
-                        // {key: 'Julie'},
-                        // {key: 'Julie'},
-                        // {key: 'Julie'},
-                      ]}
-                      renderItem={({item}) =>  <Text style={{fontSize: 40}}>{item.key}</Text>}
-                    />
-                </ScrollView>
             </View>
         )
     }
