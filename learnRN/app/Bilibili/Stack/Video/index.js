@@ -83,6 +83,7 @@ class VideoView extends Component{
             <View style={{ flex: 1 }}>
                 <StatusBar translucent={true} backgroundColor="transparent" animated={true} />
                 <HeaderImageScrollView
+                    style={{flex: 1}}
                     maxHeight={ MAX_HEIGHT }
                     minHeight={ HEADER_HEIGHT }
                     maxOverlayOpacity='1'
@@ -110,52 +111,26 @@ class VideoView extends Component{
                            </Text>
                          </Animatable.View>
                      )}
+                    onScroll={console.log}
+                    scrollEventThrottle={200}
                 >
-                    {/*<View style={{ height: Config.mediaHeight - HEADER_HEIGHT }}>*/}
-                    <TriggeringView>
-                        <Button title="asd" onPress={()=>alert(123)} style={{height:200}} />
-                    </TriggeringView>
-                    <View style={{ height: 300, width: 200 }}>
+                    <View style={{ height: Config.mediaHeight - HEADER_HEIGHT }}>
+                        <Details
+                          screenProps = {{
+                            ...screenProps,
+                            //title: style=>
+                            //  <TriggeringView
+                            //    onHide={() => this.fixedTitle.fadeInUp(200)}
+                            //    onDisplay={() => this.fixedTitle.fadeOutDown(200)}
+                            //  >
+                            //      <Text style={style}>
+                            //        {videoTitle}
+                            //      </Text>
+                            //  </TriggeringView>
 
-                        <ScrollView style={ styles.wrap } >
-                            <Text style={{fontSize: 40}}>简介</Text>
-                            <Text style={{fontSize: 40}}>简介</Text>
-                            <Text style={{fontSize: 40}}>简介</Text>
-                            <Text style={{fontSize: 40}}>简介</Text>
-                            <Text style={{fontSize: 40}}>简介</Text>
-                            <Text style={{fontSize: 40}}>简介</Text>
-                            <Text style={{fontSize: 40}}>简介</Text>
-                            <Text style={{fontSize: 40}}>简介</Text>
-                            <Text style={{fontSize: 40}}>简3介</Text>
-                            <Text style={{fontSize: 40}}>简介</Text>
-                            <Text style={{fontSize: 40}}>简介</Text>
-                            <Text style={{fontSize: 40}}>简3介</Text>
-                            <Text style={{fontSize: 40}}>简介</Text>
-                            <Text style={{fontSize: 40}}>简介</Text>
-                            <Text style={{fontSize: 40}}>简介</Text>
-                        </ScrollView>
+                          }}
+                        />
                     </View>
-                    <Button title="asd"  style={{height:200}} />
-                    <Button title="asd" onPress={()=>alert(123)} style={{height:200}} />
-                    <Button title="asd" onPress={()=>alert(123)} style={{height:200}} />
-                    <Button title="asd" onPress={()=>alert(123)} style={{height:200}} />
-                    <Button title="asd" onPress={()=>alert(123)} style={{height:200}} />
-                        {/*<Details*/}
-                          {/*screenProps = {{*/}
-                            {/*...screenProps,*/}
-                            {/*//title: style=>*/}
-                            {/*//  <TriggeringView*/}
-                            {/*//    onHide={() => this.fixedTitle.fadeInUp(200)}*/}
-                            {/*//    onDisplay={() => this.fixedTitle.fadeOutDown(200)}*/}
-                            {/*//  >*/}
-                            {/*//      <Text style={style}>*/}
-                            {/*//        {videoTitle}*/}
-                            {/*//      </Text>*/}
-                            {/*//  </TriggeringView>*/}
-
-                          {/*}}*/}
-                        {/*/>*/}
-                    {/*</View>*/}
                 </HeaderImageScrollView>
             </View>
         )

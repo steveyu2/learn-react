@@ -95,7 +95,6 @@ class Recommend extends PureComponent {
     } = screenProps,
       mainColor = screenProps.mainColor;
 
-// debugger
     return (
       <FadeInView style={[ styles.wrap ]}>
         <SubTitle

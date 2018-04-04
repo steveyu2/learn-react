@@ -140,7 +140,7 @@ class FlatLists extends Component{
       if(deleteProps.indexOf(i) !== -1){
         delete props[i]
       }
-
+debugger
     return (
       <FlatList
         renderScrollComponent={ this.renderScrollComponent }

@@ -9,7 +9,7 @@ import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.github.yamill.orientation.OrientationPackage;
-import com.maornandroidkit.KitsPackage;
+import com.rnnestedscrollview.RNNestedScrollViewPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,7 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new SplashScreenReactPackage(),
             new OrientationPackage(),
-            new KitsPackage()
+            new RNNestedScrollViewPackage()
       );
     }
 
