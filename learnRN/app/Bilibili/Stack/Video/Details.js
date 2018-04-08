@@ -44,17 +44,6 @@ const Details = TabNavigator({
     tabBarPosition: 'top',
     animationEnabled: true,
     lazy: true,
-    // tabBarComponent: class extends Component{
-    //     render () {
-    //         const {
-    //             screenProps,
-    //             style
-    //             } = this.props;
-    //
-    //         return <TabBarTop {...this.props} style={[
-    //               ]}/>
-    //     }
-    // },
     tabBarOptions: {
         activeTintColor: Config.mainColor,
         inactiveTintColor: '#000',
