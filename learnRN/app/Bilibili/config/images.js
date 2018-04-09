@@ -30,5 +30,8 @@ export default {
   windmill_fill: require("../../../images/icon/windmill/windmill_fill.png"),
   tick: require("../../../images/icon/tick/tick.png"),
   tick_fill: require("../../../images/icon/tick/tick_fill.png"),
-  notLoaded: require("../../../images/other/notLoaded.jpg")
+  add: require("../../../images/icon/add/add.png"),
+
+  notLoaded: require("../../../images/other/notLoaded.jpg"),
+  beatbox: require("../../../images/other/beatbox.jpg")
 }

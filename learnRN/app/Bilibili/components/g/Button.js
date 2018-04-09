@@ -25,7 +25,7 @@ class Button extends Component{
   };
 
   render() {
-    const props = this.props,{
+    const props = {...this.props},{
         noAction,
         underlayColor,
         nativeUnderlayColor,

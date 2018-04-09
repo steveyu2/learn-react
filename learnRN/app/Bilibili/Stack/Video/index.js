@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, StatusBar, Button, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, StatusBar} from 'react-native';
 import HeaderImageScrollView, { TriggeringView } from 'react-native-image-header-scroll-view';
 import * as Animatable from 'react-native-animatable';
 import { Header } from 'react-navigation';
 import { Config, Images } from '../../config';
 import SimplePropTypes from '../../components/g/simple-prop-types';
-import SynopsisAndComments from './SynopsisAndComments';
+import SynopsisAndComments from './SynopsisAndComments/index';
 
 const HEADER_HEIGHT = Header.HEIGHT + StatusBar.currentHeight;
 const MAX_HEIGHT= 190 + StatusBar.currentHeight;
@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         height:  HEADER_HEIGHT,
-        // opacity: 0
+        opacity: 0,
+        zIndex: 10,
     },
     fixedTitle: {
         marginTop: StatusBar.currentHeight,
@@ -40,11 +41,26 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#fff'
     },
-    image: {
+    fixedTitleBack: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      height: '100%',
+      width: '100%',
+      opacity: 0
+    },
+    headerImage: {
       height: MAX_HEIGHT,
       width: Config.mediaWidth,
       alignSelf: 'stretch',
       resizeMode: 'cover',
+    },
+    lowerView: {
+      padding: Config.TabNavScreenPadding
+    },
+    triggeringView: {
+      width: '100%',
+      height: 0
     }
 });
 
@@ -57,6 +73,8 @@ class VideoView extends Component{
             } = this.props;
         // 标题
         this.fixedTitle = null;
+        // 标题背景颜色
+        this.fixedTitleBack = null;
         // 获取视频信息
         screenProps.fetchSingleVideo(navigation.state.params.video.currentId);
     }
@@ -76,7 +94,6 @@ class VideoView extends Component{
         // 图片地址
         const imagesSource = data.imageUrl? {uri: data.imageUrl}: Images.notLoaded;
         const videoTitle = video.currentTitle;
-        var _scrollView;
 
         return (
             <View style={{ flex: 1 }}>
@@ -85,13 +102,13 @@ class VideoView extends Component{
                     style={{flex: 1}}
                     maxHeight={ MAX_HEIGHT }
                     minHeight={ HEADER_HEIGHT }
-                    maxOverlayOpacity='1'
-                    overlayColor={ screenProps.mainColor }
-                    fadeOutForeground={ true }
+                    minOverlayOpacity={0.15}
+                    fadeOutForeground
+                    overlayColor={ '#000' }
                     // foregroundParallaxRatio={1}
-                  // 图片
-                    renderHeader={() => <Image source={ imagesSource } style={styles.image} />}
-                    //顶部标题
+                    // 图片
+                    renderHeader={() => <Image source={ imagesSource } style={styles.headerImage} />}
+                    //顶部随滑动移动的标题
                      renderForeground={()=>(
                        <View style={ styles.titleWrap }>
                          <Text numberOfLines={1} style={ styles.title }>{ videoTitle }</Text>
@@ -99,23 +116,37 @@ class VideoView extends Component{
                      )}
                     // 固定标题
                      renderFixedForeground={() => (
-                         <Animatable.View
-                           style={styles.fixedTitleWrap}
-                           ref={view => {
-                             this.fixedTitle = view;
-                           }}
-                         >
-                           <Text numberOfLines={1} style={styles.fixedTitle}>
-                             { videoTitle }
-                           </Text>
-                         </Animatable.View>
+                       <View style={{height: '100%', width: '100%'}}>
+                           <Animatable.View
+                             style={styles.fixedTitleWrap}
+                             ref={view => {
+                               this.fixedTitle = view;
+                             }}
+                           >
+                               <Text numberOfLines={1} style={styles.fixedTitle}>
+                                 { videoTitle }
+                               </Text>
+                           </Animatable.View>
+                           <Animatable.View
+                             style={[styles.fixedTitleBack, {backgroundColor: screenProps.mainColor}]}
+                             ref={view => {
+                               this.fixedTitleBack = view;
+                             }}
+                           >
+                           </Animatable.View>
+                       </View>
                      )}
-                    onScroll={console.log}
-                    scrollEventThrottle={200}
+                    contentContainerStyle={ styles.lowerView }
                 >
-                    <View style={{ height: Config.mediaHeight - HEADER_HEIGHT }}>
-                        <SynopsisAndComments />
-                    </View>
+                    <TriggeringView
+                      style={ styles.triggeringView }
+                      onBeginHidden={() => {this.fixedTitle.fadeInUp(200); this.fixedTitleBack.fadeIn(200)}}
+                      onBeginDisplayed={() => {this.fixedTitle.fadeOutDown(70); this.fixedTitleBack.fadeOut(100)}}
+                    >
+                    </TriggeringView>
+                    <SynopsisAndComments
+                        mainColor={ screenProps.mainColor }
+                    />
                 </HeaderImageScrollView>
             </View>
         )
