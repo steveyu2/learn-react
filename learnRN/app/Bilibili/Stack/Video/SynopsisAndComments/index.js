@@ -2,6 +2,9 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, StatusBar} from 'react-native';
 import { Config, Images } from "../../../config/index";
+import Author from "./Author";
+import Synopsis from "./Synopsis";
+import ButtonGroup from "./ButtonGroup"
 
 const styles = StyleSheet.create({
   wrap: {
@@ -13,12 +16,21 @@ const styles = StyleSheet.create({
 class SynopsisAndComments extends Component{
   render() {
     const {
-      mainColor
+      mainColor,
+      title,
+      play,
+      danmu
     } = this.props;
 
     return (
       <View style={ styles.wrap }>
-        <View style={{height: 1000,width: 20,backgroundColor: 'gray'}}/>
+        <Author mainColor={ mainColor }/>
+        <Synopsis
+          title={ title }
+          play={ play }
+          danmu={ danmu }
+        />
+        <ButtonGroup/>
       </View>
     )
   }

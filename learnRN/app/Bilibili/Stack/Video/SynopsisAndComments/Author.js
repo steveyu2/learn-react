@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet} from 'react-native';
 import { Config, Images } from "../../../config/index";
 import CustomButton from '../../../components/g/Button';
-import CustomButton from '../../../components/g/Button';
 
 const styles = StyleSheet.create({
   wrap: {
@@ -35,7 +34,7 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center'
   },
-  author: {
+  avatar: {
     height: 35,
     width: 35,
     borderRadius: 50,
@@ -56,15 +55,19 @@ const styles = StyleSheet.create({
   }
 });
 
-class SynopsisAndComments extends Component{
+class Author extends Component{
   render() {
+    const {
+      mainColor
+    } = this.props;
+
     return (
       <View style={ styles.wrap }>
         <View style={ styles.avatarMsgWrap }>
           <Image source={ Images.beatbox } style={ styles.avatar } />
           <View style={ styles.avatarTextBox }>
             <Text style={ styles.avatarName }>swissbeatbox</Text>
-            <Text style={ style.avatarfollow }>4.2万粉丝</Text>
+            <Text style={ styles.avatarfollow }>4.2万粉丝</Text>
           </View>
         </View>
         <CustomButton>
@@ -80,3 +83,5 @@ class SynopsisAndComments extends Component{
     )
   }
 }
+
+export default Author;

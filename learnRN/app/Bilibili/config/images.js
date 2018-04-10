@@ -26,11 +26,16 @@ export default {
   starBall: require("../../../images/icon/starBall/starBall.png"),
   community: require("../../../images/icon/community/community.png"),
   good: require("../../../images/icon/good/good.png"),
+  good_fill: require("../../../images/icon/good/good_fill.png"),
   windmill: require("../../../images/icon/windmill/windmill.png"),
   windmill_fill: require("../../../images/icon/windmill/windmill_fill.png"),
   tick: require("../../../images/icon/tick/tick.png"),
   tick_fill: require("../../../images/icon/tick/tick_fill.png"),
   add: require("../../../images/icon/add/add.png"),
+  download3: require("../../../images/icon/download/download3.png"),
+  share: require("../../../images/icon/share/share.png"),
+  yingbi: require("../../../images/icon/yingbi/yingbi.png"),
+  yingbi_fill: require("../../../images/icon/yingbi/yingbi_fill.png"),
 
   notLoaded: require("../../../images/other/notLoaded.jpg"),
   beatbox: require("../../../images/other/beatbox.jpg")

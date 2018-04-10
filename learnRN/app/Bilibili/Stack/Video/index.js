@@ -146,7 +146,11 @@ class VideoView extends Component{
                     </TriggeringView>
                     <SynopsisAndComments
                         mainColor={ screenProps.mainColor }
+                        title={ videoTitle }
+                        play={ data.play }
+                        danmu={ data.danmu }
                     />
+                    <View style={{height: 1000,width: 20,backgroundColor: 'gray'}}/>
                 </HeaderImageScrollView>
             </View>
         )
