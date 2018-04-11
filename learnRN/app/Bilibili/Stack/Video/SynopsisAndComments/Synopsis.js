@@ -5,8 +5,7 @@ import { Config, Images } from "../../../config/index";
 
 const styles = StyleSheet.create({
   wrap: {
-    backgroundColor: Config.TabNavScreenColor,
-    flex: 1,
+    flex: 1
   },
   title: {
     fontSize: 16,

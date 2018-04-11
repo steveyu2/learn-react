@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
       resizeMode: 'cover',
     },
     lowerView: {
-      padding: Config.TabNavScreenPadding
+      padding: Config.TabNavScreenPadding,
+      backgroundColor: Config.TabNavScreenColor
     },
     triggeringView: {
       width: '100%',
