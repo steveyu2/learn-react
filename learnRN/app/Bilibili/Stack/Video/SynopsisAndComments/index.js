@@ -4,8 +4,9 @@ import { View, Text, Image, StyleSheet, StatusBar} from 'react-native';
 import { Config, Images } from "../../../config/index";
 import Author from "./Author";
 import Synopsis from "./Synopsis";
-import ButtonGroup from "./ButtonGroup"
-import CustomButton from '../../../components/g/Button';
+import ButtonGroup from "./ButtonGroup";
+import CommentView from "./CommentView";
+
 
 const styles = StyleSheet.create({
   wrap: {
@@ -20,69 +21,24 @@ class SynopsisAndComments extends Component{
       mainColor,
       title,
       play,
-      danmu
+      danmu,
+      minHeight,
+      paddingVal
     } = this.props;
 
     return (
-      <View style={ styles.wrap }>
-        <Author mainColor={ mainColor }/>
-        <Synopsis
-          title={ title }
-          play={ play }
-          danmu={ danmu }
-        />
-        <ButtonGroup/>
-        <CustomButton>
-            <View style={{
-                width: '100%',
-                flexDirection: 'row'
-            }}>
-                <Image source={ Images.beatbox } style={{
-                            height: 35,
-                            width: 35,
-                            borderRadius: 50,
-                            marginLeft: 5,
-                            marginRight: 15
-                        }} />
-                <View style={{
-                    flex: 1,
-                }}>
-                    <View style={{
-                        width: '100%',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between'
-                    }}>
-                        <Text style={{ fontSize: 13 }}>用户名</Text>
-                        <Text style={{ fontSize: 13, marginRight: 5}}>#1    3小时前</Text>
-                    </View>
-                    <Text style={{ fontSize: 14, color: '#000', marginVertical: 8}}>啊啊啊啊啊啊啊，啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</Text>
-                    <View style={{
-                        width: '50%',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between'
-                    }}>
-                        <Image source={ Images.comment } style={{
-                            height: 16,
-                            width: 16,
-                            tintColor: '#888'
-                        }} />
-                        <Image source={ Images.good } style={{
-                            height: 16,
-                            width: 16,
-                            tintColor: '#888'
-                        }} />
-                        <Image source={ Images.good } style={{
-                            height: 16,
-                            width: 16,
-                            tintColor: '#888',
-                            transform: [{
-                                scaleY: -1
-                            }]
-                        }} />
-                    </View>
-                </View>
-            </View>
-        </CustomButton>
+      <View style={[ styles.wrap, {minHeight: minHeight + 50}]}>
+        <View style={{ width: '100%', padding: paddingVal}}>
+          <Author mainColor={ mainColor }/>
+          <Synopsis
+            title={ title }
+            play={ play }
+            danmu={ danmu }
+          />
+          <ButtonGroup />
+        </View>
+        <View style={{backgroundColor: '#999', height: 0.5,width: '100%', marginVertical: 8}} />
+        <CommentView paddingVal={ paddingVal }/>
       </View>
     )
   }

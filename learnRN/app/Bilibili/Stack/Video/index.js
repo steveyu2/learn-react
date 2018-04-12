@@ -56,12 +56,9 @@ const styles = StyleSheet.create({
       resizeMode: 'cover',
     },
     lowerView: {
-      padding: Config.TabNavScreenPadding,
-      backgroundColor: Config.TabNavScreenColor
+
     },
     triggeringView: {
-      width: '100%',
-      height: 0
     }
 });
 
@@ -110,54 +107,54 @@ class VideoView extends Component{
                     // 图片
                     renderHeader={() => <Image source={ imagesSource } style={styles.headerImage} />}
                     //顶部随滑动移动的标题
-                     renderForeground={()=>(
+                   renderForeground={()=>(
                        <View style={ styles.titleWrap }>
                          <Text numberOfLines={1} style={ styles.title }>{ videoTitle }</Text>
                        </View>
                      )}
                     // 固定标题
-                     renderFixedForeground={() => (
-                       <View style={{height: '100%', width: '100%'}}>
-                           <Animatable.View
-                             style={styles.fixedTitleWrap}
-                             ref={view => {
-                               this.fixedTitle = view;
-                             }}
-                           >
-                               <Text numberOfLines={1} style={styles.fixedTitle}>
-                                 { videoTitle }
-                               </Text>
-                           </Animatable.View>
-                           <Animatable.View
-                             style={[styles.fixedTitleBack, {backgroundColor: screenProps.mainColor}]}
-                             ref={view => {
-                               this.fixedTitleBack = view;
-                             }}
-                           >
-                           </Animatable.View>
-                       </View>
-                     )}
+                   renderFixedForeground={() => (
+                      <View style={{height: '100%', width: '100%'}}>
+                          <Animatable.View
+                            style={styles.fixedTitleWrap}
+                            ref={view => {
+                              this.fixedTitle = view;
+                            }}
+                          >
+                              <Text numberOfLines={1} style={styles.fixedTitle}>
+                                { videoTitle }
+                              </Text>
+                          </Animatable.View>
+                          <Animatable.View
+                            style={[styles.fixedTitleBack, {backgroundColor: screenProps.mainColor}]}
+                            ref={view => {
+                              this.fixedTitleBack = view;
+                            }}
+                          >
+                          </Animatable.View>
+                      </View>
+                    )}
                     contentContainerStyle={ styles.lowerView }
                 >
-                    <TriggeringView
-                      style={ styles.triggeringView }
-                      onBeginHidden={() => {this.fixedTitle.fadeInUp(200); this.fixedTitleBack.fadeIn(200)}}
-                      onBeginDisplayed={() => {this.fixedTitle.fadeOutDown(70); this.fixedTitleBack.fadeOut(100)}}
-                    >
-                    </TriggeringView>
-                    <SynopsisAndComments
-                        mainColor={ screenProps.mainColor }
-                        title={ videoTitle }
-                        play={ data.play }
-                        danmu={ data.danmu }
-                    />
-                    <View style={{height: 1000,width: 20,backgroundColor: 'gray'}}/>
+                  <TriggeringView
+                    style={ styles.triggeringView }
+                    onBeginHidden={() => {this.fixedTitle.fadeInUp(200); this.fixedTitleBack.fadeIn(200)}}
+                    onBeginDisplayed={() => {this.fixedTitle.fadeOutDown(70); this.fixedTitleBack.fadeOut(100)}}
+                  >
+                  </TriggeringView>
+                  <SynopsisAndComments
+                    mainColor={ screenProps.mainColor }
+                    title={ videoTitle }
+                    play={ data.play }
+                    danmu={ data.danmu }
+                    minHeight={ Config.mediaHeight - HEADER_HEIGHT }
+                    paddingVal={ Config.TabNavScreenPadding }
+                  />
                 </HeaderImageScrollView>
             </View>
         )
     }
 }
-
 VideoView.propTypes = SimplePropTypes(({ str, strRq, arrOfRq, objOf, shape, shapeRq, funcRq, boolRq })=>({
     screenProps: shapeRq({
         // fetchVideoRecommendToBefore: funcRq,

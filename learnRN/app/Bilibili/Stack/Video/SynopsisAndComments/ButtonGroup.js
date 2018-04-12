@@ -6,8 +6,8 @@ import CustomButton from '../../../components/g/Button';
 
 const styles = StyleSheet.create({
   wrap: {
-    flex: 1,
     width: '100%',
+    height: 50,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 5
@@ -28,10 +28,10 @@ class ButtonGroup extends Component{
   }
   myButton(img, text, key) {
     return(
-      <CustomButton key={ key }>
+      <CustomButton key={ key } nativeUnderlayColor="#bbb">
         <View style={{
           flex: 1,
-          height: 50,
+          height: '100%',
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center'
