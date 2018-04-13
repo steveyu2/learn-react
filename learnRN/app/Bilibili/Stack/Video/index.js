@@ -8,7 +8,7 @@ import SimplePropTypes from '../../components/g/simple-prop-types';
 import SynopsisAndComments from './SynopsisAndComments/index';
 
 const HEADER_HEIGHT = Header.HEIGHT + StatusBar.currentHeight;
-const MAX_HEIGHT= 190 + StatusBar.currentHeight;
+const MAX_HEIGHT= Config.mediaHeight *(0.3) + StatusBar.currentHeight;
 
 const styles = StyleSheet.create({
     titleWrap: {

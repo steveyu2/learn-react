@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     height: 50,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 5
   }
 });
 
@@ -28,11 +27,12 @@ class ButtonGroup extends Component{
   }
   myButton(img, text, key) {
     return(
-      <CustomButton key={ key } nativeUnderlayColor="#bbb">
+      <CustomButton key={ key } style={{flex: 1}} nativeUnderlayColor="#bbb" underlayColor="#666">
         <View style={{
           flex: 1,
           height: '100%',
           flexDirection: 'column',
+          backgroundColor: 'transparent',
           justifyContent: 'center',
           alignItems: 'center'
         }}>
@@ -51,7 +51,7 @@ class ButtonGroup extends Component{
     // } = this.props;
 
     return (
-      <View style={ styles.wrap }>
+      <View style={[ styles.wrap, { paddingHorizontal: Config.mediaWidth / 35}]}>
         {
           this.Buttons.map((v, i)=>this.myButton(v.img, v.text, i))
         }

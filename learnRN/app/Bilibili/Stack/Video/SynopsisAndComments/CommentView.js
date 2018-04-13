@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   buttonItem: {
     height: 16,
     width: 16,
-    tintColor: '#888'
+    tintColor: '#888',
   },
   hr: {backgroundColor: '#bbb', height: 0.5,width: '100%'}
 });
@@ -57,6 +57,7 @@ class CommentView extends Component{
       orderNum: v[3],
       time: v[4] ,
       content: v[2],
+      good: ~~(Math.random() * 10)
     }));
   }
   render() {
@@ -78,8 +79,20 @@ class CommentView extends Component{
             time={ v.time }
             content={ v.content }
             paddingVal={ paddingVal }
+            good={ v.good }
           />))
         }
+        <View style={{
+          height:45,
+          width: '100%',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <Text style={{
+            fontSize: 12
+          }}>没有给更多了</Text>
+        </View>
       </View>
     )
   }
@@ -93,13 +106,14 @@ class CommentItem extends Component{
       orderNum,
       time,
       content,
-      paddingVal
+      paddingVal,
+      good
     } = this.props;
 
     return (
       <View>
         <CustomButton nativeUnderlayColor="#ccc">
-          <View style={[ styles.itemWrap, {padding: paddingVal} ]}>
+          <View style={[ styles.itemWrap, {padding: paddingVal, paddingBottom: paddingVal *(2/3)} ]}>
             <Image source={{uri: avatar||''}} style={ styles.itemAvatar } />
             <View style={{
               flex: 1,
@@ -109,9 +123,17 @@ class CommentItem extends Component{
                 <Text style={[ styles.itemHeaderText, {marginRight: 5} ]}>{orderNum}    {time}</Text>
               </View>
               <Text style={ styles.itemContent }>{ content }</Text>
-              <View style={ styles.buttonGroupWrap }>
+              <View style={[ styles.buttonGroupWrap, {marginTop: paddingVal *(1/3)} ]}>
                 <Image source={ Images.good } style={ styles.buttonItem } />
-                <Image source={ Images.good } style={ styles.buttonItem } />
+                <View style={{
+                  flexDirection: 'row'
+                }}>
+                  <Image source={ Images.good } style={ styles.buttonItem } />
+                  <Text style={{
+                    fontSize: 12,
+                    marginLeft: 2
+                  }}>{ good }</Text>
+                </View>
                 <Image source={ Images.good } style={[ styles.buttonItem, {transform: [{ scaleY: -1 }]} ]} />
               </View>
             </View>
