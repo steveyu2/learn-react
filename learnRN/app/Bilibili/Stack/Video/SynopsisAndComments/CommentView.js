@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     width: 16,
     tintColor: '#888',
   },
-  hr: {backgroundColor: '#bbb', height: 0.5,width: '100%'}
+  hr: {backgroundColor: '#eee', height: 0.5,width: '100%'}
 });
 
 class CommentView extends Component{
@@ -57,7 +57,9 @@ class CommentView extends Component{
       orderNum: v[3],
       time: v[4] ,
       content: v[2],
-      good: ~~(Math.random() * 10)
+      reply: ~~(Math.random() * 10),
+      good: ~~(Math.random() * 20),
+      noGood: ~~(Math.random() * 2)
     }));
   }
   render() {
@@ -79,7 +81,10 @@ class CommentView extends Component{
             time={ v.time }
             content={ v.content }
             paddingVal={ paddingVal }
+            reply={ v.reply }
             good={ v.good }
+            noGood={ v.noGood }
+            mainColor={ mainColor }
           />))
         }
         <View style={{
@@ -99,17 +104,29 @@ class CommentView extends Component{
 }
 
 class CommentItem extends Component{
+  constructor() {
+    super()
+
+    this.state = {
+      good: false,
+      noGood: false
+    }
+  }
+
   render() {
     const {
+      mainColor,
       avatar,
       UserName,
       orderNum,
       time,
       content,
       paddingVal,
-      good
+      reply,
+      good,
+      noGood
     } = this.props;
-
+debugger
     return (
       <View>
         <CustomButton nativeUnderlayColor="#ccc">
@@ -124,7 +141,7 @@ class CommentItem extends Component{
               </View>
               <Text style={ styles.itemContent }>{ content }</Text>
               <View style={[ styles.buttonGroupWrap, {marginTop: paddingVal *(1/3)} ]}>
-                <Image source={ Images.good } style={ styles.buttonItem } />
+                {/*reply*/}
                 <View style={{
                   flexDirection: 'row'
                 }}>
@@ -132,9 +149,36 @@ class CommentItem extends Component{
                   <Text style={{
                     fontSize: 12,
                     marginLeft: 2
-                  }}>{ good }</Text>
+                  }}>{ reply }</Text>
                 </View>
-                <Image source={ Images.good } style={[ styles.buttonItem, {transform: [{ scaleY: -1 }]} ]} />
+                {/*good*/}
+                <CustomButton noAction={true} onPress={ ()=>this.setState((props)=>({ good: !props.good })) } >
+                  <View style={{
+                    flexDirection: 'row'
+                  }}>
+                    <Image source={ Images.good } style={[ styles.buttonItem, (this.state.good?{tintColor: mainColor}: {}) ]} />
+                    <Text style={{
+                      fontSize: 12,
+                      marginLeft: 2
+                    }}>{ this.state.good? good+1: good }</Text>
+                  </View>
+                </CustomButton>
+                {/*noGood*/}
+                <CustomButton noAction={true} onPress={ ()=>this.setState((props)=>({ noGood: !props.noGood })) } >
+                  <View style={{
+                    flexDirection: 'row'
+                  }}>
+                    <Image source={ Images.good } style={[
+                        styles.buttonItem,
+                        {transform: [{ scaleY: -1 }]},
+                        (this.state.noGood?{tintColor: mainColor}: {})
+                      ]} />
+                    <Text style={{
+                      fontSize: 12,
+                      marginLeft: 2
+                    }}>{ this.state.noGood? noGood+1: noGood }</Text>
+                  </View>
+                </CustomButton>
               </View>
             </View>
           </View>
