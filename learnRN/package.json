@@ -12,7 +12,6 @@
     "react-native": "^0.50.0",
     "react-native-animatable": "^1.2.4",
     "react-native-image-header-scroll-view": "^0.8.2",
-    "react-native-loader": "^1.2.1",
     "react-native-nested-scroll-view": "^6.0.1",
     "react-native-orientation": "^3.1.0",
     "react-native-splash-screen": "^3.0.6",

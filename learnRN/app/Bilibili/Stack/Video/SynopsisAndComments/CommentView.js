@@ -71,7 +71,7 @@ class CommentView extends Component{
 
     return (
       <View style={ styles.wrap }>
-        <Text style={[ styles.countText, {padding: paddingVal} ]}>评论(4)</Text>
+        <Text style={[ styles.countText, {padding: paddingVal} ]}>评论({ this.comments.length })</Text>
         {
           this.comments.map((v,i)=>(<CommentItem
             key={ i }
@@ -126,7 +126,7 @@ class CommentItem extends Component{
       good,
       noGood
     } = this.props;
-debugger
+
     return (
       <View>
         <CustomButton nativeUnderlayColor="#ccc">
@@ -145,7 +145,7 @@ debugger
                 <View style={{
                   flexDirection: 'row'
                 }}>
-                  <Image source={ Images.good } style={ styles.buttonItem } />
+                  <Image source={ Images.comment } style={ styles.buttonItem } />
                   <Text style={{
                     fontSize: 12,
                     marginLeft: 2

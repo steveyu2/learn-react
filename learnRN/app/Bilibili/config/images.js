@@ -36,7 +36,7 @@ export default {
   share:            require("../../../images/icon/share/share.png"),
   yingbi:           require("../../../images/icon/yingbi/yingbi.png"),
   yingbi_fill:      require("../../../images/icon/yingbi/yingbi_fill.png"),
-  // comment:          require("../../../images/icon/comment/comment.png"),
+  comment:          require("../../../images/icon/comment/comment.png"),
 
   // other
   notLoaded:    require("../../../images/other/notLoaded.jpg"),

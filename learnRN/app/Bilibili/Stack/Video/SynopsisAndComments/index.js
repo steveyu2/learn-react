@@ -37,7 +37,7 @@ class SynopsisAndComments extends Component{
           />
           <ButtonGroup />
         </View>
-        <View style={{backgroundColor: '#999', height: 0.5,width: '100%', marginVertical: 3}} />
+        <View style={{backgroundColor: '#eee', height: 0.5,width: '100%', marginVertical: 3}} />
         <CommentView paddingVal={ paddingVal } mainColor={ mainColor }/>
       </View>
     )

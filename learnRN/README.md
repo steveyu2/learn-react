@@ -25,9 +25,11 @@
  - [x] 判断网络状态 (处理fetch函数 catch不到的错误 reject了错误时的情况) 
  - [x] 启动页 
  - [x] 切换主题(保存当前主题到本地
- - [ ] 引入react-native-image-header-scroll-view 折叠导航
+ - [x] 引入react-native-image-header-scroll-view 折叠导航
 
 APK下载
+
+   [v1.4](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.4.apk) (折叠导航
 
    [v1.3.1](https://qw110946.github.io/learn-react/learnRN/apk/bilibili-v1.3.1.apk) (更新切换主题
 
@@ -57,20 +59,26 @@ learnRN/app/bilibili  项目文件夹
         └─Home
     
 package.json
-    
+      
       "dependencies": {
-        "prop-types": "^15.6.0", // 类型检测
-        "react": "16.0.0-alpha.12",
-        "react-native": "0.48.3",
+        "prop-types": "^15.6.0",
+        "react": "^16.0.0-alpha.12",
+        "react-native": "^0.50.0",
+        "react-native-animatable": "^1.2.4",
+        "react-native-image-header-scroll-view": "^0.8.2", // 折叠导航
+        "react-native-nested-scroll-view": "^6.0.1",
         "react-native-orientation": "^3.1.0", //  控制屏幕旋转
+        "react-native-splash-screen": "^3.0.6", // 首屏
+        "react-native-storage": "^0.2.2",
         "react-native-swiper": "^1.5.13", // 轮播图
-        "react-navigation": "^1.0.0-beta.11", // 导航
-        "react-redux": "^5.0.6", 
-        "redux": "^3.7.2", // 状态管理
-        "redux-thunk": "^2.2.0" 
+        "react-navigation": "^1.0.0-beta.11",
+        "react-redux": "^5.0.6",
+        "redux": "^3.7.2",
+        "redux-thunk": "^2.2.0"
       },
       "devDependencies": {
         "babel-jest": "21.0.2",
-        "babel-preset-react-native": "4.0.0",
+        "babel-preset-react-native": "2.0.0",
         "jest": "21.1.0",
         "react-test-renderer": "16.0.0-alpha.12"
+      }
