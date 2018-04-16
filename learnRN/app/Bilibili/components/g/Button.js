@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, TouchableHighlight, TouchableNativeFeedback, Platform } from 'react-native';
+import { StyleSheet, TouchableHighlight, TouchableNativeFeedback, Platform, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 /**

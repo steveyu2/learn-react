@@ -5,7 +5,6 @@ import { Config, Images } from "../../../config/index";
 
 const styles = StyleSheet.create({
   wrap: {
-    flex: 1
   },
   title: {
     fontSize: 16,
