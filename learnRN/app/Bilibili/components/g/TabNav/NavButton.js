@@ -8,7 +8,7 @@ import isReactComponent from '../isReactComponent';
  *  style {obj|style} 样式
  *  underlayColor {string} 点击时按压的颜色
  *  onPress {function} 点击事件
- *  images {reactElement} 按钮图片
+ *  images.js {reactElement} 按钮图片
  *  title 按钮标题
  *  titleStyle 标题样式
  */

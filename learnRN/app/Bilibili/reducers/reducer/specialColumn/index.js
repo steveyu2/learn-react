@@ -8,7 +8,7 @@ import {
   FETCH_SPECIAL_COLUMN_RECOMMEND_FAILURE,
 
   FETCH_DIRECTION
-} from '../../actions'
+} from '../../actions'；
 
 const {
   BEFORE,
