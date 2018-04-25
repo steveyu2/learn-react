@@ -1,47 +1,23 @@
 import React, { Component } from 'react';
-import { Container, Header, Button, Icon, Fab } from 'native-base';
-import { createAnimatableComponent, View } from 'react-native-animatable';
+import RN from 'react-native';
+import { Container, Header, Content, Tab, Tabs, Text } from 'native-base';
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
+import Page from './pages/ActionSheetExample';
 
-export default class FABExample extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      active: false
-    };
-  }
+export default class TabsExample extends Component {
   render() {
     return (
-      <Container>
-        <Header />
-        <View style={{ flex: 1 }}>
-          <Fab
-            active={ this.state.active }
-            direction="left"
-            containerStyle={{ }}
-            style={{ backgroundColor: '#5067FF' }}
-            position="bottomRight"
-            onPress={() => this.setState({ active: !this.state.active })}>
-            <Icon name="share" />
-              <Button>
-                <View animation="tada"  style={{
-                  height: '100%',
-                  width: '100%',
-                  borderRadius: 50,
-                  alignItems: 'center',
-                  backgroundColor: '#34A34F' }} delay={1000}>
-                  <Icon name="logo-whatsapp" />
-                </View>
-              </Button>
-            <Button style={{ backgroundColor: '#3B5998' }}>
-              <Icon name="logo-facebook" />
-            </Button>
-            <Button disabled style={{ backgroundColor: '#DD5144' }}>
-              <Icon name="mail" />
-            </Button>
-          </Fab>
-        </View>
-      </Container>
+      <ParallaxScrollView
+        backgroundColor="blue"
+        contentBackgroundColor="pink"
+        parallaxHeaderHeight={300}
+        renderForeground={() => (
+          <RN.View style={{ height: 300, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <RN.Text>Hello World!</RN.Text>
+          </RN.View>
+        )}>
+          <Page/>
+      </ParallaxScrollView>
     );
   }
 }

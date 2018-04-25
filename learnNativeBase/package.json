@@ -11,6 +11,7 @@
     "react": "16.3.1",
     "react-native": "0.55.2",
     "react-native-animatable": "^1.2.4",
+    "react-native-parallax-scroll-view": "^0.21.0",
     "react-navigation": "^1.5.11"
   },
   "devDependencies": {
