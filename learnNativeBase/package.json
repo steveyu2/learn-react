@@ -7,9 +7,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "native-base": "^2.4.2",
-    "react": "16.3.1",
-    "react-native": "0.55.2",
+    "native-base": "^2.4.0",
+    "react": "16.0.0-alpha.12",
+    "react-native": "^0.46.4",
     "react-native-animatable": "^1.2.4",
     "react-navigation": "^1.5.11"
   },
